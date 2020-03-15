@@ -1,45 +1,65 @@
 <template>
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      <h1>LIS5364 Binge Watch Ratings</h1>
-      <h2>LIS5364 Show Ratings</h2>
-      <div class="content mx-2">
-        <form @submit.prevent="addRating">
-          <input type="text" name="name" placeholder="Name of Show" v-model="name" />
-          <input type="text" name="platform" placeholder="Netflix/Hulu/Disney+" v-model="platform" />
-          <input type="text" name="rating" placeholder="Rating (0-10)" v-model="rating" />
-          <input type="text" name="user" placeholder="Your Name" v-model="user" />
-          <button type="submit">Add to List</button>
-        </form>
-      </div>
-      <v-flex v-for="rating in ratings" :key="rating.id" class="mb-5">
-        <v-card class="px-4 mx-2">
-          <v-layout>
-            <v-flex>
-              <v-row align="center" justify="center" class="text-center">
-                <v-col cols="12" sm="4" class="headline">{{ rating.name }}</v-col>
-                <v-col cols="12" sm="2">{{ rating.rating }}</v-col>
-                <v-col cols="12" sm="2">Watched on {{ rating.platform }}</v-col>
-                <v-col cols="12" sm="3">{{ rating.user }}</v-col>
-                <v-card-actions>
-                  <v-spacer />
-                  <v-btn
-                    fab
-                    x-small
-                    absolute
-                    bottom
-                    right
-                    color="primary"
-                    @click="deleteRating(rating.id)"
-                  >X</v-btn>
-                </v-card-actions>
-              </v-row>
-            </v-flex>
-          </v-layout>
-        </v-card>
-      </v-flex>
-    </v-flex>
-  </v-layout>
+  <v-container fluid>
+    <v-layout column justify-center align-center>
+      <v-row justify="center">
+        <v-flex xs12>
+          <h1 class="mb-3">LIS5364 Binge Watch Ratings</h1>
+          <h2>LIS5364 Show Ratings</h2>
+          <v-row justify="center">
+            <v-dialog v-model="dialog" persistent>
+              <template v-slot:activator="{ on }">
+                <v-btn absolute dark fab right color="primary" v-on="on">
+                  <v-icon>mdi-plus</v-icon>
+                </v-btn>
+              </template>
+              <v-card>
+                <form @submit.prevent="addRating">
+                  <input type="text" name="name" placeholder="Name of Show" v-model="name" />
+                  <input
+                    type="text"
+                    name="platform"
+                    placeholder="Netflix/Hulu/Disney+"
+                    v-model="platform"
+                  />
+                  <input type="text" name="rating" placeholder="Rating (0-5)" v-model="rating" />
+                  <input type="text" name="user" placeholder="Your Name" v-model="user" />
+                  <button type="submit">Add to List</button>
+                </form>
+              </v-card>
+            </v-dialog>
+          </v-row>
+          <v-flex v-for="rating in ratings" :key="rating.id" class="mb-5">
+            <v-card class="px-4 pt-3 ma-2">
+              <v-layout>
+                <v-flex>
+                  <v-row align="center" justify="center" class="text-center">
+                    <v-col cols="12" sm="6" lg="4" class="headline">{{ rating.name }}</v-col>
+                    <v-col cols="12" sm="6" lg="4">
+                      <v-rating :value="rating.rating" color="secondary"></v-rating>
+                    </v-col>
+                    <v-col cols="12" sm="6" lg="1">{{ rating.platform }}</v-col>
+                    <v-col cols="12" sm="6" lg="3">{{ rating.user }}</v-col>
+                    <v-card-actions>
+                      <v-spacer />
+                      <v-btn
+                        fab
+                        x-small
+                        absolute
+                        bottom
+                        right
+                        color="primary"
+                        @click="deleteRating(rating.id)"
+                      >X</v-btn>
+                    </v-card-actions>
+                  </v-row>
+                </v-flex>
+              </v-layout>
+            </v-card>
+          </v-flex>
+        </v-flex>
+      </v-row>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
@@ -52,7 +72,8 @@ export default {
       name: "",
       platform: "",
       rating: "",
-      user: ""
+      user: "",
+      dialog: false
     };
   },
   methods: {
@@ -108,15 +129,6 @@ h2 {
   margin-top: 30px;
   text-align: center;
   display: none;
-}
-
-.content {
-  background: #fafafa;
-  max-width: 1200px;
-  margin: 30px auto;
-  padding: 20px 30px;
-  border-radius: 10px;
-  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
 }
 
 form {
