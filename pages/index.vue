@@ -5,29 +5,32 @@
         <v-flex xs12>
           <h1 class="mb-3">LIS5364 Binge Watch Ratings</h1>
           <h2>LIS5364 Show Ratings</h2>
-          <v-row justify="center">
-            <v-dialog v-model="dialog" persistent>
-              <template v-slot:activator="{ on }">
-                <v-btn absolute dark fab right color="primary" v-on="on">
-                  <v-icon>mdi-plus</v-icon>
-                </v-btn>
-              </template>
-              <v-card>
-                <form @submit.prevent="addRating">
-                  <input type="text" name="name" placeholder="Name of Show" v-model="name" />
-                  <input
-                    type="text"
-                    name="platform"
-                    placeholder="Netflix/Hulu/Disney+"
-                    v-model="platform"
-                  />
-                  <input type="text" name="rating" placeholder="Rating (0-5)" v-model="rating" />
-                  <input type="text" name="user" placeholder="Your Name" v-model="user" />
-                  <button type="submit">Add to List</button>
-                </form>
-              </v-card>
-            </v-dialog>
-          </v-row>
+          <!-- <p>
+            <v-row justify="center">
+              <v-dialog v-model="dialog" persistent>
+                <template v-slot:activator="{ on }">
+                  <v-btn absolute dark color="primary" v-on="on">
+                    <v-icon>mdi-plus</v-icon>Add Your Show
+                  </v-btn>
+                </template>
+                <v-card>
+                  <form @submit.prevent="addRating">
+                    <input type="text" name="name" placeholder="Name of Show" v-model="name" />
+                    <input
+                      type="text"
+                      name="platform"
+                      placeholder="Netflix/Hulu/Disney+"
+                      v-model="platform"
+                    />
+                    <input type="text" name="rating" placeholder="Rating (0-5)" v-model="rating" />
+                    <input type="text" name="user" placeholder="Your Name" v-model="user" />
+                    <button type="submit">Add to List</button>
+                  </form>
+                </v-card>
+              </v-dialog>
+            </v-row>
+          </p>-->
+
           <v-flex v-for="rating in ratings" :key="rating.id" class="mb-5">
             <v-card class="px-4 pt-3 ma-2">
               <v-layout>
