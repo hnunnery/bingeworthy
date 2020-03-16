@@ -1,12 +1,18 @@
 <template>
   <v-container>
-    <v-layout column justify-center align-center>
+    <v-layout column>
       <h1 class="mb-6">Binge Watch Ratings</h1>
       <h2 class="pt-4">Binge Watch Ratings</h2>
       <v-row justify="center">
-        <v-btn absolute left top dark color="secondary" :v-show=this.cancel>
-          Cancel
-        </v-btn>
+        <v-btn
+          absolute
+          left
+          top
+          dark
+          color="secondary"
+          v-show="this.cancel"
+          @click="clearSearch"
+        >Clear Filter</v-btn>
         <v-dialog v-model="dialog" persistent max-width="800">
           <template v-slot:activator="{ on }">
             <v-btn absolute right top dark color="primary" v-on="on">
@@ -39,48 +45,79 @@
             </v-row>
           </v-card>
         </v-dialog>
-
-        <v-col
-          cols="12"
-          sm="8"
-          md="6"
-          lg="4"
-          xl="3"
-          v-for="rating in ratings"
-          :key="rating.id"
-          class="mb-5"
-        >
-          <v-card class="px-4 pt-3 ma-2">
-            <v-layout>
-              <v-flex>
-                <v-row align="center" justify="center" class="text-center">
-                  <v-col cols="12" class="display-1">{{ rating.name }}</v-col>
-                  <v-col cols="12">
-                    <v-rating :value="rating.rating" half-increments size="40" color="secondary"></v-rating>
-                  </v-col>
-                  <v-col cols="12" class="headline font-weight-medium primary--text">
-                    {{
-                    rating.platform
-                    }}
-                  </v-col>
-                  <v-col cols="12" class="headline font-weight-light font-italic">{{ rating.user }}</v-col>
-                  <v-card-actions>
-                    <v-spacer />
-                    <v-btn
-                      fab
-                      x-small
-                      absolute
-                      bottom
-                      right
-                      color="primary"
-                      @click="deleteRating(rating.id)"
-                    > <v-icon>mdi-delete</v-icon></v-btn>
-                  </v-card-actions>
-                </v-row>
-              </v-flex>
-            </v-layout>
-          </v-card>
-        </v-col>
+        <v-row justify="center">
+          <v-col
+            cols="12"
+            sm="8"
+            md="6"
+            lg="4"
+            v-for="rating in filteredRatings"
+            :key="rating.id"
+            class="mb-5"
+          >
+            <v-card class="px-4 pt-3 ma-2">
+              <v-row align="center" justify="center" class="text-center">
+                <v-tooltip top>
+                  <template v-slot:activator="{ on }">
+                    <v-col
+                      cols="12"
+                      v-on="on"
+                      class="display-1"
+                      style="cursor: pointer;"
+                      @click="setSearch(rating.name)"
+                    >{{ rating.name }}</v-col>
+                  </template>
+                  <span>Sort by Show</span>
+                </v-tooltip>
+                <v-col cols="12">
+                  <v-rating :value="rating.rating" half-increments size="40" color="secondary"></v-rating>
+                </v-col>
+                <v-tooltip top>
+                  <template v-slot:activator="{ on }">
+                    <v-col
+                      cols="12"
+                      v-on="on"
+                      class="headline font-weight-medium primary--text"
+                      style="cursor: pointer;"
+                      @click="setSearch(rating.platform)"
+                    >
+                      {{
+                      rating.platform
+                      }}
+                    </v-col>
+                  </template>
+                  <span>Sort by Platform</span>
+                </v-tooltip>
+                <v-tooltip top>
+                  <template v-slot:activator="{ on }">
+                    <v-col
+                      cols="12"
+                      v-on="on"
+                      class="headline font-weight-light font-italic"
+                      style="cursor: pointer;"
+                      @click="setSearch(rating.user)"
+                    >{{ rating.user }}</v-col>
+                  </template>
+                  <span>Sort by User</span>
+                </v-tooltip>
+                <v-card-actions>
+                  <v-spacer />
+                  <v-btn
+                    fab
+                    x-small
+                    absolute
+                    bottom
+                    right
+                    color="primary"
+                    @click="deleteRating(rating.id)"
+                  >
+                    <v-icon>mdi-delete</v-icon>
+                  </v-btn>
+                </v-card-actions>
+              </v-row>
+            </v-card>
+          </v-col>
+        </v-row>
       </v-row>
     </v-layout>
   </v-container>
@@ -131,26 +168,40 @@ export default {
     deleteRating(id) {
       // removing data from firestore
       if (confirm("Delete this event?")) {
-      db.collection("show")
-        .doc(id)
-        .delete();
-      this.ratings = [];
-      db.collection("show")
-        .orderBy("rating", "desc")
-        .get()
-        .then(querySnapshot => {
-          querySnapshot.forEach(doc => {
-            let rating = doc.data();
-            rating.id = doc.id;
-            this.ratings.push(rating);
+        db.collection("show")
+          .doc(id)
+          .delete();
+        this.ratings = [];
+        db.collection("show")
+          .orderBy("rating", "desc")
+          .get()
+          .then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+              let rating = doc.data();
+              rating.id = doc.id;
+              this.ratings.push(rating);
+            });
           });
-        });
-}
+      }
+    },
+    setSearch(prop) {
+      this.search = prop;
+      this.cancel = true;
+    },
+    clearSearch() {
+      this.search = "";
+      this.cancel = false;
     }
   },
   computed: {
-    filterResults: function() {
-      return true
+    filteredRatings: function() {
+      return this.ratings.filter(rating => {
+        return (
+          rating.name.match(this.search) ||
+          rating.platform.match(this.search) ||
+          rating.user.match(this.search)
+        );
+      });
     }
   },
   created() {
