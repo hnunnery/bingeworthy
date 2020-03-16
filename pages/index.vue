@@ -32,8 +32,8 @@
                 <v-text-field type="text" name="user" label="Your Name" v-model="user"></v-text-field>
               </v-col>
               <v-card-actions>
-                <v-btn large @click="addRating" class="primary mx-2 px-4">Add Show</v-btn>
                 <v-btn large @click="dialog = false" class="secondary mx-2 px-6">Cancel</v-btn>
+                <v-btn large @click="addRating" class="primary mx-2 px-4">Add Show</v-btn>
               </v-card-actions>
             </v-row>
           </v-card>
