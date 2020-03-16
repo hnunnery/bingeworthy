@@ -224,7 +224,7 @@ h1 {
   color: #ceb888;
   font-size: 64px;
   letter-spacing: 2px;
-  margin-top: 80px;
+  margin-top: 50px;
   text-align: center;
 }
 
