@@ -53,7 +53,7 @@
                 <v-row align="center" justify="center" class="text-center">
                   <v-col cols="12" class="display-1">{{ rating.name }}</v-col>
                   <v-col cols="12">
-                    <v-rating :value="rating.rating" size="40" color="secondary"></v-rating>
+                    <v-rating :value="rating.rating" half-increments size="40" color="secondary"></v-rating>
                   </v-col>
                   <v-col cols="12" class="headline font-weight-medium primary--text">
                     {{
