@@ -2,12 +2,10 @@
   <v-container>
     <v-layout column>
       <h1 class="mb-6">Binge Watch Ratings</h1>
-      <h2 class="pt-4">Binge Watch Ratings</h2>
+      <h2 class="mt-2 mb-4">Binge Watch Ratings</h2>
       <v-row justify="center">
         <v-btn
-          absolute
-          left
-          top
+          class="mr-3"
           dark
           color="secondary"
           v-show="this.cancel"
@@ -15,7 +13,7 @@
         >Clear Filter</v-btn>
         <v-dialog v-model="dialog" persistent max-width="800">
           <template v-slot:activator="{ on }">
-            <v-btn absolute right top dark color="primary" v-on="on">
+            <v-btn right bottom dark color="primary" v-on="on">
               <v-icon>mdi-plus</v-icon>&nbsp;Add Your Show
             </v-btn>
           </template>
@@ -45,7 +43,7 @@
             </v-row>
           </v-card>
         </v-dialog>
-        <v-row justify="center">
+        <v-row justify="center" class="mt-2">
           <v-col
             cols="12"
             sm="8"
