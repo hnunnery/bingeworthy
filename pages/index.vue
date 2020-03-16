@@ -106,7 +106,7 @@
                 <v-btn
                   fab
                   x-small
-                  absolute
+                  
                   bottom
                   right
                   color="secondary"
@@ -117,7 +117,7 @@
                 <v-btn
                   fab
                   x-small
-                  absolute
+                  
                   bottom
                   right
                   color="primary"
