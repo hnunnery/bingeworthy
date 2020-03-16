@@ -40,7 +40,7 @@
         </v-dialog>
       </v-row>
 
-      <v-row class="justify-md-left mt-2">
+      <v-row class="justify-sm-center justify-md-left mt-2">
         <v-col
           cols="12"
           sm="8"
