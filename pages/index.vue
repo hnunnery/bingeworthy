@@ -106,18 +106,18 @@
                 <v-btn
                   fab
                   x-small
-                  
+                  absolute
                   bottom
                   right
                   color="secondary"
                   
                 >
-                  <v-icon>mdi-create</v-icon>
+                  <v-icon>mdi-edit</v-icon>
                 </v-btn>
                 <v-btn
                   fab
                   x-small
-                  
+                  absolute
                   bottom
                   right
                   color="primary"
