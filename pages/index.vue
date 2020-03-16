@@ -51,6 +51,7 @@
             sm="8"
             md="6"
             lg="4"
+            xl="3"
             v-for="rating in filteredRatings"
             :key="rating.id"
             class="mb-5"
