@@ -71,7 +71,7 @@
                       right
                       color="primary"
                       @click="deleteRating(rating.id)"
-                    >X</v-btn>
+                    > <v-icon>mdi-delete</v-icon></v-btn>
                   </v-card-actions>
                 </v-row>
               </v-flex>
