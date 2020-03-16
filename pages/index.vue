@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-layout column>
-      <h1 class="mb-6">Binge Watch Ratings</h1>
+      <h1 class="mb-4">Binge Watch Ratings</h1>
       <h2 class="mt-2 mb-4">Binge Watch Ratings</h2>
       <v-row justify="center">
         <v-btn
@@ -13,7 +13,7 @@
         >Clear Filter</v-btn>
         <v-dialog v-model="dialog" persistent max-width="800">
           <template v-slot:activator="{ on }">
-            <v-btn right bottom dark color="primary" v-on="on">
+            <v-btn dark color="primary" v-on="on">
               <v-icon>mdi-plus</v-icon>&nbsp;Add Your Show
             </v-btn>
           </template>
@@ -43,80 +43,81 @@
             </v-row>
           </v-card>
         </v-dialog>
-        <v-row justify="center" class="mt-2">
-          <v-col
-            cols="12"
-            sm="8"
-            md="6"
-            lg="4"
-            xl="3"
-            v-for="rating in filteredRatings"
-            :key="rating.id"
-            class="mb-5"
-          >
-            <v-card class="px-4 pt-3 ma-2">
-              <v-row align="center" justify="center" class="text-center">
-                <v-tooltip top>
-                  <template v-slot:activator="{ on }">
-                    <v-col
-                      cols="12"
-                      v-on="on"
-                      class="display-1"
-                      style="cursor: pointer;"
-                      @click="setSearch(rating.name)"
-                    >{{ rating.name }}</v-col>
-                  </template>
-                  <span>Sort by Show</span>
-                </v-tooltip>
-                <v-col cols="12">
-                  <v-rating :value="rating.rating" half-increments size="40" color="secondary"></v-rating>
-                </v-col>
-                <v-tooltip top>
-                  <template v-slot:activator="{ on }">
-                    <v-col
-                      cols="12"
-                      v-on="on"
-                      class="headline font-weight-medium primary--text"
-                      style="cursor: pointer;"
-                      @click="setSearch(rating.platform)"
-                    >
-                      {{
-                      rating.platform
-                      }}
-                    </v-col>
-                  </template>
-                  <span>Sort by Platform</span>
-                </v-tooltip>
-                <v-tooltip top>
-                  <template v-slot:activator="{ on }">
-                    <v-col
-                      cols="12"
-                      v-on="on"
-                      class="headline font-weight-light font-italic"
-                      style="cursor: pointer;"
-                      @click="setSearch(rating.user)"
-                    >{{ rating.user }}</v-col>
-                  </template>
-                  <span>Sort by User</span>
-                </v-tooltip>
-                <v-card-actions>
-                  <v-spacer />
-                  <v-btn
-                    fab
-                    x-small
-                    absolute
-                    bottom
-                    right
-                    color="primary"
-                    @click="deleteRating(rating.id)"
+      </v-row>
+
+      <v-row justify="center" class="mt-2">
+        <v-col
+          cols="12"
+          sm="8"
+          md="6"
+          lg="4"
+          xl="3"
+          v-for="rating in filteredRatings"
+          :key="rating.id"
+          class="mb-5"
+        >
+          <v-card class="px-4 pt-3 ma-2">
+            <v-row align="center" justify="center" class="text-center">
+              <v-tooltip top>
+                <template v-slot:activator="{ on }">
+                  <v-col
+                    cols="12"
+                    v-on="on"
+                    class="display-1"
+                    style="cursor: pointer;"
+                    @click="setSearch(rating.name)"
+                  >{{ rating.name }}</v-col>
+                </template>
+                <span>Sort by Show</span>
+              </v-tooltip>
+              <v-col cols="12">
+                <v-rating :value="rating.rating" half-increments size="40" color="secondary"></v-rating>
+              </v-col>
+              <v-tooltip top>
+                <template v-slot:activator="{ on }">
+                  <v-col
+                    cols="12"
+                    v-on="on"
+                    class="headline font-weight-medium primary--text"
+                    style="cursor: pointer;"
+                    @click="setSearch(rating.platform)"
                   >
-                    <v-icon>mdi-delete</v-icon>
-                  </v-btn>
-                </v-card-actions>
-              </v-row>
-            </v-card>
-          </v-col>
-        </v-row>
+                    {{
+                    rating.platform
+                    }}
+                  </v-col>
+                </template>
+                <span>Sort by Platform</span>
+              </v-tooltip>
+              <v-tooltip top>
+                <template v-slot:activator="{ on }">
+                  <v-col
+                    cols="12"
+                    v-on="on"
+                    class="headline font-weight-light font-italic"
+                    style="cursor: pointer;"
+                    @click="setSearch(rating.user)"
+                  >{{ rating.user }}</v-col>
+                </template>
+                <span>Sort by User</span>
+              </v-tooltip>
+              <v-card-actions>
+                <v-spacer />
+                <v-btn
+                  fab
+                  x-small
+                  absolute
+                  bottom
+                  right
+                  color="primary"
+                  @click="deleteRating(rating.id)"
+                >
+                  <v-icon>mdi-delete</v-icon>
+                </v-btn>
+              </v-card-actions>
+            </v-row>
+          </v-card>
+        </v-col>
       </v-row>
     </v-layout>
   </v-container>
