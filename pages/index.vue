@@ -30,7 +30,7 @@
                     <v-text-field
                       type="text"
                       name="platform"
-                      label="Where to Watch"
+                      label="Platform (Netflix, Hulu, etc.)"
                       v-model="platform"
                     ></v-text-field>
                   </v-col>
@@ -60,7 +60,7 @@
               :key="rating.id"
               class="mb-5"
             >
-              <v-card class="px-4 pt-3 ma-2" color="#111111ad" elevation="15">
+              <v-card class="show-card px-4 pt-3 ma-2" color="#111111ad" elevation="15">
                 <v-row align="center" justify="center" class="text-center">
                   <v-tooltip top>
                     <template v-slot:activator="{ on }">
@@ -87,8 +87,8 @@
                       <v-col
                         cols="12"
                         v-on="on"
-                        class="headline font-weight-medium primary--text"
-                        style="cursor: pointer;"
+                        class="font-weight-medium primary--text"
+                        style="cursor: pointer; font-size: 1.9em;"
                         @click="setSearch(rating.platform)"
                       >
                         {{
@@ -230,6 +230,9 @@ export default {
 </script>
 
 <style scoped>
+.show-card {
+  box-shadow: 0 0 20px 0px #ceb88850 !important;
+}
 .svg-bg {
   background-repeat: repeat;
   background-color: #111111ad;
