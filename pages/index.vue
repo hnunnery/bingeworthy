@@ -167,7 +167,7 @@ export default {
     },
     deleteRating(id) {
       // removing data from firestore
-      if (confirm("Delete this event?")) {
+      if (confirm("Delete this rating")) {
         db.collection("show")
           .doc(id)
           .delete();
