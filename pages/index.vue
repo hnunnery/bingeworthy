@@ -125,6 +125,7 @@ export default {
     },
     deleteRating(id) {
       // removing data from firestore
+      if (confirm("Delete this event?")) {
       db.collection("show")
         .doc(id)
         .delete();
@@ -139,6 +140,7 @@ export default {
             this.ratings.push(rating);
           });
         });
+}
     }
   },
   created() {
