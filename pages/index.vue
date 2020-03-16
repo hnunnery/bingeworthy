@@ -109,6 +109,17 @@
                   absolute
                   bottom
                   right
+                  color="secondary"
+                  
+                >
+                  <v-icon>mdi-create</v-icon>
+                </v-btn>
+                <v-btn
+                  fab
+                  x-small
+                  absolute
+                  bottom
+                  right
                   color="primary"
                   @click="deleteRating(rating.id)"
                 >
