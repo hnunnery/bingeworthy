@@ -2,7 +2,7 @@
   <v-container>
     <v-layout column>
       <h1 class="mb-4">BingeWorthy Shows</h1>
-      <h2 class="mt-2 mb-4">BingeWorthy</h2>
+      <h2 class="mt-2 mb-4">BingeWorthy Shows</h2>
       <v-row justify="center">
         <v-btn
           class="mr-3"
