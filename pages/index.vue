@@ -1,133 +1,135 @@
 <template>
   <v-container fluid class="svg-bg" style="min-height: 100vh;">
-    <v-container>
-      <v-layout column>
-        <h1
-          class="secondary--text text-center font-weight-bold font-italic my-4"
-          style="letter-spacing: 2px; font-size: 6vmax;"
-        >BingeWorthy</h1>
-        <v-row justify="center">
-          <v-btn
-            class="mr-3"
-            dark
-            color="secondary"
-            v-show="this.cancel"
-            @click="clearSearch"
-          >Clear Filter</v-btn>
-          <v-dialog v-model="dialog" persistent max-width="600">
-            <template v-slot:activator="{ on }">
-              <v-btn dark color="primary" v-on="on">
-                <v-icon>mdi-plus</v-icon>&nbsp;Add Your Show
-              </v-btn>
-            </template>
-            <v-card class="px-6 pt-2 pb-4">
-              <v-row align="center" justify="center">
-                <v-col cols="12">
-                  <v-text-field type="text" name="name" label="Name of Show" v-model="name"></v-text-field>
-                </v-col>
-                <v-col cols="12">
-                  <v-text-field
-                    type="text"
-                    name="platform"
-                    label="Where to Watch"
-                    v-model="platform"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" class="text-center">
-                  <v-rating v-model="rating" half-increments size="35" color="secondary"></v-rating>
-                </v-col>
-                <v-col cols="12">
-                  <v-text-field type="text" name="user" label="Your Name" v-model="user"></v-text-field>
-                </v-col>
-                <v-card-actions>
-                  <v-btn large @click="dialog = false" class="secondary mx-2 px-6">Cancel</v-btn>
-                  <v-btn large @click="addRating" class="primary mx-2 px-4">Add Show</v-btn>
-                </v-card-actions>
-              </v-row>
-            </v-card>
-          </v-dialog>
-        </v-row>
+    <v-layout column>
+      <v-row justify="center">
+        <v-col cols="12" lg="11" xl="10">
+          <h1
+            class="secondary--text text-center font-weight-bold font-italic my-4"
+            style="letter-spacing: 2px; font-size: 6vmax;"
+          >BingeWorthy</h1>
+          <v-row justify="center">
+            <v-btn
+              class="mr-3"
+              dark
+              color="secondary"
+              v-show="this.cancel"
+              @click="clearSearch"
+            >Clear Filter</v-btn>
+            <v-dialog v-model="dialog" persistent max-width="600">
+              <template v-slot:activator="{ on }">
+                <v-btn dark color="primary" v-on="on">
+                  <v-icon>mdi-plus</v-icon>&nbsp;Add Your Show
+                </v-btn>
+              </template>
+              <v-card class="px-6 pt-2 pb-4">
+                <v-row align="center" justify="center">
+                  <v-col cols="12">
+                    <v-text-field type="text" name="name" label="Name of Show" v-model="name"></v-text-field>
+                  </v-col>
+                  <v-col cols="12">
+                    <v-text-field
+                      type="text"
+                      name="platform"
+                      label="Where to Watch"
+                      v-model="platform"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" class="text-center">
+                    <v-rating v-model="rating" half-increments size="35" color="secondary"></v-rating>
+                  </v-col>
+                  <v-col cols="12">
+                    <v-text-field type="text" name="user" label="Your Name" v-model="user"></v-text-field>
+                  </v-col>
+                  <v-card-actions>
+                    <v-btn large @click="dialog = false" class="secondary mx-2 px-6">Cancel</v-btn>
+                    <v-btn large @click="addRating" class="primary mx-2 px-4">Add Show</v-btn>
+                  </v-card-actions>
+                </v-row>
+              </v-card>
+            </v-dialog>
+          </v-row>
 
-        <v-row class="justify-center mt-2">
-          <v-col
-            cols="12"
-            sm="8"
-            md="6"
-            lg="4"
-            xl="3"
-            v-for="rating in filteredRatings"
-            :key="rating.id"
-            class="mb-5"
-          >
-            <v-card class="px-4 pt-3 ma-2" color="#111111ad" elevation="15">
-              <v-row align="center" justify="center" class="text-center">
-                <v-tooltip top>
-                  <template v-slot:activator="{ on }">
-                    <v-col
-                      cols="12"
-                      v-on="on"
-                      class="display-1"
-                      style="cursor: pointer;"
-                      @click="setSearch(rating.name)"
-                    >{{ rating.name }}</v-col>
-                  </template>
-                  <span>Filter by Show</span>
-                </v-tooltip>
-                <v-col cols="12">
-                  <v-rating
-                    :value="parseFloat(rating.rating)"
-                    half-increments
-                    size="40"
-                    color="secondary"
-                  ></v-rating>
-                </v-col>
-                <v-tooltip top>
-                  <template v-slot:activator="{ on }">
-                    <v-col
-                      cols="12"
-                      v-on="on"
-                      class="headline font-weight-medium primary--text"
-                      style="cursor: pointer;"
-                      @click="setSearch(rating.platform)"
+          <v-row class="justify-center mt-2">
+            <v-col
+              cols="12"
+              sm="8"
+              md="6"
+              lg="4"
+              xl="3"
+              v-for="rating in filteredRatings"
+              :key="rating.id"
+              class="mb-5"
+            >
+              <v-card class="px-4 pt-3 ma-2" color="#111111ad" elevation="15">
+                <v-row align="center" justify="center" class="text-center">
+                  <v-tooltip top>
+                    <template v-slot:activator="{ on }">
+                      <v-col
+                        cols="12"
+                        v-on="on"
+                        class="display-1"
+                        style="cursor: pointer;"
+                        @click="setSearch(rating.name)"
+                      >{{ rating.name }}</v-col>
+                    </template>
+                    <span>Filter by Show</span>
+                  </v-tooltip>
+                  <v-col cols="12">
+                    <v-rating
+                      :value="parseFloat(rating.rating)"
+                      half-increments
+                      size="40"
+                      color="secondary"
+                    ></v-rating>
+                  </v-col>
+                  <v-tooltip top>
+                    <template v-slot:activator="{ on }">
+                      <v-col
+                        cols="12"
+                        v-on="on"
+                        class="headline font-weight-medium primary--text"
+                        style="cursor: pointer;"
+                        @click="setSearch(rating.platform)"
+                      >
+                        {{
+                        rating.platform
+                        }}
+                      </v-col>
+                    </template>
+                    <span>Filter by Platform</span>
+                  </v-tooltip>
+                  <v-tooltip top>
+                    <template v-slot:activator="{ on }">
+                      <v-col
+                        cols="12"
+                        v-on="on"
+                        class="headline font-weight-light font-italic"
+                        style="cursor: pointer;"
+                        @click="setSearch(rating.user)"
+                      >{{ rating.user }}</v-col>
+                    </template>
+                    <span>Filter by User</span>
+                  </v-tooltip>
+                  <v-card-actions>
+                    <v-btn
+                      fab
+                      x-small
+                      absolute
+                      bottom
+                      right
+                      color="primary"
+                      @click="deleteRating(rating.id)"
                     >
-                      {{
-                      rating.platform
-                      }}
-                    </v-col>
-                  </template>
-                  <span>Filter by Platform</span>
-                </v-tooltip>
-                <v-tooltip top>
-                  <template v-slot:activator="{ on }">
-                    <v-col
-                      cols="12"
-                      v-on="on"
-                      class="headline font-weight-light font-italic"
-                      style="cursor: pointer;"
-                      @click="setSearch(rating.user)"
-                    >{{ rating.user }}</v-col>
-                  </template>
-                  <span>Filter by User</span>
-                </v-tooltip>
-                <v-card-actions>
-                  <v-btn
-                    fab
-                    x-small
-                    absolute
-                    bottom
-                    right
-                    color="primary"
-                    @click="deleteRating(rating.id)"
-                  >
-                    <v-icon>mdi-delete</v-icon>
-                  </v-btn>
-                </v-card-actions>
-              </v-row>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-layout>
-    </v-container>
+                      <v-icon>mdi-delete</v-icon>
+                    </v-btn>
+                  </v-card-actions>
+                </v-row>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+    </v-layout>
   </v-container>
 </template>
 
