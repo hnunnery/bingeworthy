@@ -72,7 +72,7 @@
                         @click="setSearch(rating.name)"
                       >{{ rating.name }}</v-col>
                     </template>
-                    <span>Filter by Show</span>
+                    <span>Filter by this Show</span>
                   </v-tooltip>
                   <v-col cols="12">
                     <v-rating
@@ -96,7 +96,7 @@
                         }}
                       </v-col>
                     </template>
-                    <span>Filter by Platform</span>
+                    <span>Filter by this Platform</span>
                   </v-tooltip>
                   <v-tooltip top>
                     <template v-slot:activator="{ on }">
@@ -108,7 +108,7 @@
                         @click="setSearch(rating.user)"
                       >{{ rating.user }}</v-col>
                     </template>
-                    <span>Filter by User</span>
+                    <span>Filter by this User</span>
                   </v-tooltip>
                   <v-card-actions>
                     <v-btn
