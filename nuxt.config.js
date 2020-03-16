@@ -7,7 +7,7 @@ export default {
    */
   head: {
     // titleTemplate: "%s - " + process.env.npm_package_name,
-    title: "Show Ratings",
+    title: "Binge Watch Ratings",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
