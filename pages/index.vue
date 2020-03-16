@@ -4,6 +4,9 @@
       <h1 class="mb-6">Binge Watch Ratings</h1>
       <h2 class="pt-4">Binge Watch Ratings</h2>
       <v-row justify="center">
+        <v-btn absolute left top dark color="secondary" :v-show=this.cancel>
+          Cancel
+        </v-btn>
         <v-dialog v-model="dialog" persistent max-width="800">
           <template v-slot:activator="{ on }">
             <v-btn absolute right top dark color="primary" v-on="on">
