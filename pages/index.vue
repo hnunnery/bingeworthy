@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="svg-bg">
+  <v-container fluid class="svg-bg" style="min-height: 100vh;">
     <v-container>
       <v-layout column>
         <h1
