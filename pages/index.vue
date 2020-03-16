@@ -94,7 +94,9 @@ export default {
       platform: "",
       rating: "",
       user: "",
-      dialog: false
+      search: "",
+      dialog: false,
+      cancel: false
     };
   },
   methods: {
@@ -141,6 +143,11 @@ export default {
           });
         });
 }
+    }
+  },
+  computed: {
+    filterResults: function() {
+      return true
     }
   },
   created() {
