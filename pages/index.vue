@@ -21,7 +21,7 @@
                   <v-icon>mdi-plus</v-icon>&nbsp;Add Your Show
                 </v-btn>
               </template>
-              <v-card class="px-6 pt-2 pb-4">
+              <v-card class="px-6 pt-2 pb-4" color="#111111">
                 <v-row align="center" justify="center">
                   <v-col cols="12">
                     <v-text-field type="text" name="name" label="Name of Show" v-model="name"></v-text-field>
