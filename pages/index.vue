@@ -11,18 +11,39 @@
             <v-btn
               class="mr-3"
               dark
-              color="secondary"
+              rounded
+              large
+              color="accent"
               v-show="this.cancel"
               @click="clearSearch"
             >Clear Filter</v-btn>
             <v-dialog v-model="dialog" persistent max-width="600">
               <template v-slot:activator="{ on }">
-                <v-btn dark color="primary" v-on="on">
+                <v-btn dark rounded large class="hidden-md-and-up" color="primary" v-on="on">
+                  <v-icon>mdi-plus</v-icon>&nbsp;Add Your Show
+                </v-btn>
+                <v-btn
+                  dark
+                  rounded
+                  large
+                  top
+                  right
+                  absolute
+                  class="hidden-sm-and-down"
+                  color="primary"
+                  v-on="on"
+                >
                   <v-icon>mdi-plus</v-icon>&nbsp;Add Your Show
                 </v-btn>
               </template>
               <v-card class="px-6 pt-2 pb-4" color="#111111">
                 <v-row align="center" justify="center">
+                  <v-col cols="12" class="pb-0">
+                    <h2
+                      class="secondary--text text-center font-italic mt-1 pb-0"
+                      style="letter-spacing: 1.2px;"
+                    >Add Show to List</h2>
+                  </v-col>
                   <v-col cols="12">
                     <v-text-field type="text" name="name" label="Name of Show" v-model="name"></v-text-field>
                   </v-col>
@@ -41,8 +62,14 @@
                     <v-text-field type="text" name="user" label="Your Name" v-model="user"></v-text-field>
                   </v-col>
                   <v-card-actions>
-                    <v-btn large @click="dialog = false" class="secondary mx-2 px-6">Cancel</v-btn>
-                    <v-btn large @click="addRating" class="primary mx-2 px-4">Add Show</v-btn>
+                    <v-btn
+                      large
+                      @click="dialog = false"
+                      class="accent secondary--text mx-2 px-6"
+                    >Cancel</v-btn>
+                    <v-btn large @click="addRating" class="primary mx-2 px-4">
+                      <v-icon>mdi-plus</v-icon>&nbsp;Add Show
+                    </v-btn>
                   </v-card-actions>
                 </v-row>
               </v-card>
