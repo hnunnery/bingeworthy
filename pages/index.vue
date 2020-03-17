@@ -1,10 +1,22 @@
 <template>
   <v-container fluid class="svg-bg" style="min-height: 100vh;">
     <v-layout column>
+      <v-row class="justify-left ma-0 pa-0 hidden-sm-and-down">
+        <v-col
+          cols="12"
+          md="3"
+          lg="2"
+          xl="2"
+          class="ml-1 mt-1 mr-0 pa-0"
+          style="margin-bottom: -100px;"
+        >
+          <v-text-field solo rounded placeholder="Search" v-model="search"></v-text-field>
+        </v-col>
+      </v-row>
       <v-row justify="center">
-        <v-col cols="12" lg="11" xl="10">
+        <v-col cols="12" lg="11" xl="10" class="mt-0">
           <h1
-            class="secondary--text text-center font-weight-bold font-italic my-4"
+            class="secondary--text text-center font-weight-bold font-italic mt-0 mb-4"
             style="letter-spacing: 2px; font-size: 6vmax;"
           >BingeWorthy</h1>
           <v-row justify="center">
@@ -233,9 +245,9 @@ export default {
     filteredRatings: function() {
       return this.ratings.filter(rating => {
         return (
-          rating.name.match(this.search) ||
-          rating.platform.match(this.search) ||
-          rating.user.match(this.search)
+          rating.name.toLowerCase().match(this.search.toLowerCase()) ||
+          rating.platform.toLowerCase().match(this.search.toLowerCase()) ||
+          rating.user.toLowerCase().match(this.search.toLowerCase())
         );
       });
     }
