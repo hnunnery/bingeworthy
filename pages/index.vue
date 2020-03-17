@@ -94,7 +94,7 @@
                       <v-col
                         cols="12"
                         v-on="on"
-                        class="display-1"
+                        class="display-1 mt-2"
                         style="cursor: pointer;"
                         @click="setSearch(rating.name)"
                       >{{ rating.name }}</v-col>
@@ -114,7 +114,7 @@
                       <v-col
                         cols="12"
                         v-on="on"
-                        class="font-weight-medium primary--text"
+                        class="pb-2 font-weight-medium primary--text"
                         style="cursor: pointer; font-size: 1.9em;"
                         @click="setSearch(rating.platform)"
                       >
@@ -144,11 +144,10 @@
                       absolute
                       bottom
                       right
+                      class="body-2"
                       color="primary"
                       @click="deleteRating(rating.id)"
-                    >
-                      <v-icon>mdi-delete</v-icon>
-                    </v-btn>
+                    >X</v-btn>
                   </v-card-actions>
                 </v-row>
               </v-card>
