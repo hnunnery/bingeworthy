@@ -159,7 +159,7 @@
                       class="body-2"
                       color="primary"
                       @click="deleteRating(rating.id)"
-                    ><v-icon>mdi-clear</v-icon></v-btn>
+                    ><v-icon class="accent--text">mdi-clear</v-icon></v-btn>
                   </v-card-actions>
                 </v-row>
               </v-card>
