@@ -98,7 +98,7 @@
             </v-dialog>
           </v-row>
 
-          <v-row class="justify-center mt-2 mb-5">
+          <v-row class="justify-center mt-2 mb-6 pb-2">
             <v-col
               cols="12"
               sm="8"
