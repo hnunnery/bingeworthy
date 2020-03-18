@@ -35,6 +35,16 @@
                   <v-icon>mdi-plus</v-icon>&nbsp;Add Your Show
                 </v-btn>
                 <v-btn
+                  large
+                  rounded
+                  absolute
+                  bottom
+                  right
+                  class="secondary primary--text"
+                  href="https://github.com/hnunnery/bingeworthy"
+                  target="_blank"
+                >GitHub</v-btn>
+                <v-btn
                   dark
                   rounded
                   large
@@ -99,8 +109,13 @@
               :key="rating.id"
               class="mb-5"
             >
-              <v-card class="show-card px-4 pt-3 ma-2" color="#111111ad" elevation="15">
-                <v-row align="center" justify="center" class="text-center">
+              <v-card
+                class="show-card px-4 pt-3 ma-2 align-center d-flex"
+                color="#111111ad"
+                elevation="15"
+                height="100%"
+              >
+                <v-row class="text-center justify-center align-center">
                   <v-tooltip top>
                     <template v-slot:activator="{ on }">
                       <v-col
