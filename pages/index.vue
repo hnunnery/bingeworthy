@@ -1,5 +1,9 @@
 <template>
-  <v-container fluid class="svg-bg" style="min-height: 100vh;">
+  <v-container
+    fluid
+    class="svg-bg"
+    style="min-height: 100vh; padding-bottom: 100px;"
+  >
     <v-layout column>
       <v-row class="justify-left ma-0 pa-0 hidden-sm-and-down">
         <v-col
@@ -10,7 +14,12 @@
           class="ml-1 mt-1 mr-0 pa-0"
           style="margin-bottom: -100px;"
         >
-          <v-text-field solo rounded placeholder="Search" v-model="search"></v-text-field>
+          <v-text-field
+            solo
+            rounded
+            placeholder="Search"
+            v-model="search"
+          ></v-text-field>
         </v-col>
       </v-row>
       <v-row justify="center">
@@ -18,7 +27,9 @@
           <h1
             class="secondary--text text-center font-weight-bold font-italic mt-0 mb-4"
             style="letter-spacing: 2px; font-size: 6vmax;"
-          >BingeWorthy</h1>
+          >
+            BingeWorthy
+          </h1>
           <v-row justify="center">
             <v-btn
               class="mr-3"
@@ -28,10 +39,18 @@
               color="accent"
               v-show="this.cancel"
               @click="clearSearch"
-            >Clear Filter</v-btn>
+              >Clear Filter</v-btn
+            >
             <v-dialog v-model="dialog" persistent max-width="600">
               <template v-slot:activator="{ on }">
-                <v-btn dark rounded large class="hidden-md-and-up" color="primary" v-on="on">
+                <v-btn
+                  dark
+                  rounded
+                  large
+                  class="hidden-md-and-up"
+                  color="primary"
+                  v-on="on"
+                >
                   <v-icon>mdi-plus</v-icon>&nbsp;Add Your Show
                 </v-btn>
                 <v-btn
@@ -43,7 +62,8 @@
                   class="secondary primary--text"
                   href="https://github.com/hnunnery/bingeworthy"
                   target="_blank"
-                >GitHub</v-btn>
+                  >GitHub</v-btn
+                >
                 <v-btn
                   dark
                   rounded
@@ -64,10 +84,17 @@
                     <h2
                       class="secondary--text text-center font-italic mt-1 pb-0"
                       style="letter-spacing: 1.2px;"
-                    >Add Show to List</h2>
+                    >
+                      Add Show to List
+                    </h2>
                   </v-col>
                   <v-col cols="12">
-                    <v-text-field type="text" name="name" label="Name of Show" v-model="name"></v-text-field>
+                    <v-text-field
+                      type="text"
+                      name="name"
+                      label="Name of Show"
+                      v-model="name"
+                    ></v-text-field>
                   </v-col>
                   <v-col cols="12">
                     <v-text-field
@@ -78,17 +105,28 @@
                     ></v-text-field>
                   </v-col>
                   <v-col cols="12" class="text-center">
-                    <v-rating v-model="rating" half-increments size="35" color="secondary"></v-rating>
+                    <v-rating
+                      v-model="rating"
+                      half-increments
+                      size="35"
+                      color="secondary"
+                    ></v-rating>
                   </v-col>
                   <v-col cols="12">
-                    <v-text-field type="text" name="user" label="Your Name" v-model="user"></v-text-field>
+                    <v-text-field
+                      type="text"
+                      name="user"
+                      label="Your Name"
+                      v-model="user"
+                    ></v-text-field>
                   </v-col>
                   <v-card-actions>
                     <v-btn
                       large
                       @click="dialog = false"
                       class="accent secondary--text mx-2 px-6"
-                    >Cancel</v-btn>
+                      >Cancel</v-btn
+                    >
                     <v-btn large @click="addRating" class="primary mx-2 px-4">
                       <v-icon>mdi-plus</v-icon>&nbsp;Add Show
                     </v-btn>
@@ -98,14 +136,31 @@
             </v-dialog>
           </v-row>
 
-          <v-row class="justify-center mt-2 mb-6 pb-2">
+          <!-- PROGRESS SPINNER -->
+          <v-row
+            v-show="loading"
+            class="justify-center align-center"
+            style="height: 50vh"
+          >
+            <v-col class="text-center">
+              <v-progress-circular
+                :size="150"
+                :width="12"
+                color="primary"
+                indeterminate
+              ></v-progress-circular>
+            </v-col>
+          </v-row>
+
+          <!-- START RATINGS CARDS -->
+          <v-row v-show="!loading" class="justify-center mt-2 mb-6">
             <v-col
               cols="12"
               sm="8"
               md="6"
               lg="4"
               xl="3"
-              v-for="rating in filteredRatings"
+              v-for="(rating, index) in filteredRatings"
               :key="rating.id"
               class="mb-5"
             >
@@ -114,6 +169,12 @@
                 color="#111111ad"
                 elevation="15"
                 height="100%"
+                data-aos="flip-left"
+                data-aos-offset="0"
+                :data-aos-delay="index * 50"
+                data-aos-duration="500"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
               >
                 <v-row class="text-center justify-center align-center">
                   <v-tooltip top>
@@ -124,7 +185,8 @@
                         class="display-1 mt-2"
                         style="cursor: pointer;"
                         @click="setSearch(rating.name)"
-                      >{{ rating.name }}</v-col>
+                        >{{ rating.name }}</v-col
+                      >
                     </template>
                     <span>Filter by this Show</span>
                   </v-tooltip>
@@ -145,9 +207,7 @@
                         style="cursor: pointer; font-size: 1.9em;"
                         @click="setSearch(rating.platform)"
                       >
-                        {{
-                        rating.platform
-                        }}
+                        {{ rating.platform }}
                       </v-col>
                     </template>
                     <span>Filter by this Platform</span>
@@ -160,7 +220,8 @@
                         class="headline font-weight-light font-italic"
                         style="cursor: pointer;"
                         @click="setSearch(rating.user)"
-                      >{{ rating.user }}</v-col>
+                        >{{ rating.user }}</v-col
+                      >
                     </template>
                     <span>Filter by this User</span>
                   </v-tooltip>
@@ -174,7 +235,8 @@
                       class="body-2"
                       color="primary"
                       @click="deleteRating(rating.id)"
-                    >X</v-btn>
+                      >X</v-btn
+                    >
                   </v-card-actions>
                 </v-row>
               </v-card>
@@ -257,7 +319,7 @@ export default {
     }
   },
   computed: {
-    filteredRatings: function() {
+    filteredRatings() {
       return this.ratings.filter(rating => {
         return (
           rating.name.toLowerCase().match(this.search.toLowerCase()) ||
@@ -265,6 +327,9 @@ export default {
           rating.user.toLowerCase().match(this.search.toLowerCase())
         );
       });
+    },
+    loading() {
+      return this.ratings.length < 1;
     }
   },
   created() {

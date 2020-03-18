@@ -52,11 +52,11 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ["aos/dist/aos.css"],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ["~/plugins/firebase.js"],
+  plugins: ["@/plugins/firebase.js", { src: "@/plugins/aos", ssr: false }],
   /*
    ** Nuxt.js dev-modules
    */
@@ -93,6 +93,7 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {},
+    vendor: ["aos"]
   }
 };
