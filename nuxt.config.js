@@ -15,6 +15,32 @@ export default {
         hid: "description",
         name: "description",
         content: process.env.npm_package_description || ""
+      },
+      {
+        hid: "og:title",
+        property: "og:title",
+        content: "BingeWorthy"
+      },
+      {
+        hid: "og:description",
+        property: "og:description",
+        content: "See what shows people are bingewatching these days."
+      },
+      {
+        hid: "og:image",
+        property: "og:image",
+        content:
+          "https://res.cloudinary.com/missionwebdev/image/upload/v1584492641/BingeWorthy/bingeworthy.png"
+      },
+      {
+        hid: "og:url",
+        property: "og:url",
+        content: "https://bingeworthy.netlify.com"
+      },
+      {
+        hid: "twitter:card",
+        name: "twitter:card",
+        content: "summary_large_image"
       }
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
