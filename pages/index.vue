@@ -10,7 +10,7 @@
           class="ml-1 mt-1 mr-0 pa-0"
           style="margin-bottom: -100px;"
         >
-          <v-text-field solo rounded clearable  placeholder="Search" v-model="search"></v-text-field>
+          <v-text-field solo rounded placeholder="Search" v-model="search"></v-text-field>
         </v-col>
       </v-row>
       <v-row justify="center">
