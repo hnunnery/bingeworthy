@@ -165,10 +165,11 @@
               class="mb-5"
             >
               <v-card
-                class="show-card px-4 pt-3 ma-2 align-center d-flex"
+                class="px-4 pt-3 ma-2 align-center d-flex"
                 color="#111111ad"
                 elevation="15"
                 height="100%"
+                style="box-shadow: 0 0 20px 0px #ceb88850 !important;"
                 data-aos="flip-left"
                 data-aos-offset="0"
                 :data-aos-delay="index * 50"
@@ -177,54 +178,55 @@
                 data-aos-once="true"
               >
                 <v-row class="text-center justify-center align-center">
-                  <v-tooltip top>
-                    <template v-slot:activator="{ on }">
-                      <v-col
-                        cols="12"
-                        v-on="on"
-                        class="display-1 mt-2"
-                        style="cursor: pointer;"
-                        @click="setSearch(rating.name)"
-                        >{{ rating.name }}</v-col
-                      >
-                    </template>
+                  <!-- <v-tooltip top>
+                    <template v-slot:activator="{ on }"> -->
+                  <v-col
+                    cols="12"
+                    v-on="on"
+                    class="display-1 mt-2"
+                    style="cursor: pointer;"
+                    @click="setSearch(rating.name)"
+                    >{{ rating.name }}</v-col
+                  >
+                  <!-- </template>
                     <span>Filter by this Show</span>
-                  </v-tooltip>
+                  </v-tooltip> -->
                   <v-col cols="12">
                     <v-rating
                       :value="parseFloat(rating.rating)"
                       half-increments
                       size="40"
+                      readonly
                       color="secondary"
                     ></v-rating>
                   </v-col>
-                  <v-tooltip top>
-                    <template v-slot:activator="{ on }">
-                      <v-col
-                        cols="12"
-                        v-on="on"
-                        class="pb-2 font-weight-medium primary--text"
-                        style="cursor: pointer; font-size: 1.9em;"
-                        @click="setSearch(rating.platform)"
-                      >
-                        {{ rating.platform }}
-                      </v-col>
-                    </template>
+                  <!-- <v-tooltip top>
+                    <template v-slot:activator="{ on }"> -->
+                  <v-col
+                    cols="12"
+                    v-on="on"
+                    class="pb-2 font-weight-medium primary--text"
+                    style="cursor: pointer; font-size: 1.9em;"
+                    @click="setSearch(rating.platform)"
+                  >
+                    {{ rating.platform }}
+                  </v-col>
+                  <!-- </template>
                     <span>Filter by this Platform</span>
                   </v-tooltip>
                   <v-tooltip top>
-                    <template v-slot:activator="{ on }">
-                      <v-col
-                        cols="12"
-                        v-on="on"
-                        class="headline font-weight-light font-italic"
-                        style="cursor: pointer;"
-                        @click="setSearch(rating.user)"
-                        >{{ rating.user }}</v-col
-                      >
-                    </template>
+                    <template v-slot:activator="{ on }"> -->
+                  <v-col
+                    cols="12"
+                    v-on="on"
+                    class="headline font-weight-light font-italic"
+                    style="cursor: pointer;"
+                    @click="setSearch(rating.user)"
+                    >{{ rating.user }}</v-col
+                  >
+                  <!-- </template>
                     <span>Filter by this User</span>
-                  </v-tooltip>
+                  </v-tooltip> -->
                   <v-card-actions>
                     <v-btn
                       fab
@@ -277,6 +279,19 @@ export default {
       this.platform = "";
       this.rating = 0;
       this.user = "";
+      fetchRatings();
+      this.dialog = false;
+    },
+    deleteRating(id) {
+      // removing data from firestore
+      if (confirm("Delete this rating")) {
+        db.collection("show")
+          .doc(id)
+          .delete();
+        fetchRatings();
+      }
+    },
+    fetchRatings() {
       this.ratings = [];
       db.collection("show")
         .orderBy("rating", "desc")
@@ -288,26 +303,6 @@ export default {
             this.ratings.push(rating);
           });
         });
-      this.dialog = false;
-    },
-    deleteRating(id) {
-      // removing data from firestore
-      if (confirm("Delete this rating")) {
-        db.collection("show")
-          .doc(id)
-          .delete();
-        this.ratings = [];
-        db.collection("show")
-          .orderBy("rating", "desc")
-          .get()
-          .then(querySnapshot => {
-            querySnapshot.forEach(doc => {
-              let rating = doc.data();
-              rating.id = doc.id;
-              this.ratings.push(rating);
-            });
-          });
-      }
     },
     setSearch(prop) {
       this.search = prop;
@@ -319,6 +314,28 @@ export default {
     }
   },
   computed: {
+    // masterRatings() {
+    //   return this.ratings.forEach(rating => {
+    //     console.log(rating);
+    //     let ratingsArray = [];
+    //     let userArray = [];
+    //     this.ratings.forEach(subRating => {
+    //       // console.log(subRating);
+    //       if (rating.name == subRating.name) {
+    //         subRating.rating.push(ratingsArray);
+    //         subRating.user.push(userArray);
+    //       }
+    //     });
+    //     let average = {
+    //       name: rating.name,
+    //       rating: ratingsArray,
+    //       platform: rating.platform,
+    //       user: userArray
+    //     };
+    //     console.log(average);
+    //   });
+    // },
+    // enables search by filtering
     filteredRatings() {
       return this.ratings.filter(rating => {
         return (
@@ -328,11 +345,13 @@ export default {
         );
       });
     },
+    // controls loading progress spinner
     loading() {
       return this.ratings.length < 1;
     }
   },
   created() {
+    // fetchRatings() method
     db.collection("show")
       .orderBy("rating", "desc")
       .get()
@@ -348,9 +367,6 @@ export default {
 </script>
 
 <style scoped>
-.show-card {
-  box-shadow: 0 0 20px 0px #ceb88850 !important;
-}
 .svg-bg {
   background-repeat: repeat;
   background-color: #111111ad;
