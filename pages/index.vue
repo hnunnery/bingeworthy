@@ -175,7 +175,7 @@
                 :data-aos-delay="index * 50"
                 data-aos-duration="500"
                 data-aos-easing="ease-in-out"
-                data-aos-once="true"
+                data-aos-once="false"
               >
                 <v-row class="text-center justify-center align-center">
                   <!-- <v-tooltip top>
