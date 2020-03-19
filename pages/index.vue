@@ -178,19 +178,13 @@
                 data-aos-once="false"
               >
                 <v-row class="text-center justify-center align-center">
-                  <!-- <v-tooltip top>
-                    <template v-slot:activator="{ on }"> -->
                   <v-col
                     cols="12"
-                    v-on="on"
                     class="display-1 mt-2"
                     style="cursor: pointer;"
                     @click="setSearch(rating.name)"
                     >{{ rating.name }}</v-col
                   >
-                  <!-- </template>
-                    <span>Filter by this Show</span>
-                  </v-tooltip> -->
                   <v-col cols="12">
                     <v-rating
                       :value="parseFloat(rating.rating)"
@@ -200,33 +194,21 @@
                       color="secondary"
                     ></v-rating>
                   </v-col>
-                  <!-- <v-tooltip top>
-                    <template v-slot:activator="{ on }"> -->
                   <v-col
                     cols="12"
-                    v-on="on"
                     class="pb-2 font-weight-medium primary--text"
                     style="cursor: pointer; font-size: 1.9em;"
                     @click="setSearch(rating.platform)"
                   >
                     {{ rating.platform }}
                   </v-col>
-                  <!-- </template>
-                    <span>Filter by this Platform</span>
-                  </v-tooltip>
-                  <v-tooltip top>
-                    <template v-slot:activator="{ on }"> -->
                   <v-col
                     cols="12"
-                    v-on="on"
                     class="headline font-weight-light font-italic"
                     style="cursor: pointer;"
                     @click="setSearch(rating.user)"
                     >{{ rating.user }}</v-col
                   >
-                  <!-- </template>
-                    <span>Filter by this User</span>
-                  </v-tooltip> -->
                   <v-card-actions>
                     <v-btn
                       fab
@@ -314,27 +296,6 @@ export default {
     }
   },
   computed: {
-    // masterRatings() {
-    //   return this.ratings.forEach(rating => {
-    //     console.log(rating);
-    //     let ratingsArray = [];
-    //     let userArray = [];
-    //     this.ratings.forEach(subRating => {
-    //       // console.log(subRating);
-    //       if (rating.name == subRating.name) {
-    //         subRating.rating.push(ratingsArray);
-    //         subRating.user.push(userArray);
-    //       }
-    //     });
-    //     let average = {
-    //       name: rating.name,
-    //       rating: ratingsArray,
-    //       platform: rating.platform,
-    //       user: userArray
-    //     };
-    //     console.log(average);
-    //   });
-    // },
     // enables search by filtering
     filteredRatings() {
       return this.ratings.filter(rating => {
