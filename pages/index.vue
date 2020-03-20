@@ -306,6 +306,9 @@ export default {
         );
       });
     },
+    // ratingNames() {
+    //   return this.ratings.map(rating => rating.name);
+    // },
     // controls loading progress spinner
     loading() {
       return this.ratings.length < 1;
