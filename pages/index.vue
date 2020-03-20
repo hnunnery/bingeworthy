@@ -8,9 +8,6 @@
       <v-row class="justify-left ma-0 pa-0 hidden-sm-and-down">
         <v-col
           cols="12"
-          md="3"
-          lg="2"
-          xl="2"
           class="ml-1 mt-1 mr-0 pa-0"
           style="margin-bottom: -100px;"
         >
@@ -19,6 +16,7 @@
             rounded
             placeholder="Search"
             v-model="search"
+            style="width: 250px;"
           ></v-text-field>
         </v-col>
       </v-row>
@@ -72,6 +70,7 @@
                   right
                   absolute
                   class="hidden-sm-and-down text-capitalize"
+                  style="padding: 10px 50px;"
                   color="primary"
                   v-on="on"
                 >
@@ -160,7 +159,7 @@
               md="6"
               lg="4"
               xl="3"
-              v-for="(rating, index) in filteredRatings"
+              v-for="rating in filteredRatings"
               :key="rating.id"
               class="mb-5"
             >
@@ -172,7 +171,7 @@
                 style="box-shadow: 0 0 20px 0px #ceb88850 !important;"
                 data-aos="flip-left"
                 data-aos-offset="0"
-                :data-aos-delay="index * 50"
+                data-aos-delay="0"
                 data-aos-duration="500"
                 data-aos-easing="ease-in-out"
                 data-aos-once="false"
@@ -289,8 +288,8 @@ export default {
               let rating = doc.data();
               rating.id = doc.id;
               this.ratings.push(rating);
+            });
           });
-        });
       }
     },
     setSearch(prop) {
