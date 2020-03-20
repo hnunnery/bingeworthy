@@ -71,7 +71,7 @@
                   top
                   right
                   absolute
-                  class="hidden-sm-and-down"
+                  class="hidden-sm-and-down text-capitalize"
                   color="primary"
                   v-on="on"
                 >
