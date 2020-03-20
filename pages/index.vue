@@ -261,19 +261,6 @@ export default {
       this.platform = "";
       this.rating = 0;
       this.user = "";
-      this.dialog = false;
-      fetchRatings();
-    },
-    deleteRating(id) {
-      // removing data from firestore
-      if (confirm("Delete this rating")) {
-        db.collection("show")
-          .doc(id)
-          .delete();
-        fetchRatings();
-      }
-    },
-    fetchRatings() {
       this.ratings = [];
       db.collection("show")
         .orderBy("rating", "desc")
@@ -285,6 +272,26 @@ export default {
             this.ratings.push(rating);
           });
         });
+      this.dialog = false;
+    },
+    deleteRating(id) {
+      // removing data from firestore
+      if (confirm("Delete this rating")) {
+        db.collection("show")
+          .doc(id)
+          .delete();
+        this.ratings = [];
+        db.collection("show")
+          .orderBy("rating", "desc")
+          .get()
+          .then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+              let rating = doc.data();
+              rating.id = doc.id;
+              this.ratings.push(rating);
+          });
+        });
+      }
     },
     setSearch(prop) {
       this.search = prop;
