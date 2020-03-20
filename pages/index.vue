@@ -261,8 +261,8 @@ export default {
       this.platform = "";
       this.rating = 0;
       this.user = "";
-      fetchRatings();
       this.dialog = false;
+      fetchRatings();
     },
     deleteRating(id) {
       // removing data from firestore
