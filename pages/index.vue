@@ -47,7 +47,7 @@
                   dark
                   rounded
                   large
-                  class="hidden-md-and-up"
+                  class="hidden-md-and-up text-capitalize"
                   color="primary"
                   v-on="on"
                 >
@@ -71,7 +71,7 @@
                   top
                   right
                   absolute
-                  class="hidden-sm-and-down"
+                  class="hidden-sm-and-down text-capitalize"
                   color="primary"
                   v-on="on"
                 >
@@ -261,19 +261,6 @@ export default {
       this.platform = "";
       this.rating = 0;
       this.user = "";
-      fetchRatings();
-      this.dialog = false;
-    },
-    deleteRating(id) {
-      // removing data from firestore
-      if (confirm("Delete this rating")) {
-        db.collection("show")
-          .doc(id)
-          .delete();
-        fetchRatings();
-      }
-    },
-    fetchRatings() {
       this.ratings = [];
       db.collection("show")
         .orderBy("rating", "desc")
@@ -285,6 +272,26 @@ export default {
             this.ratings.push(rating);
           });
         });
+      this.dialog = false;
+    },
+    deleteRating(id) {
+      // removing data from firestore
+      if (confirm("Delete this rating")) {
+        db.collection("show")
+          .doc(id)
+          .delete();
+        this.ratings = [];
+        db.collection("show")
+          .orderBy("rating", "desc")
+          .get()
+          .then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+              let rating = doc.data();
+              rating.id = doc.id;
+              this.ratings.push(rating);
+          });
+        });
+      }
     },
     setSearch(prop) {
       this.search = prop;
