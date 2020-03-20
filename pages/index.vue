@@ -57,7 +57,7 @@
                   absolute
                   bottom
                   right
-                  class="secondary primary--text"
+                  class="secondary primary--text font-weight-bold"
                   href="https://github.com/hnunnery/bingeworthy"
                   target="_blank"
                   >GitHub</v-btn
