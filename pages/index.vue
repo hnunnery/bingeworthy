@@ -47,7 +47,7 @@
                   dark
                   rounded
                   large
-                  class="hidden-md-and-up"
+                  class="hidden-md-and-up text-capitalize"
                   color="primary"
                   v-on="on"
                 >
