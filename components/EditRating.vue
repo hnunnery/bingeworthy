@@ -33,7 +33,7 @@
         <v-card-actions>
           <v-btn large class="error text-capitalize mx-2" @click="deleteRating()">Delete</v-btn>
           <v-btn large @click="dialog = false" class="accent text-capitalize mx-2">Cancel</v-btn>
-          <v-btn large @click="updateRating" class="success text-capitalize mx-2">Update</v-btn>
+          <v-btn large @click="updateRating" class="primary text-capitalize mx-2">Update</v-btn>
         </v-card-actions>
       </v-row>
     </v-card>
