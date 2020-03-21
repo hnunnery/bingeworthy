@@ -125,7 +125,8 @@ export default {
   },
   data() {
     return {
-      search: ""
+      search: "",
+      load: false
     };
   },
   methods: {
@@ -141,8 +142,10 @@ export default {
       this.$vuetify.goTo(0);
     },
     clearSearchTime() {
+      this.load = true;
       setTimeout(() => {
         this.clearSearch();
+        this.load = false;
       }, 50);
     }
   },
@@ -164,7 +167,7 @@ export default {
     },
     // controls loading progress spinner
     loading() {
-      return this.ratings.length < 1;
+      return (this.ratings.length < 1) | this.load;
     }
   },
   created() {

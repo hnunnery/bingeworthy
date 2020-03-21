@@ -43,8 +43,8 @@
           <v-text-field type="text" name="user" label="Your Name" v-model="user"></v-text-field>
         </v-col>
         <v-card-actions style="width: 100%;">
-          <v-row class="justify-right">
-            <v-col cols="12" class="text-right py-0">
+          <v-row class="justify-center">
+            <v-col cols="12" class="text-center py-0">
               <v-btn
                 large
                 @click="dialog = false"

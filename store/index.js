@@ -11,6 +11,9 @@ export const state = () => ({
 export const mutations = {
   setLoadedRatings(state, payload) {
     state.ratings = payload;
+  },
+  clearRatings(state) {
+    state.ratings = [];
   }
 };
 
@@ -18,6 +21,7 @@ export const mutations = {
 
 export const actions = {
   loadRatings({ commit }) {
+    commit("clearRatings");
     db.collection("show")
       .orderBy("rating", "desc")
       .get()
