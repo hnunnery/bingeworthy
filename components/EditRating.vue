@@ -7,7 +7,7 @@
     </template>
     <v-card class="pa-6" color="#111111">
       <v-row class="align-center justify-center">
-        <v-col cols="12" class="py-1">
+        <v-col cols="12" class="pb-2">
           <h2
             class="display-1 primary--text text-center font-italic mt-1 pb-0"
             style="letter-spacing: 1.2px;"

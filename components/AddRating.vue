@@ -19,11 +19,11 @@
         <v-icon>mdi-plus</v-icon>&nbsp;Add Your Show
       </v-btn>
     </template>
-    <v-card class="px-6 pt-2 pb-4" color="#111111">
-      <v-row align="center" justify="center">
+    <v-card class="pa-6" color="#111111">
+      <v-row class="align-center justify-center">
         <v-col cols="12" class="pb-2">
           <h2
-            class="secondary--text text-center font-italic mt-1 pb-0"
+            class="display-1 secondary--text text-center font-italic mt-1 pb-0"
             style="letter-spacing: 1.2px;"
           >Add Your Show</h2>
         </v-col>
@@ -44,11 +44,19 @@
         <v-col cols="12">
           <v-text-field type="text" name="user" label="Your Name" v-model="user"></v-text-field>
         </v-col>
-        <v-card-actions>
-          <v-btn large @click="dialog = false" class="accent secondary--text mx-2 px-6">Cancel</v-btn>
-          <v-btn large @click="addRating" class="primary mx-2 px-4">
-            <v-icon>mdi-plus</v-icon>&nbsp;Add Show
-          </v-btn>
+        <v-card-actions style="width: 100%;">
+          <v-row class="justify-right">
+            <v-col cols="12" class="text-right py-0">
+              <v-btn
+                large
+                @click="dialog = false"
+                class="accent secondary--text text-capitalize mx-2 px-6"
+              >Cancel</v-btn>
+              <v-btn large @click="addRating" class="primary text-capitalize mx-2 px-4">
+                <v-icon size="22">mdi-plus</v-icon>&nbsp;Add Show
+              </v-btn>
+            </v-col>
+          </v-row>
         </v-card-actions>
       </v-row>
     </v-card>
