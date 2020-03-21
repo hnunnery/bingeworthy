@@ -34,28 +34,28 @@
           <v-text-field type="text" name="user" label="Your Name" v-model="updatedUser"></v-text-field>
         </v-col>
         <!-- buttons for mobile -->
-        <v-card-actions class="hidden-sm-and-up">
-          <v-btn large class="error text-capitalize mx-2" @click="deleteRating()">Delete</v-btn>
+        <!-- <v-card-actions class="hidden-sm-and-up" style="width: 100%;">
+          <v-btn fab small class="error mx-2" @click="deleteRating()">
+            <v-icon size="22">mdi-delete</v-icon>
+          </v-btn>
           <v-btn large @click="dialog = false" class="accent text-capitalize mx-2">Cancel</v-btn>
-          <v-btn large @click="updateRating" class="primary text-capitalize mx-2">Update</v-btn>
-        </v-card-actions>
+          <v-btn large @click="updateRating" class="success text-capitalize ml-2">Update</v-btn>
+        </v-card-actions>-->
         <!-- buttons for desktop -->
-        <v-card-actions class="hidden-xs-only" style="width: 100%;">
-          <v-row class="justify-space-between">
-            <v-col cols="4" class="text-left">
-              <v-btn
-                large
-                class="secondary primary--text text-capitalize mx-2"
-                @click="deleteRating()"
-              >Delete</v-btn>
-            </v-col>
-            <v-col cols="8" class="text-right">
-              <v-btn
-                large
-                @click="dialog = false"
-                class="accent secondary--text text-capitalize mx-2"
-              >Cancel</v-btn>
-              <v-btn large @click="updateRating" class="primary text-capitalize mx-2">Update</v-btn>
+        <v-card-actions style="width: 100%;">
+          <v-row>
+            <v-col cols="12">
+              <v-row class="justify-space-between">
+                <v-col cols="2" class="text-left">
+                  <v-btn fab small class="error mx-2" @click="deleteRating()">
+                    <v-icon size="22">mdi-delete</v-icon>
+                  </v-btn>
+                </v-col>
+                <v-col cols="10" class="text-right">
+                  <v-btn large @click="dialog = false" class="accent text-capitalize mx-1">Cancel</v-btn>
+                  <v-btn large @click="updateRating" class="success text-capitalize mx-1">Update</v-btn>
+                </v-col>
+              </v-row>
             </v-col>
           </v-row>
         </v-card-actions>
