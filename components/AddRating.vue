@@ -21,11 +21,11 @@
     </template>
     <v-card class="px-6 pt-2 pb-4" color="#111111">
       <v-row align="center" justify="center">
-        <v-col cols="12" class="pb-0">
+        <v-col cols="12" class="pb-2">
           <h2
             class="secondary--text text-center font-italic mt-1 pb-0"
             style="letter-spacing: 1.2px;"
-          >Add Show to List</h2>
+          >Add Your Show</h2>
         </v-col>
         <v-col cols="12">
           <v-text-field type="text" name="name" label="Name of Show" v-model="name"></v-text-field>

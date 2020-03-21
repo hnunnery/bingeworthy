@@ -7,11 +7,14 @@
     </template>
     <v-card class="px-6 pt-2 pb-4" color="#111111">
       <v-row align="center" justify="center">
-        <v-col cols="12" class="pb-0">
+        <v-col cols="12" class="pb-2">
           <h2
-            class="secondary--text text-center font-italic mt-1 pb-0"
+            class="primary--text text-center font-italic mt-1 pb-0"
             style="letter-spacing: 1.2px;"
-          >Edit {{ this.updatedName }}</h2>
+          >
+            Edit
+            <span class="secondary--text">{{ this.updatedName }}</span>
+          </h2>
         </v-col>
         <v-col cols="12">
           <v-text-field type="text" name="name" label="Name of Show" v-model="updatedName"></v-text-field>
@@ -30,10 +33,31 @@
         <v-col cols="12">
           <v-text-field type="text" name="user" label="Your Name" v-model="updatedUser"></v-text-field>
         </v-col>
-        <v-card-actions>
+        <!-- buttons for mobile -->
+        <v-card-actions class="hidden-sm-and-up">
           <v-btn large class="error text-capitalize mx-2" @click="deleteRating()">Delete</v-btn>
           <v-btn large @click="dialog = false" class="accent text-capitalize mx-2">Cancel</v-btn>
           <v-btn large @click="updateRating" class="primary text-capitalize mx-2">Update</v-btn>
+        </v-card-actions>
+        <!-- buttons for desktop -->
+        <v-card-actions class="hidden-xs-only" style="width: 100%;">
+          <v-row class="justify-space-between">
+            <v-col cols="4" class="text-left">
+              <v-btn
+                large
+                class="secondary primary--text text-capitalize mx-2"
+                @click="deleteRating()"
+              >Delete</v-btn>
+            </v-col>
+            <v-col cols="8" class="text-right">
+              <v-btn
+                large
+                @click="dialog = false"
+                class="accent secondary--text text-capitalize mx-2"
+              >Cancel</v-btn>
+              <v-btn large @click="updateRating" class="primary text-capitalize mx-2">Update</v-btn>
+            </v-col>
+          </v-row>
         </v-card-actions>
       </v-row>
     </v-card>
