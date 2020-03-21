@@ -5,12 +5,16 @@
         dark
         rounded
         large
-        class="hidden-sm-and-down text-capitalize"
+        class="text-capitalize hidden-xs-only"
         style="padding: 10px 50px;"
         color="primary"
         v-on="on"
       >
         <v-icon>mdi-plus</v-icon>&nbsp;Add Your Show
+      </v-btn>
+      <v-btn dark rounded large class="hidden-sm-and-up text-capitalize" color="primary" v-on="on">
+        <v-icon>mdi-plus</v-icon>
+        <span class="small-mobile">&nbsp;Add Show</span>
       </v-btn>
     </template>
     <v-card class="pa-6" color="#111111">
@@ -92,5 +96,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+@media screen and (max-width: 350px) {
+  .small-mobile {
+    display: none;
+  }
+}
 </style>

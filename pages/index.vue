@@ -1,9 +1,9 @@
 <template>
   <v-container fluid class="svg-bg" style="min-height: 120vh; padding-bottom: 100px;">
-    <v-row class="justify-space-between ma-0 pa-0 hidden-sm-and-down">
-      <v-col cols="12" style="margin-bottom: -100px;">
-        <v-row class="align-center justify-space-between">
-          <v-col cols="4" class="ml-1 mt-1 pa-0">
+    <v-row class="justify-space-between ma-0 pa-0" no-gutters>
+      <v-col cols="12" class="desktop">
+        <v-row class="align-center justify-space-between" no-gutters>
+          <v-col cols="6" class="mt-1 ml-1 mr-0 pa-0">
             <v-text-field
               solo
               rounded
@@ -15,7 +15,7 @@
               style="width: 250px;"
             ></v-text-field>
           </v-col>
-          <v-col cols="4" class="mt-1 mr-1 pa-0 text-right">
+          <v-col cols="5" class="mt-1 mr-1 ml-0 pa-0 text-right">
             <AddRating />
           </v-col>
         </v-row>
@@ -24,7 +24,7 @@
     <v-row justify="center">
       <v-col cols="12" lg="11" xl="10" class="mt-0">
         <h1
-          class="secondary--text text-center font-weight-bold font-italic mt-0 mb-3"
+          class="secondary--text text-center font-weight-bold font-italic mt-1 mb-2"
           style="letter-spacing: 2px; font-size: 6vmax;"
         >BingeWorthy</h1>
         <v-row justify="center">
@@ -38,15 +38,7 @@
             href="https://github.com/hnunnery/bingeworthy"
             target="_blank"
           >GitHub</v-btn>
-          <v-btn
-            class="mr-3"
-            dark
-            rounded
-            large
-            color="accent"
-            v-show="this.cancel"
-            @click="clearSearch"
-          >Clear Filter</v-btn>
+          <v-btn rounded large color="accent" v-show="this.search" @click="clearSearch">Clear Filter</v-btn>
         </v-row>
 
         <!-- PROGRESS SPINNER -->
@@ -116,31 +108,6 @@
             </v-card>
           </v-col>
         </v-row>
-        <!-- BOTTOM NAVIGATION -->
-        <v-bottom-navigation app fixed class="primary hidden-md-and-up" :value="activeBtn">
-          <v-row class="align-center justify-center" no-gutters>
-            <v-col cols="12" class="px-1">
-              <v-row class="align-center justify-center" no-gutters>
-                <v-col cols="8" sm="6" class="text-center">
-                  <v-text-field
-                    clearable
-                    @click:clear="clearSearchTime"
-                    dense
-                    solo
-                    rounded
-                    hide-details
-                    placeholder="Search"
-                    v-model="search"
-                    style="max-width: 400px;"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="4" class="text-center">
-                  <AddRatingMobile />
-                </v-col>
-              </v-row>
-            </v-col>
-          </v-row>
-        </v-bottom-navigation>
       </v-col>
     </v-row>
   </v-container>
@@ -149,20 +116,16 @@
 <script>
 import { db } from "@/plugins/firebase.js";
 import AddRating from "@/components/AddRating";
-import AddRatingMobile from "@/components/AddRatingMobile";
 import EditRating from "@/components/EditRating";
 
 export default {
   components: {
     AddRating,
-    AddRatingMobile,
     EditRating
   },
   data() {
     return {
-      search: "",
-      cancel: false,
-      activeBtn: 1
+      search: ""
     };
   },
   methods: {
@@ -180,7 +143,7 @@ export default {
     clearSearchTime() {
       setTimeout(() => {
         this.clearSearch();
-      }, 100);
+      }, 50);
     }
   },
   computed: {
@@ -211,6 +174,11 @@ export default {
 </script>
 
 <style scoped>
+@media screen and (min-width: 960px) {
+  .desktop {
+    margin-bottom: -100px;
+  }
+}
 .svg-bg {
   background-repeat: repeat;
   background-color: #111111ad;

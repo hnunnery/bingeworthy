@@ -3,21 +3,6 @@
     <v-btn
       v-scroll="onScroll"
       v-show="fab"
-      class="hidden-md-and-up"
-      fab
-      dark
-      fixed
-      top
-      right
-      color="primary"
-      @click="toTop"
-    >
-      <v-icon size="40">mdi-chevron-up</v-icon>
-    </v-btn>
-    <v-btn
-      v-scroll="onScroll"
-      v-show="fab"
-      class="hidden-sm-and-down"
       fab
       dark
       fixed
