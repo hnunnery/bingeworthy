@@ -11,7 +11,7 @@
       color="primary"
       @click="toTop"
     >
-      <v-icon>mdi-chevron-up</v-icon>
+      <v-icon size="40">mdi-chevron-up</v-icon>
     </v-btn>
     <v-content>
       <nuxt />
