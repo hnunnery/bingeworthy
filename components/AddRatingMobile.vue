@@ -1,16 +1,9 @@
 <template>
   <v-dialog v-model="dialog" persistent max-width="600">
     <template v-slot:activator="{ on }">
-      <v-btn
-        dark
-        rounded
-        large
-        class="hidden-sm-and-down text-capitalize"
-        style="padding: 10px 50px;"
-        color="primary"
-        v-on="on"
-      >
-        <v-icon>mdi-plus</v-icon>&nbsp;Add Your Show
+      <v-btn dark rounded large class="hidden-md-and-up text-capitalize" color="primary" v-on="on">
+        <span>Add Your Show</span>
+        <v-icon>mdi-plus</v-icon>
       </v-btn>
     </template>
     <v-card class="pa-6" color="#111111">

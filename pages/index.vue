@@ -1,127 +1,168 @@
 <template>
-  <v-container fluid class="svg-bg" style="min-height: 100vh; padding-bottom: 100px;">
-    <v-layout column>
-      <v-row class="justify-left ma-0 pa-0 hidden-sm-and-down">
-        <v-col cols="12" class="ml-1 mt-1 mr-0 pa-0" style="margin-bottom: -100px;">
-          <v-text-field solo rounded placeholder="Search" v-model="search" style="width: 250px;"></v-text-field>
-        </v-col>
-      </v-row>
-      <v-row justify="center">
-        <v-col cols="12" lg="11" xl="10" class="mt-0">
-          <h1
-            class="secondary--text text-center font-weight-bold font-italic mt-0 mb-4"
-            style="letter-spacing: 2px; font-size: 6vmax;"
-          >BingeWorthy</h1>
-          <v-row justify="center">
-            <v-btn
-              large
+  <v-container fluid class="svg-bg" style="min-height: 120vh; padding-bottom: 100px;">
+    <v-row class="justify-space-between ma-0 pa-0 hidden-sm-and-down">
+      <v-col cols="12" style="margin-bottom: -100px;">
+        <v-row class="align-center justify-space-between">
+          <v-col cols="4" class="ml-1 mt-1 pa-0">
+            <v-text-field
+              solo
               rounded
-              absolute
-              bottom
-              left
-              class="secondary primary--text font-weight-bold"
-              href="https://github.com/hnunnery/bingeworthy"
-              target="_blank"
-            >GitHub</v-btn>
-            <v-btn
-              class="mr-3"
-              dark
-              rounded
-              large
-              color="accent"
-              v-show="this.cancel"
-              @click="clearSearch"
-            >Clear Filter</v-btn>
+              placeholder="Search"
+              v-model="search"
+              clearable
+              hide-details
+              @click:clear="clearSearchTime"
+              style="width: 250px;"
+            ></v-text-field>
+          </v-col>
+          <v-col cols="4" class="mt-1 mr-1 pa-0 text-right">
             <AddRating />
-          </v-row>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+    <v-row justify="center">
+      <v-col cols="12" lg="11" xl="10" class="mt-0">
+        <h1
+          class="secondary--text text-center font-weight-bold font-italic mt-0 mb-3"
+          style="letter-spacing: 2px; font-size: 6vmax;"
+        >BingeWorthy</h1>
+        <v-row justify="center">
+          <v-btn
+            large
+            rounded
+            absolute
+            bottom
+            left
+            class="secondary primary--text font-weight-bold"
+            href="https://github.com/hnunnery/bingeworthy"
+            target="_blank"
+          >GitHub</v-btn>
+          <v-btn
+            class="mr-3"
+            dark
+            rounded
+            large
+            color="accent"
+            v-show="this.cancel"
+            @click="clearSearch"
+          >Clear Filter</v-btn>
+        </v-row>
 
-          <!-- PROGRESS SPINNER -->
-          <v-row v-show="loading" class="justify-center align-center" style="height: 50vh">
-            <v-col class="text-center">
-              <v-progress-circular :size="150" :width="12" color="primary" indeterminate></v-progress-circular>
-            </v-col>
-          </v-row>
+        <!-- PROGRESS SPINNER -->
+        <v-row v-show="loading" class="justify-center align-center" style="height: 50vh">
+          <v-col class="text-center">
+            <v-progress-circular :size="150" :width="12" color="primary" indeterminate></v-progress-circular>
+          </v-col>
+        </v-row>
 
-          <!-- START RATINGS CARDS -->
-          <v-row v-show="!loading" class="justify-center mt-2 mb-6">
-            <v-col
-              cols="12"
-              sm="8"
-              md="6"
-              lg="4"
-              xl="3"
-              v-for="rating in filteredRatings"
-              :key="rating.id"
-              class="mb-5"
+        <!-- START RATINGS CARDS -->
+        <v-row v-show="!loading" class="justify-center mt-2 mb-6">
+          <v-col
+            cols="12"
+            sm="8"
+            md="6"
+            lg="4"
+            xl="3"
+            v-for="rating in filteredRatings"
+            :key="rating.id"
+            class="mb-5"
+          >
+            <v-card
+              class="px-4 pt-3 ma-2 align-center d-flex"
+              color="#111111ad"
+              elevation="15"
+              height="100%"
+              style="box-shadow: 0 0 20px 0px #ceb88850 !important;"
+              data-aos="flip-left"
+              data-aos-offset="0"
+              data-aos-delay="0"
+              data-aos-duration="500"
+              data-aos-easing="ease-in-out"
+              data-aos-once="false"
             >
-              <v-card
-                class="px-4 pt-3 ma-2 align-center d-flex"
-                color="#111111ad"
-                elevation="15"
-                height="100%"
-                style="box-shadow: 0 0 20px 0px #ceb88850 !important;"
-                data-aos="flip-left"
-                data-aos-offset="0"
-                data-aos-delay="0"
-                data-aos-duration="500"
-                data-aos-easing="ease-in-out"
-                data-aos-once="false"
-              >
-                <v-row class="text-center justify-center align-center">
-                  <v-col
-                    cols="12"
-                    class="display-1 mt-2"
-                    style="cursor: pointer;"
-                    @click="setSearch(rating.name)"
-                  >{{ rating.name }}</v-col>
-                  <v-col cols="12">
-                    <v-rating
-                      :value="parseFloat(rating.rating)"
-                      half-increments
-                      size="40"
-                      readonly
-                      color="secondary"
-                    ></v-rating>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    class="pb-2 font-weight-medium primary--text"
-                    style="cursor: pointer; font-size: 1.9em;"
-                    @click="setSearch(rating.platform)"
-                  >{{ rating.platform }}</v-col>
-                  <v-col
-                    cols="12"
-                    class="headline font-weight-light font-italic"
-                    style="cursor: pointer;"
-                    @click="setSearch(rating.user)"
-                  >{{ rating.user }}</v-col>
-                  <v-card-actions>
-                    <EditRating :rating="rating" />
-                  </v-card-actions>
-                </v-row>
-              </v-card>
+              <v-row class="text-center justify-center align-center">
+                <v-col
+                  cols="12"
+                  class="display-1 mt-2"
+                  style="cursor: pointer;"
+                  @click="setSearch(rating.name)"
+                >{{ rating.name }}</v-col>
+                <v-col cols="12">
+                  <v-rating
+                    :value="parseFloat(rating.rating)"
+                    half-increments
+                    size="40"
+                    readonly
+                    color="secondary"
+                  ></v-rating>
+                </v-col>
+                <v-col
+                  cols="12"
+                  class="pb-2 font-weight-medium primary--text"
+                  style="cursor: pointer; font-size: 1.9em;"
+                  @click="setSearch(rating.platform)"
+                >{{ rating.platform }}</v-col>
+                <v-col
+                  cols="12"
+                  class="headline font-weight-light font-italic"
+                  style="cursor: pointer;"
+                  @click="setSearch(rating.user)"
+                >{{ rating.user }}</v-col>
+                <v-card-actions>
+                  <EditRating :rating="rating" />
+                </v-card-actions>
+              </v-row>
+            </v-card>
+          </v-col>
+        </v-row>
+        <!-- BOTTOM NAVIGATION -->
+        <v-bottom-navigation app fixed class="primary hidden-md-and-up" :value="activeBtn">
+          <v-row class="align-center justify-center" no-gutters>
+            <v-col cols="12" class="px-1">
+              <v-row class="align-center justify-center" no-gutters>
+                <v-col cols="8" sm="6" class="text-center">
+                  <v-text-field
+                    clearable
+                    @click:clear="clearSearchTime"
+                    dense
+                    solo
+                    rounded
+                    hide-details
+                    placeholder="Search"
+                    v-model="search"
+                    style="max-width: 400px;"
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="4" class="text-center">
+                  <AddRatingMobile />
+                </v-col>
+              </v-row>
             </v-col>
           </v-row>
-        </v-col>
-      </v-row>
-    </v-layout>
+        </v-bottom-navigation>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
 <script>
 import { db } from "@/plugins/firebase.js";
 import AddRating from "@/components/AddRating";
+import AddRatingMobile from "@/components/AddRatingMobile";
 import EditRating from "@/components/EditRating";
 
 export default {
   components: {
     AddRating,
+    AddRatingMobile,
     EditRating
   },
   data() {
     return {
       search: "",
-      cancel: false
+      cancel: false,
+      activeBtn: 1
     };
   },
   methods: {
@@ -132,6 +173,14 @@ export default {
     clearSearch() {
       this.search = "";
       this.cancel = false;
+    },
+    toTop() {
+      this.$vuetify.goTo(0);
+    },
+    clearSearchTime() {
+      setTimeout(() => {
+        this.clearSearch();
+      }, 100);
     }
   },
   computed: {
@@ -140,13 +189,15 @@ export default {
     },
     // enables search by filtering
     filteredRatings() {
-      return this.ratings.filter(rating => {
-        return (
-          rating.name.toLowerCase().match(this.search.toLowerCase()) ||
-          rating.platform.toLowerCase().match(this.search.toLowerCase()) ||
-          rating.user.toLowerCase().match(this.search.toLowerCase())
-        );
-      });
+      if (this.search !== null) {
+        return this.ratings.filter(rating => {
+          return (
+            rating.name.toLowerCase().match(this.search.toLowerCase()) ||
+            rating.platform.toLowerCase().match(this.search.toLowerCase()) ||
+            rating.user.toLowerCase().match(this.search.toLowerCase())
+          );
+        });
+      }
     },
     // controls loading progress spinner
     loading() {
