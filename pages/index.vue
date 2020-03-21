@@ -1,23 +1,9 @@
 <template>
-  <v-container
-    fluid
-    class="svg-bg"
-    style="min-height: 100vh; padding-bottom: 100px;"
-  >
+  <v-container fluid class="svg-bg" style="min-height: 100vh; padding-bottom: 100px;">
     <v-layout column>
       <v-row class="justify-left ma-0 pa-0 hidden-sm-and-down">
-        <v-col
-          cols="12"
-          class="ml-1 mt-1 mr-0 pa-0"
-          style="margin-bottom: -100px;"
-        >
-          <v-text-field
-            solo
-            rounded
-            placeholder="Search"
-            v-model="search"
-            style="width: 250px;"
-          ></v-text-field>
+        <v-col cols="12" class="ml-1 mt-1 mr-0 pa-0" style="margin-bottom: -100px;">
+          <v-text-field solo rounded placeholder="Search" v-model="search" style="width: 250px;"></v-text-field>
         </v-col>
       </v-row>
       <v-row justify="center">
@@ -25,9 +11,7 @@
           <h1
             class="secondary--text text-center font-weight-bold font-italic mt-0 mb-4"
             style="letter-spacing: 2px; font-size: 6vmax;"
-          >
-            BingeWorthy
-          </h1>
+          >BingeWorthy</h1>
           <v-row justify="center">
             <v-btn
               class="mr-3"
@@ -37,117 +21,14 @@
               color="accent"
               v-show="this.cancel"
               @click="clearSearch"
-              >Clear Filter</v-btn
-            >
-            <v-dialog v-model="dialog" persistent max-width="600">
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  dark
-                  rounded
-                  large
-                  class="hidden-md-and-up text-capitalize"
-                  color="primary"
-                  v-on="on"
-                >
-                  <v-icon>mdi-plus</v-icon>&nbsp;Add Your Show
-                </v-btn>
-                <v-btn
-                  large
-                  rounded
-                  absolute
-                  bottom
-                  right
-                  class="secondary primary--text font-weight-bold"
-                  href="https://github.com/hnunnery/bingeworthy"
-                  target="_blank"
-                  >GitHub</v-btn
-                >
-                <v-btn
-                  dark
-                  rounded
-                  large
-                  top
-                  right
-                  absolute
-                  class="hidden-sm-and-down text-capitalize"
-                  style="padding: 10px 50px;"
-                  color="primary"
-                  v-on="on"
-                >
-                  <v-icon>mdi-plus</v-icon>&nbsp;Add Your Show
-                </v-btn>
-              </template>
-              <v-card class="px-6 pt-2 pb-4" color="#111111">
-                <v-row align="center" justify="center">
-                  <v-col cols="12" class="pb-0">
-                    <h2
-                      class="secondary--text text-center font-italic mt-1 pb-0"
-                      style="letter-spacing: 1.2px;"
-                    >
-                      Add Show to List
-                    </h2>
-                  </v-col>
-                  <v-col cols="12">
-                    <v-text-field
-                      type="text"
-                      name="name"
-                      label="Name of Show"
-                      v-model="name"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col cols="12">
-                    <v-text-field
-                      type="text"
-                      name="platform"
-                      label="Platform (Netflix, Hulu, etc.)"
-                      v-model="platform"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col cols="12" class="text-center">
-                    <v-rating
-                      v-model="rating"
-                      half-increments
-                      size="35"
-                      color="secondary"
-                    ></v-rating>
-                  </v-col>
-                  <v-col cols="12">
-                    <v-text-field
-                      type="text"
-                      name="user"
-                      label="Your Name"
-                      v-model="user"
-                    ></v-text-field>
-                  </v-col>
-                  <v-card-actions>
-                    <v-btn
-                      large
-                      @click="dialog = false"
-                      class="accent secondary--text mx-2 px-6"
-                      >Cancel</v-btn
-                    >
-                    <v-btn large @click="addRating" class="primary mx-2 px-4">
-                      <v-icon>mdi-plus</v-icon>&nbsp;Add Show
-                    </v-btn>
-                  </v-card-actions>
-                </v-row>
-              </v-card>
-            </v-dialog>
+            >Clear Filter</v-btn>
+            <AddRating />
           </v-row>
 
           <!-- PROGRESS SPINNER -->
-          <v-row
-            v-show="loading"
-            class="justify-center align-center"
-            style="height: 50vh"
-          >
+          <v-row v-show="loading" class="justify-center align-center" style="height: 50vh">
             <v-col class="text-center">
-              <v-progress-circular
-                :size="150"
-                :width="12"
-                color="primary"
-                indeterminate
-              ></v-progress-circular>
+              <v-progress-circular :size="150" :width="12" color="primary" indeterminate></v-progress-circular>
             </v-col>
           </v-row>
 
@@ -182,8 +63,7 @@
                     class="display-1 mt-2"
                     style="cursor: pointer;"
                     @click="setSearch(rating.name)"
-                    >{{ rating.name }}</v-col
-                  >
+                  >{{ rating.name }}</v-col>
                   <v-col cols="12">
                     <v-rating
                       :value="parseFloat(rating.rating)"
@@ -198,28 +78,15 @@
                     class="pb-2 font-weight-medium primary--text"
                     style="cursor: pointer; font-size: 1.9em;"
                     @click="setSearch(rating.platform)"
-                  >
-                    {{ rating.platform }}
-                  </v-col>
+                  >{{ rating.platform }}</v-col>
                   <v-col
                     cols="12"
                     class="headline font-weight-light font-italic"
                     style="cursor: pointer;"
                     @click="setSearch(rating.user)"
-                    >{{ rating.user }}</v-col
-                  >
+                  >{{ rating.user }}</v-col>
                   <v-card-actions>
-                    <v-btn
-                      fab
-                      x-small
-                      absolute
-                      bottom
-                      right
-                      class="body-2"
-                      color="primary"
-                      @click="deleteRating(rating.id)"
-                      >X</v-btn
-                    >
+                    <EditRating :rating="rating" />
                   </v-card-actions>
                 </v-row>
               </v-card>
@@ -233,65 +100,21 @@
 
 <script>
 import { db } from "@/plugins/firebase.js";
+import AddRating from "@/components/AddRating";
+import EditRating from "@/components/EditRating";
 
 export default {
+  components: {
+    AddRating,
+    EditRating
+  },
   data() {
     return {
-      ratings: [],
-      name: "",
-      platform: "",
-      rating: 0,
-      user: "",
       search: "",
-      dialog: false,
       cancel: false
     };
   },
   methods: {
-    addRating() {
-      // saving data to firestore
-      db.collection("show").add({
-        name: this.name,
-        platform: this.platform,
-        rating: this.rating.toString(),
-        user: this.user
-      });
-      this.name = "";
-      this.platform = "";
-      this.rating = 0;
-      this.user = "";
-      this.ratings = [];
-      db.collection("show")
-        .orderBy("rating", "desc")
-        .get()
-        .then(querySnapshot => {
-          querySnapshot.forEach(doc => {
-            let rating = doc.data();
-            rating.id = doc.id;
-            this.ratings.push(rating);
-          });
-        });
-      this.dialog = false;
-    },
-    deleteRating(id) {
-      // removing data from firestore
-      if (confirm("Delete this rating")) {
-        db.collection("show")
-          .doc(id)
-          .delete();
-        this.ratings = [];
-        db.collection("show")
-          .orderBy("rating", "desc")
-          .get()
-          .then(querySnapshot => {
-            querySnapshot.forEach(doc => {
-              let rating = doc.data();
-              rating.id = doc.id;
-              this.ratings.push(rating);
-            });
-          });
-      }
-    },
     setSearch(prop) {
       this.search = prop;
       this.cancel = true;
@@ -302,6 +125,9 @@ export default {
     }
   },
   computed: {
+    ratings() {
+      return this.$store.state.ratings;
+    },
     // enables search by filtering
     filteredRatings() {
       return this.ratings.filter(rating => {
@@ -312,26 +138,13 @@ export default {
         );
       });
     },
-    // ratingNames() {
-    //   return this.ratings.map(rating => rating.name);
-    // },
     // controls loading progress spinner
     loading() {
       return this.ratings.length < 1;
     }
   },
   created() {
-    // fetchRatings() method
-    db.collection("show")
-      .orderBy("rating", "desc")
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          let rating = doc.data();
-          rating.id = doc.id;
-          this.ratings.push(rating);
-        });
-      });
+    this.$store.dispatch("loadRatings");
   }
 };
 </script>
