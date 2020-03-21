@@ -4,6 +4,16 @@
       <v-row class="justify-left ma-0 pa-0 hidden-sm-and-down">
         <v-col cols="12" class="ml-1 mt-1 mr-0 pa-0" style="margin-bottom: -100px;">
           <v-text-field solo rounded placeholder="Search" v-model="search" style="width: 250px;"></v-text-field>
+          <v-btn
+            large
+            rounded
+            absolute
+            bottom
+            left
+            class="secondary primary--text font-weight-bold"
+            href="https://github.com/hnunnery/bingeworthy"
+            target="_blank"
+          >GitHub</v-btn>
         </v-col>
       </v-row>
       <v-row justify="center">

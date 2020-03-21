@@ -5,16 +5,6 @@
         <v-icon>mdi-plus</v-icon>&nbsp;Add Your Show
       </v-btn>
       <v-btn
-        large
-        rounded
-        absolute
-        bottom
-        right
-        class="secondary primary--text font-weight-bold"
-        href="https://github.com/hnunnery/bingeworthy"
-        target="_blank"
-      >GitHub</v-btn>
-      <v-btn
         dark
         rounded
         large
