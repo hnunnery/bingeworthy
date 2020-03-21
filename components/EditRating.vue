@@ -5,11 +5,11 @@
         <v-icon>mdi-cog</v-icon>
       </v-btn>
     </template>
-    <v-card class="px-6 pt-2 pb-4" color="#111111">
-      <v-row align="center" justify="center">
-        <v-col cols="12" class="pb-2">
+    <v-card class="pa-6" color="#111111">
+      <v-row class="align-center justify-center">
+        <v-col cols="12" class="py-1">
           <h2
-            class="primary--text text-center font-italic mt-1 pb-0"
+            class="display-1 primary--text text-center font-italic mt-1 pb-0"
             style="letter-spacing: 1.2px;"
           >
             Edit
@@ -33,25 +33,16 @@
         <v-col cols="12">
           <v-text-field type="text" name="user" label="Your Name" v-model="updatedUser"></v-text-field>
         </v-col>
-        <!-- buttons for mobile -->
-        <!-- <v-card-actions class="hidden-sm-and-up" style="width: 100%;">
-          <v-btn fab small class="error mx-2" @click="deleteRating()">
-            <v-icon size="22">mdi-delete</v-icon>
-          </v-btn>
-          <v-btn large @click="dialog = false" class="accent text-capitalize mx-2">Cancel</v-btn>
-          <v-btn large @click="updateRating" class="success text-capitalize ml-2">Update</v-btn>
-        </v-card-actions>-->
-        <!-- buttons for desktop -->
         <v-card-actions style="width: 100%;">
           <v-row>
-            <v-col cols="12">
+            <v-col cols="12" class="py-0">
               <v-row class="justify-space-between">
-                <v-col cols="2" class="text-left">
+                <v-col cols="2" class="text-left py-0">
                   <v-btn fab small class="error mx-2" @click="deleteRating()">
                     <v-icon size="22">mdi-delete</v-icon>
                   </v-btn>
                 </v-col>
-                <v-col cols="10" class="text-right">
+                <v-col cols="10" class="text-right py-0">
                   <v-btn large @click="dialog = false" class="accent text-capitalize mx-1">Cancel</v-btn>
                   <v-btn large @click="updateRating" class="success text-capitalize mx-1">Update</v-btn>
                 </v-col>
