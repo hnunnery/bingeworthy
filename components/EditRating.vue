@@ -100,7 +100,12 @@ export default {
   methods: {
     updateRating() {
       // saving data to firestore
-      if (this.name && this.platform && this.rating && this.user) {
+      if (
+        this.updatedName &&
+        this.updatedPlatform &&
+        this.updatedRating &&
+        this.updatedUser
+      ) {
         db.collection("show")
           .doc(this.rating.id)
           .update({

@@ -193,9 +193,6 @@ export default {
     },
     clearSearch() {
       this.search = "";
-    },
-    toTop() {
-      this.$vuetify.goTo(0);
     }
   },
   computed: {
