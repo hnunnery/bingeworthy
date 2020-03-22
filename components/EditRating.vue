@@ -17,15 +17,22 @@
           </h2>
         </v-col>
         <v-col cols="12">
-          <v-text-field type="text" name="name" label="Name of Show" v-model="updatedName"></v-text-field>
+          <v-combobox
+            type="text"
+            name="name"
+            label="Name of Show"
+            v-model="updatedName"
+            :items="this.uniqueNames"
+          ></v-combobox>
         </v-col>
         <v-col cols="12">
-          <v-text-field
+          <v-combobox
             type="text"
             name="platform"
             label="Platform (Netflix, Hulu, etc.)"
             v-model="updatedPlatform"
-          ></v-text-field>
+            :items="this.uniquePlatforms"
+          ></v-combobox>
         </v-col>
         <v-col cols="12" class="text-center">
           <v-rating v-model="updatedRating" half-increments size="35" color="secondary"></v-rating>
@@ -69,6 +76,26 @@ export default {
       ratingId: this.rating.id.toString(),
       dialog: false
     };
+  },
+  computed: {
+    uniqueNames() {
+      let a = [];
+      this.$store.state.names.map(x => {
+        if (!a.includes(x)) {
+          a.push(x);
+        }
+      });
+      return a;
+    },
+    uniquePlatforms() {
+      let a = [];
+      this.$store.state.platforms.map(x => {
+        if (!a.includes(x)) {
+          a.push(x);
+        }
+      });
+      return a;
+    }
   },
   methods: {
     updateRating() {
