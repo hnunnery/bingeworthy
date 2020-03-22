@@ -89,9 +89,15 @@
                   style="font-size: 1.9em;"
                 >{{ rating.platform }}</v-col>
                 <v-col
+                  v-if="rating.users.length === 1"
                   cols="12"
-                  class="headline font-weight-light font-italic"
-                >{{ rating.users.length }} Ratings</v-col>
+                  class="title font-weight-light font-italic"
+                >Rated by {{ rating.users.length }} User</v-col>
+                <v-col
+                  v-else
+                  cols="12"
+                  class="title font-weight-light font-italic"
+                >Rated by {{ rating.users.length }} Users</v-col>
               </v-row>
             </v-card>
           </v-col>
@@ -181,6 +187,9 @@ export default {
   methods: {
     setSearch(prop) {
       this.search = prop;
+      setTimeout(() => {
+        this.$vuetify.goTo(0);
+      }, 50);
     },
     clearSearch() {
       this.search = "";
