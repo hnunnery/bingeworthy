@@ -38,7 +38,13 @@
             href="https://github.com/hnunnery/bingeworthy"
             target="_blank"
           >GitHub</v-btn>
-          <v-btn rounded large color="accent" v-show="this.search" @click="clearSearch">Clear Filter</v-btn>
+          <v-btn
+            rounded
+            large
+            color="accent"
+            v-show="this.search"
+            @click="clearSearchTime"
+          >Clear Filter</v-btn>
         </v-row>
 
         <!-- PROGRESS SPINNER -->
@@ -65,7 +71,8 @@
               color="#11111180"
               elevation="15"
               height="100%"
-              style="box-shadow: 0 0 15px 5px #ceb88850 !important;"
+              @click="setSearch(rating.name)"
+              style="box-shadow: 0 0 15px 5px #ceb88850 !important; cursor: pointer;"
               data-aos="flip-left"
               data-aos-offset="0"
               data-aos-delay="0"
@@ -74,12 +81,7 @@
               data-aos-once="false"
             >
               <v-row class="text-center justify-center align-center">
-                <v-col
-                  cols="12"
-                  class="display-1 mt-2"
-                  style="cursor: pointer;"
-                  @click="setSearch(rating.name)"
-                >{{ rating.name }}</v-col>
+                <v-col cols="12" class="display-1 mt-2">{{ rating.name }}</v-col>
                 <v-col cols="12">
                   <v-rating
                     :value="parseFloat(rating.ratings.reduce((a,b) => a + b, 0) / rating.ratings.length)"
@@ -92,13 +94,12 @@
                 <v-col
                   cols="12"
                   class="pb-2 font-weight-medium primary--text"
-                  style="cursor: pointer; font-size: 1.9em;"
-                  @click="setSearch(rating.platform)"
+                  style="font-size: 1.9em;"
                 >{{ rating.platform }}</v-col>
                 <v-col
                   cols="12"
                   class="headline font-weight-light font-italic"
-                >Average of {{ rating.users.length }} Ratings</v-col>
+                >{{ rating.users.length }} Ratings</v-col>
               </v-row>
             </v-card>
           </v-col>
