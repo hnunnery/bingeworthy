@@ -38,7 +38,7 @@
             href="https://github.com/hnunnery/bingeworthy"
             target="_blank"
           >GitHub</v-btn>
-          <!-- <v-btn rounded large color="accent" v-show="this.search" @click="clearSearch">Clear Filter</v-btn> -->
+          <v-btn rounded large color="accent" v-show="this.search" @click="clearSearch">Clear Filter</v-btn>
         </v-row>
 
         <!-- PROGRESS SPINNER -->
