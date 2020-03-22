@@ -106,7 +106,7 @@
         </v-row>
 
         <!-- START RATINGS CARDS -->
-        <v-row v-show="!loading" class="justify-center mt-2 mb-6">
+        <v-row v-show="!loading && this.search" class="justify-center mt-2 mb-6">
           <v-col
             cols="12"
             sm="8"
