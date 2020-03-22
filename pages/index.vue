@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="svg-bg" style="min-height: 120vh; padding-bottom: 100px;">
+  <v-container fluid class="svg-bg" style="min-height: 100vh; padding-bottom: 100px;">
     <v-row class="justify-space-between ma-0 pa-0" no-gutters>
       <v-col cols="12" class="desktop">
         <v-row class="align-center justify-space-between" no-gutters>
