@@ -78,19 +78,21 @@ export default {
   methods: {
     addRating() {
       // saving data to firestore
-      db.collection("show").add({
-        name: this.name,
-        platform: this.platform,
-        rating: this.rating,
-        user: this.user
-      });
-      this.name = "";
-      this.platform = "";
-      this.rating = 0;
-      this.user = "";
-      this.ratings = [];
-      this.$store.dispatch("loadRatings");
-      this.dialog = false;
+      db.collection("show")
+        .add({
+          name: this.name,
+          platform: this.platform,
+          rating: this.rating,
+          user: this.user
+        })
+        .then(() => {
+          this.$store.dispatch("loadRatings");
+          this.name = "";
+          this.platform = "";
+          this.rating = 0;
+          this.user = "";
+          this.dialog = false;
+        });
     }
   }
 };

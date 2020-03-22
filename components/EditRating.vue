@@ -80,18 +80,22 @@ export default {
           rating: this.updatedRating,
           platform: this.updatedPlatform,
           user: this.updatedUser
+        })
+        .then(() => {
+          this.$store.dispatch("loadRatings");
+          this.dialog = false;
         });
-      this.$store.dispatch("loadRatings");
-      this.dialog = false;
     },
     deleteRating() {
       // removing data from firestore
       if (confirm("Delete this rating")) {
         db.collection("show")
           .doc(this.ratingId)
-          .delete();
-        this.$store.dispatch("loadRatings");
-        this.dialog = false;
+          .delete()
+          .then(() => {
+            this.$store.dispatch("loadRatings");
+            this.dialog = false;
+          });
       }
     }
   }
