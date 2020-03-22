@@ -85,7 +85,7 @@ export default {
   computed: {
     uniqueNames() {
       let a = [];
-      this.$store.getters.names.map(x => {
+      this.$store.state.names.map(x => {
         if (!a.includes(x)) {
           a.push(x);
         }
@@ -94,7 +94,7 @@ export default {
     },
     uniquePlatforms() {
       let a = [];
-      this.$store.getters.platforms.map(x => {
+      this.$store.state.platforms.map(x => {
         if (!a.includes(x)) {
           a.push(x);
         }
@@ -114,7 +114,11 @@ export default {
         })
         .then(() => {
           this.$store.dispatch("loadRatings");
-          resetForm();
+          this.name = "";
+          this.platform = "";
+          this.rating = 0;
+          this.user = "";
+          this.dialog = false;
         });
     },
     resetForm() {

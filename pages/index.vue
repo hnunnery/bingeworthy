@@ -48,6 +48,62 @@
           </v-col>
         </v-row>
 
+        <!-- START MASTER RATINGS CARDS -->
+        <v-row v-show="!loading" class="justify-center mt-2 mb-6">
+          <v-col
+            cols="12"
+            sm="8"
+            md="6"
+            lg="4"
+            xl="3"
+            v-for="(rating, index) in filteredMasterRatings"
+            :key="index"
+            class="mb-5"
+          >
+            <v-card
+              class="px-4 pt-3 ma-2 align-center d-flex"
+              color="#11111180"
+              elevation="15"
+              height="100%"
+              style="box-shadow: 0 0 15px 5px #ceb88850 !important;"
+              data-aos="flip-left"
+              data-aos-offset="0"
+              data-aos-delay="0"
+              data-aos-duration="500"
+              data-aos-easing="ease-in-out"
+              data-aos-once="false"
+            >
+              <v-row class="text-center justify-center align-center">
+                <v-col
+                  cols="12"
+                  class="display-1 mt-2"
+                  style="cursor: pointer;"
+                  @click="setSearch(rating.name)"
+                >{{ rating.name }}</v-col>
+                <v-col cols="12">
+                  <v-rating
+                    :value="parseFloat(rating.ratings.reduce((a,b) => a + b, 0) / rating.ratings.length)"
+                    half-increments
+                    size="40"
+                    readonly
+                    color="secondary"
+                  ></v-rating>
+                </v-col>
+                <v-col
+                  cols="12"
+                  class="pb-2 font-weight-medium primary--text"
+                  style="cursor: pointer; font-size: 1.9em;"
+                  @click="setSearch(rating.platform)"
+                >{{ rating.platform }}</v-col>
+                <v-col
+                  cols="12"
+                  class="headline font-weight-light font-italic"
+                >Average of {{ rating.users.length }} Ratings</v-col>
+              </v-row>
+            </v-card>
+          </v-col>
+        </v-row>
+
         <!-- START RATINGS CARDS -->
         <v-row v-show="!loading" class="justify-center mt-2 mb-6">
           <v-col
@@ -65,7 +121,7 @@
               color="#11111180"
               elevation="15"
               height="100%"
-              style="box-shadow: 0 0 15px 5px #ceb88850 !important;"
+              style="box-shadow: 0 0 15px 5px #782f40 !important;"
               data-aos="flip-left"
               data-aos-offset="0"
               data-aos-delay="0"
@@ -150,11 +206,21 @@ export default {
     }
   },
   computed: {
+    masterRatings() {
+      return this.$store.state.masterRatings;
+    },
     ratings() {
       return this.$store.state.ratings;
     },
     names() {
       return this.ratings.map(rating => rating.name);
+    },
+    filteredMasterRatings() {
+      if (this.search !== null) {
+        return this.masterRatings.filter(rating => {
+          return rating.platform.toLowerCase().match(this.search.toLowerCase());
+        });
+      }
     },
     filteredRatings() {
       if (this.search !== null) {

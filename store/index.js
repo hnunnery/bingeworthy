@@ -3,7 +3,10 @@ import { db } from "@/plugins/firebase.js";
 // STORE
 
 export const state = () => ({
-  ratings: []
+  ratings: [],
+  masterRatings: [],
+  names: [],
+  platforms: []
 });
 
 // MUTATIONS
@@ -11,16 +14,21 @@ export const state = () => ({
 export const mutations = {
   setLoadedRatings(state, payload) {
     state.ratings = payload;
+    state.names = state.ratings.map(rating => rating.name);
+    state.platforms = state.ratings.map(rating => rating.platform);
   },
   clearRatings(state) {
     state.ratings = [];
+  },
+  setMasterRatings(state, payload) {
+    state.masterRatings = payload;
   }
 };
 
 // ACTIONS
 
 export const actions = {
-  loadRatings({ commit }) {
+  loadRatings({ commit, dispatch }) {
     commit("clearRatings");
     db.collection("show")
       .orderBy("rating", "desc")
@@ -33,27 +41,35 @@ export const actions = {
           ratings.push(rating);
         });
         commit("setLoadedRatings", ratings);
+        dispatch("createMasterRatings");
       });
-  }
-};
-
-// GETTERS
-
-export const getters = {
-  names(state) {
-    return state.ratings.map(rating => rating.name);
   },
-  platforms(state) {
-    return state.ratings.map(rating => rating.platform);
+  createMasterRatings({ commit, state }) {
+    let tempMaster = [];
+    let nameList = [];
+    state.names.map(x => {
+      if (!nameList.includes(x)) {
+        nameList.push(x);
+      }
+    });
+    nameList.forEach(name => {
+      let obj = {};
+      obj.name = name;
+      obj.platform = "";
+      obj.ratings = [];
+      obj.users = [];
+      state.ratings.forEach(rating => {
+        if (rating.name === name) {
+          obj.platform = rating.platform;
+          obj.ratings.push(rating.rating);
+          obj.users.push(rating.user);
+        }
+      });
+      tempMaster.push(obj);
+    });
+    commit("setMasterRatings", tempMaster);
+    console.log(tempMaster);
   }
 };
 
 export const strict = false;
-
-// use to push {user: rating} on to array within Average Rating Object
-// let userList = state.ratings.map(ratingObj => {
-//   let userObj = {};
-//   userObj[ratingObj.user] = ratingObj.rating;
-//   console.log(userObj);
-//   return userObj;
-// });
