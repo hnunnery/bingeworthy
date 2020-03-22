@@ -54,7 +54,7 @@
             <v-col cols="12" class="text-center py-0">
               <v-btn
                 large
-                @click="dialog = false"
+                @click="resetForm"
                 class="accent secondary--text text-capitalize mx-2 px-6"
               >Cancel</v-btn>
               <v-btn large @click="addRating" class="primary text-capitalize mx-2 px-4">
@@ -114,12 +114,15 @@ export default {
         })
         .then(() => {
           this.$store.dispatch("loadRatings");
-          this.name = "";
-          this.platform = "";
-          this.rating = 0;
-          this.user = "";
-          this.dialog = false;
+          resetForm();
         });
+    },
+    resetForm() {
+      this.name = "";
+      this.platform = "";
+      this.rating = 0;
+      this.user = "";
+      this.dialog = false;
     }
   }
 };
