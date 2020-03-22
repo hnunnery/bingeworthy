@@ -68,7 +68,6 @@ export const actions = {
       tempMaster.push(obj);
     });
     commit("setMasterRatings", tempMaster);
-    console.log(tempMaster);
   }
 };
 
