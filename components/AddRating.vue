@@ -26,15 +26,22 @@
           >Add Your Show</h2>
         </v-col>
         <v-col cols="12">
-          <v-text-field type="text" name="name" label="Name of Show" v-model="name"></v-text-field>
+          <v-combobox
+            name="name"
+            label="Name of Show"
+            v-model="name"
+            :items="this.uniqueNames"
+            type="text"
+          ></v-combobox>
         </v-col>
         <v-col cols="12">
-          <v-text-field
-            type="text"
+          <v-combobox
             name="platform"
             label="Platform (Netflix, Hulu, etc.)"
             v-model="platform"
-          ></v-text-field>
+            :items="this.uniquePlatforms"
+            type="text"
+          ></v-combobox>
         </v-col>
         <v-col cols="12" class="text-center">
           <v-rating v-model="rating" half-increments size="35" color="secondary"></v-rating>
@@ -74,6 +81,26 @@ export default {
       search: "",
       dialog: false
     };
+  },
+  computed: {
+    uniqueNames() {
+      let a = [];
+      this.$store.getters.names.map(x => {
+        if (!a.includes(x)) {
+          a.push(x);
+        }
+      });
+      return a;
+    },
+    uniquePlatforms() {
+      let a = [];
+      this.$store.getters.platforms.map(x => {
+        if (!a.includes(x)) {
+          a.push(x);
+        }
+      });
+      return a;
+    }
   },
   methods: {
     addRating() {

@@ -153,7 +153,9 @@ export default {
     ratings() {
       return this.$store.state.ratings;
     },
-    // enables search by filtering
+    names() {
+      return this.ratings.map(rating => rating.name);
+    },
     filteredRatings() {
       if (this.search !== null) {
         return this.ratings.filter(rating => {

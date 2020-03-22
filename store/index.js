@@ -39,6 +39,21 @@ export const actions = {
 
 // GETTERS
 
-export const getters = {};
+export const getters = {
+  names(state) {
+    return state.ratings.map(rating => rating.name);
+  },
+  platforms(state) {
+    return state.ratings.map(rating => rating.platform);
+  }
+};
 
 export const strict = false;
+
+// use to push {user: rating} on to array within Average Rating Object
+// let userList = state.ratings.map(ratingObj => {
+//   let userObj = {};
+//   userObj[ratingObj.user] = ratingObj.rating;
+//   console.log(userObj);
+//   return userObj;
+// });
