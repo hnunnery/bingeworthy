@@ -10,11 +10,11 @@
         color="primary"
         v-on="on"
       >
-        <v-icon>mdi-plus</v-icon>&nbsp;Add Your Show
+        <v-icon>mdi-plus</v-icon>&nbsp;Add Your Rating
       </v-btn>
       <v-btn dark rounded large class="hidden-sm-and-up text-capitalize" color="primary" v-on="on">
         <v-icon>mdi-plus</v-icon>
-        <span class="small-mobile">&nbsp;Add Show</span>
+        <span class="small-mobile">&nbsp;Add Rating</span>
       </v-btn>
     </template>
     <v-card class="pa-6" color="#111111">
