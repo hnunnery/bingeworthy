@@ -9,9 +9,7 @@
               rounded
               placeholder="Search"
               v-model="search"
-              clearable
               hide-details
-              @click:clear="clearSearchTime"
               style="width: 250px;"
             ></v-text-field>
           </v-col>
@@ -38,13 +36,7 @@
             href="https://github.com/hnunnery/bingeworthy"
             target="_blank"
           >GitHub</v-btn>
-          <v-btn
-            rounded
-            large
-            color="accent"
-            v-show="this.search"
-            @click="clearSearchTime"
-          >Clear Filter</v-btn>
+          <v-btn rounded large color="accent" v-show="this.search" @click="clearSearch">Clear Filter</v-btn>
         </v-row>
 
         <!-- PROGRESS SPINNER -->
@@ -71,7 +63,7 @@
               color="#11111180"
               elevation="15"
               height="100%"
-              @click="setSearch(rating.name)"
+              @click="setSearch(rating.name); expandedName=rating.name;"
               style="box-shadow: 0 0 15px 5px #ceb88850 !important; cursor: pointer;"
               data-aos="flip-left"
               data-aos-offset="0"
@@ -183,27 +175,18 @@ export default {
   data() {
     return {
       search: "",
-      load: false
+      expandedName: ""
     };
   },
   methods: {
     setSearch(prop) {
       this.search = prop;
-      this.cancel = true;
     },
     clearSearch() {
       this.search = "";
-      this.cancel = false;
     },
     toTop() {
       this.$vuetify.goTo(0);
-    },
-    clearSearchTime() {
-      this.load = true;
-      setTimeout(() => {
-        this.clearSearch();
-        this.load = false;
-      }, 50);
     }
   },
   computed: {
@@ -217,26 +200,34 @@ export default {
       return this.ratings.map(rating => rating.name);
     },
     filteredMasterRatings() {
-      if (this.search !== null) {
-        return this.masterRatings.filter(rating => {
-          return rating.platform.toLowerCase().match(this.search.toLowerCase());
-        });
-      }
-    },
-    filteredRatings() {
-      if (this.search !== null) {
-        return this.ratings.filter(rating => {
+      return this.masterRatings.filter(rating => {
+        if (!this.expandedName) {
           return (
             rating.name.toLowerCase().match(this.search.toLowerCase()) ||
-            rating.platform.toLowerCase().match(this.search.toLowerCase()) ||
-            rating.user.toLowerCase().match(this.search.toLowerCase())
+            rating.platform.toLowerCase().match(this.search.toLowerCase())
           );
-        });
-      }
+        }
+      });
+    },
+    filteredRatings() {
+      return this.ratings.filter(rating => {
+        return (
+          rating.name.toLowerCase().match(this.search.toLowerCase()) ||
+          rating.platform.toLowerCase().match(this.search.toLowerCase()) ||
+          rating.user.toLowerCase().match(this.search.toLowerCase())
+        );
+      });
     },
     // controls loading progress spinner
     loading() {
-      return (this.ratings.length < 1) | this.load;
+      return this.ratings.length < 1;
+    }
+  },
+  watch: {
+    search() {
+      if (this.search !== this.expandedName) {
+        this.expandedName = "";
+      }
     }
   },
   created() {
