@@ -105,21 +105,25 @@ export default {
   methods: {
     addRating() {
       // saving data to firestore
-      db.collection("show")
-        .add({
-          name: this.name,
-          platform: this.platform,
-          rating: this.rating,
-          user: this.user
-        })
-        .then(() => {
-          this.$store.dispatch("loadRatings");
-          this.name = "";
-          this.platform = "";
-          this.rating = 0;
-          this.user = "";
-          this.dialog = false;
-        });
+      if (this.name && this.platform && this.rating && this.user) {
+        db.collection("show")
+          .add({
+            name: this.name,
+            platform: this.platform,
+            rating: this.rating,
+            user: this.user
+          })
+          .then(() => {
+            this.$store.dispatch("loadRatings");
+            this.name = "";
+            this.platform = "";
+            this.rating = 0;
+            this.user = "";
+            this.dialog = false;
+          });
+      } else {
+        alert("Please complete all fields.");
+      }
     },
     resetForm() {
       this.name = "";

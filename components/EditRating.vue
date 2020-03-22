@@ -100,30 +100,32 @@ export default {
   methods: {
     updateRating() {
       // saving data to firestore
-      db.collection("show")
-        .doc(this.rating.id)
-        .update({
-          name: this.updatedName,
-          rating: this.updatedRating,
-          platform: this.updatedPlatform,
-          user: this.updatedUser
-        })
-        .then(() => {
-          this.$store.dispatch("loadRatings");
-          this.dialog = false;
-        });
-    },
-    deleteRating() {
-      // removing data from firestore
-      if (confirm("Delete this rating")) {
+      if (this.name && this.platform && this.rating && this.user) {
         db.collection("show")
-          .doc(this.ratingId)
-          .delete()
+          .doc(this.rating.id)
+          .update({
+            name: this.updatedName,
+            rating: this.updatedRating,
+            platform: this.updatedPlatform,
+            user: this.updatedUser
+          })
           .then(() => {
             this.$store.dispatch("loadRatings");
             this.dialog = false;
           });
-      }
+      } else alert("Please complete all fields.");
+    }
+  },
+  deleteRating() {
+    // removing data from firestore
+    if (confirm("Delete this rating")) {
+      db.collection("show")
+        .doc(this.ratingId)
+        .delete()
+        .then(() => {
+          this.$store.dispatch("loadRatings");
+          this.dialog = false;
+        });
     }
   }
 };
