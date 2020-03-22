@@ -62,7 +62,7 @@
           >
             <v-card
               class="px-4 pt-3 ma-2 align-center d-flex"
-              color="#111111ad"
+              color="#11111180"
               elevation="15"
               height="100%"
               style="box-shadow: 0 0 20px 5px #ceb88850 !important;"
