@@ -65,7 +65,7 @@
               color="#111111ad"
               elevation="15"
               height="100%"
-              style="box-shadow: 0 0 20px 0px #ceb88850 !important;"
+              style="box-shadow: 0 0 20px 5px #ceb88850 !important;"
               data-aos="flip-left"
               data-aos-offset="0"
               data-aos-delay="0"
