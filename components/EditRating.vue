@@ -107,7 +107,7 @@ export default {
         this.updatedUser
       ) {
         db.collection("show")
-          .doc(this.rating.id)
+          .doc(this.ratingId)
           .update({
             name: this.updatedName,
             rating: this.updatedRating,
