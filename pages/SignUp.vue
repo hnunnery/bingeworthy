@@ -13,7 +13,7 @@
             <v-row class="align-center justify-center">
               <v-col cols="12" class="pb-2">
                 <h2
-                  class="display-1 secondary--text text-center font-italic mt-1 pb-0"
+                  class="display-1 text-center font-italic mt-1 pb-0"
                   style="letter-spacing: 1.2px;"
                 >New User Registration</h2>
 
