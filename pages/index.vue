@@ -311,6 +311,13 @@ export default {
     width: 290px;
   }
 }
+
+@media screen and (min-width: 1200px) {
+  .limit-width {
+    width: 330px;
+  }
+}
+
 </style>
 
 <style >
