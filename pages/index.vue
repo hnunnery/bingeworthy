@@ -82,7 +82,7 @@
               elevation="15"
               height="100%"
               @click="setSearch(rating.name); expandedName=rating.name;"
-              style="box-shadow: 0 0 15px 5px #ceb88850 !important; cursor: pointer;"
+              style="box-shadow: 0 0 15px 5px #ceb888 !important; cursor: pointer;"
               data-aos="flip-left"
               data-aos-offset="0"
               data-aos-delay="0"
