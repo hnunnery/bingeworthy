@@ -45,7 +45,7 @@
             <v-col cols="12" class="py-0">
               <v-row class="justify-space-between">
                 <v-col cols="2" class="text-left py-0">
-                  <v-btn fab small class="error mx-2" @click="deleteRating()">
+                  <v-btn fab small class="error mx-2" @click="removeRating">
                     <v-icon size="22">mdi-delete</v-icon>
                   </v-btn>
                 </v-col>
@@ -73,7 +73,7 @@ export default {
       updatedRating: parseFloat(this.rating.rating),
       updatedPlatform: this.rating.platform,
       updatedUser: this.rating.user,
-      ratingId: this.rating.id.toString(),
+      ratingId: this.rating.id,
       dialog: false
     };
   },
@@ -119,18 +119,16 @@ export default {
             this.dialog = false;
           });
       } else alert("Please complete all fields.");
-    }
-  },
-  deleteRating() {
-    // removing data from firestore
-    if (confirm("Delete this rating")) {
-      db.collection("show")
-        .doc(this.ratingId)
-        .delete()
-        .then(() => {
-          this.$store.dispatch("loadRatings");
-          this.dialog = false;
-        });
+    },
+    removeRating() {
+      if (confirm("Delete this rating")) {
+        db.collection("show")
+          .doc(this.ratingId)
+          .delete()
+          .then(() => {
+            this.$store.dispatch("loadRatings");
+          });
+      }
     }
   }
 };
