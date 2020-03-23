@@ -14,13 +14,13 @@
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="7" class="mt-1 mr-1 ml-0 pa-0 text-center text-md-right">
-            <v-btn rounded large class="primary text-capitalize mr-2" v-if="!userAuth" to="/signin">
+            <v-btn rounded large class="mr-6 primary text-capitalize mr-2" v-if="!userAuth" to="/signin">
               <v-icon>mdi-account-check</v-icon>
               <span class="hidden-sm-only hidden-md-only">&nbsp;Sign In</span>
             </v-btn>
             <v-btn rounded large class="primary text-capitalize mr-2" v-if="!userAuth" to="/signup">
               <v-icon>mdi-account-plus</v-icon>
-              <span class="mr-6 hidden-sm-only hidden-md-only">&nbsp;Sign Up</span>
+              <span class="hidden-sm-only hidden-md-only">&nbsp;Sign Up</span>
             </v-btn>
             <v-btn
               rounded
