@@ -20,7 +20,7 @@
             </v-btn>
             <v-btn rounded large class="primary text-capitalize mr-2" v-if="!userAuth" to="/signup">
               <v-icon>mdi-account-plus</v-icon>
-              <span class="hidden-sm-only hidden-md-only">&nbsp;Sign Up</span>
+              <span class="mr-6 hidden-sm-only hidden-md-only">&nbsp;Sign Up</span>
             </v-btn>
             <v-btn
               rounded
