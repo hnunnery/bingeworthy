@@ -1,15 +1,7 @@
 <template>
   <v-dialog v-model="dialog" persistent max-width="600">
     <template v-slot:activator="{ on }">
-      <v-btn
-        dark
-        rounded
-        large
-        class="text-capitalize hidden-xs-only"
-        style="padding: 10px 50px;"
-        color="primary"
-        v-on="on"
-      >
+      <v-btn dark rounded large class="text-capitalize hidden-xs-only" color="primary" v-on="on">
         <v-icon>mdi-plus</v-icon>&nbsp;Add Your Rating
       </v-btn>
       <v-btn dark rounded large class="hidden-sm-and-up text-capitalize" color="primary" v-on="on">
@@ -111,7 +103,8 @@ export default {
             name: this.name,
             platform: this.platform,
             rating: this.rating,
-            user: this.user
+            user: this.user,
+            userId: this.$store.getters.user.id
           })
           .then(() => {
             this.$store.dispatch("loadRatings");

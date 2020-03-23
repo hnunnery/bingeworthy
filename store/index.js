@@ -1,12 +1,14 @@
-import { db } from "@/plugins/firebase.js";
+import { db, auth } from "@/plugins/firebase.js";
 
 // STORE
 
 export const state = () => ({
+  user: null,
   ratings: [],
   masterRatings: [],
   names: [],
-  platforms: []
+  platforms: [],
+  error: null
 });
 
 // MUTATIONS
@@ -22,6 +24,16 @@ export const mutations = {
   },
   setMasterRatings(state, payload) {
     state.masterRatings = payload;
+  },
+  setError(state, payload) {
+    state.error = payload;
+  },
+  clearError(state) {
+    state.error = null;
+  },
+  // USER HANDLING
+  setUser(state, payload) {
+    state.user = payload;
   }
 };
 
@@ -68,6 +80,59 @@ export const actions = {
       tempMaster.push(obj);
     });
     commit("setMasterRatings", tempMaster);
+  },
+  // USER HANDLING
+  signUserUp({ commit }, payload) {
+    commit("clearError");
+    auth
+      .createUserWithEmailAndPassword(payload.email, payload.password)
+      .then(user => {
+        const newUser = {
+          // user.uid is undefined until later
+          id: user.uid
+        };
+        commit("setUser", newUser);
+      })
+      .catch(error => {
+        commit("setError", error);
+        console.log(error);
+      });
+  },
+  signUserIn({ commit }, payload) {
+    commit("clearError");
+    auth
+      .signInWithEmailAndPassword(payload.email, payload.password)
+      .then(user => {
+        const newUser = {
+          id: user.uid,
+          name: ""
+        };
+        commit("setUser", newUser);
+      })
+      .catch(error => {
+        commit("setError", error);
+        console.log(error);
+      });
+  },
+  autoSignIn({ commit }, payload) {
+    commit("setUser", {
+      id: payload.uid,
+      name: ""
+    });
+  },
+  logout({ commit }) {
+    auth.signOut();
+    commit("setUser", null);
+    this.$router.push("/");
+  }
+};
+
+export const getters = {
+  user(state) {
+    return state.user;
+  },
+  error(state) {
+    return state.error;
   }
 };
 

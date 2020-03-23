@@ -2,19 +2,37 @@
   <v-container fluid class="svg-bg" style="min-height: 100vh; padding-bottom: 100px;">
     <v-row class="justify-space-between ma-0 pa-0" no-gutters>
       <v-col cols="12" class="desktop">
-        <v-row class="align-center justify-space-between" no-gutters>
-          <v-col cols="6" class="mt-1 ml-1 mr-0 pa-0">
+        <v-row class="align-center justify-center justify-md-space-between" no-gutters>
+          <v-col cols="12" sm="4" class="mt-1 ml-1 mr-0 mb-2 pa-0">
             <v-text-field
               solo
               rounded
               placeholder="Search"
               v-model="search"
               hide-details
-              style="width: 250px;"
+              class="limit-width"
             ></v-text-field>
           </v-col>
-          <v-col cols="5" class="mt-1 mr-1 ml-0 pa-0 text-right">
-            <AddRating />
+          <v-col cols="12" sm="7" class="mt-1 mr-1 ml-0 pa-0 text-center text-md-right">
+            <v-btn rounded large class="primary text-capitalize mr-2" v-if="!userAuth" to="/signin">
+              <v-icon>mdi-account-check</v-icon>
+              <span class="hidden-sm-only hidden-md-only">&nbsp;Sign In</span>
+            </v-btn>
+            <v-btn rounded large class="primary text-capitalize mr-2" v-if="!userAuth" to="/signup">
+              <v-icon>mdi-account-plus</v-icon>
+              <span class="hidden-sm-only hidden-md-only">&nbsp;Sign Up</span>
+            </v-btn>
+            <v-btn
+              rounded
+              large
+              class="primary text-capitalize mr-2"
+              @click="onLogout"
+              v-if="userAuth"
+            >
+              <v-icon>mdi-account-minus</v-icon>
+              <span class="hidden-sm-only hidden-md-only">&nbsp;Sign Out</span>
+            </v-btn>
+            <AddRating v-if="userAuth" />
           </v-col>
         </v-row>
       </v-col>
@@ -92,7 +110,7 @@
                   v-if="rating.users.length === 1"
                   cols="12"
                   class="title font-weight-light font-italic"
-                >Rated by {{ rating.users.length }} User</v-col>
+                >Rated by Only {{ rating.users.length }} User</v-col>
                 <v-col
                   v-else
                   cols="12"
@@ -157,7 +175,7 @@
                   @click="setSearch(rating.user)"
                 >{{ rating.user }}</v-col>
                 <v-card-actions>
-                  <EditRating :rating="rating" />
+                  <EditRating :rating="rating" v-if="userId===rating.userId || userIsAdmin" />
                 </v-card-actions>
               </v-row>
             </v-card>
@@ -169,7 +187,7 @@
 </template>
 
 <script>
-import { db } from "@/plugins/firebase.js";
+import { db, auth } from "@/plugins/firebase.js";
 import AddRating from "@/components/AddRating";
 import EditRating from "@/components/EditRating";
 
@@ -193,6 +211,11 @@ export default {
     },
     clearSearch() {
       this.search = "";
+    },
+    onLogout() {
+      this.$store.dispatch("logout");
+      this.search = "";
+      this.$store.dispatch("loadRatings");
     }
   },
   computed: {
@@ -227,6 +250,30 @@ export default {
     // controls loading progress spinner
     loading() {
       return this.ratings.length < 1;
+    },
+    userAuth() {
+      return (
+        this.$store.getters.user !== null &&
+        this.$store.getters.user !== undefined
+      );
+    },
+    userId() {
+      if (
+        this.$store.getters.user !== null &&
+        this.$store.getters.user !== undefined
+      ) {
+        return this.$store.getters.user.id;
+      }
+    },
+    userIsAdmin() {
+      if (
+        this.$store.getters.user !== null &&
+        this.$store.getters.user !== undefined
+      ) {
+        if (this.$store.getters.user.id === "FLPuGBEpiyYce5QQuO4azAK0qwk2") {
+          return true;
+        }
+      }
     }
   },
   watch: {
@@ -237,7 +284,13 @@ export default {
     }
   },
   created() {
+    // fetching events from firebase
     this.$store.dispatch("loadRatings");
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.$store.dispatch("autoSignIn", user);
+      }
+    });
   }
 };
 </script>
@@ -248,6 +301,19 @@ export default {
     margin-bottom: -100px;
   }
 }
+@media screen and (min-width: 600px) {
+  .limit-width {
+    width: 250px;
+  }
+}
+@media screen and (min-width: 1050px) {
+  .limit-width {
+    width: 290px;
+  }
+}
+</style>
+
+<style >
 .svg-bg {
   background-repeat: repeat;
   background-color: #111111ad;
