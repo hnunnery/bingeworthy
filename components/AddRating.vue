@@ -104,7 +104,8 @@ export default {
             platform: this.platform,
             rating: this.rating,
             user: this.user,
-            userId: this.$store.getters.user.id
+            userId: this.$store.getters.user.id,
+            date: new Date()
           })
           .then(() => {
             this.$store.dispatch("loadRatings");
