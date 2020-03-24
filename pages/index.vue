@@ -2,7 +2,11 @@
   <v-container fluid class="svg-bg" style="min-height: 100vh; padding-bottom: 100px;">
     <v-row class="justify-space-between ma-0 pa-0" no-gutters>
       <v-col cols="12" class="desktop">
-        <v-row class="align-center justify-center justify-md-space-between" no-gutters>
+        <!-- MENU -->
+        <v-row
+          class="hidden-xs-only align-center justify-center justify-md-space-between"
+          no-gutters
+        >
           <v-col cols="12" sm="4" class="mt-1 ml-1 mr-0 mb-2 pa-0">
             <v-text-field
               solo
@@ -41,6 +45,54 @@
             <AddRating v-if="userAuth" />
           </v-col>
         </v-row>
+
+        <!-- MOBILE MENU -->
+        <v-row
+          v-show="menu"
+          class="hidden-sm-and-up align-center justify-center justify-md-space-between"
+          no-gutters
+        >
+          <v-col cols="12" sm="4" class="mt-1 ml-1 mr-0 mb-2 pa-0">
+            <v-text-field
+              solo
+              rounded
+              placeholder="Search"
+              v-model="search"
+              hide-details
+              class="limit-width"
+            ></v-text-field>
+          </v-col>
+          <v-col cols="12" sm="7" class="mt-1 mr-1 ml-0 pa-0 text-center text-md-right">
+            <v-btn
+              rounded
+              large
+              class="mr-5 primary text-capitalize mr-2"
+              v-if="!userAuth"
+              to="/signin"
+            >
+              <v-icon>mdi-account-check</v-icon>
+              <span class>&nbsp;Sign In</span>
+            </v-btn>
+            <v-btn rounded large class="primary text-capitalize mr-2" v-if="!userAuth" to="/signup">
+              <v-icon>mdi-account-plus</v-icon>
+              <span class>&nbsp;Sign Up</span>
+            </v-btn>
+            <v-btn
+              rounded
+              large
+              class="primary text-capitalize mr-2"
+              @click="onLogout"
+              v-if="userAuth"
+            >
+              <v-icon>mdi-account-minus</v-icon>
+              <span class="hidden-md-only">&nbsp;Sign Out</span>
+            </v-btn>
+            <AddRating v-if="userAuth" />
+          </v-col>
+        </v-row>
+        <v-btn fab x-small top right fixed class="hidden-sm-and-up primary" @click="menu=!menu">
+          <v-icon>mdi-menu</v-icon>
+        </v-btn>
       </v-col>
     </v-row>
     <v-row justify="center">
@@ -292,7 +344,8 @@ export default {
   data() {
     return {
       search: "",
-      expandedName: ""
+      expandedName: "",
+      menu: false
     };
   },
   methods: {
@@ -389,14 +442,17 @@ export default {
 </script>
 
 <style scoped>
-@media screen and (min-width: 960px) {
-  .desktop {
-    margin-bottom: -100px;
-  }
+.limit-width {
+  max-width: 80vw;
 }
 @media screen and (min-width: 600px) {
   .limit-width {
-    width: 250px;
+    max-width: 250px;
+  }
+}
+@media screen and (min-width: 960px) {
+  .desktop {
+    margin-bottom: -100px;
   }
 }
 @media screen and (min-width: 1050px) {
