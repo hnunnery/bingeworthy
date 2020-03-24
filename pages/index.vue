@@ -200,7 +200,7 @@
               class="mb-5"
             >
               <v-card
-                class="px-4 pt-3 ma-2 align-center d-flex"
+                class="px-4 pt-3 ma-2"
                 color="rgba(17, 17, 17, 0.7)"
                 elevation="15"
                 height="100%"
@@ -214,10 +214,10 @@
                 data-aos-once="false"
               >
                <v-container fluid>
-                <v-row class="text-center justify-center align-start">
+                <v-row class="text-center justify-center align-self-start d-flex">
                   <v-col cols="12" class="display-1 mt-2">{{ rating.name }}</v-col>
                 </v-row>
-                <v-row class="text-center justify-center align-end">
+                <v-row class="text-center justify-center align-self-end d-flex">
                   <v-col cols="12">
                     <v-rating
                       :value="rating.averageRating"
