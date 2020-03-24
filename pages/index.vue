@@ -215,7 +215,7 @@
               >
                 <v-row class="text-center justify-center align-center">
                   <v-row class="justify-center align-center" style="height: 105px;"><v-col cols="12" class="display-1 py-0 mt-2">{{ rating.name }}</v-col></v-row>
-                  <v-col cols="12">
+                  <v-col cols="12" class="pt-0">
                     <v-rating
                       :value="rating.averageRating"
                       half-increments
@@ -322,7 +322,7 @@
                     style="cursor: pointer;"
                     @click="setSearch(rating.name)"
                   >{{ rating.name }}</v-col></v-row>
-                  <v-col cols="12">
+                  <v-col cols="12" class="pt-0" >
                     <v-rating
                       :value="parseFloat(rating.rating)"
                       half-increments
