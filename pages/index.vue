@@ -200,7 +200,7 @@
               class="mb-5"
             >
               <v-card
-                class="px-4 pt-3 ma-2"
+                class="px-4 pt-3 ma-2 align-center d-flex"
                 color="rgba(17, 17, 17, 0.7)"
                 elevation="15"
                 height="100%"
@@ -213,11 +213,8 @@
                 data-aos-easing="ease-in-out"
                 data-aos-once="false"
               >
-  
-                <v-row class="text-center justify-center align-center d-flex">
-                  <v-col cols="12" class="display-1 mt-2" style="height: 105px;">
-<v-col cols="12" class="align-self-center"> {{ rating.name }}</v-col></v-col>
-                
+                <v-row class="text-center justify-center align-center">
+                  <v-col cols="12" class="display-1 mt-2">{{ rating.name }}</v-col>
                   <v-col cols="12">
                     <v-rating
                       :value="rating.averageRating"
@@ -243,7 +240,6 @@
                     class="title font-weight-light font-italic"
                   >Rated by {{ rating.users.length }} Users</v-col>
                 </v-row>
-               
               </v-card>
             </v-col>
           </v-row>
@@ -322,10 +318,10 @@
                 <v-row class="text-center justify-center align-center">
                   <v-col
                     cols="12"
-                    class="display-1 mt-2 align-self-center"
-                    style="cursor: pointer; height: 105px;"
+                    class="display-1 mt-2"
+                    style="cursor: pointer;"
                     @click="setSearch(rating.name)"
-                  ><v-col cols="12" class="align-self-center">{{ rating.name }}</v-col></v-col>
+                  >{{ rating.name }}</v-col>
                   <v-col cols="12">
                     <v-rating
                       :value="parseFloat(rating.rating)"
@@ -364,7 +360,6 @@
 import { db, auth } from "@/plugins/firebase.js";
 import AddRating from "@/components/AddRating";
 import EditRating from "@/components/EditRating";
-
 export default {
   components: {
     AddRating,
@@ -496,7 +491,6 @@ export default {
     width: 290px;
   }
 }
-
 @media screen and (min-width: 1200px) {
   .limit-width {
     width: 330px;
