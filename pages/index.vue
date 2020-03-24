@@ -213,6 +213,7 @@
                 data-aos-easing="ease-in-out"
                 data-aos-once="false"
               >
+               <v-container fluid>
                 <v-row class="text-center justify-center align-start">
                   <v-col cols="12" class="display-1 mt-2">{{ rating.name }}</v-col>
                 </v-row>
@@ -242,6 +243,7 @@
                     class="title font-weight-light font-italic"
                   >Rated by {{ rating.users.length }} Users</v-col>
                 </v-row>
+               </v-container>
               </v-card>
             </v-col>
           </v-row>
