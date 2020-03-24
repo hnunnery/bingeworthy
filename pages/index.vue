@@ -114,7 +114,7 @@
             class="hidden-xs-only secondary--text text-center font-weight-bold font-italic my-2"
             style="letter-spacing: 2px; font-size: 6vmax;"
           >BingeWorthy</h1>
-          <v-row justify="center">
+          <v-row class="justify-center mb-0 pb-0">
             <v-btn
               large
               rounded
