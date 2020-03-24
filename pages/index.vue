@@ -141,7 +141,7 @@
                 <v-col cols="12" class="mt-1 pb-0" style="font-size: 1.6em;">{{ rating.name }}</v-col>
                 <v-col cols="12" class="py-0">
                   <v-rating
-                    :value="parseFloat(rating.ratings.reduce((a,b) => a + b, 0) / rating.ratings.length)"
+                    :value="rating.averageRating"
                     half-increments
                     size="30"
                     readonly
@@ -195,7 +195,7 @@
                 <v-col cols="12" class="display-1 mt-2">{{ rating.name }}</v-col>
                 <v-col cols="12">
                   <v-rating
-                    :value="parseFloat(rating.ratings.reduce((a,b) => a + b, 0) / rating.ratings.length)"
+                    :value="rating.averageRating"
                     half-increments
                     size="40"
                     readonly

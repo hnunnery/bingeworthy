@@ -79,6 +79,13 @@ export const actions = {
       });
       tempMaster.push(obj);
     });
+    tempMaster.forEach(rating => {
+      let averageRating = parseFloat(
+        rating.ratings.reduce((a, b) => a + b, 0) / rating.ratings.length
+      );
+      rating.averageRating = averageRating;
+    });
+    tempMaster.sort((a, b) => (a.averageRating < b.averageRating ? 1 : -1));
     commit("setMasterRatings", tempMaster);
   },
   // USER HANDLING
