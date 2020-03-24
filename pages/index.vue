@@ -140,7 +140,7 @@
           >
             <v-card
               class="px-2 ma-1 align-center d-flex"
-              color="#11111150"
+              color="rgba(17, 17, 17, 0.5)"
               elevation="15"
               @click="setSearch(rating.name); expandedName=rating.name;"
               style="box-shadow: 0 0 5px 1px #ceb888 !important;"
@@ -187,7 +187,7 @@
           >
             <v-card
               class="px-4 pt-3 ma-2 align-center d-flex"
-              color="#11111180"
+              color="rgba(17, 17, 17, 0.7)"
               elevation="15"
               height="100%"
               @click="setSearch(rating.name); expandedName=rating.name;"
@@ -235,7 +235,7 @@
           <v-col cols="12" sm="6" v-for="rating in filteredRatings" :key="rating.id" class="pb-0">
             <v-card
               class="px-2 ma-1 align-center d-flex"
-              color="#11111150"
+              color="#rgba(17, 17, 17, 0.5)"
               elevation="15"
               style="box-shadow: 0 0 5px 1px #782f40 !important;"
             >
@@ -287,7 +287,7 @@
           >
             <v-card
               class="px-4 pt-3 ma-2 align-center d-flex"
-              color="#11111180"
+              color="rgba(17, 17, 17, 0.7)"
               elevation="15"
               height="100%"
               style="box-shadow: 0 0 15px 5px #782f40 !important;"
