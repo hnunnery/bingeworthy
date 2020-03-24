@@ -213,11 +213,11 @@
                 data-aos-easing="ease-in-out"
                 data-aos-once="false"
               >
-               <v-container fluid>
-                <v-row class="text-center justify-center align-self-start d-flex">
+  
+                <v-row class="text-center justify-center align-center">
                   <v-col cols="12" class="display-1 mt-2">{{ rating.name }}</v-col>
                 </v-row>
-                <v-row class="text-center justify-center align-self-end d-flex">
+                <v-row class="text-center justify-center align-self-end d-flex fill-height">
                   <v-col cols="12">
                     <v-rating
                       :value="rating.averageRating"
@@ -243,7 +243,7 @@
                     class="title font-weight-light font-italic"
                   >Rated by {{ rating.users.length }} Users</v-col>
                 </v-row>
-               </v-container>
+               
               </v-card>
             </v-col>
           </v-row>
