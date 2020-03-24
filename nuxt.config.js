@@ -81,7 +81,8 @@ export default {
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.red.darken4,
-          success: colors.green.darken1
+          success: colors.green.darken1,
+          white: "#fafafa"
         }
       }
     }
