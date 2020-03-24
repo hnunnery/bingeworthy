@@ -249,7 +249,7 @@
             <v-col cols="12" sm="6" v-for="rating in filteredRatings" :key="rating.id" class="pb-0">
               <v-card
                 class="px-2 ma-1 align-center d-flex"
-                color="#rgba(17, 17, 17, 0.5)"
+                color="rgba(17, 17, 17, 0.5)"
                 elevation="15"
                 style="box-shadow: 0 0 5px 1px #782f40 !important;"
               >
