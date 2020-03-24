@@ -15,12 +15,16 @@
         dark
         rounded
         large
-        class="hidden-sm-only hidden-lg-and-up text-capitalize"
+        class="hidden-sm-and-down hidden-lg-and-up text-capitalize"
         color="primary"
         v-on="on"
       >
         <v-icon>mdi-plus</v-icon>
-        <span class="small-mobile">&nbsp;Add Rating</span>
+        <span class="small-screen">&nbsp;Add</span>&nbsp;Rating
+      </v-btn>
+      <!-- button for xs screen size -->
+      <v-btn fab small class="primary hidden-sm-and-up text-capitalize" v-on="on">
+        <v-icon>mdi-plus</v-icon>
       </v-btn>
     </template>
     <v-card class="pa-6" color="#111111">
@@ -145,8 +149,8 @@ export default {
 </script>
 
 <style scoped>
-@media screen and (max-width: 350px) {
-  .small-mobile {
+@media screen and (max-width: 1050px) {
+  .small-screen {
     display: none;
   }
 }
