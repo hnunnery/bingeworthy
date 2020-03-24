@@ -214,10 +214,9 @@
                 data-aos-once="false"
               >
   
-                <v-row class="text-center justify-center align-center">
+                <v-row class="text-center justify-center align-center d-flex">
                   <v-col cols="12" class="display-1 mt-2" style="height: 105px;">{{ rating.name }}</v-col>
-                </v-row>
-                <v-row class="text-center justify-center align-content-end d-flex">
+                
                   <v-col cols="12">
                     <v-rating
                       :value="rating.averageRating"
@@ -323,7 +322,7 @@
                   <v-col
                     cols="12"
                     class="display-1 mt-2"
-                    style="cursor: pointer;"
+                    style="cursor: pointer; height: 105px;"
                     @click="setSearch(rating.name)"
                   >{{ rating.name }}</v-col>
                   <v-col cols="12">
