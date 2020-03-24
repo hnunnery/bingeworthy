@@ -4,7 +4,7 @@
       <v-col cols="12" class="desktop">
         <!-- MENU -->
         <v-row
-          class="hidden-xs-only align-center justify-center justify-md-space-between"
+          class="hidden-xs-only align-center justify-center justify-sm-space-between justify-md-space-between"
           no-gutters
         >
           <v-col cols="12" sm="4" class="mt-1 ml-1 mr-0 mb-2 pa-0">
@@ -17,7 +17,7 @@
               class="limit-width"
             ></v-text-field>
           </v-col>
-          <v-col cols="12" sm="7" class="mt-1 mr-1 ml-0 pa-0 text-center text-md-right">
+          <v-col cols="12" sm="7" class="mt-1 mr-1 ml-0 pa-0 text-center text-sm-right">
             <v-btn
               rounded
               large
@@ -39,8 +39,7 @@
               @click="onLogout"
               v-if="userAuth"
             >
-              <v-icon>mdi-account-minus</v-icon>
-              <span class="hidden-md-only">&nbsp;Sign Out</span>
+              <v-icon>mdi-account-minus</v-icon>&nbsp;Sign Out
             </v-btn>
             <AddRating v-if="userAuth" />
           </v-col>
