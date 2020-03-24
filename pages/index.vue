@@ -144,7 +144,7 @@
           </v-row>
 
           <!-- START - MOBILE - MASTER RATINGS CARDS -->
-          <v-row v-show="!loading" class="hidden-md-and-up justify-center mb-6">
+          <v-row v-show="!loading" class="hidden-md-and-up justify-center">
             <v-col
               cols="12"
               sm="6"
