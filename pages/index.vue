@@ -47,7 +47,7 @@
       <AddRating v-if="userAuth" />
     </v-app-bar>
 
-    <v-container fluid class="svg-bg" style="min-height: 100vh; padding-bottom: 100px;">
+    <v-container fluid class="svg-bg pt-1" style="min-height: 100vh; padding-bottom: 100px;">
       <v-row class="justify-space-between ma-0 pa-0" no-gutters>
         <v-col cols="12" class="desktop">
           <!-- MENU -->
@@ -178,9 +178,9 @@
                     fab
                     x-small
                     absolute
-                    bottom
-                    right
-                    class="primary body-1"
+                    top
+                    left
+                    class="secondary--text body-1"
                   >{{ rating.users.length }}</v-btn>
                 </v-row>
               </v-card>
@@ -214,7 +214,9 @@
                 data-aos-once="false"
               >
                 <v-row class="text-center justify-center align-center">
-                  <v-row class="justify-center align-center" style="height: 105px;"><v-col cols="12" class="display-1 py-0 mt-2">{{ rating.name }}</v-col></v-row>
+                  <v-row class="justify-center align-center" style="height: 105px;">
+                    <v-col cols="12" class="display-1 py-0 mt-2">{{ rating.name }}</v-col>
+                  </v-row>
                   <v-col cols="12" class="pt-0">
                     <v-rating
                       :value="rating.averageRating"
@@ -316,13 +318,15 @@
                 data-aos-once="false"
               >
                 <v-row class="text-center justify-center align-center">
-                  <v-row class="justify-center align-center" style="height: 105px;"><v-col
-                    cols="12"
-                    class="display-1 py-0 mt-2"
-                    style="cursor: pointer;"
-                    @click="setSearch(rating.name)"
-                  >{{ rating.name }}</v-col></v-row>
-                  <v-col cols="12" class="pt-0" >
+                  <v-row class="justify-center align-center" style="height: 105px;">
+                    <v-col
+                      cols="12"
+                      class="display-1 py-0 mt-2"
+                      style="cursor: pointer;"
+                      @click="setSearch(rating.name)"
+                    >{{ rating.name }}</v-col>
+                  </v-row>
+                  <v-col cols="12" class="pt-0">
                     <v-rating
                       :value="parseFloat(rating.rating)"
                       half-increments

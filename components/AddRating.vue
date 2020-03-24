@@ -23,7 +23,7 @@
         <span class="small-screen">&nbsp;Add</span>&nbsp;Rating
       </v-btn>
       <!-- button for xs screen size -->
-      <v-btn fab small class="primary hidden-sm-and-up text-capitalize" v-on="on">
+      <v-btn fab small class="primary hidden-sm-and-up text-capitalize mt-8" v-on="on">
         <v-icon>mdi-plus</v-icon>
       </v-btn>
     </template>
