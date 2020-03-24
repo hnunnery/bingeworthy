@@ -215,8 +215,8 @@
               >
   
                 <v-row class="text-center justify-center align-center d-flex">
-                  <v-col cols="12" class="display-1 mt-2 align-self-center">
-<v-col cols="12" style="105px !important;"> {{ rating.name }}</v-col></v-col>
+                  <v-col cols="12" class="display-1 mt-2 align-self-center" style="height: 105px;">
+<v-col cols="12"> {{ rating.name }}</v-col></v-col>
                 
                   <v-col cols="12">
                     <v-rating
@@ -323,9 +323,9 @@
                   <v-col
                     cols="12"
                     class="display-1 mt-2 align-self-center"
-                    style="cursor: pointer;"
+                    style="cursor: pointer; height: 105px;"
                     @click="setSearch(rating.name)"
-                  ><v-col cols="12" style="height: 105px; !important"{{ rating.name }}</v-col></v-col>
+                  ><v-col cols="12">{{ rating.name }}</v-col></v-col>
                   <v-col cols="12">
                     <v-rating
                       :value="parseFloat(rating.rating)"
