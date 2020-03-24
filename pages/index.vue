@@ -14,13 +14,19 @@
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="7" class="mt-1 mr-1 ml-0 pa-0 text-center text-md-right">
-            <v-btn rounded large class="mr-6 primary text-capitalize mr-2" v-if="!userAuth" to="/signin">
+            <v-btn
+              rounded
+              large
+              class="mr-5 primary text-capitalize mr-2"
+              v-if="!userAuth"
+              to="/signin"
+            >
               <v-icon>mdi-account-check</v-icon>
-              <span class="hidden-sm-only hidden-md-only">&nbsp;Sign In</span>
+              <span class>&nbsp;Sign In</span>
             </v-btn>
             <v-btn rounded large class="primary text-capitalize mr-2" v-if="!userAuth" to="/signup">
               <v-icon>mdi-account-plus</v-icon>
-              <span class="hidden-sm-only hidden-md-only">&nbsp;Sign Up</span>
+              <span class>&nbsp;Sign Up</span>
             </v-btn>
             <v-btn
               rounded
@@ -30,7 +36,7 @@
               v-if="userAuth"
             >
               <v-icon>mdi-account-minus</v-icon>
-              <span class="hidden-sm-only hidden-md-only">&nbsp;Sign Out</span>
+              <span class="hidden-md-only">&nbsp;Sign Out</span>
             </v-btn>
             <AddRating v-if="userAuth" />
           </v-col>
@@ -64,8 +70,52 @@
           </v-col>
         </v-row>
 
+        <!-- START - MOBILE - MASTER RATINGS CARDS -->
+        <v-row v-show="!loading" class="hidden-md-and-up justify-center mb-6">
+          <v-col
+            cols="12"
+            sm="6"
+            v-for="(rating, index) in filteredMasterRatings"
+            :key="index"
+            class="pb-0"
+          >
+            <v-card
+              class="px-2 ma-1 align-center d-flex"
+              color="#11111150"
+              elevation="15"
+              @click="setSearch(rating.name); expandedName=rating.name;"
+              style="box-shadow: 0 0 5px 1px #ceb888 !important;"
+            >
+              <v-row class="text-center justify-center align-center">
+                <v-col cols="12" class="mt-1 pb-0" style="font-size: 1.6em;">{{ rating.name }}</v-col>
+                <v-col cols="12" class="py-0">
+                  <v-rating
+                    :value="parseFloat(rating.ratings.reduce((a,b) => a + b, 0) / rating.ratings.length)"
+                    half-increments
+                    size="30"
+                    readonly
+                    color="secondary"
+                  ></v-rating>
+                </v-col>
+                <v-col
+                  cols="12"
+                  class="headline pt-0 font-weight-medium primary--text"
+                >{{ rating.platform }}</v-col>
+                <v-btn
+                  fab
+                  x-small
+                  absolute
+                  bottom
+                  right
+                  class="primary body-1"
+                >{{ rating.users.length }}</v-btn>
+              </v-row>
+            </v-card>
+          </v-col>
+        </v-row>
+
         <!-- START MASTER RATINGS CARDS -->
-        <v-row v-show="!loading" class="justify-center mt-2 mb-6">
+        <v-row v-show="!loading" class="hidden-sm-and-down justify-center mt-2 mb-6">
           <v-col
             cols="12"
             sm="8"
@@ -121,8 +171,51 @@
           </v-col>
         </v-row>
 
+        <!-- START - MOBILE - RATINGS CARDS -->
+        <v-row v-show="!loading && this.search" class="hidden-md-and-up justify-center mb-6">
+          <v-col cols="12" sm="6" v-for="rating in filteredRatings" :key="rating.id" class="pb-0">
+            <v-card
+              class="px-2 ma-1 align-center d-flex"
+              color="#11111150"
+              elevation="15"
+              style="box-shadow: 0 0 5px 1px #782f40 !important;"
+            >
+              <v-row class="text-center justify-center align-center">
+                <v-col
+                  cols="12"
+                  class="mt-1 pb-0"
+                  @click="setSearch(rating.name)"
+                  style="font-size: 1.6em;"
+                >{{ rating.name }}</v-col>
+                <v-col cols="12" class="py-0">
+                  <v-rating
+                    :value="parseFloat(rating.rating)"
+                    half-increments
+                    size="30"
+                    readonly
+                    color="secondary"
+                  ></v-rating>
+                </v-col>
+                <v-col
+                  cols="12"
+                  class="headline py-0 font-weight-medium primary--text"
+                  @click="setSearch(rating.platform)"
+                >{{ rating.platform }}</v-col>
+                <v-col
+                  cols="12"
+                  class="title py-0 font-weight-light font-italic"
+                  @click="setSearch(rating.user)"
+                >{{ rating.user }}</v-col>
+                <v-card-actions>
+                  <EditRating :rating="rating" v-if="userId===rating.userId || userIsAdmin" />
+                </v-card-actions>
+              </v-row>
+            </v-card>
+          </v-col>
+        </v-row>
+
         <!-- START RATINGS CARDS -->
-        <v-row v-show="!loading && this.search" class="justify-center mt-2 mb-6">
+        <v-row v-show="!loading && this.search" class="hidden-sm-and-down justify-center mt-2 mb-6">
           <v-col
             cols="12"
             sm="8"
@@ -317,7 +410,6 @@ export default {
     width: 330px;
   }
 }
-
 </style>
 
 <style >
