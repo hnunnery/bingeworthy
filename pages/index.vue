@@ -215,7 +215,8 @@
               >
   
                 <v-row class="text-center justify-center align-center d-flex">
-                  <v-col cols="12" class="display-1 mt-2 align-content-center d-flex" style="height: 105px;">{{ rating.name }}</v-col>
+                  <v-col cols="12" class="display-1 mt-2 align-self-center">
+<v-col cols="12" style="105px;"> {{ rating.name }}</v-col></v-col>
                 
                   <v-col cols="12">
                     <v-rating
