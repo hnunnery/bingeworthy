@@ -128,7 +128,7 @@
             <v-btn
               rounded
               large
-              class="accent white--text text-capitalize"
+              class="primary text-capitalize"
               v-show="this.search"
               @click="clearSearch"
             >
