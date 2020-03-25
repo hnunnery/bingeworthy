@@ -2,9 +2,12 @@
   <v-container fluid class="ma-0 pa-0">
     <v-app-bar dense dark class="hidden-sm-and-up" color="#111">
       <v-toolbar-title
-        class="secondary--text font-weight-bold font-italic"
+        class="font-weight-bold font-italic"
         style="letter-spacing: 1px; font-size: 5vw;"
-      >BingeWorthy</v-toolbar-title>
+        to="/"
+      >
+        <nuxt-link to="/" style="text-decoration: none; color: #ceb888;">BingeWorthy</nuxt-link>
+      </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
         text
@@ -39,7 +42,7 @@
         class="text-capitalize"
         style="margin-right: 1px; margin-left: -6px;"
         color="#111"
-        to="/ratings"
+        to="/"
         v-if="userAuth"
       >
         <v-icon color="white">mdi-star</v-icon>
@@ -103,8 +106,8 @@
               >
                 <v-icon>mdi-account-minus</v-icon>
               </v-btn>
-              <v-btn icon large class="primary text-capitalize mr-2" to="/ratings" v-if="userAuth">
-                <v-icon>mdi-star</v-icon>
+              <v-btn icon large class="primary text-capitalize mr-2" to="/" v-if="userAuth">
+                <v-icon>mdi-home</v-icon>
               </v-btn>
               <AddRating v-if="userAuth" />
             </v-col>
@@ -146,111 +149,8 @@
             </v-col>
           </v-row>
 
-          <!-- START - MOBILE - MASTER RATINGS CARDS -->
-          <v-row v-show="!loading" class="hidden-md-and-up justify-center">
-            <v-col
-              cols="12"
-              sm="6"
-              v-for="(rating, index) in filteredMasterRatings"
-              :key="index"
-              class="pb-0"
-            >
-              <v-card
-                class="px-2 ma-1 align-center d-flex"
-                color="rgba(17, 17, 17, 0.5)"
-                elevation="15"
-                @click="setSearch(rating.name); expandedName=rating.name;"
-                style="box-shadow: 0 0 5px 1px #ceb888 !important;"
-              >
-                <v-row class="text-center justify-center align-center">
-                  <v-col cols="12" class="mt-1 pb-0" style="font-size: 1.6em;">{{ rating.name }}</v-col>
-                  <v-col cols="12" class="py-0">
-                    <v-rating
-                      :value="rating.averageRating"
-                      half-increments
-                      size="30"
-                      readonly
-                      color="secondary"
-                    ></v-rating>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    class="headline pt-0 font-weight-medium primary--text"
-                  >{{ rating.platform }}</v-col>
-                  <v-btn
-                    fab
-                    x-small
-                    absolute
-                    top
-                    left
-                    class="secondary--text body-1"
-                  >{{ rating.users.length }}</v-btn>
-                </v-row>
-              </v-card>
-            </v-col>
-          </v-row>
-
-          <!-- START MASTER RATINGS CARDS -->
-          <v-row v-show="!loading" class="hidden-sm-and-down justify-center mt-2 mb-6">
-            <v-col
-              cols="12"
-              sm="8"
-              md="6"
-              lg="4"
-              xl="3"
-              v-for="(rating, index) in filteredMasterRatings"
-              :key="index"
-              class="mb-5"
-            >
-              <v-card
-                class="px-4 pt-1 ma-2 align-center d-flex"
-                color="rgba(17, 17, 17, 0.7)"
-                elevation="15"
-                height="100%"
-                @click="setSearch(rating.name); expandedName=rating.name;"
-                style="box-shadow: 0 0 15px 5px #ceb888 !important; cursor: pointer;"
-                data-aos="flip-left"
-                data-aos-offset="0"
-                data-aos-delay="0"
-                data-aos-duration="500"
-                data-aos-easing="ease-in-out"
-                data-aos-once="false"
-              >
-                <v-row class="text-center justify-center align-center">
-                  <v-row class="justify-center align-center" style="height: 85px;">
-                    <v-col cols="12" class="display-1 py-0 mt-0">{{ rating.name }}</v-col>
-                  </v-row>
-                  <v-col cols="12" class="pt-0">
-                    <v-rating
-                      :value="rating.averageRating"
-                      half-increments
-                      size="40"
-                      readonly
-                      color="secondary"
-                    ></v-rating>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    class="py-0 font-weight-medium primary--text"
-                    style="font-size: 1.9em;"
-                  >{{ rating.platform }}</v-col>
-                  <v-col
-                    v-if="rating.users.length === 1"
-                    cols="12"
-                    class="title font-weight-light font-italic"
-                  >Rated by Only {{ rating.users.length }} User</v-col>
-                  <v-col
-                    v-else
-                    cols="12"
-                    class="title font-weight-light font-italic"
-                  >Rated by {{ rating.users.length }} Users</v-col>
-                </v-row>
-              </v-card>
-            </v-col>
-          </v-row>
-
           <!-- START - MOBILE - RATINGS CARDS -->
-          <v-row v-show="!loading && this.search" class="hidden-md-and-up justify-center mt-0 mb-6">
+          <v-row v-show="!loading" class="hidden-md-and-up justify-center mt-0 mb-6">
             <v-col cols="12" sm="6" v-for="rating in filteredRatings" :key="rating.id" class="pb-0">
               <v-card
                 class="px-2 ma-1 align-center d-flex"
@@ -285,7 +185,7 @@
                     @click="setSearch(rating.user)"
                   >{{ rating.user }}</v-col>
                   <v-card-actions>
-                    <EditRating :rating="rating" v-if="userId===rating.userId || userIsAdmin" />
+                    <EditRating :rating="rating" v-if="userId===rating.userId" />
                   </v-card-actions>
                 </v-row>
               </v-card>
@@ -293,10 +193,7 @@
           </v-row>
 
           <!-- START RATINGS CARDS -->
-          <v-row
-            v-show="!loading && this.search"
-            class="hidden-sm-and-down justify-center mt-2 mb-6"
-          >
+          <v-row v-show="!loading" class="hidden-sm-and-down justify-center mt-2 mb-6">
             <v-col
               cols="12"
               sm="8"
@@ -324,7 +221,7 @@
                   <v-row class="justify-center align-center" style="height: 85px;">
                     <v-col
                       cols="12"
-                      class="display-1 py-0 mt-2"
+                      class="display-1 py-0 mt-0"
                       style="cursor: pointer;"
                       @click="setSearch(rating.name)"
                     >{{ rating.name }}</v-col>
@@ -351,7 +248,7 @@
                     @click="setSearch(rating.user)"
                   >{{ rating.user }}</v-col>
                   <v-card-actions>
-                    <EditRating :rating="rating" v-if="userId===rating.userId || userIsAdmin" />
+                    <EditRating :rating="rating" v-if="userId===rating.userId" />
                   </v-card-actions>
                 </v-row>
               </v-card>
@@ -364,9 +261,9 @@
 </template>
 
 <script>
-import { db, auth } from "@/plugins/firebase.js";
 import AddRating from "@/components/AddRating";
 import EditRating from "@/components/EditRating";
+
 export default {
   components: {
     AddRating,
@@ -375,7 +272,6 @@ export default {
   data() {
     return {
       search: "",
-      expandedName: "",
       searchBar: false
     };
   },
@@ -392,37 +288,19 @@ export default {
     onLogout() {
       if (confirm("Sign Out?")) {
         this.$store.dispatch("logout");
-        this.search = "";
-        this.$store.dispatch("loadRatings");
+        this.$router.push("/");
       }
     }
   },
   computed: {
-    masterRatings() {
-      return this.$store.state.masterRatings;
-    },
     ratings() {
-      return this.$store.state.ratings;
-    },
-    names() {
-      return this.ratings.map(rating => rating.name);
-    },
-    filteredMasterRatings() {
-      return this.masterRatings.filter(rating => {
-        if (!this.expandedName) {
-          return (
-            rating.name.toLowerCase().match(this.search.toLowerCase()) ||
-            rating.platform.toLowerCase().match(this.search.toLowerCase())
-          );
-        }
-      });
+      return this.$store.getters.userRatings;
     },
     filteredRatings() {
       return this.ratings.filter(rating => {
         return (
           rating.name.toLowerCase().match(this.search.toLowerCase()) ||
-          rating.platform.toLowerCase().match(this.search.toLowerCase()) ||
-          rating.user.toLowerCase().match(this.search.toLowerCase())
+          rating.platform.toLowerCase().match(this.search.toLowerCase())
         );
       });
     },
@@ -443,33 +321,17 @@ export default {
       ) {
         return this.$store.getters.user.id;
       }
-    },
-    userIsAdmin() {
-      if (
-        this.$store.getters.user !== null &&
-        this.$store.getters.user !== undefined
-      ) {
-        if (this.$store.getters.user.id === "FLPuGBEpiyYce5QQuO4azAK0qwk2") {
-          return true;
-        }
-      }
     }
   },
   watch: {
-    search() {
-      if (this.search !== this.expandedName) {
-        this.expandedName = "";
+    userAuth() {
+      if (
+        this.$store.getters.user === null &&
+        this.$store.getters.user === undefined
+      ) {
+        this.$router.push("/");
       }
     }
-  },
-  created() {
-    // fetching events from firebase
-    this.$store.dispatch("loadRatings");
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        this.$store.dispatch("autoSignIn", user);
-      }
-    });
   }
 };
 </script>
@@ -503,9 +365,7 @@ export default {
     width: 330px;
   }
 }
-</style>
 
-<style >
 .svg-bg {
   background-repeat: repeat;
   background-color: #111111ad;

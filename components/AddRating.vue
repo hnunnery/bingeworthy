@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-model="dialog" persistent max-width="600">
     <template v-slot:activator="{ on }">
-      <v-btn
+      <!-- <v-btn
         dark
         rounded
         large
@@ -10,15 +10,8 @@
         v-on="on"
       >
         <v-icon>mdi-plus</v-icon>&nbsp;Add Your Rating
-      </v-btn>
-      <v-btn
-        dark
-        rounded
-        large
-        class="hidden-sm-and-down hidden-lg-and-up text-capitalize"
-        color="primary"
-        v-on="on"
-      >
+      </v-btn>-->
+      <v-btn dark rounded large class="hidden-xs-only text-capitalize" color="primary" v-on="on">
         <v-icon>mdi-plus</v-icon>
         <span class="small-screen">&nbsp;Add</span>&nbsp;Rating
       </v-btn>

@@ -140,6 +140,15 @@ export const getters = {
   },
   error(state) {
     return state.error;
+  },
+  userRatings(state) {
+    let newList = [];
+    state.ratings.forEach(rating => {
+      if (rating.userId === state.user.id) {
+        newList.push(rating);
+      }
+    });
+    return newList;
   }
 };
 
