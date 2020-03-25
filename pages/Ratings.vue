@@ -1,18 +1,17 @@
 <template>
   <v-container fluid class="pt-0 pb-12">
+    <!-- DESKTOP NAV START -->
     <v-row class="justify-space-between ma-0 pa-0" no-gutters>
       <v-col cols="12" class="desktop">
         <!-- MENU -->
-        <v-row
-          class="align-center justify-center justify-sm-space-between justify-md-space-between"
-          no-gutters
-        >
+        <v-row class="align-center justify-center justify-md-space-between" no-gutters>
           <!-- mobile search bar that drops down when search icon is clicked -->
           <v-col
             cols="12"
-            sm="4"
-            v-show="this.$store.state.searchBar"
+            sm="10"
+            md="4"
             class="mt-1 ml-1 mr-0 mb-0 pa-0"
+            v-show="this.$store.state.searchBar"
           >
             <v-text-field solo rounded placeholder="Search" v-model="search" hide-details></v-text-field>
           </v-col>
@@ -23,7 +22,7 @@
               placeholder="Search"
               v-model="search"
               hide-details
-              class="limit-width hidden-sm-and-down"
+              class="limit-width hidden-md-and-down"
             ></v-text-field>
             <v-btn
               rounded
@@ -44,49 +43,33 @@
             <v-btn
               rounded
               large
-              class="mr-5 primary text-capitalize mr-2"
+              class="hidden-md-and-down mr-5 primary text-capitalize mr-2"
               v-if="!userAuth"
               to="/signin"
             >
               <v-icon>mdi-account-check</v-icon>
               <span class>&nbsp;Sign In</span>
             </v-btn>
-            <v-btn rounded large class="primary text-capitalize mr-2" v-if="!userAuth" to="/signup">
-              <v-icon>mdi-account-plus</v-icon>
-              <span class>&nbsp;Sign Up</span>
-            </v-btn>
-            <v-btn
-              icon
-              large
-              class="hidden-lg-and-up primary text-capitalize mr-2"
-              @click="onLogout"
-              v-if="userAuth"
-            >
-              <v-icon>mdi-account-minus</v-icon>
-            </v-btn>
-            <v-btn
-              icon
-              large
-              class="hidden-lg-and-up primary text-capitalize mr-2"
-              to="/"
-              v-if="userAuth"
-            >
-              <v-icon>mdi-home</v-icon>
-            </v-btn>
             <v-btn
               rounded
               large
               class="hidden-md-and-down primary text-capitalize mr-2"
-              to="/"
-              v-if="userAuth"
+              v-if="!userAuth"
+              to="/signup"
             >
-              <v-icon left>mdi-home</v-icon>Back Home
+              <v-icon>mdi-account-plus</v-icon>
+              <span class>&nbsp;Sign Up</span>
             </v-btn>
-            <AddRating v-if="userAuth" />
+            <v-btn rounded large class="hidden-md-and-down primary text-capitalize mr-2" to="/">
+              <v-icon left>mdi-home</v-icon>All Ratings
+            </v-btn>
+            <AddRating v-if="userAuth && this.$vuetify.breakpoint.lgAndUp" />
           </v-col>
         </v-row>
       </v-col>
     </v-row>
+    <!-- DESKTOP NAV END -->
+
     <v-row justify="center">
       <v-col cols="12" lg="11" xl="10" class="mt-0 pt-0">
         <h1

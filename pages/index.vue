@@ -1,7 +1,8 @@
 <template>
   <v-container fluid class="pt-0 pb-12">
+    <!-- DESKTOP NAV START -->
     <v-row class="justify-space-between ma-0 pa-0" no-gutters>
-      <v-col cols="12" class="desktop mb-0">
+      <v-col cols="12" class="desktop">
         <!-- MENU -->
         <v-row class="align-center justify-center justify-md-space-between" no-gutters>
           <!-- mobile search bar that drops down when search icon is clicked -->
@@ -73,6 +74,7 @@
         </v-row>
       </v-col>
     </v-row>
+    <!-- DESKTOP NAV END -->
 
     <v-row justify="center">
       <v-col cols="12" lg="11" xl="10" class="mt-0 pt-0">
