@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar dense dark class="hidden-md-and-up" color="#111">
+  <v-app-bar dense dark class="hidden-lg-and-up" color="#111">
     <v-toolbar-title
       class="b-text secondary--text font-weight-bold font-italic"
       style="letter-spacing: 1px;"
@@ -10,7 +10,7 @@
     <v-btn
       text
       @click="searchBar=!searchBar"
-      class="text-capitalize hidden-sm-only"
+      class="text-capitalize hidden-sm-only hidden-md-only"
       style="margin-right: -6px; margin-left: -6px; letter-spacing: .5px;"
     >
       <v-icon>mdi-magnify</v-icon>
@@ -27,6 +27,15 @@
     </v-btn>
     <v-btn text class="text-capitalize" v-if="!userAuth" to="/signin" style="letter-spacing: .5px;">
       <v-icon>mdi-account-check</v-icon>&nbsp;Sign In
+    </v-btn>
+    <v-btn
+      text
+      class="hidden-xs-only text-capitalize"
+      v-if="!userAuth"
+      to="/signup"
+      style="letter-spacing: .5px; margin-left: -6px;"
+    >
+      <v-icon>mdi-account-plus</v-icon>&nbsp;Sign Up
     </v-btn>
     <v-btn
       text
