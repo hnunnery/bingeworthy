@@ -1,254 +1,233 @@
 <template>
-  <v-container fluid class="ma-0 pa-0">
-    <NavBar />
-    <v-container fluid class="svg-bg pt-1" style="min-height: 100vh; padding-bottom: 100px;">
-      <v-row class="justify-space-between ma-0 pa-0" no-gutters>
-        <v-col cols="12" class="desktop">
-          <!-- MENU -->
-          <v-row
-            class="align-center justify-center justify-sm-space-between justify-md-space-between"
-            no-gutters
+  <v-container fluid class="svg-bg pt-1" style="min-height: 100vh; padding-bottom: 100px;">
+    <v-row class="justify-space-between ma-0 pa-0" no-gutters>
+      <v-col cols="12" class="desktop">
+        <!-- MENU -->
+        <v-row
+          class="align-center justify-center justify-sm-space-between justify-md-space-between"
+          no-gutters
+        >
+          <!-- mobile search bar that drops down when search icon is clicked -->
+          <v-col
+            cols="12"
+            sm="4"
+            v-show="this.$store.state.searchBar"
+            class="mt-1 ml-1 mr-0 mb-0 pa-0"
           >
-            <!-- mobile search bar that drops down when search icon is clicked -->
-            <v-col
-              cols="12"
-              sm="4"
-              v-show="this.$store.state.searchBar"
-              class="mt-1 ml-1 mr-0 mb-0 pa-0"
-            >
-              <v-text-field solo rounded placeholder="Search" v-model="search" hide-details></v-text-field>
-            </v-col>
-            <v-col cols="12" sm="4" lg="6" class="d-inline-flex mt-1 ml-1 mr-0 mb-2 pa-0">
-              <v-text-field
-                solo
-                rounded
-                placeholder="Search"
-                v-model="search"
-                hide-details
-                class="limit-width hidden-sm-and-down"
-              ></v-text-field>
-              <v-btn
-                rounded
-                large
-                class="hidden-md-and-down primary text-capitalize ml-3"
-                @click="onLogout"
-                v-if="userAuth"
-              >
-                <v-icon left>mdi-account-minus</v-icon>Sign Out
-              </v-btn>
-            </v-col>
-            <v-col
-              cols="12"
-              sm="7"
-              lg="5"
-              class="hidden-sm-and-down mt-1 mr-1 ml-0 pa-0 text-center text-sm-right"
-            >
-              <v-btn
-                rounded
-                large
-                class="mr-5 primary text-capitalize mr-2"
-                v-if="!userAuth"
-                to="/signin"
-              >
-                <v-icon>mdi-account-check</v-icon>
-                <span class>&nbsp;Sign In</span>
-              </v-btn>
-              <v-btn
-                rounded
-                large
-                class="primary text-capitalize mr-2"
-                v-if="!userAuth"
-                to="/signup"
-              >
-                <v-icon>mdi-account-plus</v-icon>
-                <span class>&nbsp;Sign Up</span>
-              </v-btn>
-              <v-btn
-                icon
-                large
-                class="hidden-lg-and-up primary text-capitalize mr-2"
-                @click="onLogout"
-                v-if="userAuth"
-              >
-                <v-icon>mdi-account-minus</v-icon>
-              </v-btn>
-              <v-btn
-                icon
-                large
-                class="hidden-lg-and-up primary text-capitalize mr-2"
-                to="/"
-                v-if="userAuth"
-              >
-                <v-icon>mdi-home</v-icon>
-              </v-btn>
-              <v-btn
-                rounded
-                large
-                class="hidden-md-and-down primary text-capitalize mr-2"
-                to="/"
-                v-if="userAuth"
-              >
-                <v-icon left>mdi-home</v-icon>Back Home
-              </v-btn>
-              <AddRating v-if="userAuth" />
-            </v-col>
-          </v-row>
-        </v-col>
-      </v-row>
-      <v-row justify="center">
-        <v-col cols="12" lg="11" xl="10" class="mt-0 pt-0">
-          <h1
-            class="hidden-sm-and-down secondary--text text-center font-weight-bold font-italic my-2"
-            style="letter-spacing: 2px; font-size: 6vmax;"
-          >BingeWorthy</h1>
-          <v-row class="justify-center mb-0 pb-0">
-            <v-btn
-              large
+            <v-text-field solo rounded placeholder="Search" v-model="search" hide-details></v-text-field>
+          </v-col>
+          <v-col cols="12" sm="4" lg="6" class="d-inline-flex mt-1 ml-1 mr-0 mb-2 pa-0">
+            <v-text-field
+              solo
               rounded
-              absolute
-              bottom
-              left
-              class="secondary primary--text font-weight-bold"
-              href="https://github.com/hnunnery/bingeworthy"
-              target="_blank"
-            >GitHub</v-btn>
+              placeholder="Search"
+              v-model="search"
+              hide-details
+              class="limit-width hidden-sm-and-down"
+            ></v-text-field>
             <v-btn
               rounded
               large
-              class="primary text-capitalize"
-              v-show="this.search"
-              @click="clearSearch"
+              class="hidden-md-and-down primary text-capitalize ml-3"
+              @click="onLogout"
+              v-if="userAuth"
             >
-              <v-icon>mdi-filter-remove</v-icon>&nbsp;Clear Filter
+              <v-icon left>mdi-account-minus</v-icon>Sign Out
             </v-btn>
-          </v-row>
-
-          <!-- PROGRESS SPINNER -->
-          <v-row v-show="loading" class="justify-center align-center" style="height: 50vh">
-            <v-col class="text-center">
-              <v-progress-circular :size="150" :width="12" color="primary" indeterminate></v-progress-circular>
-            </v-col>
-          </v-row>
-
-          <!-- START - MOBILE - RATINGS CARDS -->
-          <v-row v-show="!loading" class="hidden-md-and-up justify-center mt-0 mb-6">
-            <v-col cols="12" sm="6" v-for="rating in filteredRatings" :key="rating.id" class="pb-0">
-              <v-card
-                class="px-2 ma-1 align-center d-flex"
-                color="rgba(17, 17, 17, 0.5)"
-                elevation="15"
-                style="box-shadow: 0 0 5px 1px #782f40 !important;"
-              >
-                <v-row class="text-center justify-center align-center">
-                  <v-col
-                    cols="12"
-                    class="mt-1 pb-0"
-                    @click="setSearch(rating.name)"
-                    style="font-size: 1.6em;"
-                  >{{ rating.name }}</v-col>
-                  <v-col cols="12" class="py-0">
-                    <v-rating
-                      :value="parseFloat(rating.rating)"
-                      half-increments
-                      size="30"
-                      readonly
-                      color="secondary"
-                    ></v-rating>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    class="headline py-0 font-weight-medium primary--text"
-                    @click="setSearch(rating.platform)"
-                  >{{ rating.platform }}</v-col>
-                  <v-col
-                    cols="12"
-                    class="title py-0 font-weight-light font-italic"
-                    @click="setSearch(rating.user)"
-                  >{{ rating.user }}</v-col>
-                  <v-card-actions>
-                    <EditRating :rating="rating" v-if="userId===rating.userId" />
-                  </v-card-actions>
-                </v-row>
-              </v-card>
-            </v-col>
-          </v-row>
-
-          <!-- START RATINGS CARDS -->
-          <v-row v-show="!loading" class="hidden-sm-and-down justify-center mt-2 mb-6">
-            <v-col
-              cols="12"
-              sm="8"
-              md="6"
-              lg="4"
-              xl="3"
-              v-for="rating in filteredRatings"
-              :key="rating.id"
-              class="mb-5"
+          </v-col>
+          <v-col
+            cols="12"
+            sm="7"
+            lg="5"
+            class="hidden-sm-and-down mt-1 mr-1 ml-0 pa-0 text-center text-sm-right"
+          >
+            <v-btn
+              rounded
+              large
+              class="mr-5 primary text-capitalize mr-2"
+              v-if="!userAuth"
+              to="/signin"
             >
-              <v-card
-                class="px-4 pt-1 ma-2 align-center d-flex"
-                color="rgba(17, 17, 17, 0.7)"
-                elevation="15"
-                height="100%"
-                style="box-shadow: 0 0 15px 5px #782f40 !important;"
-                data-aos="flip-left"
-                data-aos-offset="0"
-                data-aos-delay="0"
-                data-aos-duration="500"
-                data-aos-easing="ease-in-out"
-                data-aos-once="false"
-              >
-                <v-row class="text-center justify-center align-center">
-                  <v-row class="justify-center align-center" style="height: 85px;">
-                    <v-col
-                      cols="12"
-                      class="display-1 py-0 mt-0"
-                      style="cursor: pointer;"
-                      @click="setSearch(rating.name)"
-                    >{{ rating.name }}</v-col>
-                  </v-row>
-                  <v-col cols="12" class="pt-0">
-                    <v-rating
-                      :value="parseFloat(rating.rating)"
-                      half-increments
-                      size="40"
-                      readonly
-                      color="secondary"
-                    ></v-rating>
-                  </v-col>
+              <v-icon>mdi-account-check</v-icon>
+              <span class>&nbsp;Sign In</span>
+            </v-btn>
+            <v-btn rounded large class="primary text-capitalize mr-2" v-if="!userAuth" to="/signup">
+              <v-icon>mdi-account-plus</v-icon>
+              <span class>&nbsp;Sign Up</span>
+            </v-btn>
+            <v-btn
+              icon
+              large
+              class="hidden-lg-and-up primary text-capitalize mr-2"
+              @click="onLogout"
+              v-if="userAuth"
+            >
+              <v-icon>mdi-account-minus</v-icon>
+            </v-btn>
+            <v-btn
+              icon
+              large
+              class="hidden-lg-and-up primary text-capitalize mr-2"
+              to="/"
+              v-if="userAuth"
+            >
+              <v-icon>mdi-home</v-icon>
+            </v-btn>
+            <v-btn
+              rounded
+              large
+              class="hidden-md-and-down primary text-capitalize mr-2"
+              to="/"
+              v-if="userAuth"
+            >
+              <v-icon left>mdi-home</v-icon>Back Home
+            </v-btn>
+            <AddRating v-if="userAuth" />
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+    <v-row justify="center">
+      <v-col cols="12" lg="11" xl="10" class="mt-0 pt-0">
+        <h1
+          class="hidden-sm-and-down secondary--text text-center font-weight-bold font-italic my-2"
+          style="letter-spacing: 2px; font-size: 6vmax;"
+        >BingeWorthy</h1>
+        <v-row class="justify-center mb-0 pb-0">
+          <v-btn
+            rounded
+            large
+            class="primary text-capitalize"
+            v-show="this.search"
+            @click="clearSearch"
+          >
+            <v-icon>mdi-filter-remove</v-icon>&nbsp;Clear Filter
+          </v-btn>
+        </v-row>
+
+        <!-- PROGRESS SPINNER -->
+        <v-row v-show="loading" class="justify-center align-center" style="height: 50vh">
+          <v-col class="text-center">
+            <v-progress-circular :size="150" :width="12" color="primary" indeterminate></v-progress-circular>
+          </v-col>
+        </v-row>
+
+        <!-- START - MOBILE - RATINGS CARDS -->
+        <v-row v-show="!loading" class="hidden-md-and-up justify-center mt-0 mb-6">
+          <v-col cols="12" sm="6" v-for="rating in filteredRatings" :key="rating.id" class="pb-0">
+            <v-card
+              class="px-2 ma-1 align-center d-flex"
+              color="rgba(17, 17, 17, 0.5)"
+              elevation="15"
+              style="box-shadow: 0 0 5px 1px #782f40 !important;"
+            >
+              <v-row class="text-center justify-center align-center">
+                <v-col
+                  cols="12"
+                  class="mt-1 pb-0"
+                  @click="setSearch(rating.name)"
+                  style="font-size: 1.6em;"
+                >{{ rating.name }}</v-col>
+                <v-col cols="12" class="py-0">
+                  <v-rating
+                    :value="parseFloat(rating.rating)"
+                    half-increments
+                    size="30"
+                    readonly
+                    color="secondary"
+                  ></v-rating>
+                </v-col>
+                <v-col
+                  cols="12"
+                  class="headline py-0 font-weight-medium primary--text"
+                  @click="setSearch(rating.platform)"
+                >{{ rating.platform }}</v-col>
+                <v-col
+                  cols="12"
+                  class="title py-0 font-weight-light font-italic"
+                  @click="setSearch(rating.user)"
+                >{{ rating.user }}</v-col>
+                <v-card-actions>
+                  <EditRating :rating="rating" v-if="userId===rating.userId" />
+                </v-card-actions>
+              </v-row>
+            </v-card>
+          </v-col>
+        </v-row>
+
+        <!-- START RATINGS CARDS -->
+        <v-row v-show="!loading" class="hidden-sm-and-down justify-center mt-2 mb-6">
+          <v-col
+            cols="12"
+            sm="8"
+            md="6"
+            lg="4"
+            xl="3"
+            v-for="rating in filteredRatings"
+            :key="rating.id"
+            class="mb-5"
+          >
+            <v-card
+              class="px-4 pt-1 ma-2 align-center d-flex"
+              color="rgba(17, 17, 17, 0.7)"
+              elevation="15"
+              height="100%"
+              style="box-shadow: 0 0 15px 5px #782f40 !important;"
+              data-aos="flip-left"
+              data-aos-offset="0"
+              data-aos-delay="0"
+              data-aos-duration="500"
+              data-aos-easing="ease-in-out"
+              data-aos-once="false"
+            >
+              <v-row class="text-center justify-center align-center">
+                <v-row class="justify-center align-center" style="height: 85px;">
                   <v-col
                     cols="12"
-                    class="py-0 font-weight-medium primary--text"
-                    style="cursor: pointer; font-size: 1.9em;"
-                    @click="setSearch(rating.platform)"
-                  >{{ rating.platform }}</v-col>
-                  <v-col
-                    cols="12"
-                    class="headline font-weight-light font-italic"
+                    class="display-1 py-0 mt-0"
                     style="cursor: pointer;"
-                    @click="setSearch(rating.user)"
-                  >{{ rating.user }}</v-col>
-                  <v-card-actions>
-                    <EditRating :rating="rating" v-if="userId===rating.userId" />
-                  </v-card-actions>
+                    @click="setSearch(rating.name)"
+                  >{{ rating.name }}</v-col>
                 </v-row>
-              </v-card>
-            </v-col>
-          </v-row>
-        </v-col>
-      </v-row>
-    </v-container>
+                <v-col cols="12" class="pt-0">
+                  <v-rating
+                    :value="parseFloat(rating.rating)"
+                    half-increments
+                    size="40"
+                    readonly
+                    color="secondary"
+                  ></v-rating>
+                </v-col>
+                <v-col
+                  cols="12"
+                  class="py-0 font-weight-medium primary--text"
+                  style="cursor: pointer; font-size: 1.9em;"
+                  @click="setSearch(rating.platform)"
+                >{{ rating.platform }}</v-col>
+                <v-col
+                  cols="12"
+                  class="headline font-weight-light font-italic"
+                  style="cursor: pointer;"
+                  @click="setSearch(rating.user)"
+                >{{ rating.user }}</v-col>
+                <v-card-actions>
+                  <EditRating :rating="rating" v-if="userId===rating.userId" />
+                </v-card-actions>
+              </v-row>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
 <script>
-import NavBar from "@/components/NavBar";
 import AddRating from "@/components/AddRating";
 import EditRating from "@/components/EditRating";
 
 export default {
   components: {
-    NavBar,
     AddRating,
     EditRating
   },

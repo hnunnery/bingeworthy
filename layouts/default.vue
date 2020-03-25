@@ -1,26 +1,44 @@
 <template>
   <v-app>
-    <v-btn
-      v-scroll="onScroll"
-      v-show="fab"
-      fab
-      dark
-      fixed
-      bottom
-      right
-      color="primary"
-      @click="toTop"
-    >
-      <v-icon size="40">mdi-chevron-up</v-icon>
-    </v-btn>
-    <v-content>
-      <nuxt />
-    </v-content>
+    <v-container fluid class="svg-bg pa-0" style="min-height: 100vh; padding-bottom: 100px;">
+      <NavBar />
+      <v-btn
+        large
+        rounded
+        absolute
+        bottom
+        left
+        class="secondary primary--text font-weight-bold"
+        href="https://github.com/hnunnery/bingeworthy"
+        target="_blank"
+      >GitHub</v-btn>
+      <v-btn
+        v-scroll="onScroll"
+        v-show="fab"
+        fab
+        dark
+        fixed
+        bottom
+        right
+        color="primary"
+        @click="toTop"
+      >
+        <v-icon size="40">mdi-chevron-up</v-icon>
+      </v-btn>
+      <v-content>
+        <nuxt />
+      </v-content>
+    </v-container>
   </v-app>
 </template>
 
 <script>
+import NavBar from "@/components/NavBar";
+
 export default {
+  components: {
+    NavBar
+  },
   data() {
     return {
       fab: false
