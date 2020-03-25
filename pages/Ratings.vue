@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="pt-0">
+  <v-container fluid class="pt-0 pb-12">
     <v-row class="justify-space-between ma-0 pa-0" no-gutters>
       <v-col cols="12" class="desktop">
         <!-- MENU -->
