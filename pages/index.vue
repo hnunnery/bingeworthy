@@ -11,11 +11,20 @@
       <v-btn
         text
         @click="searchBar=!searchBar"
-        class="text-capitalize"
-        style="margin-right: -6px; margin-left: -6px;"
+        class="text-capitalize hidden-sm-only"
+        style="margin-right: -6px; margin-left: -6px; letter-spacing: .5px;"
       >
         <v-icon>mdi-magnify</v-icon>
-        <span v-show="!userAuth" style="letter-spacing: .5px;">Search</span>
+        <span v-show="!userAuth">Search</span>
+      </v-btn>
+      <v-btn
+        text
+        @click="searchBar=!searchBar"
+        class="text-capitalize hidden-xs-only"
+        style="margin-right: -6px; margin-left: -6px; letter-spacing: .5px;"
+      >
+        <v-icon>mdi-magnify</v-icon>
+        <span>Search</span>
       </v-btn>
       <v-btn
         text
@@ -29,21 +38,22 @@
       <v-btn
         text
         class="text-capitalize"
-        style="margin-right: -6px; margin-left: -6px;"
+        style="margin-right: -6px; margin-left: -6px; letter-spacing: .5px;"
         @click="onLogout"
         v-if="userAuth"
       >
         <v-icon>mdi-account-remove</v-icon>
+        <span class="hidden-xs-only">&nbsp;Sign Out</span>
       </v-btn>
       <v-btn
         text
         class="text-capitalize"
-        style="margin-right: 1px; margin-left: -6px;"
-        color="#111"
+        style="margin-right: 1px; margin-left: -6px; letter-spacing: .5px;"
         to="/ratings"
         v-if="userAuth"
       >
         <v-icon color="white">mdi-star</v-icon>
+        <span class="hidden-xs-only">&nbsp;My Ratings</span>
       </v-btn>
       <AddRating v-if="userAuth" />
     </v-app-bar>
@@ -52,12 +62,9 @@
       <v-row class="justify-space-between ma-0 pa-0" no-gutters>
         <v-col cols="12" class="desktop">
           <!-- MENU -->
-          <v-row
-            class="align-center justify-center justify-sm-space-between justify-md-space-between"
-            no-gutters
-          >
+          <v-row class="align-center justify-center justify-md-space-between" no-gutters>
             <!-- mobile search bar that drops down when search icon is clicked -->
-            <v-col cols="12" sm="4" v-show="searchBar" class="mt-1 ml-1 mr-0 mb-2 pa-0">
+            <v-col cols="12" sm="10" md="4" class="mt-1 ml-1 mr-0 mb-2 pa-0" v-show="searchBar">
               <v-text-field solo rounded placeholder="Search" v-model="search" hide-details></v-text-field>
             </v-col>
             <v-col cols="12" sm="4" lg="6" class="d-inline-flex mt-1 ml-1 mr-0 mb-2 pa-0">
@@ -106,8 +113,7 @@
                 <span class>&nbsp;Sign Up</span>
               </v-btn>
               <v-btn
-                icon
-                large
+                fab
                 class="hidden-lg-and-up primary text-capitalize mr-2"
                 @click="onLogout"
                 v-if="userAuth"
@@ -115,8 +121,7 @@
                 <v-icon>mdi-account-minus</v-icon>
               </v-btn>
               <v-btn
-                icon
-                large
+                fab
                 class="hidden-lg-and-up primary text-capitalize mr-2"
                 to="/ratings"
                 v-if="userAuth"
@@ -130,7 +135,7 @@
                 to="/ratings"
                 v-if="userAuth"
               >
-                <v-icon left>mdi-star</v-icon>Your Ratings
+                <v-icon left>mdi-star</v-icon>My Ratings
               </v-btn>
               <AddRating v-if="userAuth" />
             </v-col>
@@ -534,14 +539,14 @@ export default {
 }
 @media screen and (min-width: 1050px) {
   .limit-width {
-    width: 290px;
+    width: 290px !important;
   }
 }
-@media screen and (min-width: 1200px) {
+/* @media screen and (min-width: 1200px) {
   .limit-width {
-    width: 330px;
+    width: 300px;
   }
-}
+} */
 </style>
 
 <style >

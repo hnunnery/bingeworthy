@@ -15,15 +15,13 @@
       </v-btn>
       <!-- button for medium screen size -->
       <v-btn
-        dark
-        rounded
+        fab
         large
         class="hidden-sm-and-down hidden-lg-and-up text-capitalize"
         color="primary"
         v-on="on"
       >
         <v-icon>mdi-plus</v-icon>
-        <span class="small-screen">&nbsp;Add</span>&nbsp;Rating
       </v-btn>
       <!-- button for xs and small screen size -->
       <v-btn fab small class="primary hidden-md-and-up text-capitalize mt-8" v-on="on">
@@ -150,11 +148,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-@media screen and (max-width: 1050px) {
-  .small-screen {
-    display: none;
-  }
-}
-</style>
