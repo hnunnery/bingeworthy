@@ -209,7 +209,7 @@
                     absolute
                     top
                     left
-                    class="secondary--text body-1"
+                    class="primary body-1"
                   >{{ rating.users.length }}</v-btn>
                 </v-row>
               </v-card>
