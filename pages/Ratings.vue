@@ -1,55 +1,6 @@
 <template>
   <v-container fluid class="ma-0 pa-0">
-    <v-app-bar dense dark class="hidden-md-and-up" color="#111">
-      <v-toolbar-title
-        class="b-text font-weight-bold font-italic"
-        style="letter-spacing: 1px;"
-        to="/"
-      >
-        <nuxt-link to="/" style="text-decoration: none; color: #ceb888;">BingeWorthy</nuxt-link>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        text
-        @click="searchBar=!searchBar"
-        class="text-capitalize"
-        style="margin-right: -6px; margin-left: -6px;"
-      >
-        <v-icon>mdi-magnify</v-icon>
-        <span v-show="!userAuth" style="letter-spacing: .5px;">Search</span>
-      </v-btn>
-      <v-btn
-        text
-        class="text-capitalize"
-        v-if="!userAuth"
-        to="/signin"
-        style="letter-spacing: .5px;"
-      >
-        <v-icon>mdi-account-check</v-icon>&nbsp;Sign In
-      </v-btn>
-      <v-btn
-        text
-        class="text-capitalize"
-        style="margin-right: -6px; margin-left: -6px;"
-        @click="onLogout"
-        v-if="userAuth"
-      >
-        <v-icon>mdi-account-remove</v-icon>
-        <!-- <span class="three-seventy">&nbsp;Sign Out</span> -->
-      </v-btn>
-      <v-btn
-        text
-        class="text-capitalize"
-        style="margin-right: 1px; margin-left: -6px;"
-        color="#111"
-        to="/"
-        v-if="userAuth"
-      >
-        <v-icon color="white">mdi-home</v-icon>
-      </v-btn>
-      <AddRating v-if="userAuth" />
-    </v-app-bar>
-
+    <NavBar />
     <v-container fluid class="svg-bg pt-1" style="min-height: 100vh; padding-bottom: 100px;">
       <v-row class="justify-space-between ma-0 pa-0" no-gutters>
         <v-col cols="12" class="desktop">
@@ -59,7 +10,12 @@
             no-gutters
           >
             <!-- mobile search bar that drops down when search icon is clicked -->
-            <v-col cols="12" sm="4" v-show="searchBar" class="mt-1 ml-1 mr-0 mb-2 pa-0">
+            <v-col
+              cols="12"
+              sm="4"
+              v-show="this.$store.state.searchBar"
+              class="mt-1 ml-1 mr-0 mb-0 pa-0"
+            >
               <v-text-field solo rounded placeholder="Search" v-model="search" hide-details></v-text-field>
             </v-col>
             <v-col cols="12" sm="4" lg="6" class="d-inline-flex mt-1 ml-1 mr-0 mb-2 pa-0">
@@ -286,18 +242,19 @@
 </template>
 
 <script>
+import NavBar from "@/components/NavBar";
 import AddRating from "@/components/AddRating";
 import EditRating from "@/components/EditRating";
 
 export default {
   components: {
+    NavBar,
     AddRating,
     EditRating
   },
   data() {
     return {
-      search: "",
-      searchBar: false
+      search: ""
     };
   },
   methods: {
@@ -360,40 +317,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.limit-width {
-  max-width: 80vw;
-}
-@media screen and (max-width: 369px) {
-  .three-seventy {
-    display: none;
-  }
-}
-@media screen and (min-width: 600px) {
-  .limit-width {
-    max-width: 250px;
-  }
-}
-@media screen and (min-width: 960px) {
-  .desktop {
-    margin-bottom: -100px;
-  }
-}
-@media screen and (min-width: 1050px) {
-  .limit-width {
-    width: 290px;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .limit-width {
-    width: 330px;
-  }
-}
-
-.svg-bg {
-  background-repeat: repeat;
-  background-color: #111111ad;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='152' height='152' viewBox='0 0 152 152'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='temple' fill='%23782f40' fill-opacity='0.1'%3E%3Cpath d='M152 150v2H0v-2h28v-8H8v-20H0v-2h8V80h42v20h20v42H30v8h90v-8H80v-42h20V80h42v40h8V30h-8v40h-42V50H80V8h40V0h2v8h20v20h8V0h2v150zm-2 0v-28h-8v20h-20v8h28zM82 30v18h18V30H82zm20 18h20v20h18V30h-20V10H82v18h20v20zm0 2v18h18V50h-18zm20-22h18V10h-18v18zm-54 92v-18H50v18h18zm-20-18H28V82H10v38h20v20h38v-18H48v-20zm0-2V82H30v18h18zm-20 22H10v18h18v-18zm54 0v18h38v-20h20V82h-18v20h-20v20H82zm18-20H82v18h18v-18zm2-2h18V82h-18v18zm20 40v-18h18v18h-18zM30 0h-2v8H8v20H0v2h8v40h42V50h20V8H30V0zm20 48h18V30H50v18zm18-20H48v20H28v20H10V30h20V10h38v18zM30 50h18v18H30V50zm-2-40H10v18h18V10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-</style>

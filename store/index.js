@@ -8,7 +8,8 @@ export const state = () => ({
   masterRatings: [],
   names: [],
   platforms: [],
-  error: null
+  error: null,
+  searchBar: false
 });
 
 // MUTATIONS
@@ -30,6 +31,10 @@ export const mutations = {
   },
   clearError(state) {
     state.error = null;
+  },
+  searchBarToggle(state) {
+    console.log("toggle");
+    state.searchBar = !state.searchBar;
   },
   // USER HANDLING
   setUser(state, payload) {
