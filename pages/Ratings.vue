@@ -1,9 +1,9 @@
 <template>
   <v-container fluid class="ma-0 pa-0">
-    <v-app-bar dense dark class="hidden-sm-and-up" color="#111">
+    <v-app-bar dense dark class="hidden-md-and-up" color="#111">
       <v-toolbar-title
-        class="font-weight-bold font-italic"
-        style="letter-spacing: 1px; font-size: 5vw;"
+        class="b-text font-weight-bold font-italic"
+        style="letter-spacing: 1px;"
         to="/"
       >
         <nuxt-link to="/" style="text-decoration: none; color: #ceb888;">BingeWorthy</nuxt-link>
@@ -45,7 +45,7 @@
         to="/"
         v-if="userAuth"
       >
-        <v-icon color="white">mdi-star</v-icon>
+        <v-icon color="white">mdi-home</v-icon>
       </v-btn>
       <AddRating v-if="userAuth" />
     </v-app-bar>
@@ -62,7 +62,12 @@
             <v-col cols="12" sm="4" v-show="searchBar" class="mt-1 ml-1 mr-0 mb-2 pa-0">
               <v-text-field solo rounded placeholder="Search" v-model="search" hide-details></v-text-field>
             </v-col>
-            <v-col cols="12" sm="4" class="hidden-xs-only mt-1 ml-1 mr-0 mb-2 pa-0">
+            <v-col
+              cols="12"
+              sm="4"
+              lg="6"
+              class="d-inline-flex hidden-sm-and-down mt-1 ml-1 mr-0 mb-2 pa-0"
+            >
               <v-text-field
                 solo
                 rounded
@@ -71,11 +76,21 @@
                 hide-details
                 class="limit-width"
               ></v-text-field>
+              <v-btn
+                rounded
+                large
+                class="hidden-md-and-down primary text-capitalize ml-3"
+                @click="onLogout"
+                v-if="userAuth"
+              >
+                <v-icon left>mdi-account-minus</v-icon>Sign Out
+              </v-btn>
             </v-col>
             <v-col
               cols="12"
               sm="7"
-              class="hidden-xs-only mt-1 mr-1 ml-0 pa-0 text-center text-sm-right"
+              lg="5"
+              class="hidden-sm-and-down mt-1 mr-1 ml-0 pa-0 text-center text-sm-right"
             >
               <v-btn
                 rounded
@@ -100,14 +115,29 @@
               <v-btn
                 icon
                 large
-                class="primary text-capitalize mr-2"
+                class="hidden-lg-and-up primary text-capitalize mr-2"
                 @click="onLogout"
                 v-if="userAuth"
               >
                 <v-icon>mdi-account-minus</v-icon>
               </v-btn>
-              <v-btn icon large class="primary text-capitalize mr-2" to="/" v-if="userAuth">
+              <v-btn
+                icon
+                large
+                class="hidden-lg-and-up primary text-capitalize mr-2"
+                to="/"
+                v-if="userAuth"
+              >
                 <v-icon>mdi-home</v-icon>
+              </v-btn>
+              <v-btn
+                rounded
+                large
+                class="hidden-md-and-down primary text-capitalize mr-2"
+                to="/"
+                v-if="userAuth"
+              >
+                <v-icon left>mdi-home</v-icon>Back Home
               </v-btn>
               <AddRating v-if="userAuth" />
             </v-col>
@@ -117,7 +147,7 @@
       <v-row justify="center">
         <v-col cols="12" lg="11" xl="10" class="mt-0 pt-0">
           <h1
-            class="hidden-xs-only secondary--text text-center font-weight-bold font-italic my-2"
+            class="hidden-sm-and-down secondary--text text-center font-weight-bold font-italic my-2"
             style="letter-spacing: 2px; font-size: 6vmax;"
           >BingeWorthy</h1>
           <v-row class="justify-center mb-0 pb-0">

@@ -1,22 +1,31 @@
 <template>
   <v-dialog v-model="dialog" persistent max-width="600">
     <template v-slot:activator="{ on }">
-      <!-- <v-btn
+      <!-- button for lg and xl screen sizes -->
+      <v-btn
         dark
         rounded
         large
-        class="text-capitalize hidden-xs-only hidden-md-only"
+        class="hidden-md-and-down text-capitalize"
         color="primary"
         v-on="on"
       >
-        <v-icon>mdi-plus</v-icon>&nbsp;Add Your Rating
-      </v-btn>-->
-      <v-btn dark rounded large class="hidden-xs-only text-capitalize" color="primary" v-on="on">
+        <v-icon left>mdi-plus</v-icon>Add Rating
+      </v-btn>
+      <!-- button for medium screen size -->
+      <v-btn
+        dark
+        rounded
+        large
+        class="hidden-sm-and-down hidden-lg-and-up text-capitalize"
+        color="primary"
+        v-on="on"
+      >
         <v-icon>mdi-plus</v-icon>
         <span class="small-screen">&nbsp;Add</span>&nbsp;Rating
       </v-btn>
-      <!-- button for xs screen size -->
-      <v-btn fab small class="primary hidden-sm-and-up text-capitalize mt-8" v-on="on">
+      <!-- button for xs and small screen size -->
+      <v-btn fab small class="primary hidden-md-and-up text-capitalize mt-8" v-on="on">
         <v-icon>mdi-plus</v-icon>
       </v-btn>
     </template>
