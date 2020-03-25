@@ -62,19 +62,14 @@
             <v-col cols="12" sm="4" v-show="searchBar" class="mt-1 ml-1 mr-0 mb-2 pa-0">
               <v-text-field solo rounded placeholder="Search" v-model="search" hide-details></v-text-field>
             </v-col>
-            <v-col
-              cols="12"
-              sm="4"
-              lg="6"
-              class="d-inline-flex hidden-sm-and-down mt-1 ml-1 mr-0 mb-2 pa-0"
-            >
+            <v-col cols="12" sm="4" lg="6" class="d-inline-flex mt-1 ml-1 mr-0 mb-2 pa-0">
               <v-text-field
                 solo
                 rounded
                 placeholder="Search"
                 v-model="search"
                 hide-details
-                class="limit-width"
+                class="limit-width hidden-sm-and-down"
               ></v-text-field>
               <v-btn
                 rounded

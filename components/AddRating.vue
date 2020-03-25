@@ -10,7 +10,8 @@
         color="primary"
         v-on="on"
       >
-        <v-icon left>mdi-plus</v-icon>Add Rating
+        <v-icon left>mdi-plus</v-icon>Add&nbsp;
+        <span class="hidden-md-and-down">Your&nbsp;</span>Rating
       </v-btn>
       <!-- button for medium screen size -->
       <v-btn
