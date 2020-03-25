@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="svg-bg" style="min-height: 100vh;">
+  <v-container fluid class="pt-0">
     <v-row class="justify-center align-center" style="height: 70vh !important;">
       <v-col cols="12" lg="11" xl="10" class="mt-0">
         <h1
