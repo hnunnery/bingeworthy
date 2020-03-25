@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="svg-bg pt-1" style="min-height: 100vh; padding-bottom: 100px;">
+  <v-container fluid class="pt-0">
     <v-row class="justify-space-between ma-0 pa-0" no-gutters>
       <v-col cols="12" class="desktop">
         <!-- MENU -->
