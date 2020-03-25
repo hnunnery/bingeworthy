@@ -102,10 +102,11 @@
         </v-row>
 
         <!-- START - MOBILE - MASTER RATINGS CARDS -->
-        <v-row v-show="!loading" class="hidden-md-and-up justify-center">
+        <v-row v-show="!loading" class="hidden-lg-and-up justify-center">
           <v-col
             cols="12"
             sm="6"
+            md="4"
             v-for="(rating, index) in filteredMasterRatings"
             :key="index"
             class="pb-0"
@@ -147,11 +148,9 @@
         </v-row>
 
         <!-- START MASTER RATINGS CARDS -->
-        <v-row v-show="!loading" class="hidden-sm-and-down justify-center mt-2 mb-6">
+        <v-row v-show="!loading" class="hidden-md-and-down justify-center mt-2 mb-6">
           <v-col
             cols="12"
-            sm="8"
-            md="6"
             lg="4"
             xl="3"
             v-for="(rating, index) in filteredMasterRatings"
@@ -206,8 +205,15 @@
         </v-row>
 
         <!-- START - MOBILE - RATINGS CARDS -->
-        <v-row v-show="!loading && this.search" class="hidden-md-and-up justify-center mt-0 mb-6">
-          <v-col cols="12" sm="6" v-for="rating in filteredRatings" :key="rating.id" class="pb-0">
+        <v-row v-show="!loading && this.search" class="hidden-lg-and-up justify-center mt-0 mb-6">
+          <v-col
+            cols="12"
+            sm="6"
+            md="4"
+            v-for="rating in filteredRatings"
+            :key="rating.id"
+            class="pb-0"
+          >
             <v-card
               class="px-2 ma-1 align-center d-flex"
               color="rgba(17, 17, 17, 0.5)"
@@ -250,11 +256,9 @@
         </v-row>
 
         <!-- START RATINGS CARDS -->
-        <v-row v-show="!loading && this.search" class="hidden-sm-and-down justify-center mt-2 mb-6">
+        <v-row v-show="!loading && this.search" class="hidden-md-and-down justify-center mt-2 mb-6">
           <v-col
             cols="12"
-            sm="8"
-            md="6"
             lg="4"
             xl="3"
             v-for="rating in filteredRatings"

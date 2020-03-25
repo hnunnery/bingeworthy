@@ -96,7 +96,7 @@
         </v-row>
 
         <!-- START - MOBILE - RATINGS CARDS -->
-        <v-row v-show="!loading" class="hidden-md-and-up justify-center mt-0 mb-6">
+        <v-row v-show="!loading" class="hidden-lg-and-up justify-center mt-0 mb-6">
           <v-col cols="12" sm="6" v-for="rating in filteredRatings" :key="rating.id" class="pb-0">
             <v-card
               class="px-2 ma-1 align-center d-flex"
@@ -139,7 +139,7 @@
         </v-row>
 
         <!-- START RATINGS CARDS -->
-        <v-row v-show="!loading" class="hidden-sm-and-down justify-center mt-2 mb-6">
+        <v-row v-show="!loading" class="hidden-md-and-down justify-center mt-2 mb-6">
           <v-col
             cols="12"
             sm="8"
