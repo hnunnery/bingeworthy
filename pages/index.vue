@@ -5,16 +5,24 @@
       <v-col cols="12" class="desktop">
         <!-- MENU -->
         <v-row class="align-center justify-center justify-lg-space-between">
-          <!-- mobile search bar that drops down when search icon is clicked -->
+          <!-- mobile search bar that drops down when search icon is clicked; for xs and sm -->
           <v-col
             cols="12"
             sm="10"
             md="8"
             lg="4"
-            class="mt-3 mx-1 mb-0 pa-0"
-            v-show="this.$store.state.searchBar"
+            class="mt-3 mx-0 mb-2 px-2 py-0 align-self-center"
+            v-show="this.$store.state.searchBar && this.$vuetify.breakpoint.smAndDown"
           >
-            <v-text-field solo rounded placeholder="Search" v-model="search" hide-details></v-text-field>
+            <v-text-field
+              solo
+              rounded
+              placeholder="Search"
+              v-model="search"
+              @click:clear="clearSearch"
+              clearable
+              hide-details
+            ></v-text-field>
           </v-col>
           <v-col
             cols="12"
@@ -27,6 +35,8 @@
               rounded
               placeholder="Search"
               v-model="search"
+              @click:clear="clearSearch"
+              clearable
               hide-details
               class="limit-width hidden-md-and-down"
             ></v-text-field>
@@ -338,7 +348,7 @@ export default {
   },
   data() {
     return {
-      search: "",
+      search: this.$store.state.search,
       expandedName: ""
     };
   },
@@ -374,8 +384,8 @@ export default {
       return this.masterRatings.filter(rating => {
         if (!this.expandedName) {
           return (
-            rating.name.toLowerCase().match(this.search.toLowerCase()) ||
-            rating.platform.toLowerCase().match(this.search.toLowerCase())
+            rating.name.toLowerCase().match(this.$store.state.search) ||
+            rating.platform.toLowerCase().match(this.$store.state.search)
           );
         }
       });
@@ -383,9 +393,9 @@ export default {
     filteredRatings() {
       return this.ratings.filter(rating => {
         return (
-          rating.name.toLowerCase().match(this.search.toLowerCase()) ||
-          rating.platform.toLowerCase().match(this.search.toLowerCase()) ||
-          rating.user.toLowerCase().match(this.search.toLowerCase())
+          rating.name.toLowerCase().match(this.$store.state.search) ||
+          rating.platform.toLowerCase().match(this.$store.state.search) ||
+          rating.user.toLowerCase().match(this.$store.state.search)
         );
       });
     },
@@ -420,6 +430,7 @@ export default {
   },
   watch: {
     search() {
+      this.$store.commit("setSearch", this.search);
       if (this.search !== this.expandedName) {
         this.expandedName = "";
       }

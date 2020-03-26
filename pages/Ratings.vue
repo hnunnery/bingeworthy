@@ -4,30 +4,46 @@
     <v-row class="justify-space-between ma-0 pa-0" no-gutters>
       <v-col cols="12" class="desktop">
         <!-- MENU -->
-        <v-row class="align-center justify-center justify-md-space-between">
-          <!-- mobile search bar that drops down when search icon is clicked -->
+        <v-row class="align-center justify-center justify-lg-space-between">
+          <!-- mobile search bar that drops down when search icon is clicked; for xs and sm -->
           <v-col
             cols="12"
             sm="10"
-            md="4"
-            class="mt-3 mx-1 mb-0 pa-0"
-            v-show="this.$store.state.searchBar"
+            md="8"
+            lg="4"
+            class="mt-3 mx-0 mb-2 px-2 py-0 align-self-center"
+            v-show="this.$store.state.searchBar && this.$vuetify.breakpoint.smAndDown"
           >
-            <v-text-field solo rounded placeholder="Search" v-model="search" hide-details></v-text-field>
-          </v-col>
-          <v-col cols="12" sm="4" lg="6" class="d-inline-flex mt-lg-3 ml-lg-2 mr-0 mb-0 pa-0">
             <v-text-field
               solo
               rounded
               placeholder="Search"
               v-model="search"
+              @click:clear="clearSearch"
+              clearable
+              hide-details
+            ></v-text-field>
+          </v-col>
+          <v-col
+            cols="12"
+            sm="4"
+            lg="6"
+            class="hidden-md-and-down d-inline-flex mt-lg-3 ml-lg-2 mr-0 mb-0 pa-0"
+          >
+            <v-text-field
+              solo
+              rounded
+              placeholder="Search"
+              v-model="search"
+              @click:clear="clearSearch"
+              clearable
               hide-details
               class="limit-width hidden-md-and-down"
             ></v-text-field>
             <v-btn
               rounded
               large
-              class="hidden-md-and-down primary text-capitalize ml-3"
+              class="primary text-capitalize ml-3 hidden-md-and-down"
               @click="onLogout"
               v-if="userAuth"
             >
@@ -38,12 +54,12 @@
             cols="12"
             sm="7"
             lg="5"
-            class="hidden-sm-and-down mt-lg-3 mr-lg-2 ml-0 pa-0 text-center text-sm-right"
+            class="hidden-md-and-down mt-lg-3 mr-lg-2 ml-0 pa-0 text-center text-sm-right"
           >
             <v-btn
               rounded
               large
-              class="hidden-md-and-down mr-5 primary text-capitalize mr-2"
+              class="mr-5 primary text-capitalize mr-2 hidden-md-and-down"
               v-if="!userAuth"
               to="/signin"
             >
@@ -53,14 +69,20 @@
             <v-btn
               rounded
               large
-              class="hidden-md-and-down primary text-capitalize mr-2"
+              class="primary text-capitalize mr-2 hidden-md-and-down"
               v-if="!userAuth"
               to="/signup"
             >
               <v-icon>mdi-account-plus</v-icon>
               <span class>&nbsp;Sign Up</span>
             </v-btn>
-            <v-btn rounded large class="hidden-md-and-down primary text-capitalize mr-2" to="/">
+            <v-btn
+              rounded
+              large
+              class="primary text-capitalize mr-2 hidden-md-and-down"
+              to="/"
+              v-if="userAuth"
+            >
               <v-icon left>mdi-home</v-icon>All Ratings
             </v-btn>
             <AddRating v-if="userAuth && this.$vuetify.breakpoint.lgAndUp" />

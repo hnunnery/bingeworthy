@@ -1,30 +1,52 @@
 <template>
   <v-app-bar dense dark class="hidden-lg-and-up" color="#111">
     <v-toolbar-title
-      class="b-text secondary--text font-weight-bold font-italic"
+      class="hidden-xs-only secondary--text font-weight-bold font-italic"
+      style="letter-spacing: 1px; font-size: 1.6em;"
+    >
+      <nuxt-link to="/" style="text-decoration: none; color: #ceb888;">BingeWorthy</nuxt-link>
+    </v-toolbar-title>
+    <v-toolbar-title
+      class="hidden-sm-and-up secondary--text font-weight-bold font-italic"
       style="letter-spacing: 1px;"
     >
       <nuxt-link to="/" style="text-decoration: none; color: #ceb888;">BingeWorthy</nuxt-link>
     </v-toolbar-title>
     <v-spacer></v-spacer>
+    <v-text-field
+      solo
+      rounded
+      dense
+      class="mx-4"
+      style="width: 100px;"
+      placeholder="Search"
+      v-model="search"
+      @click:clear="clearSearch"
+      clearable
+      hide-details
+      v-show="this.$store.state.searchBar && this.$vuetify.breakpoint.mdOnly"
+    ></v-text-field>
+    <!-- search for xs screen size -->
     <v-btn
       text
       @click="searchBar=!searchBar"
-      class="text-capitalize hidden-sm-only hidden-md-only"
+      class="text-capitalize hidden-sm-and-up"
       style="margin-right: -6px; margin-left: -6px; letter-spacing: .5px;"
     >
       <v-icon>mdi-magnify</v-icon>
       <span v-show="!userAuth">Search</span>
     </v-btn>
+    <!-- search for sm screen size -->
     <v-btn
       text
       @click="searchBar=!searchBar"
-      class="text-capitalize hidden-xs-only"
+      class="text-capitalize hidden-xs-only hidden-lg-and-up"
       style="margin-right: -6px; margin-left: -6px; letter-spacing: .5px;"
     >
       <v-icon>mdi-magnify</v-icon>
       <span>Search</span>
     </v-btn>
+
     <v-btn text class="text-capitalize" v-if="!userAuth" to="/signin" style="letter-spacing: .5px;">
       <v-icon>mdi-account-check</v-icon>&nbsp;Sign In
     </v-btn>
@@ -71,10 +93,14 @@ export default {
   },
   data() {
     return {
-      searchBar: false
+      searchBar: false,
+      search: this.$store.state.search
     };
   },
   methods: {
+    clearSearch() {
+      this.search = "";
+    },
     onLogout() {
       if (confirm("Sign Out?")) {
         this.$store.dispatch("logout");
@@ -92,6 +118,9 @@ export default {
     }
   },
   watch: {
+    search() {
+      this.$store.commit("setSearch", this.search);
+    },
     searchBar() {
       this.$store.commit("searchBarToggle");
     }
