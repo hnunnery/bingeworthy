@@ -137,24 +137,26 @@
                   <v-rating
                     :value="parseFloat(rating.rating)"
                     half-increments
-                    size="30"
+                    size="35"
                     readonly
                     color="secondary"
                   ></v-rating>
                 </v-col>
+                <v-row class="justify-left">
+                  <v-col cols="2" class="pl-7 py-0">
+                    <EditRating :rating="rating" v-if="userId===rating.userId || userIsAdmin" />
+                  </v-col>
+                  <v-col
+                    cols="8"
+                    class="headline py-0 font-weight-medium primary--text"
+                    @click="setSearch(rating.platform)"
+                  >{{ rating.platform }}</v-col>
+                </v-row>
                 <v-col
                   cols="12"
-                  class="headline py-0 font-weight-medium primary--text"
-                  @click="setSearch(rating.platform)"
-                >{{ rating.platform }}</v-col>
-                <v-col
-                  cols="12"
-                  class="title py-0 font-weight-light font-italic"
+                  class="title pt-0 pb-2 font-weight-light font-italic"
                   @click="setSearch(rating.user)"
                 >{{ rating.user }}</v-col>
-                <v-card-actions>
-                  <EditRating :rating="rating" v-if="userId===rating.userId" />
-                </v-card-actions>
               </v-row>
             </v-card>
           </v-col>
