@@ -35,7 +35,7 @@ export default {
       {
         hid: "og:url",
         property: "og:url",
-        content: "https://bingeworthy.netlify.com"
+        content: "https://bingeworthy.app"
       },
       {
         hid: "twitter:card",
