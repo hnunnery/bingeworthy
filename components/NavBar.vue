@@ -93,7 +93,6 @@ export default {
   },
   watch: {
     searchBar() {
-      console.log("watcher");
       this.$store.commit("searchBarToggle");
     }
   }

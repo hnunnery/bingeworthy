@@ -4,18 +4,24 @@
     <v-row class="justify-space-between ma-0 pa-0" no-gutters>
       <v-col cols="12" class="desktop">
         <!-- MENU -->
-        <v-row class="align-center justify-center justify-md-space-between" no-gutters>
+        <v-row class="align-center justify-center justify-lg-space-between" no-gutters>
           <!-- mobile search bar that drops down when search icon is clicked -->
           <v-col
             cols="12"
             sm="10"
-            md="4"
-            class="mt-1 ml-1 mr-0 mb-0 pa-0"
+            md="8"
+            lg="4"
+            class="mt-2 ml-1 mr-0 mb-0 pa-0"
             v-show="this.$store.state.searchBar"
           >
             <v-text-field solo rounded placeholder="Search" v-model="search" hide-details></v-text-field>
           </v-col>
-          <v-col cols="12" sm="4" lg="6" class="d-inline-flex mt-1 ml-1 mr-0 mb-2 pa-0">
+          <v-col
+            cols="12"
+            sm="4"
+            lg="6"
+            class="hidden-md-and-down d-inline-flex mt-1 ml-1 mr-0 mb-2 pa-0"
+          >
             <v-text-field
               solo
               rounded
@@ -27,7 +33,7 @@
             <v-btn
               rounded
               large
-              class="hidden-md-and-down primary text-capitalize ml-3"
+              class="primary text-capitalize ml-3 hidden-md-and-down"
               @click="onLogout"
               v-if="userAuth"
             >
@@ -38,12 +44,12 @@
             cols="12"
             sm="7"
             lg="5"
-            class="hidden-sm-and-down mt-1 mr-1 ml-0 pa-0 text-center text-sm-right"
+            class="hidden-md-and-down mt-1 mr-1 ml-0 pa-0 text-center text-sm-right"
           >
             <v-btn
               rounded
               large
-              class="hidden-md-and-down mr-5 primary text-capitalize mr-2"
+              class="mr-5 primary text-capitalize mr-2 hidden-md-and-down"
               v-if="!userAuth"
               to="/signin"
             >
@@ -53,7 +59,7 @@
             <v-btn
               rounded
               large
-              class="hidden-md-and-down primary text-capitalize mr-2"
+              class="primary text-capitalize mr-2 hidden-md-and-down"
               v-if="!userAuth"
               to="/signup"
             >
@@ -63,7 +69,7 @@
             <v-btn
               rounded
               large
-              class="hidden-md-and-down primary text-capitalize mr-2"
+              class="primary text-capitalize mr-2 hidden-md-and-down"
               to="/ratings"
               v-if="userAuth"
             >
@@ -86,7 +92,7 @@
           <v-btn
             rounded
             large
-            class="primary text-capitalize"
+            class="mt-md-2 primary text-capitalize"
             v-show="this.search"
             @click="clearSearch"
           >
@@ -95,7 +101,7 @@
         </v-row>
 
         <!-- PROGRESS SPINNER -->
-        <v-row v-show="loading" class="justify-center align-center" style="height: 50vh">
+        <v-row v-show="loading" class="justify-center align-center" style="height: 50vh;">
           <v-col class="text-center">
             <v-progress-circular :size="150" :width="12" color="primary" indeterminate></v-progress-circular>
           </v-col>

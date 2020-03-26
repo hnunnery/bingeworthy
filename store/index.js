@@ -33,7 +33,6 @@ export const mutations = {
     state.error = null;
   },
   searchBarToggle(state) {
-    console.log("toggle");
     state.searchBar = !state.searchBar;
   },
   // USER HANDLING

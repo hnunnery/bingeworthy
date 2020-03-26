@@ -74,7 +74,7 @@ form {
     max-width: 250px;
   }
 }
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 1264px) {
   .desktop {
     margin-bottom: -100px;
   }
