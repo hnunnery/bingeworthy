@@ -14,7 +14,7 @@
         <span class="hidden-md-and-down">Your&nbsp;</span>Rating
       </v-btn>
       <!-- button for xs - md screen size -->
-      <v-btn fab small class="primary hidden-lg-and-up text-capitalize mt-8" v-on="on">
+      <v-btn fab small class="primary hidden-lg-and-up text-capitalize mt-6" v-on="on">
         <v-icon>mdi-plus</v-icon>
       </v-btn>
     </template>

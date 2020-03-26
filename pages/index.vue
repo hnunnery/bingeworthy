@@ -4,14 +4,14 @@
     <v-row class="justify-space-between ma-0 pa-0" no-gutters>
       <v-col cols="12" class="desktop">
         <!-- MENU -->
-        <v-row class="align-center justify-center justify-lg-space-between" no-gutters>
+        <v-row class="align-center justify-center justify-lg-space-between">
           <!-- mobile search bar that drops down when search icon is clicked -->
           <v-col
             cols="12"
             sm="10"
             md="8"
             lg="4"
-            class="mt-2 ml-1 mr-0 mb-0 pa-0"
+            class="mt-3 mx-1 mb-0 pa-0"
             v-show="this.$store.state.searchBar"
           >
             <v-text-field solo rounded placeholder="Search" v-model="search" hide-details></v-text-field>
@@ -20,7 +20,7 @@
             cols="12"
             sm="4"
             lg="6"
-            class="hidden-md-and-down d-inline-flex mt-1 ml-1 mr-0 mb-2 pa-0"
+            class="hidden-md-and-down d-inline-flex mt-lg-3 ml-lg-2 mr-0 mb-0 pa-0"
           >
             <v-text-field
               solo
@@ -44,7 +44,7 @@
             cols="12"
             sm="7"
             lg="5"
-            class="hidden-md-and-down mt-1 mr-1 ml-0 pa-0 text-center text-sm-right"
+            class="hidden-md-and-down mt-lg-3 mr-lg-2 ml-0 pa-0 text-center text-sm-right"
           >
             <v-btn
               rounded
@@ -108,7 +108,7 @@
         </v-row>
 
         <!-- START - MOBILE - MASTER RATINGS CARDS -->
-        <v-row v-show="!loading" class="hidden-lg-and-up justify-center">
+        <v-row v-show="!loading" class="hidden-lg-and-up justify-center mt-1">
           <v-col
             cols="12"
             sm="6"
@@ -211,7 +211,7 @@
         </v-row>
 
         <!-- START - MOBILE - RATINGS CARDS -->
-        <v-row v-show="!loading && this.search" class="hidden-lg-and-up justify-center mt-0 mb-6">
+        <v-row v-show="!loading && this.search" class="hidden-lg-and-up justify-center mt-1 mb-6">
           <v-col
             cols="12"
             sm="6"
