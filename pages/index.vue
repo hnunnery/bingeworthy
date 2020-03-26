@@ -136,7 +136,7 @@
               style="box-shadow: 0 0 5px 1px #ceb888 !important;"
             >
               <v-row class="text-center justify-center align-center">
-                <v-col cols="12" class="mt-1 pb-0" style="font-size: 1.6em;">{{ rating.name }}</v-col>
+                <v-col cols="12" class="mt-2 py-0" style="font-size: 1.6em;">{{ rating.name }}</v-col>
                 <v-col cols="12" class="py-0">
                   <v-rating
                     :value="rating.averageRating"
@@ -147,12 +147,14 @@
                   ></v-rating>
                 </v-col>
                 <v-row class="justify-left">
-                  <v-col cols="2" class="pl-7 py-0">
-                    <v-btn fab x-small class="primary body-2">{{ rating.users.length }}</v-btn>
-                  </v-col>
+                  <v-col
+                    cols="2"
+                    class="pl-7 py-0 display-1 font-weight-bold font-italic"
+                    style="opacity: 0.1;"
+                  >{{ rating.users.length }}</v-col>
                   <v-col
                     cols="8"
-                    class="headline font-weight-medium primary--text pt-0 pb-1"
+                    class="headline font-weight-medium primary--text pt-0 pb-2"
                   >{{ rating.platform }}</v-col>
                 </v-row>
               </v-row>
@@ -237,7 +239,7 @@
               <v-row class="text-center justify-center align-center">
                 <v-col
                   cols="12"
-                  class="mt-1 pb-0"
+                  class="mt-2 py-0"
                   @click="setSearch(rating.name)"
                   style="font-size: 1.6em;"
                 >{{ rating.name }}</v-col>
@@ -262,7 +264,7 @@
                 </v-row>
                 <v-col
                   cols="12"
-                  class="title py-0 font-weight-light font-italic"
+                  class="title py-0 mb-2 font-weight-light font-italic"
                   @click="setSearch(rating.user)"
                 >{{ rating.user }}</v-col>
               </v-row>

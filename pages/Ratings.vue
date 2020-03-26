@@ -129,7 +129,7 @@
               <v-row class="text-center justify-center align-center">
                 <v-col
                   cols="12"
-                  class="mt-1 pb-0"
+                  class="mt-3 py-0"
                   @click="setSearch(rating.name)"
                   style="font-size: 1.6em;"
                 >{{ rating.name }}</v-col>
@@ -154,7 +154,7 @@
                 </v-row>
                 <v-col
                   cols="12"
-                  class="title pt-0 pb-2 font-weight-light font-italic"
+                  class="title pt-0 pb-3 font-weight-light font-italic"
                   @click="setSearch(rating.user)"
                 >{{ rating.user }}</v-col>
               </v-row>
