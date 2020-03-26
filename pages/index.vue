@@ -28,7 +28,7 @@
             cols="12"
             sm="4"
             lg="6"
-            class="hidden-md-and-down d-inline-flex mt-lg-3 ml-lg-2 mr-0 mb-0 pa-0"
+            class="hidden-md-and-down d-inline-flex mt-lg-3 ml-lg-4 mr-0 mb-0 pa-0"
           >
             <v-text-field
               solo
@@ -54,7 +54,7 @@
             cols="12"
             sm="7"
             lg="5"
-            class="hidden-md-and-down mt-lg-3 mr-lg-2 ml-0 pa-0 text-center text-sm-right"
+            class="hidden-md-and-down mt-lg-3 mr-lg-4 ml-0 pa-0 text-center text-sm-right"
           >
             <v-btn
               rounded
@@ -69,7 +69,7 @@
             <v-btn
               rounded
               large
-              class="primary text-capitalize mr-2 hidden-md-and-down"
+              class="primary text-capitalize hidden-md-and-down"
               v-if="!userAuth"
               to="/signup"
             >

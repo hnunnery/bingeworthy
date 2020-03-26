@@ -1,14 +1,14 @@
 <template>
   <v-container fluid class="pt-0">
     <v-row class="justify-center align-center" style="height: 65vh !important;">
-      <v-col cols="12" lg="11" xl="10" class="mt-0">
+      <v-col cols="12" class="mt-0">
         <h1
           class="secondary--text text-center font-weight-bold font-italic mt-1 mb-2"
           style="letter-spacing: 2px; font-size: 6vmax;"
         >BingeWorthy</h1>
       </v-col>
-      <v-col cols="12" sm="8" md="6" lg="4" style="max-width: 600px;">
-        <v-card class="pa-6" color="#111111">
+      <v-col cols="12" sm="8" md="6" style="max-width: 600px;">
+        <v-card class="pa-6 px-lg-10" color="#111111">
           <form @submit.prevent="onSignUp">
             <v-row class="align-center justify-center">
               <v-col cols="12" class="pb-2">
