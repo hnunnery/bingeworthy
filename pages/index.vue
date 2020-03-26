@@ -147,12 +147,12 @@
                   ></v-rating>
                 </v-col>
                 <v-row class="justify-left">
-                  <v-col cols="2" class="pl-8">
+                  <v-col cols="2" class="pl-7 py-0">
                     <v-btn fab x-small class="primary body-2">{{ rating.users.length }}</v-btn>
                   </v-col>
                   <v-col
                     cols="8"
-                    class="headline font-weight-medium primary--text"
+                    class="headline font-weight-medium primary--text pt-0 pb-1"
                   >{{ rating.platform }}</v-col>
                 </v-row>
               </v-row>
@@ -251,7 +251,7 @@
                   ></v-rating>
                 </v-col>
                 <v-row class="justify-left">
-                  <v-col cols="2" class="pl-7 py-0">
+                  <v-col cols="2" class="pl-6 py-0">
                     <EditRating :rating="rating" v-if="userId===rating.userId || userIsAdmin" />
                   </v-col>
                   <v-col
