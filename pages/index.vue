@@ -133,7 +133,7 @@
               height="100%"
               elevation="15"
               @click="setSearch(rating.name); expandedName=rating.name;"
-              style="box-shadow: 0 0 5px 1px #ceb888 !important;"
+              style="box-shadow: 0 0 5px 1px #ceb888 !important; position: relative;"
             >
               <v-row class="text-center justify-center align-center">
                 <v-col cols="12" class="mt-2 py-0" style="font-size: 1.6em;">{{ rating.name }}</v-col>
@@ -146,29 +146,27 @@
                     color="secondary"
                   ></v-rating>
                 </v-col>
-                <v-row class="justify-left" style="margin-bottom: -10px;">
-                  <v-col
-                    cols="2"
-                    class="pl-8 py-0 display-1 font-weight-bold font-italic"
-                    style="opacity: 0.2; margin: -15px 0px 0px 0px;"
-                  >
-                    {{ rating.users.length }}
-                    <p
-                      v-if="rating.users.length > 1"
-                      class="py-0 text-no-wrap"
-                      style="font-size: 12px; margin: -20px 0px 0px -10px;"
-                    >ratings</p>
-                    <p
-                      v-else
-                      class="py-0 text-no-wrap"
-                      style="font-size: 12px; margin: -20px 0px 0px -8px;"
-                    >rating</p>
-                  </v-col>
-                  <v-col
-                    cols="8"
-                    class="headline font-weight-medium primary--text pa-0"
-                  >{{ rating.platform }}</v-col>
-                </v-row>
+                <v-col
+                  cols="3"
+                  class="pa-0 display-1 font-weight-bold font-italic text-center"
+                  style="opacity: 0.2; margin-left: -10px; position: absolute; bottom: 0; left: 0;"
+                >
+                  {{ rating.users.length }}
+                  <p
+                    v-if="rating.users.length > 1"
+                    class="pa-0"
+                    style="font-size: 12px; margin: -20px 0px -10px 0px;"
+                  >ratings</p>
+                  <p
+                    v-else
+                    class="pa-0"
+                    style="font-size: 12px; margin: -20px 0px -10px 0px;"
+                  >rating</p>
+                </v-col>
+                <v-col
+                  cols="12"
+                  class="headline font-weight-medium primary--text pa-0 mb-1"
+                >{{ rating.platform }}</v-col>
               </v-row>
             </v-card>
           </v-col>
