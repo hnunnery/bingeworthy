@@ -96,8 +96,9 @@ export const actions = {
       );
       rating.averageRating = averageRating;
     });
-    tempMaster.sort((a, b) => (a.averageRating < b.averageRating ? 1 : -1));
-    commit("setMasterRatings", tempMaster);
+    const master = tempMaster.filter(rating => rating.ratings.length > 1);
+    master.sort((a, b) => (a.averageRating < b.averageRating ? 1 : -1));
+    commit("setMasterRatings", master);
   },
   // USER HANDLING
   signUserUp({ commit }, payload) {
