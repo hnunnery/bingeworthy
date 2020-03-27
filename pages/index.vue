@@ -146,16 +146,16 @@
                     color="secondary"
                   ></v-rating>
                 </v-col>
-                <v-row class="justify-left mb-0">
+                <v-row class="justify-left" style="margin-bottom: -10px;">
                   <v-col
                     cols="2"
-                    class="pl-7 py-0 display-1 font-weight-bold font-italic"
-                    style="opacity: 0.2; margin: -20px 0px 0px 0px;"
+                    class="pl-8 py-0 display-1 font-weight-bold font-italic"
+                    style="opacity: 0.2; margin: -15px 0px 0px 0px;"
                   >
                     {{ rating.users.length }}
                     <p
                       class="py-0 text-no-wrap"
-                      style="font-size: 12px; margin: -20px 0px 0px -5px;"
+                      style="font-size: 12px; margin: -20px 0px 0px -10px;"
                     >ratings</p>
                   </v-col>
                   <v-col
