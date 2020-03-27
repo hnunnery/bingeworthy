@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-container fluid class="svg-bg pa-0" style="min-height: 100vh; padding-bottom: 100px;">
+    <v-container fluid class="svg-bg px-0 pt-0 pb-12" style="min-height: 100vh; padding-bottom: 100px;">
       <NavBar />
       <v-btn
         large
