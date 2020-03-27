@@ -154,9 +154,15 @@
                   >
                     {{ rating.users.length }}
                     <p
+                      v-if="rating.users.length > 1"
                       class="py-0 text-no-wrap"
                       style="font-size: 12px; margin: -20px 0px 0px -10px;"
                     >ratings</p>
+                    <p
+                      v-else
+                      class="py-0 text-no-wrap"
+                      style="font-size: 12px; margin: -20px 0px 0px -8px;"
+                    >rating</p>
                   </v-col>
                   <v-col
                     cols="8"
