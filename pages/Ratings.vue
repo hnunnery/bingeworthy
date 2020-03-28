@@ -261,11 +261,8 @@ export default {
     }
   },
   computed: {
-    ratings() {
-      return this.$store.getters.userRatings;
-    },
     filteredRatings() {
-      return this.ratings.filter(rating => {
+      return this.$store.getters.userRatings.filter(rating => {
         return (
           rating.name
             .toLowerCase()
@@ -278,9 +275,12 @@ export default {
         );
       });
     },
+    ratingsChange() {
+      return this.$store.getters.ratingsChange;
+    },
     // controls loading progress spinner
     loading() {
-      return this.ratings.length < 1;
+      return this.$store.getters.userRatings.length < 1;
     },
     userAuth() {
       return (

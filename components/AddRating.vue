@@ -32,6 +32,7 @@
             label="Name of Show"
             v-model="name"
             :items="this.uniqueNames"
+            required
             type="text"
           ></v-combobox>
         </v-col>
@@ -41,14 +42,15 @@
             label="Platform (Netflix, Hulu, etc.)"
             v-model="platform"
             :items="this.uniquePlatforms"
+            required
             type="text"
           ></v-combobox>
         </v-col>
         <v-col cols="12" class="text-center">
-          <v-rating v-model="rating" half-increments size="35" color="secondary"></v-rating>
+          <v-rating v-model="rating" half-increments size="35" color="secondary" required></v-rating>
         </v-col>
         <v-col cols="12">
-          <v-text-field type="text" name="user" label="Your Name" v-model="user"></v-text-field>
+          <v-text-field type="text" name="user" label="Your Name" v-model="user" required></v-text-field>
         </v-col>
         <v-card-actions style="width: 100%;">
           <v-row class="justify-center">
@@ -107,17 +109,20 @@ export default {
     addRating() {
       // saving data to firestore
       if (this.name && this.platform && this.rating && this.user) {
+        const newRating = {
+          name: this.name,
+          platform: this.platform,
+          rating: this.rating,
+          user: this.user,
+          userId: this.$store.getters.user.id,
+          date: new Date()
+        };
         db.collection("show")
-          .add({
-            name: this.name,
-            platform: this.platform,
-            rating: this.rating,
-            user: this.user,
-            userId: this.$store.getters.user.id,
-            date: new Date()
-          })
-          .then(() => {
-            this.$store.dispatch("loadRatings");
+          .add(newRating)
+          .then(docRef => {
+            // getting document id from firestore
+            newRating.id = docRef.id;
+            this.$store.commit("addRating", newRating);
             this.name = "";
             this.platform = "";
             this.rating = 0;

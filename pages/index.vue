@@ -457,7 +457,7 @@ export default {
   watch: {
     search() {
       this.$store.commit("setSearch", this.search);
-      if (this.search !== this.expandedName.replace(/[^a-zA-Z ]/g, "")) {
+      if (this.search !== this.expandedName) {
         this.expandedName = "";
       }
     }

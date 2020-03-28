@@ -21,6 +21,22 @@ export const mutations = {
     state.names = state.ratings.map(rating => rating.name);
     state.platforms = state.ratings.map(rating => rating.platform);
   },
+  addRating(state, payload) {
+    state.ratings.push(payload);
+  },
+  deleteRating(state, payload) {
+    state.ratings = state.ratings.filter(rating => rating.id !== payload);
+  },
+  updateRating(state, payload) {
+    state.ratings.forEach(rating => {
+      if (rating.id === payload.id) {
+        rating.name = payload.name;
+        rating.rating = payload.rating;
+        rating.platform = payload.platform;
+        rating.user = payload.user;
+      }
+    });
+  },
   clearRatings(state) {
     state.ratings = [];
   },
@@ -154,11 +170,8 @@ export const actions = {
 };
 
 export const getters = {
-  user(state) {
-    return state.user;
-  },
-  error(state) {
-    return state.error;
+  ratingsChange(state) {
+    return state.ratings;
   },
   userRatings(state) {
     let newList = [];
@@ -168,6 +181,12 @@ export const getters = {
       }
     });
     return newList;
+  },
+  error(state) {
+    return state.error;
+  },
+  user(state) {
+    return state.user;
   }
 };
 

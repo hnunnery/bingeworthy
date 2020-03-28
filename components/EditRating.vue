@@ -35,6 +35,7 @@
             label="Name of Show"
             v-model="updatedName"
             :items="this.uniqueNames"
+            required
           ></v-combobox>
         </v-col>
         <v-col cols="12">
@@ -44,13 +45,14 @@
             label="Platform (Netflix, Hulu, etc.)"
             v-model="updatedPlatform"
             :items="this.uniquePlatforms"
+            required
           ></v-combobox>
         </v-col>
         <v-col cols="12" class="text-center">
-          <v-rating v-model="updatedRating" half-increments size="35" color="secondary"></v-rating>
+          <v-rating v-model="updatedRating" half-increments size="35" color="secondary" required></v-rating>
         </v-col>
         <v-col cols="12">
-          <v-text-field type="text" name="user" label="Your Name" v-model="updatedUser"></v-text-field>
+          <v-text-field type="text" name="user" label="Your Name" v-model="updatedUser" required></v-text-field>
         </v-col>
         <v-card-actions style="width: 100%;">
           <v-row>
@@ -118,6 +120,13 @@ export default {
         this.updatedRating &&
         this.updatedUser
       ) {
+        const updatedObject = {
+          name: this.updatedName,
+          rating: this.updatedRating,
+          platform: this.updatedPlatform,
+          user: this.updatedUser,
+          id: this.ratingId
+        };
         db.collection("show")
           .doc(this.ratingId)
           .update({
@@ -127,7 +136,7 @@ export default {
             user: this.updatedUser
           })
           .then(() => {
-            this.$store.dispatch("loadRatings");
+            this.$store.commit("updateRating", updatedObject);
             this.dialog = false;
           });
       } else alert("Please complete all fields.");
@@ -138,7 +147,8 @@ export default {
           .doc(this.ratingId)
           .delete()
           .then(() => {
-            this.$store.dispatch("loadRatings");
+            this.$store.commit("deleteRating", this.ratingId);
+            this.dialog = false;
           });
       }
     }
