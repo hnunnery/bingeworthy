@@ -91,14 +91,27 @@ export const actions = {
       tempMaster.push(obj);
     });
     tempMaster.forEach(rating => {
-      let weight = rating.ratings.length * .01;
       let averageRating = parseFloat(
         rating.ratings.reduce((a, b) => a + b, 0) / rating.ratings.length
       );
+      // CURRENT WEIGTHING PER RATING IS .01
+      let weight = rating.ratings.length * 0.01;
       rating.averageRating = averageRating + weight;
     });
     const master = tempMaster.filter(rating => rating.ratings.length > 1);
     master.sort((a, b) => (a.averageRating < b.averageRating ? 1 : -1));
+
+    console.log("ORIGINAL AVERAGES");
+    master.forEach(rating => {
+      console.log(`${rating.name}: ${rating.averageRating}`);
+    });
+
+    console.log("ROUNDED AVERAGES");
+    master.forEach(rating => {
+      rating.averageRating = Math.floor(rating.averageRating * 2) / 2;
+      console.log(`${rating.name}: ${rating.averageRating}`);
+    });
+    // COMMIT TO MUTATION AND STATE
     commit("setMasterRatings", master);
   },
   // USER HANDLING
