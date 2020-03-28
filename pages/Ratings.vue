@@ -243,7 +243,7 @@ export default {
   },
   methods: {
     setSearch(prop) {
-      this.search = prop.replace(/[^a-zA-Z ]/g, "");
+      this.search = prop;
       setTimeout(() => {
         this.$vuetify.goTo(0);
       }, 50);
@@ -265,11 +265,11 @@ export default {
           rating.name
             .toLowerCase()
             .replace(/[^a-zA-Z ]/g, "")
-            .match(this.search.toLowerCase()) ||
+            .match(this.search.toLowerCase().replace(/[^a-zA-Z ]/g, "")) ||
           rating.platform
             .toLowerCase()
             .replace(/[^a-zA-Z ]/g, "")
-            .match(this.search.toLowerCase())
+            .match(this.search.toLowerCase().replace(/[^a-zA-Z ]/g, ""))
         );
       });
     },

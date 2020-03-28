@@ -9,8 +9,7 @@ export const state = () => ({
   names: [],
   platforms: [],
   error: null,
-  searchBar: false,
-  search: ""
+  searchBar: false
 });
 
 // MUTATIONS
@@ -51,12 +50,6 @@ export const mutations = {
   },
   searchBarToggle(state) {
     state.searchBar = !state.searchBar;
-  },
-  setSearch(state, payload) {
-    if (payload === null) {
-      payload = "";
-    }
-    state.search = payload.toLowerCase().replace(/[^a-zA-Z ]/g, "");
   },
   // USER HANDLING
   setUser(state, payload) {

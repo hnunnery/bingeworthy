@@ -356,13 +356,13 @@ export default {
   },
   data() {
     return {
-      search: this.$store.state.search,
+      search: "",
       expandedName: ""
     };
   },
   methods: {
     setSearch(prop) {
-      this.search = prop.replace(/[^a-zA-Z ]/g, "");
+      this.search = prop;
       setTimeout(() => {
         this.$vuetify.goTo(0);
       }, 50);
@@ -390,16 +390,16 @@ export default {
     },
     filteredMasterRatings() {
       return this.masterRatings.filter(rating => {
-        if (!this.expandedName) {
+        if (rating.name !== this.expandedName) {
           return (
             rating.name
               .toLowerCase()
               .replace(/[^a-zA-Z ]/g, "")
-              .match(this.$store.state.search) ||
+              .match(this.search.toLowerCase().replace(/[^a-zA-Z ]/g, "")) ||
             rating.platform
               .toLowerCase()
               .replace(/[^a-zA-Z ]/g, "")
-              .match(this.$store.state.search)
+              .match(this.search.toLowerCase().replace(/[^a-zA-Z ]/g, ""))
           );
         }
       });
@@ -410,15 +410,11 @@ export default {
           rating.name
             .toLowerCase()
             .replace(/[^a-zA-Z ]/g, "")
-            .match(this.$store.state.search) ||
-          rating.platform
-            .toLowerCase()
-            .replace(/[^a-zA-Z ]/g, "")
-            .match(this.$store.state.search) ||
+            .match(this.search.toLowerCase().replace(/[^a-zA-Z ]/g, "")) ||
           rating.user
             .toLowerCase()
             .replace(/[^a-zA-Z ]/g, "")
-            .match(this.$store.state.search)
+            .match(this.search.toLowerCase().replace(/[^a-zA-Z ]/g, ""))
         );
       });
     },
@@ -453,8 +449,7 @@ export default {
   },
   watch: {
     search() {
-      this.$store.commit("setSearch", this.search);
-      if (this.search !== this.expandedName) {
+      if (this.search !== this.expandedName.replace(/[^a-zA-Z ]/g, "")) {
         this.expandedName = "";
       }
     }
