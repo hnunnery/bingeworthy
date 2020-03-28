@@ -245,7 +245,7 @@ export default {
   },
   methods: {
     setSearch(prop) {
-      this.search = prop;
+      this.search = prop.replace(/[^a-zA-Z ]/g, "");
       setTimeout(() => {
         this.$vuetify.goTo(0);
       }, 50);
@@ -267,8 +267,14 @@ export default {
     filteredRatings() {
       return this.ratings.filter(rating => {
         return (
-          rating.name.toLowerCase().match(this.search.toLowerCase()) ||
-          rating.platform.toLowerCase().match(this.search.toLowerCase())
+          rating.name
+            .toLowerCase()
+            .replace(/[^a-zA-Z ]/g, "")
+            .match(this.search.toLowerCase()) ||
+          rating.platform
+            .toLowerCase()
+            .replace(/[^a-zA-Z ]/g, "")
+            .match(this.search.toLowerCase())
         );
       });
     },

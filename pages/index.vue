@@ -365,7 +365,7 @@ export default {
   },
   methods: {
     setSearch(prop) {
-      this.search = prop;
+      this.search = prop.replace(/[^a-zA-Z ]/g, "");
       setTimeout(() => {
         this.$vuetify.goTo(0);
       }, 50);
@@ -395,8 +395,14 @@ export default {
       return this.masterRatings.filter(rating => {
         if (!this.expandedName) {
           return (
-            rating.name.toLowerCase().match(this.$store.state.search) ||
-            rating.platform.toLowerCase().match(this.$store.state.search)
+            rating.name
+              .toLowerCase()
+              .replace(/[^a-zA-Z ]/g, "")
+              .match(this.$store.state.search) ||
+            rating.platform
+              .toLowerCase()
+              .replace(/[^a-zA-Z ]/g, "")
+              .match(this.$store.state.search)
           );
         }
       });
@@ -404,9 +410,18 @@ export default {
     filteredRatings() {
       return this.ratings.filter(rating => {
         return (
-          rating.name.toLowerCase().match(this.$store.state.search) ||
-          rating.platform.toLowerCase().match(this.$store.state.search) ||
-          rating.user.toLowerCase().match(this.$store.state.search)
+          rating.name
+            .toLowerCase()
+            .replace(/[^a-zA-Z ]/g, "")
+            .match(this.$store.state.search) ||
+          rating.platform
+            .toLowerCase()
+            .replace(/[^a-zA-Z ]/g, "")
+            .match(this.$store.state.search) ||
+          rating.user
+            .toLowerCase()
+            .replace(/[^a-zA-Z ]/g, "")
+            .match(this.$store.state.search)
         );
       });
     },
@@ -442,7 +457,7 @@ export default {
   watch: {
     search() {
       this.$store.commit("setSearch", this.search);
-      if (this.search !== this.expandedName) {
+      if (this.search !== this.expandedName.replace(/[^a-zA-Z ]/g, "")) {
         this.expandedName = "";
       }
     }

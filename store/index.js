@@ -40,7 +40,7 @@ export const mutations = {
     if (payload === null) {
       payload = "";
     }
-    state.search = payload.toLowerCase();
+    state.search = payload.toLowerCase().replace(/[^a-zA-Z ]/g, "");
   },
   // USER HANDLING
   setUser(state, payload) {
@@ -100,16 +100,9 @@ export const actions = {
     });
     const master = tempMaster.filter(rating => rating.ratings.length > 1);
     master.sort((a, b) => (a.averageRating < b.averageRating ? 1 : -1));
-
-    console.log("ORIGINAL AVERAGES");
-    master.forEach(rating => {
-      console.log(`${rating.name}: ${rating.averageRating}`);
-    });
-
-    console.log("ROUNDED AVERAGES");
+    // ROUNDING DOWN TO NEAREST .5 TO CONTROL VUETIFY RATING COMPONENT
     master.forEach(rating => {
       rating.averageRating = Math.floor(rating.averageRating * 2) / 2;
-      console.log(`${rating.name}: ${rating.averageRating}`);
     });
     // COMMIT TO MUTATION AND STATE
     commit("setMasterRatings", master);
