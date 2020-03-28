@@ -506,7 +506,7 @@ export default {
   },
   created() {
     // fetching events from firebase
-    this.$store.dispatch("loadRatings");
+    // this.$store.dispatch("loadRatings");
 
     // SEND THE BELOW TO VUEX STORE
     auth.onAuthStateChanged(user => {

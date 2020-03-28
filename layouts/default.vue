@@ -1,6 +1,10 @@
 <template>
   <v-app>
-    <v-container fluid class="svg-bg px-0 pt-0 pb-12" style="min-height: 100vh; padding-bottom: 100px;">
+    <v-container
+      fluid
+      class="svg-bg px-0 pt-0 pb-12"
+      style="min-height: 100vh; padding-bottom: 100px;"
+    >
       <NavBar />
       <v-btn
         large
@@ -11,7 +15,8 @@
         class="secondary primary--text font-weight-bold"
         href="https://github.com/hnunnery/bingeworthy"
         target="_blank"
-      >GitHub</v-btn>
+        >GitHub</v-btn
+      >
       <v-btn
         v-scroll="onScroll"
         v-show="fab"
@@ -53,6 +58,10 @@ export default {
     toTop() {
       this.$vuetify.goTo(0);
     }
+  },
+  created() {
+    // fetching events from firebase
+    this.$store.dispatch("loadRatings");
   }
 };
 </script>
