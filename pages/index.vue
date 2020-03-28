@@ -8,15 +8,7 @@
           v-show="this.$store.state.searchBar && this.$vuetify.breakpoint.mdAndDown"
         >
           <v-col cols="12" sm="10" md="6" class="mt-3 mx-0 mb-2 px-2 py-0">
-            <v-text-field
-              solo
-              rounded
-              placeholder="Search"
-              v-model="search"
-              @click:clear="clearSearch"
-              clearable
-              hide-details
-            ></v-text-field>
+            <v-text-field solo rounded placeholder="Search" v-model="search" hide-details></v-text-field>
           </v-col>
         </v-row>
         <!-- DESKTOP NAV FOR LG AND XL BREAKPOINTS -->
@@ -32,8 +24,6 @@
               rounded
               placeholder="Search"
               v-model="search"
-              @click:clear="clearSearch"
-              clearable
               hide-details
               class="limit-width hidden-md-and-down"
             ></v-text-field>
@@ -100,8 +90,8 @@
             rounded
             large
             class="mt-md-2 primary text-capitalize"
-            v-show="this.search"
-            @click="clearSearch"
+            v-show="search"
+            @click="setSearch('')"
           >
             <v-icon>mdi-filter-remove</v-icon>&nbsp;Clear Filter
           </v-btn>
@@ -366,9 +356,6 @@ export default {
       setTimeout(() => {
         this.$vuetify.goTo(0);
       }, 50);
-    },
-    clearSearch() {
-      this.search = "";
     },
     onLogout() {
       if (confirm("Sign Out?")) {
