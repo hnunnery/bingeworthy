@@ -91,11 +91,11 @@ export const actions = {
       tempMaster.push(obj);
     });
     tempMaster.forEach(rating => {
-      let initial = rating.ratings.length * .01;
+      let weight = rating.ratings.length * .01;
       let averageRating = parseFloat(
-        rating.ratings.reduce((a, b) => a + b, initial) / rating.ratings.length
+        rating.ratings.reduce((a, b) => a + b, 0) / rating.ratings.length
       );
-      rating.averageRating = averageRating;
+      rating.averageRating = averageRating + weight;
     });
     const master = tempMaster.filter(rating => rating.ratings.length > 1);
     master.sort((a, b) => (a.averageRating < b.averageRating ? 1 : -1));
