@@ -5,10 +5,18 @@
         <!-- DROP DOWN SEARCH BAR FOR XS-MD BREAKPOINTS; LEAVE ON PAGES -->
         <v-row
           class="align-center justify-center"
-          v-show="this.$store.state.searchBar && this.$vuetify.breakpoint.mdAndDown"
+          v-show="
+            this.$store.state.searchBar && this.$vuetify.breakpoint.mdAndDown
+          "
         >
           <v-col cols="12" sm="10" md="6" class="mt-3 mx-0 mb-2 px-2 py-0">
-            <v-text-field solo rounded placeholder="Search" v-model="search" hide-details></v-text-field>
+            <v-text-field
+              solo
+              rounded
+              placeholder="Search"
+              v-model="search"
+              hide-details
+            ></v-text-field>
           </v-col>
         </v-row>
         <!-- DESKTOP NAV FOR LG AND XL BREAKPOINTS -->
@@ -84,23 +92,41 @@
         <h1
           class="hidden-md-and-down secondary--text text-center font-weight-bold font-italic my-2"
           style="letter-spacing: 2px; font-size: 6vmax;"
-        >BingeWorthy</h1>
-        <v-row class="justify-center mb-0 pb-0">
+        >
+          BingeWorthy
+        </h1>
+        <v-row
+          v-show="this.search"
+          class="justify-center align-center mb-0 pb-0"
+        >
+          <RateThis
+            v-if="expandedName"
+            :rateName="expandedName"
+            :ratePlatform="expandedPlatform"
+          />
           <v-btn
             rounded
             large
-            class="mt-md-2 primary text-capitalize"
-            v-show="this.search"
+            class="mt-md-2 mx-1 accent secondary--text text-capitalize"
             @click="clearSearch"
           >
-            <v-icon>mdi-filter-remove</v-icon>&nbsp;Clear Filter
+            <v-icon left>mdi-filter-remove</v-icon>Clear Filter
           </v-btn>
         </v-row>
 
         <!-- PROGRESS SPINNER -->
-        <v-row v-show="loading" class="justify-center align-center" style="height: 50vh;">
+        <v-row
+          v-show="loading"
+          class="justify-center align-center"
+          style="height: 50vh;"
+        >
           <v-col class="text-center">
-            <v-progress-circular :size="150" :width="12" color="primary" indeterminate></v-progress-circular>
+            <v-progress-circular
+              :size="150"
+              :width="12"
+              color="primary"
+              indeterminate
+            ></v-progress-circular>
           </v-col>
         </v-row>
 
@@ -119,11 +145,17 @@
               color="rgba(17, 17, 17, 0.5)"
               height="100%"
               elevation="15"
-              @click="setSearch(rating.name); expandedName=rating.name;"
+              @click="
+                setSearch(rating.name);
+                expandedName = rating.name;
+                expandedPlatform = rating.platform;
+              "
               style="box-shadow: 0 0 5px 1px #ceb888 !important; position: relative;"
             >
               <v-row class="text-center justify-center align-center">
-                <v-col cols="12" class="mt-2 py-0" style="font-size: 1.6em;">{{ rating.name }}</v-col>
+                <v-col cols="12" class="mt-2 py-0" style="font-size: 1.6em;">{{
+                  rating.name
+                }}</v-col>
                 <v-col cols="12" class="py-0">
                   <v-rating
                     :value="rating.averageRating"
@@ -143,24 +175,32 @@
                     v-if="rating.users.length > 1"
                     class="pa-0"
                     style="font-size: 12px; margin: -20px 0px -10px 0px;"
-                  >ratings</p>
+                  >
+                    ratings
+                  </p>
                   <p
                     v-else
                     class="pa-0"
                     style="font-size: 12px; margin: -20px 0px -10px 0px;"
-                  >rating</p>
+                  >
+                    rating
+                  </p>
                 </v-col>
                 <v-col
                   cols="12"
                   class="headline font-weight-medium primary--text pa-0 mb-1"
-                >{{ rating.platform }}</v-col>
+                  >{{ rating.platform }}</v-col
+                >
               </v-row>
             </v-card>
           </v-col>
         </v-row>
 
         <!-- START MASTER RATINGS CARDS -->
-        <v-row v-show="!loading" class="hidden-md-and-down justify-center mt-2 mb-6">
+        <v-row
+          v-show="!loading"
+          class="hidden-md-and-down justify-center mt-2 mb-6"
+        >
           <v-col
             cols="12"
             lg="4"
@@ -174,12 +214,20 @@
               color="rgba(17, 17, 17, 0.7)"
               elevation="15"
               height="100%"
-              @click="setSearch(rating.name); expandedName=rating.name;"
+              @click="
+                setSearch(rating.name);
+                expandedName = rating.name;
+              "
               style="box-shadow: 0 0 15px 5px #ceb888 !important; cursor: pointer;"
             >
               <v-row class="text-center justify-center align-center">
-                <v-row class="justify-center align-center" style="height: 85px;">
-                  <v-col cols="12" class="display-1 py-0 mt-0">{{ rating.name }}</v-col>
+                <v-row
+                  class="justify-center align-center"
+                  style="height: 85px;"
+                >
+                  <v-col cols="12" class="display-1 py-0 mt-0">{{
+                    rating.name
+                  }}</v-col>
                 </v-row>
                 <v-col cols="12" class="pt-0">
                   <v-rating
@@ -194,24 +242,30 @@
                   cols="12"
                   class="py-0 font-weight-medium primary--text"
                   style="font-size: 1.9em;"
-                >{{ rating.platform }}</v-col>
+                  >{{ rating.platform }}</v-col
+                >
                 <v-col
                   v-if="rating.users.length === 1"
                   cols="12"
                   class="title font-weight-light font-italic"
-                >Rated by Only {{ rating.users.length }} User</v-col>
+                  >Rated by Only {{ rating.users.length }} User</v-col
+                >
                 <v-col
                   v-else
                   cols="12"
                   class="title font-weight-light font-italic"
-                >Rated by {{ rating.users.length }} Users</v-col>
+                  >Rated by {{ rating.users.length }} Users</v-col
+                >
               </v-row>
             </v-card>
           </v-col>
         </v-row>
 
         <!-- START - MOBILE - RATINGS CARDS -->
-        <v-row v-show="!loading && this.search" class="hidden-lg-and-up justify-center mt-0 mb-6">
+        <v-row
+          v-show="!loading && this.search"
+          class="hidden-lg-and-up justify-center mt-0 mb-6"
+        >
           <v-col
             cols="12"
             sm="6"
@@ -233,7 +287,8 @@
                   class="mt-2 py-0"
                   @click="setSearch(rating.name)"
                   style="font-size: 1.6em;"
-                >{{ rating.name }}</v-col>
+                  >{{ rating.name }}</v-col
+                >
                 <v-col cols="12" class="py-0">
                   <v-rating
                     :value="parseFloat(rating.rating)"
@@ -245,26 +300,34 @@
                 </v-col>
                 <v-row class="justify-left">
                   <v-col cols="2" class="pl-6 py-0">
-                    <EditRating :rating="rating" v-if="userId===rating.userId || userIsAdmin" />
+                    <EditRating
+                      :rating="rating"
+                      v-if="userId === rating.userId || userIsAdmin"
+                    />
                   </v-col>
                   <v-col
                     cols="8"
                     class="headline py-0 font-weight-medium primary--text"
                     @click="setSearch(rating.platform)"
-                  >{{ rating.platform }}</v-col>
+                    >{{ rating.platform }}</v-col
+                  >
                 </v-row>
                 <v-col
                   cols="12"
                   class="title py-0 mb-2 font-weight-light font-italic"
                   @click="setSearch(rating.user)"
-                >{{ rating.user }}</v-col>
+                  >{{ rating.user }}</v-col
+                >
               </v-row>
             </v-card>
           </v-col>
         </v-row>
 
         <!-- START RATINGS CARDS -->
-        <v-row v-show="!loading && this.search" class="hidden-md-and-down justify-center mt-2 mb-6">
+        <v-row
+          v-show="!loading && this.search"
+          class="hidden-md-and-down justify-center mt-2 mb-6"
+        >
           <v-col
             cols="12"
             lg="4"
@@ -281,13 +344,17 @@
               style="box-shadow: 0 0 15px 5px #782f40 !important;"
             >
               <v-row class="text-center justify-center align-center">
-                <v-row class="justify-center align-center" style="height: 85px;">
+                <v-row
+                  class="justify-center align-center"
+                  style="height: 85px;"
+                >
                   <v-col
                     cols="12"
                     class="display-1 py-0 mt-2"
                     style="cursor: pointer;"
                     @click="setSearch(rating.name)"
-                  >{{ rating.name }}</v-col>
+                    >{{ rating.name }}</v-col
+                  >
                 </v-row>
                 <v-col cols="12" class="pt-0">
                   <v-rating
@@ -303,15 +370,20 @@
                   class="py-0 font-weight-medium primary--text"
                   style="cursor: pointer; font-size: 1.9em;"
                   @click="setSearch(rating.platform)"
-                >{{ rating.platform }}</v-col>
+                  >{{ rating.platform }}</v-col
+                >
                 <v-col
                   cols="12"
                   class="headline font-weight-light font-italic"
                   style="cursor: pointer;"
                   @click="setSearch(rating.user)"
-                >{{ rating.user }}</v-col>
+                  >{{ rating.user }}</v-col
+                >
                 <v-card-actions>
-                  <EditRating :rating="rating" v-if="userId===rating.userId || userIsAdmin" />
+                  <EditRating
+                    :rating="rating"
+                    v-if="userId === rating.userId || userIsAdmin"
+                  />
                 </v-card-actions>
               </v-row>
             </v-card>
@@ -326,16 +398,19 @@
 import { db, auth } from "@/plugins/firebase.js";
 import AddRating from "@/components/AddRating";
 import EditRating from "@/components/EditRating";
+import RateThis from "@/components/RateThis";
 
 export default {
   components: {
     AddRating,
-    EditRating
+    EditRating,
+    RateThis
   },
   data() {
     return {
       search: "",
-      expandedName: ""
+      expandedName: "",
+      expandedPlatform: ""
     };
   },
   methods: {
