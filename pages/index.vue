@@ -395,7 +395,6 @@
 </template>
 
 <script>
-import { db, auth } from "@/plugins/firebase.js";
 import AddRating from "@/components/AddRating";
 import EditRating from "@/components/EditRating";
 import RateThis from "@/components/RateThis";
@@ -503,17 +502,6 @@ export default {
         this.expandedName = "";
       }
     }
-  },
-  created() {
-    // fetching events from firebase
-    // this.$store.dispatch("loadRatings");
-
-    // SEND THE BELOW TO VUEX STORE
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        this.$store.dispatch("autoSignIn", user);
-      }
-    });
   }
 };
 </script>

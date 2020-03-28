@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import { auth } from "@/plugins/firebase.js";
 import NavBar from "@/components/NavBar";
 
 export default {
@@ -62,6 +63,12 @@ export default {
   created() {
     // fetching events from firebase
     this.$store.dispatch("loadRatings");
+    // log returning users in automatically
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.$store.dispatch("autoSignIn", user);
+      }
+    });
   }
 };
 </script>
