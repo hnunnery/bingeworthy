@@ -177,12 +177,6 @@
               elevation="15"
               height="100%"
               style="box-shadow: 0 0 15px 5px #782f40 !important;"
-              data-aos="flip-left"
-              data-aos-offset="0"
-              data-aos-delay="0"
-              data-aos-duration="500"
-              data-aos-easing="ease-in-out"
-              data-aos-once="false"
             >
               <v-row class="text-center justify-center align-center">
                 <v-row class="justify-center align-center" style="height: 85px;">

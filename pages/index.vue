@@ -90,8 +90,8 @@
             rounded
             large
             class="mt-md-2 primary text-capitalize"
-            v-show="search"
-            @click="setSearch('')"
+            v-show="this.search"
+            @click="clearSearch"
           >
             <v-icon>mdi-filter-remove</v-icon>&nbsp;Clear Filter
           </v-btn>
@@ -176,12 +176,6 @@
               height="100%"
               @click="setSearch(rating.name); expandedName=rating.name;"
               style="box-shadow: 0 0 15px 5px #ceb888 !important; cursor: pointer;"
-              data-aos="flip-left"
-              data-aos-offset="0"
-              data-aos-delay="0"
-              data-aos-duration="500"
-              data-aos-easing="ease-in-out"
-              data-aos-once="false"
             >
               <v-row class="text-center justify-center align-center">
                 <v-row class="justify-center align-center" style="height: 85px;">
@@ -285,12 +279,6 @@
               elevation="15"
               height="100%"
               style="box-shadow: 0 0 15px 5px #782f40 !important;"
-              data-aos="flip-left"
-              data-aos-offset="0"
-              data-aos-delay="0"
-              data-aos-duration="500"
-              data-aos-easing="ease-in-out"
-              data-aos-once="false"
             >
               <v-row class="text-center justify-center align-center">
                 <v-row class="justify-center align-center" style="height: 85px;">
@@ -357,6 +345,9 @@ export default {
         this.$vuetify.goTo(0);
       }, 50);
     },
+    clearSearch() {
+      this.search = "";
+    },
     onLogout() {
       if (confirm("Sign Out?")) {
         this.$store.dispatch("logout");
@@ -371,9 +362,6 @@ export default {
     },
     ratings() {
       return this.$store.state.ratings;
-    },
-    names() {
-      return this.ratings.map(rating => rating.name);
     },
     filteredMasterRatings() {
       return this.masterRatings.filter(rating => {

@@ -52,11 +52,11 @@ export default {
   /*
    ** Global CSS
    */
-  css: ["aos/dist/aos.css"],
+  css: [],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ["@/plugins/firebase.js", { src: "@/plugins/aos", ssr: false }],
+  plugins: ["@/plugins/firebase.js"],
   /*
    ** Nuxt.js dev-modules
    */
