@@ -60,11 +60,11 @@
       text
       class="text-capitalize"
       style="margin-right: 1px; margin-left: -6px; letter-spacing: .5px;"
-      to="/ratings"
+      to="/"
       v-if="userAuth"
     >
-      <v-icon color="white">mdi-star</v-icon>
-      <span class="hidden-xs-only">&nbsp;My Ratings</span>
+      <v-icon color="white">mdi-home</v-icon>
+      <span class="hidden-xs-only">&nbsp;All Ratings</span>
     </v-btn>
     <AddRating v-if="userAuth" />
   </v-app-bar>

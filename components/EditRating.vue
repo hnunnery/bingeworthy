@@ -1,16 +1,13 @@
 <template>
   <v-dialog v-model="dialog" persistent max-width="600">
     <template v-slot:activator="{ on }">
-      <v-btn fab x-small class="hidden-lg-and-up text-capitalize" color="primary" v-on="on">
-        <v-icon>mdi-cog</v-icon>
-      </v-btn>
       <v-btn
         fab
         x-small
         absolute
         bottom
         right
-        class="hidden-md-and-down text-capitalize secondary--text"
+        class="text-capitalize secondary--text"
         color="accent"
         v-on="on"
       >

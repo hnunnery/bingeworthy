@@ -1,19 +1,13 @@
 <template>
   <v-container fluid class="pt-0 pb-12">
-    <!-- DESKTOP NAV START -->
     <v-row class="justify-space-between ma-0 pa-0" no-gutters>
       <v-col cols="12" class="desktop">
-        <!-- MENU -->
-        <v-row class="align-center justify-center justify-lg-space-between">
-          <!-- mobile search bar that drops down when search icon is clicked; for xs and sm -->
-          <v-col
-            cols="12"
-            sm="10"
-            md="8"
-            lg="4"
-            class="mt-3 mx-0 mb-2 px-2 py-0 align-self-center"
-            v-show="this.$store.state.searchBar && this.$vuetify.breakpoint.smAndDown"
-          >
+        <!-- DROP DOWN SEARCH BAR FOR XS-MD BREAKPOINTS; LEAVE ON PAGES -->
+        <v-row
+          class="align-center justify-center"
+          v-show="this.$store.state.searchBar && this.$vuetify.breakpoint.mdAndDown"
+        >
+          <v-col cols="12" sm="10" md="6" class="mt-3 mx-0 mb-2 px-2 py-0">
             <v-text-field
               solo
               rounded
@@ -24,6 +18,9 @@
               hide-details
             ></v-text-field>
           </v-col>
+        </v-row>
+        <!-- DESKTOP NAV FOR LG AND XL BREAKPOINTS -->
+        <v-row class="align-center justify-center justify-lg-space-between">
           <v-col
             cols="12"
             sm="4"
@@ -118,7 +115,7 @@
         </v-row>
 
         <!-- START - MOBILE - MASTER RATINGS CARDS -->
-        <v-row v-show="!loading" class="hidden-lg-and-up justify-center mt-1">
+        <v-row v-show="!loading" class="hidden-lg-and-up justify-center mt-0">
           <v-col
             cols="12"
             sm="6"
@@ -230,7 +227,7 @@
         </v-row>
 
         <!-- START - MOBILE - RATINGS CARDS -->
-        <v-row v-show="!loading && this.search" class="hidden-lg-and-up justify-center mt-1 mb-6">
+        <v-row v-show="!loading && this.search" class="hidden-lg-and-up justify-center mt-0 mb-6">
           <v-col
             cols="12"
             sm="6"
