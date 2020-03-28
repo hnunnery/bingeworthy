@@ -21,8 +21,6 @@
               rounded
               placeholder="Search"
               v-model="search"
-              @click:clear="clearSearch"
-              clearable
               hide-details
             ></v-text-field>
           </v-col>
