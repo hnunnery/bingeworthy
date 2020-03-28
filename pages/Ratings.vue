@@ -104,7 +104,7 @@
           BingeWorthy
         </h1>
         <v-row class="justify-center mb-0 pb-0">
-          <v-btn rounded large class="primary mx-1" to="/"
+          <v-btn rounded large class="hidden-md-and-up primary mx-1" to="/"
             ><v-icon left>mdi-arrow-left</v-icon>Back</v-btn
           >
           <v-btn
