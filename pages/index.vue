@@ -98,18 +98,6 @@
             <v-icon left>mdi-filter-remove</v-icon>Clear Filter
           </v-btn>
         </v-row>
-        <!-- <v-row v-if="expandedName" class="mt-lg-6 align-center justify-space-around">
-          <v-col
-            cols="12"
-            md="6"
-            class="headline text-center text-md-right mt-2 py-0"
-          >{{ expandedName }}</v-col>
-          <v-col
-            cols="12"
-            md="6"
-            class="headline text-center text-md-left mt-sm-2 py-0"
-          >Ranked: #{{ expandedRank }} &nbsp;&nbsp; Average: {{ expandedRating }}</v-col>
-        </v-row>-->
 
         <!-- PROGRESS SPINNER -->
         <v-row v-show="loading" class="justify-center align-center" style="height: 50vh;">
@@ -126,7 +114,7 @@
             md="4"
             v-for="(rating, index) in filteredMasterRatingsMobile"
             :key="index"
-            class="pb-0"
+            class="pb-0 px-1"
           >
             <v-card
               class="px-2 ma-1 align-center d-flex"
@@ -288,7 +276,7 @@
             md="4"
             v-for="rating in filteredRatings"
             :key="rating.id"
-            class="pb-0"
+            class="pb-0 px-1"
           >
             <v-card
               class="px-2 ma-1 align-center d-flex"

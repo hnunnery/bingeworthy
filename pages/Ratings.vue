@@ -118,7 +118,7 @@
             md="4"
             v-for="rating in filteredRatings"
             :key="rating.id"
-            class="pb-0"
+            class="pb-0 px-1"
           >
             <v-card
               class="px-2 ma-1 align-center d-flex"

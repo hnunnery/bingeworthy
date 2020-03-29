@@ -5,15 +5,14 @@
         <v-icon left>mdi-plus</v-icon>Rate This
       </v-btn>
     </template>
-    <v-card class="pa-6" color="#111111">
+    <v-card class="px-6 py-2" color="#111111">
       <v-row class="align-center justify-center">
         <v-col cols="12" class="pb-2">
           <h2
-            class="display-1 secondary--text text-center font-italic mt-1 pb-0"
-            style="letter-spacing: 1.2px;"
-          >Add Your Show</h2>
+            class="secondary--text text-center font-weight-regular font-italic mt-0 pb-0 modal-title"
+          >Add {{ name }}</h2>
         </v-col>
-        <v-col cols="12">
+        <v-col cols="12" class="py-1">
           <v-text-field
             name="name"
             label="Name of Show"
@@ -23,7 +22,7 @@
             type="text"
           ></v-text-field>
         </v-col>
-        <v-col cols="12">
+        <v-col cols="12" class="py-1">
           <v-text-field
             name="platform"
             label="Platform (Netflix, Hulu, etc.)"

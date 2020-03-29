@@ -18,7 +18,7 @@
         <v-icon>mdi-plus</v-icon>
       </v-btn>
     </template>
-    <v-card class="pa-6" color="#111111">
+    <v-card class="px-6 py-2" color="#111111">
       <v-row class="align-center justify-center">
         <v-col cols="12" class="pb-2">
           <h2
@@ -26,7 +26,7 @@
             style="letter-spacing: 1.2px;"
           >Add Your Show</h2>
         </v-col>
-        <v-col cols="12">
+        <v-col cols="12" class="py-1">
           <v-combobox
             name="name"
             label="Name of Show"
@@ -36,7 +36,7 @@
             type="text"
           ></v-combobox>
         </v-col>
-        <v-col cols="12">
+        <v-col cols="12" class="py-1">
           <v-combobox
             name="platform"
             label="Platform (Netflix, Hulu, etc.)"
@@ -49,7 +49,7 @@
         <v-col cols="12" class="text-center">
           <v-rating v-model="rating" half-increments size="35" color="secondary" required></v-rating>
         </v-col>
-        <v-col cols="12">
+        <v-col cols="12" class="pt-1">
           <v-text-field type="text" name="user" label="Your Name" v-model="user" required></v-text-field>
         </v-col>
         <v-card-actions style="width: 100%;">

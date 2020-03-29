@@ -14,18 +14,17 @@
         <v-icon>mdi-cog</v-icon>
       </v-btn>
     </template>
-    <v-card class="pa-6" color="#111111">
+    <v-card class="px-6 py-2" color="#111111">
       <v-row class="align-center justify-center">
         <v-col cols="12" class="pb-2">
           <h2
-            class="display-1 primary--text text-center font-italic mt-1 pb-0"
-            style="letter-spacing: 1.2px;"
+            class="primary--text text-center font-weight-regular font-italic mt-1 pb-0 modal-title"
           >
             Edit
             <span class="secondary--text">{{ this.updatedName }}</span>
           </h2>
         </v-col>
-        <v-col cols="12">
+        <v-col cols="12" class="py-1">
           <v-combobox
             type="text"
             name="name"
@@ -35,7 +34,7 @@
             required
           ></v-combobox>
         </v-col>
-        <v-col cols="12">
+        <v-col cols="12" class="py-1">
           <v-combobox
             type="text"
             name="platform"
@@ -48,7 +47,7 @@
         <v-col cols="12" class="text-center">
           <v-rating v-model="updatedRating" half-increments size="35" color="secondary" required></v-rating>
         </v-col>
-        <v-col cols="12">
+        <v-col cols="12" class="pt-1">
           <v-text-field type="text" name="user" label="Your Name" v-model="updatedUser" required></v-text-field>
         </v-col>
         <v-card-actions style="width: 100%;">

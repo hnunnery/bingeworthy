@@ -15,8 +15,7 @@
         class="secondary primary--text font-weight-bold"
         href="https://github.com/hnunnery/bingeworthy"
         target="_blank"
-        >GitHub</v-btn
-      >
+      >GitHub</v-btn>
       <v-btn
         v-scroll="onScroll"
         v-show="fab"
@@ -77,6 +76,9 @@ export default {
 form {
   font-size: 16px !important;
 }
+.modal-title {
+  font-size: 1.5em;
+}
 .limit-width {
   max-width: 80vw;
 }
@@ -88,6 +90,9 @@ form {
 @media screen and (min-width: 600px) {
   .limit-width {
     max-width: 250px;
+  }
+  .modal-title {
+    font-size: 2em;
   }
 }
 @media screen and (min-width: 1264px) {
