@@ -98,6 +98,18 @@
             <v-icon left>mdi-filter-remove</v-icon>Clear Filter
           </v-btn>
         </v-row>
+        <!-- <v-row v-if="expandedName" class="mt-lg-6 align-center justify-space-around">
+          <v-col
+            cols="12"
+            md="6"
+            class="headline text-center text-md-right mt-2 py-0"
+          >{{ expandedName }}</v-col>
+          <v-col
+            cols="12"
+            md="6"
+            class="headline text-center text-md-left mt-sm-2 py-0"
+          >Ranked: #{{ expandedRank }} &nbsp;&nbsp; Average: {{ expandedRating }}</v-col>
+        </v-row>-->
 
         <!-- PROGRESS SPINNER -->
         <v-row v-show="loading" class="justify-center align-center" style="height: 50vh;">
@@ -125,6 +137,8 @@
                 setSearch(rating.name);
                 expandedName = rating.name;
                 expandedPlatform = rating.platform;
+                expandedRank = rating.rank;
+                expandedRating = rating.averageRating.toFixed(2);
               "
               style="box-shadow: 0 0 5px 1px #ceb888 !important; position: relative;"
             >
@@ -160,6 +174,17 @@
                     style="font-size: 12px; margin: -20px 0px -10px 0px;"
                   >rating</p>
                 </v-col>
+                <!-- RANKING SECTION -->
+                <v-btn
+                  fab
+                  x-small
+                  absolute
+                  bottom
+                  right
+                  class="font-weight-bold secondary--text"
+                  style="font-size: 1.2em; letter-spacing: .1px;"
+                >{{ rating.rank }}</v-btn>
+                <!-- PLATFORM -->
                 <v-col
                   cols="12"
                   class="headline font-weight-medium primary--text pa-0 mb-1"
@@ -228,6 +253,16 @@
                     style="font-size: 12px; margin: -20px 0px -10px 0px;"
                   >rating</p>
                 </v-col>
+                <!-- RANKING SECTION -->
+                <v-btn
+                  fab
+                  x-small
+                  absolute
+                  bottom
+                  right
+                  class="primary font-weight-bold"
+                  style="font-size: 1.2em; letter-spacing: .1px;"
+                >{{ rating.rank }}</v-btn>
               </v-row>
             </v-card>
           </v-col>
@@ -351,7 +386,9 @@ export default {
     return {
       search: "",
       expandedName: "",
-      expandedPlatform: ""
+      expandedPlatform: "",
+      expandedRank: "",
+      expandedRating: ""
     };
   },
   methods: {
@@ -442,6 +479,7 @@ export default {
     search() {
       if (this.search !== this.expandedName.replace(/[^a-zA-Z ]/g, "")) {
         this.expandedName = "";
+        this.expandedPlatform = "";
       }
     }
   }
