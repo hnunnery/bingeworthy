@@ -7,7 +7,7 @@
         outlined
         large
         class="primary-fill hidden-md-and-down text-capitalize"
-        style="box-shadow: 0 0 3px 1px #782f40 !important;"
+        style="box-shadow: 0 0 3px 1px #ceb888 !important; background-color: rgba(120, 47, 64, 0.3);"
         v-on="on"
       >
         <v-icon left>mdi-plus</v-icon>Add Your Rating
@@ -17,8 +17,8 @@
         fab
         small
         outlined
-        class="hidden-lg-and-up primary-fill secondary--text text-capitalize mt-6"
-        style="box-shadow: 0 0 3px 1px #ceb888 !important;"
+        class="hidden-lg-and-up primary-fill white--text text-capitalize mt-6"
+        style="box-shadow: 0 0 3px 1px #ceb888 !important; background-color: rgba(120, 47, 64, 0.3);"
         v-on="on"
       >
         <v-icon>mdi-plus</v-icon>

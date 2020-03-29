@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app style="overflow: hidden;">
     <v-container
       fluid
       class="svg-bg px-0 pt-0 pb-12"
