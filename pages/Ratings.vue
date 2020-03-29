@@ -95,7 +95,8 @@
           <v-btn
             rounded
             outlined
-            class="hidden-sm-and-up primary-fill primary--text mx-1 text-capitalize"
+            class="hidden-sm-and-up primary-fill mx-1 text-capitalize"
+            style="box-shadow: 0 0 3px 1px #782f40 !important;"
             to="/"
           >
             <v-icon left>mdi-arrow-left</v-icon>All Ratings
@@ -103,7 +104,8 @@
           <v-btn
             rounded
             outlined
-            class="hidden-sm-and-up secondary-fill secondary--text text-capitalize mb-lg-3 mx-1"
+            class="hidden-sm-and-up primary-fill text-capitalize mb-lg-3 mx-1"
+            style="box-shadow: 0 0 3px 1px #782f40 !important;"
             v-show="this.search"
             @click="clearSearch"
           >
@@ -113,7 +115,8 @@
             rounded
             outlined
             large
-            class="hidden-xs-only secondary-fill secondary--text text-capitalize mb-lg-3 mx-1"
+            class="hidden-xs-only primary-fill text-capitalize mb-lg-3 mx-1"
+            style="box-shadow: 0 0 3px 1px #782f40 !important;"
             v-show="this.search"
             @click="clearSearch"
           >

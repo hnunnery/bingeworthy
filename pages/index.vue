@@ -100,8 +100,8 @@
             rounded
             outlined
             large
-            class="hidden-xs-only secondary--text mt-md-2 mb-md-1 mx-1 text-capitalize"
-            style="box-shadow: 0 0 3px 1px #ceb888 !important;"
+            class="hidden-xs-only primary-fill mt-md-2 mb-md-1 mx-1 text-capitalize"
+            style="box-shadow: 0 0 3px 1px #782f40 !important;"
             @click="clearSearch"
           >
             <v-icon left>mdi-arrow-left</v-icon>Back / Clear
@@ -110,7 +110,7 @@
             rounded
             outlined
             large
-            class="hidden-sm-and-up primary--text mt-md-2 mx-1 text-capitalize"
+            class="hidden-sm-and-up primary-fill mt-md-2 mx-1 text-capitalize"
             style="box-shadow: 0 0 3px 1px #782f40 !important;"
             @click="clearSearch"
           >

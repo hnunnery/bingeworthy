@@ -5,9 +5,9 @@
         rounded
         outlined
         large
-        class="text-capitalize mt-md-2 mb-md-1 mx-3"
+        class="primary-fill text-capitalize mt-md-2 mb-md-1 mx-3"
         v-on="on"
-        style="box-shadow: 0 0 3px 1px #fafafa !important;"
+        style="box-shadow: 0 0 3px 1px #782f40 !important;"
       >
         <v-icon left>mdi-plus</v-icon>Rate This
       </v-btn>
@@ -50,11 +50,21 @@
             <v-col cols="12" class="text-center py-0">
               <v-btn
                 large
+                rounded
+                outlined
                 @click="dialog = false;"
-                class="accent secondary--text text-capitalize mx-2 px-6"
+                class="primary-fill secondary--text text-capitalize mx-2 px-6"
+                style="box-shadow: 0 0 3px 1px #782f40 !important;"
               >Cancel</v-btn>
-              <v-btn large @click="addRating" class="primary text-capitalize mx-2 px-4">
-                <v-icon size="22">mdi-plus</v-icon>&nbsp;Add Show
+              <v-btn
+                large
+                rounded
+                outlined
+                @click="addRating"
+                class="success-fill success--text text-capitalize mx-2 px-4"
+                style="box-shadow: 0 0 3px 1px #43a047 !important;"
+              >
+                <v-icon size="22" left>mdi-plus</v-icon>Add Show
               </v-btn>
             </v-col>
           </v-row>
