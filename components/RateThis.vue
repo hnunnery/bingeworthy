@@ -7,7 +7,7 @@
         large
         class="hidden-xs-only primary-fill text-capitalize mt-md-2 mb-md-1 mx-3"
         v-on="on"
-        style="box-shadow: 0 0 3px 1px #fafafa !important; background-color: rgba(120, 47, 64, 0.3);"
+        style="background-color: rgba(120, 47, 64, 0.3);"
       >
         <v-icon left>mdi-plus</v-icon>Rate This
       </v-btn>
@@ -18,7 +18,7 @@
         dense
         class="hidden-sm-and-up primary-fill text-capitalize mt-md-2 mb-md-1 mx-3"
         v-on="on"
-        style="box-shadow: 0 0 3px 1px #fafafa !important; background-color: rgba(120, 47, 64, 0.3);"
+        style="background-color: rgba(120, 47, 64, 0.3);"
       >
         <v-icon left>mdi-plus</v-icon>Rate This
       </v-btn>

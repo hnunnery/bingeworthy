@@ -34,7 +34,7 @@
               outlined
               large
               class="error-fill text-capitalize ml-3 hidden-md-and-down"
-              style="box-shadow: 0 0 3px 1px #ceb888 !important; background-color: rgba(120, 47, 64, 0.3);"
+              style="background-color: rgba(120, 47, 64, 0.3);"
               @click="onLogout"
               v-if="userAuth"
             >
@@ -52,7 +52,7 @@
               outlined
               large
               class="primary-fill mr-5 text-capitalize mr-2 hidden-md-and-down"
-              style="box-shadow: 0 0 3px 1px #ceb888 !important; background-color: rgba(120, 47, 64, 0.3);"
+              style="background-color: rgba(120, 47, 64, 0.3);"
               v-if="!userAuth"
               to="/signin"
             >
@@ -64,7 +64,7 @@
               outlined
               large
               class="primary-fill text-capitalize hidden-md-and-down"
-              style="box-shadow: 0 0 3px 1px #ceb888 !important; background-color: rgba(120, 47, 64, 0.3);"
+              style="background-color: rgba(120, 47, 64, 0.3);"
               v-if="!userAuth"
               to="/signup"
             >
@@ -76,7 +76,7 @@
               outlined
               large
               class="primary-fill text-capitalize mr-2 hidden-md-and-down"
-              style="box-shadow: 0 0 3px 1px #ceb888 !important; background-color: rgba(120, 47, 64, 0.3);"
+              style="background-color: rgba(120, 47, 64, 0.3);"
               to="/ratings"
               v-if="userAuth"
             >
@@ -101,7 +101,7 @@
             outlined
             large
             class="hidden-xs-only primary-fill mt-md-2 mb-md-1 mx-1 text-capitalize"
-            style="box-shadow: 0 0 3px 1px #ceb888 !important; background-color: rgba(120, 47, 64, 0.3);"
+            style="background-color: rgba(120, 47, 64, 0.3);"
             @click="clearSearch"
           >
             <v-icon left>mdi-arrow-left</v-icon>Back / Clear
@@ -111,7 +111,7 @@
             outlined
             dense
             class="hidden-sm-and-up primary-fill mt-md-2 mx-1 text-capitalize"
-            style="box-shadow: 0 0 3px 1px #ceb888 !important; background-color: rgba(120, 47, 64, 0.3);"
+            style="background-color: rgba(120, 47, 64, 0.3);"
             @click="clearSearch"
           >
             <v-icon left>mdi-arrow-left</v-icon>Back
