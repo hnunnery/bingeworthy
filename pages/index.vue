@@ -34,6 +34,7 @@
               outlined
               large
               class="error-fill text-capitalize ml-3 hidden-md-and-down"
+              style="box-shadow: 0 0 3px 1px #782f40 !important;"
               @click="onLogout"
               v-if="userAuth"
             >
@@ -50,7 +51,8 @@
               rounded
               outlined
               large
-              class="success-fill mr-5 text-capitalize mr-2 hidden-md-and-down"
+              class="primary-fill mr-5 text-capitalize mr-2 hidden-md-and-down"
+              style="box-shadow: 0 0 3px 1px #782f40 !important;"
               v-if="!userAuth"
               to="/signin"
             >
@@ -61,7 +63,8 @@
               rounded
               outlined
               large
-              class="white-fill text-capitalize hidden-md-and-down"
+              class="primary-fill text-capitalize hidden-md-and-down"
+              style="box-shadow: 0 0 3px 1px #782f40 !important;"
               v-if="!userAuth"
               to="/signup"
             >
@@ -73,6 +76,7 @@
               outlined
               large
               class="primary-fill text-capitalize mr-2 hidden-md-and-down"
+              style="box-shadow: 0 0 3px 1px #782f40 !important;"
               to="/ratings"
               v-if="userAuth"
             >
@@ -96,7 +100,7 @@
             rounded
             outlined
             large
-            class="hidden-xs-only secondary--text mt-md-3 mx-1 text-capitalize"
+            class="hidden-xs-only secondary--text mt-md-2 mb-md-1 mx-1 text-capitalize"
             style="box-shadow: 0 0 3px 1px #ceb888 !important;"
             @click="clearSearch"
           >

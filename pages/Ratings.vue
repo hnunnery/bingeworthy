@@ -92,16 +92,32 @@
           style="letter-spacing: 2px; font-size: 6vmax;"
         >BingeWorthy</h1>
         <v-row class="justify-center mb-0 pb-0">
-          <v-btn rounded class="hidden-sm-and-up primary mx-1 text-capitalize" to="/">
+          <v-btn
+            rounded
+            outlined
+            class="hidden-sm-and-up primary-fill primary--text mx-1 text-capitalize"
+            to="/"
+          >
             <v-icon left>mdi-arrow-left</v-icon>All Ratings
           </v-btn>
           <v-btn
             rounded
-            class="accent secondary--text text-capitalize mx-1"
+            outlined
+            class="hidden-sm-and-up secondary-fill secondary--text text-capitalize mb-lg-3 mx-1"
             v-show="this.search"
             @click="clearSearch"
           >
-            <v-icon>mdi-filter-remove</v-icon>&nbsp;Clear Filter
+            <v-icon left>mdi-filter-remove</v-icon>Clear Filter
+          </v-btn>
+          <v-btn
+            rounded
+            outlined
+            large
+            class="hidden-xs-only secondary-fill secondary--text text-capitalize mb-lg-3 mx-1"
+            v-show="this.search"
+            @click="clearSearch"
+          >
+            <v-icon left>mdi-arrow-left</v-icon>Back / Clear
           </v-btn>
         </v-row>
 

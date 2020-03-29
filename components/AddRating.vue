@@ -7,10 +7,10 @@
         outlined
         large
         class="primary-fill hidden-md-and-down text-capitalize"
+        style="box-shadow: 0 0 3px 1px #782f40 !important;"
         v-on="on"
       >
-        <v-icon left>mdi-plus</v-icon>Add&nbsp;
-        <span class="hidden-md-and-down">Your&nbsp;</span>Rating
+        <v-icon left>mdi-plus</v-icon>Add Your Rating
       </v-btn>
       <!-- button for xs - md screen size -->
       <v-btn

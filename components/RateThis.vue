@@ -5,7 +5,7 @@
         rounded
         outlined
         large
-        class="text-capitalize mt-md-3 mx-3"
+        class="text-capitalize mt-md-2 mb-md-1 mx-3"
         v-on="on"
         style="box-shadow: 0 0 3px 1px #fafafa !important;"
       >
