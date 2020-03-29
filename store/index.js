@@ -22,6 +22,7 @@ export const mutations = {
   },
   addRating(state, payload) {
     state.ratings.push(payload);
+    state.ratings.sort((a, b) => (a.rating < b.rating ? 1 : -1));
   },
   deleteRating(state, payload) {
     state.ratings = state.ratings.filter(rating => rating.id !== payload);
@@ -35,6 +36,7 @@ export const mutations = {
         rating.user = payload.user;
       }
     });
+    state.ratings.sort((a, b) => (a.rating < b.rating ? 1 : -1));
   },
   clearRatings(state) {
     state.ratings = [];

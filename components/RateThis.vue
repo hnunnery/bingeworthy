@@ -1,12 +1,7 @@
 <template>
   <v-dialog v-model="dialog" persistent max-width="600">
     <template v-slot:activator="{ on }">
-      <v-btn
-        rounded
-        large
-        class="primary text-capitalize mt-md-2 mx-1"
-        v-on="on"
-      >
+      <v-btn rounded large class="primary text-capitalize mt-md-2 mx-1" v-on="on">
         <v-icon left>mdi-plus</v-icon>Rate This
       </v-btn>
     </template>
@@ -16,60 +11,43 @@
           <h2
             class="display-1 secondary--text text-center font-italic mt-1 pb-0"
             style="letter-spacing: 1.2px;"
-          >
-            Add Your Show
-          </h2>
-        </v-col>
-        <v-col cols="12">
-          <v-combobox
-            name="name"
-            label="Name of Show"
-            :value="name"
-            required
-            type="text"
-          ></v-combobox>
-        </v-col>
-        <v-col cols="12">
-          <v-combobox
-            name="platform"
-            label="Platform (Netflix, Hulu, etc.)"
-            :value="platform"
-            required
-            type="text"
-          ></v-combobox>
-        </v-col>
-        <v-col cols="12" class="text-center">
-          <v-rating
-            v-model="rating"
-            half-increments
-            size="35"
-            color="secondary"
-            required
-          ></v-rating>
+          >Add Your Show</h2>
         </v-col>
         <v-col cols="12">
           <v-text-field
-            type="text"
-            name="user"
-            label="Your Name"
-            v-model="user"
+            name="name"
+            label="Name of Show"
+            :value="name"
+            disabled
             required
+            type="text"
           ></v-text-field>
+        </v-col>
+        <v-col cols="12">
+          <v-text-field
+            name="platform"
+            label="Platform (Netflix, Hulu, etc.)"
+            :value="platform"
+            disabled
+            required
+            type="text"
+          ></v-text-field>
+        </v-col>
+        <v-col cols="12" class="text-center">
+          <v-rating v-model="rating" half-increments size="35" color="secondary" required></v-rating>
+        </v-col>
+        <v-col cols="12">
+          <v-text-field type="text" name="user" label="Your Name" v-model="user" required></v-text-field>
         </v-col>
         <v-card-actions style="width: 100%;">
           <v-row class="justify-center">
             <v-col cols="12" class="text-center py-0">
               <v-btn
                 large
-                @click="resetForm"
+                @click="dialog = false;"
                 class="accent secondary--text text-capitalize mx-2 px-6"
-                >Cancel</v-btn
-              >
-              <v-btn
-                large
-                @click="addRating"
-                class="primary text-capitalize mx-2 px-4"
-              >
+              >Cancel</v-btn>
+              <v-btn large @click="addRating" class="primary text-capitalize mx-2 px-4">
                 <v-icon size="22">mdi-plus</v-icon>&nbsp;Add Show
               </v-btn>
             </v-col>
@@ -122,13 +100,6 @@ export default {
       } else {
         alert("Please complete all fields.");
       }
-    },
-    resetForm() {
-      this.name = "";
-      this.platform = "";
-      this.rating = 0;
-      this.user = "";
-      this.dialog = false;
     }
   }
 };
