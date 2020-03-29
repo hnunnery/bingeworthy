@@ -104,7 +104,7 @@
           BingeWorthy
         </h1>
         <v-row class="justify-center mb-0 pb-0">
-          <v-btn rounded large class="hidden-md-and-up primary mx-1" to="/"
+          <v-btn rounded large class="hidden-sm-and-up primary mx-1" to="/"
             ><v-icon left>mdi-arrow-left</v-icon>Back</v-btn
           >
           <v-btn
@@ -142,6 +142,7 @@
           <v-col
             cols="12"
             sm="6"
+            md="4"
             v-for="rating in filteredRatings"
             :key="rating.id"
             class="pb-0"
@@ -201,20 +202,17 @@
         >
           <v-col
             cols="12"
-            sm="8"
-            md="6"
             lg="4"
             xl="3"
             v-for="rating in filteredRatings"
             :key="rating.id"
-            class="mb-5"
           >
             <v-card
-              class="px-4 pt-1 ma-2 align-center d-flex"
+              class="px-4 pt-1 ma-0 align-center d-flex"
               color="rgba(17, 17, 17, 0.7)"
               elevation="15"
               height="100%"
-              style="box-shadow: 0 0 15px 5px #782f40 !important;"
+              style="box-shadow: 0 0 10px 5px #782f40 !important;"
             >
               <v-row class="text-center justify-center align-center">
                 <v-row
@@ -229,7 +227,7 @@
                     >{{ rating.name }}</v-col
                   >
                 </v-row>
-                <v-col cols="12" class="pt-0">
+                <v-col cols="12" class="pt-0 pb-1">
                   <v-rating
                     :value="parseFloat(rating.rating)"
                     half-increments
@@ -247,17 +245,12 @@
                 >
                 <v-col
                   cols="12"
-                  class="headline font-weight-light font-italic"
+                  class="headline font-weight-light font-italic pt-1"
                   style="cursor: pointer;"
                   @click="setSearch(rating.user)"
                   >{{ rating.user }}</v-col
                 >
-                <v-card-actions>
-                  <EditRating
-                    :rating="rating"
-                    v-if="userId === rating.userId"
-                  />
-                </v-card-actions>
+                <EditRating :rating="rating" v-if="userId === rating.userId" />
               </v-row>
             </v-card>
           </v-col>

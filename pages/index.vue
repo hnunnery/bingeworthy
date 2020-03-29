@@ -207,10 +207,9 @@
             xl="3"
             v-for="(rating, index) in filteredMasterRatings"
             :key="index"
-            class="mb-5"
           >
             <v-card
-              class="px-4 pt-1 ma-2 align-center d-flex"
+              class="px-4 pt-1 ma-0 align-center d-flex"
               color="rgba(17, 17, 17, 0.7)"
               elevation="15"
               height="100%"
@@ -218,7 +217,7 @@
                 setSearch(rating.name);
                 expandedName = rating.name;
               "
-              style="box-shadow: 0 0 15px 5px #ceb888 !important; cursor: pointer;"
+              style="box-shadow: 0 0 10px 3px #ceb888 !important; cursor: pointer;"
             >
               <v-row class="text-center justify-center align-center">
                 <v-row
@@ -229,7 +228,7 @@
                     rating.name
                   }}</v-col>
                 </v-row>
-                <v-col cols="12" class="pt-0">
+                <v-col cols="12" class="pt-0 pb-1">
                   <v-rating
                     :value="rating.averageRating"
                     half-increments
@@ -240,22 +239,31 @@
                 </v-col>
                 <v-col
                   cols="12"
-                  class="py-0 font-weight-medium primary--text"
+                  class="pt-0 pb-3 font-weight-medium primary--text"
                   style="font-size: 1.9em;"
                   >{{ rating.platform }}</v-col
                 >
                 <v-col
-                  v-if="rating.users.length === 1"
-                  cols="12"
-                  class="title font-weight-light font-italic"
-                  >Rated by Only {{ rating.users.length }} User</v-col
+                  cols="3"
+                  class="pa-0 display-1 font-weight-bold font-italic text-center"
+                  style="opacity: 0.2; margin-left: -15px; position: absolute; bottom: 0; left: 0;"
                 >
-                <v-col
-                  v-else
-                  cols="12"
-                  class="title font-weight-light font-italic"
-                  >Rated by {{ rating.users.length }} Users</v-col
-                >
+                  {{ rating.users.length }}
+                  <p
+                    v-if="rating.users.length > 1"
+                    class="pa-0"
+                    style="font-size: 12px; margin: -20px 0px -10px 0px;"
+                  >
+                    ratings
+                  </p>
+                  <p
+                    v-else
+                    class="pa-0"
+                    style="font-size: 12px; margin: -20px 0px -10px 0px;"
+                  >
+                    rating
+                  </p>
+                </v-col>
               </v-row>
             </v-card>
           </v-col>
@@ -334,14 +342,13 @@
             xl="3"
             v-for="rating in filteredRatings"
             :key="rating.id"
-            class="mb-5"
           >
             <v-card
-              class="px-4 pt-1 ma-2 align-center d-flex"
+              class="px-4 pt-1 ma-0 align-center d-flex"
               color="rgba(17, 17, 17, 0.7)"
               elevation="15"
               height="100%"
-              style="box-shadow: 0 0 15px 5px #782f40 !important;"
+              style="box-shadow: 0 0 10px 5px #782f40 !important;"
             >
               <v-row class="text-center justify-center align-center">
                 <v-row
@@ -356,7 +363,7 @@
                     >{{ rating.name }}</v-col
                   >
                 </v-row>
-                <v-col cols="12" class="pt-0">
+                <v-col cols="12" class="pt-0 pb-1">
                   <v-rating
                     :value="parseFloat(rating.rating)"
                     half-increments
@@ -374,17 +381,15 @@
                 >
                 <v-col
                   cols="12"
-                  class="headline font-weight-light font-italic"
+                  class="headline font-weight-light font-italic pt-1"
                   style="cursor: pointer;"
                   @click="setSearch(rating.user)"
                   >{{ rating.user }}</v-col
                 >
-                <v-card-actions>
-                  <EditRating
-                    :rating="rating"
-                    v-if="userId === rating.userId || userIsAdmin"
-                  />
-                </v-card-actions>
+                <EditRating
+                  :rating="rating"
+                  v-if="userId === rating.userId || userIsAdmin"
+                />
               </v-row>
             </v-card>
           </v-col>

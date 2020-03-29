@@ -27,25 +27,6 @@
       <v-icon>mdi-magnify</v-icon>
       <span v-show="!userAuth">Search</span>
     </v-btn>
-
-    <v-btn
-      text
-      class="hidden-sm-and-uptext-capitalize"
-      v-if="!userAuth"
-      to="/signin"
-      style="letter-spacing: .5px;"
-    >
-      <v-icon>mdi-account-check</v-icon>&nbsp;Sign In
-    </v-btn>
-    <v-btn
-      text
-      class="hidden-sm-and-up text-capitalize"
-      v-if="!userAuth"
-      to="/signup"
-      style="letter-spacing: .5px; margin-left: -6px;"
-    >
-      <v-icon>mdi-account-plus</v-icon>&nbsp;Sign Up
-    </v-btn>
     <v-btn
       text
       class="hidden-sm-and-up text-capitalize"
@@ -58,13 +39,6 @@
     <v-btn
       text
       class="hidden-sm-and-up text-capitalize"
-      to="/"
-      style="margin-right: -6px;"
-      ><v-icon>mdi-home</v-icon></v-btn
-    >
-    <v-btn
-      text
-      class="hidden-sm-and-up text-capitalize"
       style="margin-right: 1px; margin-left: -6px; letter-spacing: .5px;"
       to="/ratings"
       v-if="userAuth"
@@ -73,12 +47,29 @@
     </v-btn>
 
     <!-- navbar for sm and md screen sizes -->
+    <v-btn
+      v-if="userAuth"
+      text
+      class="hidden-xs-only mr-md-4 text-capitalize"
+      to="/"
+      style="margin-left: -6px; margin-right: -6px;"
+      ><v-icon left>mdi-home</v-icon>Home</v-btn
+    >
+    <v-btn
+      text
+      class="hidden-xs-only mr-md-4 text-capitalize"
+      style="margin-right: 1px; margin-left: -6px; letter-spacing: .5px;"
+      to="/ratings"
+      v-if="userAuth"
+    >
+      <v-icon left>mdi-star</v-icon>Ratings
+    </v-btn>
 
     <!-- search for sm and md screen size -->
     <v-btn
       text
       @click="searchBar = !searchBar"
-      class="text-capitalize hidden-xs-only hidden-lg-and-up"
+      class="text-capitalize hidden-xs-only hidden-lg-and-up mr-md-4"
       style="margin-right: -6px; margin-left: -6px; letter-spacing: .5px;"
     >
       <v-icon left>mdi-magnify</v-icon>Search
@@ -86,7 +77,7 @@
 
     <v-btn
       text
-      class="hidden-xs-only text-capitalize"
+      class="text-capitalize mr-md-4"
       v-if="!userAuth"
       to="/signin"
       style="letter-spacing: .5px;"
@@ -95,7 +86,7 @@
     </v-btn>
     <v-btn
       text
-      class="hidden-xs-only text-capitalize"
+      class="hidden-xs-only mr-md-4 text-capitalize"
       v-if="!userAuth"
       to="/signup"
       style="letter-spacing: .5px; margin-left: -6px;"
@@ -104,28 +95,12 @@
     </v-btn>
     <v-btn
       text
-      class="hidden-xs-only text-capitalize"
+      class="hidden-xs-only mr-md-4 text-capitalize"
       style="margin-right: -6px; margin-left: -6px; letter-spacing: .5px;"
       @click="onLogout"
       v-if="userAuth"
     >
       <v-icon left>mdi-account-remove</v-icon>Sign Out
-    </v-btn>
-    <v-btn
-      text
-      class="hidden-xs-only text-capitalize"
-      to="/"
-      style="margin-left: -6px; margin-right: -6px;"
-      ><v-icon left>mdi-home</v-icon>Home</v-btn
-    >
-    <v-btn
-      text
-      class="hidden-xs-only text-capitalize"
-      style="margin-right: 1px; margin-left: -6px; letter-spacing: .5px;"
-      to="/ratings"
-      v-if="userAuth"
-    >
-      <v-icon left>mdi-star</v-icon>Ratings
     </v-btn>
 
     <!-- Add Rating Component -->
