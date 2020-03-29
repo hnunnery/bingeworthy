@@ -25,7 +25,7 @@ export const mutations = {
   addRating(state, payload) {
     state.ratings.push(payload);
     state.ratings.sort((a, b) => (a.rating < b.rating ? 1 : -1));
-    state.message = "Rating Added Successfully!";
+    state.message = "Added!";
     state.success = true;
     setTimeout(() => {
       state.success = false;
@@ -33,7 +33,7 @@ export const mutations = {
   },
   deleteRating(state, payload) {
     state.ratings = state.ratings.filter(rating => rating.id !== payload);
-    state.message = "Rating Deleted Successfully!";
+    state.message = "Deleted!";
     state.success = true;
     setTimeout(() => {
       state.success = false;
@@ -49,7 +49,7 @@ export const mutations = {
       }
     });
     state.ratings.sort((a, b) => (a.rating < b.rating ? 1 : -1));
-    state.message = "Rating Updated Successfully!";
+    state.message = "Updated!";
     state.success = true;
     setTimeout(() => {
       state.success = false;

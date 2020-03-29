@@ -8,6 +8,7 @@
         bottom
         right
         class="text-capitalize secondary--text"
+        style="z-index: 1;"
         color="accent"
         v-on="on"
       >

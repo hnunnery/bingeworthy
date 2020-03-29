@@ -1,11 +1,9 @@
 <template>
-  <v-overlay :value="success">
+  <v-overlay :value="success" opacity=".9">
     <v-alert
       v-model="success"
       text
       outlined
-      max-width
-      max-height
       elevation="15"
       color="success"
       type="success"
