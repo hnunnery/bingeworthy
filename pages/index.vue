@@ -148,7 +148,7 @@
                 <v-col
                   cols="3"
                   class="pa-0 display-1 font-weight-bold font-italic text-center"
-                  style="opacity: 0.2; margin-left: -10px; position: absolute; bottom: 0; left: 0;"
+                  style="opacity: 0.2; margin-right: -10px; position: absolute; bottom: 0; right: 0;"
                 >
                   {{ rating.users.length }}
                   <p
@@ -167,8 +167,8 @@
                   fab
                   x-small
                   absolute
-                  bottom
-                  right
+                  top
+                  left
                   class="font-weight-bold secondary--text"
                   style="font-size: 1.2em; letter-spacing: .1px;"
                 >{{ rating.rank }}</v-btn>
