@@ -9,7 +9,9 @@ export const state = () => ({
   names: [],
   platforms: [],
   error: null,
-  searchBar: false
+  searchBar: false,
+  message: "",
+  success: false
 });
 
 // MUTATIONS
@@ -23,9 +25,19 @@ export const mutations = {
   addRating(state, payload) {
     state.ratings.push(payload);
     state.ratings.sort((a, b) => (a.rating < b.rating ? 1 : -1));
+    state.message = "Rating Added Successfully!";
+    state.success = true;
+    setTimeout(() => {
+      state.success = false;
+    }, 1000);
   },
   deleteRating(state, payload) {
     state.ratings = state.ratings.filter(rating => rating.id !== payload);
+    state.message = "Rating Deleted Successfully!";
+    state.success = true;
+    setTimeout(() => {
+      state.success = false;
+    }, 1000);
   },
   updateRating(state, payload) {
     state.ratings.forEach(rating => {
@@ -37,6 +49,11 @@ export const mutations = {
       }
     });
     state.ratings.sort((a, b) => (a.rating < b.rating ? 1 : -1));
+    state.message = "Rating Updated Successfully!";
+    state.success = true;
+    setTimeout(() => {
+      state.success = false;
+    }, 1000);
   },
   clearRatings(state) {
     state.ratings = [];
@@ -187,6 +204,12 @@ export const getters = {
   },
   error(state) {
     return state.error;
+  },
+  fetchMessage(state) {
+    return state.message;
+  },
+  fetchSuccess(state) {
+    return state.success;
   },
   user(state) {
     return state.user;

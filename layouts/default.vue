@@ -6,7 +6,9 @@
       style="min-height: 100vh; padding-bottom: 100px;"
     >
       <NavBar />
+      <Success />
       <v-btn
+        v-show="this.$store.state.ratings"
         large
         rounded
         absolute
@@ -39,10 +41,12 @@
 <script>
 import { auth } from "@/plugins/firebase.js";
 import NavBar from "@/components/NavBar";
+import Success from "@/components/Success";
 
 export default {
   components: {
-    NavBar
+    NavBar,
+    Success
   },
   data() {
     return {
