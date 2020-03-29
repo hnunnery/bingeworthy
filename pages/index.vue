@@ -124,7 +124,7 @@
             cols="12"
             sm="6"
             md="4"
-            v-for="(rating, index) in filteredMasterRatings"
+            v-for="(rating, index) in filteredMasterRatingsMobile"
             :key="index"
             class="pb-0"
           >
@@ -184,8 +184,17 @@
                   class="font-weight-bold secondary--text"
                   style="font-size: 1.2em; letter-spacing: .1px;"
                 >{{ rating.rank }}</v-btn>
+
+                <!-- IF EXPANDED NAME -->
+                <v-col
+                  cols="12"
+                  v-if="expandedName===rating.name"
+                  class="headline font-weight-medium primary--text pa-0 mb-1"
+                >{{rating.roundedRating}} Average</v-col>
+
                 <!-- PLATFORM -->
                 <v-col
+                  v-else
                   cols="12"
                   class="headline font-weight-medium primary--text pa-0 mb-1"
                 >{{ rating.platform }}</v-col>
@@ -200,7 +209,7 @@
             cols="12"
             lg="4"
             xl="3"
-            v-for="(rating, index) in filteredMasterRatings"
+            v-for="(rating, index) in filteredMasterRatingsDesktop"
             :key="index"
           >
             <v-card
@@ -211,6 +220,9 @@
               @click="
                 setSearch(rating.name);
                 expandedName = rating.name;
+                expandedPlatform = rating.platform;
+                expandedRank = rating.rank;
+                expandedRating = rating.averageRating.toFixed(2);
               "
               style="box-shadow: 0 0 10px 3px #ceb888 !important; cursor: pointer;"
             >
@@ -416,7 +428,21 @@ export default {
     ratings() {
       return this.$store.state.ratings;
     },
-    filteredMasterRatings() {
+    filteredMasterRatingsMobile() {
+      return this.masterRatings.filter(rating => {
+        return (
+          rating.name
+            .toLowerCase()
+            .replace(/[^a-zA-Z ]/g, "")
+            .match(this.search.toLowerCase().replace(/[^a-zA-Z ]/g, "")) ||
+          rating.platform
+            .toLowerCase()
+            .replace(/[^a-zA-Z ]/g, "")
+            .match(this.search.toLowerCase().replace(/[^a-zA-Z ]/g, ""))
+        );
+      });
+    },
+    filteredMasterRatingsDesktop() {
       return this.masterRatings.filter(rating => {
         if (rating.name !== this.expandedName) {
           return (

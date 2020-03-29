@@ -113,6 +113,7 @@ export const actions = {
     master.sort((a, b) => (a.averageRating < b.averageRating ? 1 : -1));
     master.forEach(rating => {
       rating.rank = master.indexOf(rating) + 1;
+      rating.roundedRating = rating.averageRating.toFixed(2);
       console.log(
         `${rating.rank}: ${rating.name} (${rating.averageRating.toFixed(2)})`
       );
