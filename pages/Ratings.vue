@@ -31,10 +31,9 @@
             ></v-text-field>
             <v-btn
               rounded
-              outlined
               large
               class="text-capitalize ml-3 hidden-md-and-down"
-              style="background-color: rgba(120, 47, 64, 0.05);"
+              style="background-color: rgba(120, 47, 64, 0.5);"
               @click="onLogout"
               v-if="userAuth"
             >
@@ -49,10 +48,9 @@
           >
             <v-btn
               rounded
-              outlined
               large
               class="mr-5 text-capitalize mr-2 hidden-md-and-down"
-              style="background-color: rgba(120, 47, 64, 0.05);"
+              style="background-color: rgba(120, 47, 64, 0.5);"
               v-if="!userAuth"
               to="/signin"
             >
@@ -61,10 +59,9 @@
             </v-btn>
             <v-btn
               rounded
-              outlined
               large
               class="text-capitalize hidden-md-and-down"
-              style="background-color: rgba(120, 47, 64, 0.05);"
+              style="background-color: rgba(120, 47, 64, 0.5);"
               v-if="!userAuth"
               to="/signup"
             >
@@ -73,10 +70,9 @@
             </v-btn>
             <v-btn
               rounded
-              outlined
               large
               class="text-capitalize mr-2 hidden-md-and-down"
-              style="background-color: rgba(120, 47, 64, 0.05);"
+              style="background-color: rgba(120, 47, 64, 0.5);"
               to="/"
               v-if="userAuth"
             >
@@ -95,21 +91,19 @@
           class="hidden-md-and-down secondary--text text-center font-weight-bold font-italic my-2"
           style="letter-spacing: 2px; font-size: 6vmax;"
         >BingeWorthy</h1>
-        <v-row class="justify-center mb-0 pb-0">
+        <v-row class="justify-center mt-2 mb-0 pb-0">
           <v-btn
             rounded
-            outlined
             class="hidden-sm-and-up mx-1 text-capitalize"
-            style="background-color: rgba(120, 47, 64, 0.05);"
+            style="background-color: rgba(120, 47, 64, 0.5);"
             to="/"
           >
             <v-icon left>mdi-arrow-left</v-icon>All Ratings
           </v-btn>
           <v-btn
             rounded
-            outlined
             class="hidden-sm-and-up text-capitalize mb-lg-3 mx-1"
-            style="background-color: rgba(120, 47, 64, 0.05);"
+            style="background-color: rgba(120, 47, 64, 0.5);"
             v-show="this.search"
             @click="clearSearch"
           >
@@ -117,10 +111,9 @@
           </v-btn>
           <v-btn
             rounded
-            outlined
             large
             class="hidden-xs-only text-capitalize mb-lg-3 mx-1"
-            style="background-color: rgba(120, 47, 64, 0.05);"
+            style="background-color: rgba(120, 47, 64, 0.5);"
             v-show="this.search"
             @click="clearSearch"
           >

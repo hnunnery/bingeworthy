@@ -3,22 +3,20 @@
     <template v-slot:activator="{ on }">
       <v-btn
         rounded
-        outlined
         large
         class="hidden-xs-only text-capitalize mt-md-2 mb-md-1 mx-3"
         v-on="on"
-        style="background-color: rgba(120, 47, 64, 0.05);"
+        style="background-color: rgba(120, 47, 64, 0.5);"
       >
         <v-icon left>mdi-plus</v-icon>Rate This
       </v-btn>
       <!-- for xs screen size only -->
       <v-btn
         rounded
-        outlined
         dense
         class="hidden-sm-and-up text-capitalize mt-md-2 mb-md-1 mx-3"
         v-on="on"
-        style="background-color: rgba(120, 47, 64, 0.05);"
+        style="background-color: rgba(120, 47, 64, 0.5);"
       >
         <v-icon left>mdi-plus</v-icon>Rate This
       </v-btn>

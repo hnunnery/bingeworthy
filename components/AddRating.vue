@@ -4,10 +4,9 @@
       <!-- button for lg and xl screen sizes -->
       <v-btn
         rounded
-        outlined
         large
         class="hidden-md-and-down text-capitalize"
-        style="background-color: rgba(120, 47, 64, 0.05);"
+        style="background-color: rgba(120, 47, 64, 0.5);"
         v-on="on"
       >
         <v-icon left>mdi-plus</v-icon>Add Your Rating
