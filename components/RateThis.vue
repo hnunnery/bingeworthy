@@ -5,9 +5,9 @@
         rounded
         outlined
         large
-        class="hidden-xs-only primary-fill text-capitalize mt-md-2 mb-md-1 mx-3"
+        class="hidden-xs-only text-capitalize mt-md-2 mb-md-1 mx-3"
         v-on="on"
-        style="background-color: rgba(120, 47, 64, 0.3);"
+        style="background-color: rgba(120, 47, 64, 0.05);"
       >
         <v-icon left>mdi-plus</v-icon>Rate This
       </v-btn>
@@ -16,9 +16,9 @@
         rounded
         outlined
         dense
-        class="hidden-sm-and-up primary-fill text-capitalize mt-md-2 mb-md-1 mx-3"
+        class="hidden-sm-and-up text-capitalize mt-md-2 mb-md-1 mx-3"
         v-on="on"
-        style="background-color: rgba(120, 47, 64, 0.3);"
+        style="background-color: rgba(120, 47, 64, 0.05);"
       >
         <v-icon left>mdi-plus</v-icon>Rate This
       </v-btn>
@@ -64,7 +64,7 @@
                 rounded
                 outlined
                 @click="dialog = false;"
-                class="primary-fill secondary--text text-capitalize mx-2 px-6"
+                class="secondary--text text-capitalize mx-2 px-6"
                 style="box-shadow: 0 0 3px 1px #782f40 !important;"
               >Cancel</v-btn>
               <v-btn
@@ -72,7 +72,7 @@
                 rounded
                 outlined
                 @click="addRating"
-                class="success-fill success--text text-capitalize mx-2 px-4"
+                class="success--text text-capitalize mx-2 px-4"
                 style="box-shadow: 0 0 3px 1px #43a047 !important;"
               >
                 <v-icon size="22" left>mdi-plus</v-icon>Add Show

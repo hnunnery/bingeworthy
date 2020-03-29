@@ -33,8 +33,8 @@
               rounded
               outlined
               large
-              class="error-fill text-capitalize ml-3 hidden-md-and-down"
-              style="background-color: rgba(120, 47, 64, 0.3);"
+              class="text-capitalize ml-3 hidden-md-and-down"
+              style="background-color: rgba(120, 47, 64, 0.05);"
               @click="onLogout"
               v-if="userAuth"
             >
@@ -51,8 +51,8 @@
               rounded
               outlined
               large
-              class="success-fill mr-5 text-capitalize mr-2 hidden-md-and-down"
-              style="background-color: rgba(120, 47, 64, 0.3);"
+              class="mr-5 text-capitalize mr-2 hidden-md-and-down"
+              style="background-color: rgba(120, 47, 64, 0.05);"
               v-if="!userAuth"
               to="/signin"
             >
@@ -63,8 +63,8 @@
               rounded
               outlined
               large
-              class="white-fill text-capitalize hidden-md-and-down"
-              style="background-color: rgba(120, 47, 64, 0.3);"
+              class="text-capitalize hidden-md-and-down"
+              style="background-color: rgba(120, 47, 64, 0.05);"
               v-if="!userAuth"
               to="/signup"
             >
@@ -75,8 +75,8 @@
               rounded
               outlined
               large
-              class="primary-fill text-capitalize mr-2 hidden-md-and-down"
-              style="background-color: rgba(120, 47, 64, 0.3);"
+              class="text-capitalize mr-2 hidden-md-and-down"
+              style="background-color: rgba(120, 47, 64, 0.05);"
               to="/"
               v-if="userAuth"
             >
@@ -99,8 +99,8 @@
           <v-btn
             rounded
             outlined
-            class="hidden-sm-and-up primary-fill mx-1 text-capitalize"
-            style="background-color: rgba(120, 47, 64, 0.3);"
+            class="hidden-sm-and-up mx-1 text-capitalize"
+            style="background-color: rgba(120, 47, 64, 0.05);"
             to="/"
           >
             <v-icon left>mdi-arrow-left</v-icon>All Ratings
@@ -108,8 +108,8 @@
           <v-btn
             rounded
             outlined
-            class="hidden-sm-and-up primary-fill text-capitalize mb-lg-3 mx-1"
-            style="background-color: rgba(120, 47, 64, 0.3);"
+            class="hidden-sm-and-up text-capitalize mb-lg-3 mx-1"
+            style="background-color: rgba(120, 47, 64, 0.05);"
             v-show="this.search"
             @click="clearSearch"
           >
@@ -119,8 +119,8 @@
             rounded
             outlined
             large
-            class="hidden-xs-only primary-fill text-capitalize mb-lg-3 mx-1"
-            style="background-color: rgba(120, 47, 64, 0.3);"
+            class="hidden-xs-only text-capitalize mb-lg-3 mx-1"
+            style="background-color: rgba(120, 47, 64, 0.05);"
             v-show="this.search"
             @click="clearSearch"
           >

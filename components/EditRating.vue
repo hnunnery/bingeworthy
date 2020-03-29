@@ -60,7 +60,7 @@
                     fab
                     small
                     outlined
-                    class="error-fill error--text mx-2"
+                    class="error--text mx-2"
                     @click="removeRating"
                     style="box-shadow: 0 0 3px 1px #b71c1c !important;"
                   >
@@ -73,7 +73,7 @@
                     rounded
                     outlined
                     @click="dialog = false"
-                    class="primary-fill secondary--text text-capitalize mx-1"
+                    class="secondary--text text-capitalize mx-1"
                     style="box-shadow: 0 0 3px 1px #782f40 !important;"
                   >Cancel</v-btn>
                   <v-btn
@@ -81,7 +81,7 @@
                     rounded
                     outlined
                     @click="updateRating"
-                    class="success-fill success--text text-capitalize mx-1"
+                    class="success--text text-capitalize mx-1"
                     style="box-shadow: 0 0 3px 1px #43a047 !important;"
                   >Update</v-btn>
                 </v-col>

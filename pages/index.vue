@@ -33,8 +33,8 @@
               rounded
               outlined
               large
-              class="error-fill text-capitalize ml-3 hidden-md-and-down"
-              style="background-color: rgba(120, 47, 64, 0.3);"
+              class="text-capitalize ml-3 hidden-md-and-down"
+              style="background-color: rgba(120, 47, 64, 0.05);"
               @click="onLogout"
               v-if="userAuth"
             >
@@ -51,8 +51,8 @@
               rounded
               outlined
               large
-              class="primary-fill mr-5 text-capitalize mr-2 hidden-md-and-down"
-              style="background-color: rgba(120, 47, 64, 0.3);"
+              class="mr-5 text-capitalize mr-2 hidden-md-and-down"
+              style="background-color: rgba(120, 47, 64, 0.05);"
               v-if="!userAuth"
               to="/signin"
             >
@@ -63,8 +63,8 @@
               rounded
               outlined
               large
-              class="primary-fill text-capitalize hidden-md-and-down"
-              style="background-color: rgba(120, 47, 64, 0.3);"
+              class="text-capitalize hidden-md-and-down"
+              style="background-color: rgba(120, 47, 64, 0.05);"
               v-if="!userAuth"
               to="/signup"
             >
@@ -75,8 +75,8 @@
               rounded
               outlined
               large
-              class="primary-fill text-capitalize mr-2 hidden-md-and-down"
-              style="background-color: rgba(120, 47, 64, 0.3);"
+              class="text-capitalize mr-2 hidden-md-and-down"
+              style="background-color: rgba(120, 47, 64, 0.05);"
               to="/ratings"
               v-if="userAuth"
             >
@@ -100,8 +100,8 @@
             rounded
             outlined
             large
-            class="hidden-xs-only primary-fill mt-md-2 mb-md-1 mx-1 text-capitalize"
-            style="background-color: rgba(120, 47, 64, 0.3);"
+            class="hidden-xs-only mt-md-2 mb-md-1 mx-1 text-capitalize"
+            style="background-color: rgba(120, 47, 64, 0.05);"
             @click="clearSearch"
           >
             <v-icon left>mdi-arrow-left</v-icon>Back / Clear
@@ -110,8 +110,8 @@
             rounded
             outlined
             dense
-            class="hidden-sm-and-up primary-fill mt-md-2 mx-1 text-capitalize"
-            style="background-color: rgba(120, 47, 64, 0.3);"
+            class="hidden-sm-and-up mt-md-2 mx-1 text-capitalize"
+            style="background-color: rgba(120, 47, 64, 0.05);"
             @click="clearSearch"
           >
             <v-icon left>mdi-arrow-left</v-icon>Back
