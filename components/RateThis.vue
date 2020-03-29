@@ -1,7 +1,14 @@
 <template>
   <v-dialog v-model="dialog" persistent max-width="600">
     <template v-slot:activator="{ on }">
-      <v-btn rounded large class="primary text-capitalize mt-md-2 mx-1" v-on="on">
+      <v-btn
+        rounded
+        outlined
+        large
+        class="text-capitalize mt-md-2 mx-1"
+        v-on="on"
+        style="box-shadow: 0 0 3px 1px #fafafa !important;"
+      >
         <v-icon left>mdi-plus</v-icon>Rate This
       </v-btn>
     </template>

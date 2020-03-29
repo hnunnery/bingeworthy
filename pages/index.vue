@@ -88,15 +88,31 @@
           style="letter-spacing: 2px; font-size: 6vmax;"
         >BingeWorthy</h1>
         <v-row v-show="this.search" class="justify-center align-center mb-0 pb-0">
-          <RateThis v-if="expandedName" :rateName="expandedName" :ratePlatform="expandedPlatform" />
           <v-btn
             rounded
+            outlined
             large
-            class="mt-md-2 mx-1 accent secondary--text text-capitalize"
+            class="hidden-xs-only secondary--text mt-md-2 mx-1 text-capitalize"
+            style="box-shadow: 0 0 3px 1px #ceb888 !important;"
             @click="clearSearch"
           >
             <v-icon left>mdi-filter-remove</v-icon>Clear Filter
           </v-btn>
+          <v-btn
+            rounded
+            outlined
+            large
+            class="hidden-sm-and-up primary--text mt-md-2 mx-1 text-capitalize"
+            style="box-shadow: 0 0 3px 1px #782f40 !important;"
+            @click="clearSearch"
+          >
+            <v-icon left>mdi-arrow-left</v-icon>Back
+          </v-btn>
+          <RateThis
+            v-if="expandedName && userAuth"
+            :rateName="expandedName"
+            :ratePlatform="expandedPlatform"
+          />
         </v-row>
 
         <!-- PROGRESS SPINNER -->

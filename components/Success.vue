@@ -7,6 +7,7 @@
       elevation="15"
       color="success"
       type="success"
+      transition="scale-transition"
     >{{ message }}</v-alert>
   </v-overlay>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="pt-0">
     <v-row class="justify-center align-center" style="height: 70vh !important;">
-      <v-col cols="12" class="mt-0">
+      <v-col cols="12" class="hidden-xs-only mt-0">
         <h1
           class="secondary--text text-center font-weight-bold font-italic mt-1 mb-2"
           style="letter-spacing: 2px; font-size: 6vmax;"
