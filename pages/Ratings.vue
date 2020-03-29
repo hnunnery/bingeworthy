@@ -9,7 +9,7 @@
             this.$store.state.searchBar && this.$vuetify.breakpoint.mdAndDown
           "
         >
-          <v-col cols="12" sm="10" md="8" lg="4" class="mt-3 mx-0 mb-2 px-2 py-0 align-self-center">
+          <v-col cols="12" sm="10" md="6" class="mt-3 mx-0 mb-2 px-2 py-0">
             <v-text-field solo rounded placeholder="Search" v-model="search" hide-details></v-text-field>
           </v-col>
         </v-row>
@@ -26,15 +26,14 @@
               rounded
               placeholder="Search"
               v-model="search"
-              @click:clear="clearSearch"
-              clearable
               hide-details
               class="limit-width hidden-md-and-down"
             ></v-text-field>
             <v-btn
               rounded
+              outlined
               large
-              class="primary text-capitalize ml-3 hidden-md-and-down"
+              class="error-fill text-capitalize ml-3 hidden-md-and-down"
               @click="onLogout"
               v-if="userAuth"
             >
@@ -49,8 +48,9 @@
           >
             <v-btn
               rounded
+              outlined
               large
-              class="mr-5 primary text-capitalize mr-2 hidden-md-and-down"
+              class="success-fill mr-5 text-capitalize mr-2 hidden-md-and-down"
               v-if="!userAuth"
               to="/signin"
             >
@@ -59,8 +59,9 @@
             </v-btn>
             <v-btn
               rounded
+              outlined
               large
-              class="primary text-capitalize mr-2 hidden-md-and-down"
+              class="white-fill text-capitalize hidden-md-and-down"
               v-if="!userAuth"
               to="/signup"
             >
@@ -69,8 +70,9 @@
             </v-btn>
             <v-btn
               rounded
+              outlined
               large
-              class="primary text-capitalize mr-2 hidden-md-and-down"
+              class="primary-fill text-capitalize mr-2 hidden-md-and-down"
               to="/"
               v-if="userAuth"
             >

@@ -31,8 +31,9 @@
             ></v-text-field>
             <v-btn
               rounded
+              outlined
               large
-              class="primary text-capitalize ml-3 hidden-md-and-down"
+              class="error-fill text-capitalize ml-3 hidden-md-and-down"
               @click="onLogout"
               v-if="userAuth"
             >
@@ -47,8 +48,9 @@
           >
             <v-btn
               rounded
+              outlined
               large
-              class="mr-5 primary text-capitalize mr-2 hidden-md-and-down"
+              class="success-fill mr-5 text-capitalize mr-2 hidden-md-and-down"
               v-if="!userAuth"
               to="/signin"
             >
@@ -57,8 +59,9 @@
             </v-btn>
             <v-btn
               rounded
+              outlined
               large
-              class="primary text-capitalize hidden-md-and-down"
+              class="white-fill text-capitalize hidden-md-and-down"
               v-if="!userAuth"
               to="/signup"
             >
@@ -67,8 +70,9 @@
             </v-btn>
             <v-btn
               rounded
+              outlined
               large
-              class="primary text-capitalize mr-2 hidden-md-and-down"
+              class="primary-fill text-capitalize mr-2 hidden-md-and-down"
               to="/ratings"
               v-if="userAuth"
             >
@@ -92,11 +96,11 @@
             rounded
             outlined
             large
-            class="hidden-xs-only secondary--text mt-md-2 mx-1 text-capitalize"
+            class="hidden-xs-only secondary--text mt-md-3 mx-1 text-capitalize"
             style="box-shadow: 0 0 3px 1px #ceb888 !important;"
             @click="clearSearch"
           >
-            <v-icon left>mdi-filter-remove</v-icon>Clear Filter
+            <v-icon left>mdi-arrow-left</v-icon>Back / Clear
           </v-btn>
           <v-btn
             rounded

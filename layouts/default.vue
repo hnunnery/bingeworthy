@@ -77,6 +77,21 @@ export default {
 </script>
 
 <style>
+.primary-fill:hover {
+  color: #782f40;
+}
+.secondary-fill:hover {
+  color: #ceb888;
+}
+.white-fill:hover {
+  color: #fafafa;
+}
+.error-fill:hover {
+  color: #b71c1c;
+}
+.success-fill:hover {
+  color: #43a047;
+}
 form {
   font-size: 16px !important;
 }

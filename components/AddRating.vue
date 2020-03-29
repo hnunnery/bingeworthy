@@ -3,11 +3,10 @@
     <template v-slot:activator="{ on }">
       <!-- button for lg and xl screen sizes -->
       <v-btn
-        dark
         rounded
+        outlined
         large
-        class="hidden-md-and-down text-capitalize"
-        color="primary"
+        class="primary-fill hidden-md-and-down text-capitalize"
         v-on="on"
       >
         <v-icon left>mdi-plus</v-icon>Add&nbsp;
