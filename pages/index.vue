@@ -429,21 +429,25 @@ export default {
     },
     filteredMasterRatingsMobile() {
       return this.masterRatings.filter(rating => {
-        return (
-          rating.name
-            .toLowerCase()
-            .replace(/[^a-zA-Z ]/g, "")
-            .match(this.search.toLowerCase().replace(/[^a-zA-Z ]/g, "")) ||
-          rating.platform
-            .toLowerCase()
-            .replace(/[^a-zA-Z ]/g, "")
-            .match(this.search.toLowerCase().replace(/[^a-zA-Z ]/g, ""))
-        );
+        if (this.expandedName) {
+          return rating.name === this.expandedName;
+        } else {
+          return (
+            rating.name
+              .toLowerCase()
+              .replace(/[^a-zA-Z ]/g, "")
+              .match(this.search.toLowerCase().replace(/[^a-zA-Z ]/g, "")) ||
+            rating.platform
+              .toLowerCase()
+              .replace(/[^a-zA-Z ]/g, "")
+              .match(this.search.toLowerCase().replace(/[^a-zA-Z ]/g, ""))
+          );
+        }
       });
     },
     filteredMasterRatingsDesktop() {
       return this.masterRatings.filter(rating => {
-        if (rating.name !== this.expandedName) {
+        if (!this.expandedName) {
           return (
             rating.name
               .toLowerCase()
@@ -459,16 +463,20 @@ export default {
     },
     filteredRatings() {
       return this.ratings.filter(rating => {
-        return (
-          rating.name
-            .toLowerCase()
-            .replace(/[^a-zA-Z ]/g, "")
-            .match(this.search.toLowerCase().replace(/[^a-zA-Z ]/g, "")) ||
-          rating.user
-            .toLowerCase()
-            .replace(/[^a-zA-Z ]/g, "")
-            .match(this.search.toLowerCase().replace(/[^a-zA-Z ]/g, ""))
-        );
+        if (!this.expandedName) {
+          return (
+            rating.name
+              .toLowerCase()
+              .replace(/[^a-zA-Z ]/g, "")
+              .match(this.search.toLowerCase().replace(/[^a-zA-Z ]/g, "")) ||
+            rating.user
+              .toLowerCase()
+              .replace(/[^a-zA-Z ]/g, "")
+              .match(this.search.toLowerCase().replace(/[^a-zA-Z ]/g, ""))
+          );
+        } else {
+          return rating.name === this.expandedName;
+        }
       });
     },
     // controls loading progress spinner
