@@ -20,7 +20,7 @@
                 <v-text-field
                   class="mt-6"
                   name="displayName"
-                  label="Name (John Doe / John D.)"
+                  label="Full Name"
                   id="displayName"
                   v-model="displayName"
                   type="text"

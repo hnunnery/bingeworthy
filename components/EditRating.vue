@@ -98,12 +98,14 @@ export default {
   props: ["rating"],
   data() {
     return {
+      originalName: this.rating.name,
       updatedName: this.rating.name,
       updatedRating: parseFloat(this.rating.rating),
       updatedPlatform: this.rating.platform,
       updatedUser: this.rating.user,
       ratingId: this.rating.id,
-      dialog: false
+      dialog: false,
+      duplicate: false
     };
   },
   computed: {
@@ -124,16 +126,29 @@ export default {
         }
       });
       return a;
+    },
+    userRatings() {
+      return this.$store.getters.userRatings;
     }
   },
   methods: {
     updateRating() {
+      this.duplicate = false;
+      this.userRatings.forEach(rating => {
+        if (
+          this.updatedName === rating.name &&
+          this.updatedName !== this.originalName
+        ) {
+          this.duplicate = true;
+        }
+      });
       // saving data to firestore
       if (
         this.updatedName &&
         this.updatedPlatform &&
         this.updatedRating &&
-        this.updatedUser
+        this.updatedUser &&
+        !this.duplicate
       ) {
         const updatedObject = {
           name: this.updatedName,
@@ -154,6 +169,10 @@ export default {
             this.$store.commit("updateRating", updatedObject);
             this.dialog = false;
           });
+      } else if (this.duplicate) {
+        alert(
+          "You have already rated this show. Please edit your existing rating instead."
+        );
       } else alert("Please complete all fields.");
     },
     removeRating() {

@@ -92,13 +92,26 @@ export default {
       rating: 0,
       user: this.$store.getters.user.name,
       search: "",
-      dialog: false
+      dialog: false,
+      duplicate: false
     };
   },
   methods: {
     addRating() {
+      this.duplicate = false;
+      this.userRatings.forEach(rating => {
+        if (this.name === rating.name) {
+          this.duplicate = true;
+        }
+      });
       // saving data to firestore
-      if (this.name && this.platform && this.rating && this.user) {
+      if (
+        this.name &&
+        this.platform &&
+        this.rating &&
+        this.user &&
+        !this.duplicate
+      ) {
         const newRating = {
           name: this.name,
           platform: this.platform,
@@ -118,9 +131,18 @@ export default {
             this.rating = 0;
             this.dialog = false;
           });
+      } else if (this.duplicate) {
+        alert(
+          "You have already rated this show. Please edit your existing rating instead."
+        );
       } else {
         alert("Please complete all fields.");
       }
+    }
+  },
+  computed: {
+    userRatings() {
+      return this.$store.getters.userRatings;
     }
   }
 };
