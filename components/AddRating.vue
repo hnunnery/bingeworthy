@@ -4,7 +4,7 @@
       <!-- button for lg and xl screen sizes -->
       <v-btn
         large
-        class="hidden-md-and-down text-capitalize"
+        class="hidden-md-and-down text-capitalize scale-btn"
         style="background-color: rgba(120, 47, 64, 0.5);"
         v-on="on"
       >

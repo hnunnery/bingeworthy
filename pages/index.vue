@@ -30,7 +30,7 @@
             ></v-text-field>
             <v-btn
               large
-              class="hidden-md-and-down text-capitalize ml-3"
+              class="hidden-md-and-down text-capitalize ml-3 scale-btn"
               style="background-color: rgba(120, 47, 64, 0.5); margin-top: 1.5px;"
               @click="onLogout"
               v-if="userAuth"
@@ -46,7 +46,7 @@
           >
             <v-btn
               large
-              class="mr-5 text-capitalize mr-2 hidden-md-and-down"
+              class="mr-5 text-capitalize mr-2 hidden-md-and-down scale-btn"
               style="background-color: rgba(120, 47, 64, 0.5);"
               v-if="!userAuth"
               to="/signin"
@@ -55,7 +55,7 @@
             </v-btn>
             <v-btn
               large
-              class="text-capitalize hidden-md-and-down"
+              class="text-capitalize hidden-md-and-down scale-btn"
               style="background-color: rgba(120, 47, 64, 0.5);"
               v-if="!userAuth"
               to="/signup"
@@ -64,7 +64,7 @@
             </v-btn>
             <v-btn
               large
-              class="text-capitalize mr-2 hidden-md-and-down"
+              class="text-capitalize mr-2 hidden-md-and-down scale-btn"
               style="background-color: rgba(120, 47, 64, 0.5);"
               to="/ratings"
               v-if="userAuth"
@@ -87,7 +87,7 @@
         <v-row v-show="this.search" class="justify-center align-center mt-2 mb-0 pb-0">
           <v-btn
             large
-            class="hidden-xs-only mt-md-2 mb-md-1 mx-3 text-capitalize"
+            class="hidden-xs-only mt-md-2 mb-md-1 mx-3 text-capitalize scale-btn"
             style="background-color: rgba(120, 47, 64, 0.5);"
             @click="clearSearch"
           >

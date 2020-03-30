@@ -3,7 +3,7 @@
     <template v-slot:activator="{ on }">
       <v-btn
         large
-        class="hidden-xs-only text-capitalize mt-md-2 mb-md-1 mx-3"
+        class="hidden-xs-only text-capitalize mt-md-2 mb-md-1 mx-3 scale-btn"
         v-on="on"
         style="background-color: rgba(120, 47, 64, 0.5);"
       >

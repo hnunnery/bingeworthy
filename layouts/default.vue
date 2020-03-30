@@ -76,10 +76,14 @@ export default {
 </script>
 
 <style>
+/* stops route highlighting of nav buttons */
+.v-btn--active.no-active::before {
+  opacity: 0 !important;
+}
 .v-btn {
   transition: all 0.2s ease-in-out;
 }
-.v-btn:hover {
+.scale-btn:hover {
   transform: scale(1.05);
   box-shadow: 0 0 5px 1px #ceb888 !important;
 }

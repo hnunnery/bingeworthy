@@ -30,7 +30,7 @@
             ></v-text-field>
             <v-btn
               large
-              class="text-capitalize ml-3 hidden-md-and-down"
+              class="text-capitalize ml-3 hidden-md-and-down scale-btn"
               style="background-color: rgba(120, 47, 64, 0.5);"
               @click="onLogout"
               v-if="userAuth"
@@ -46,7 +46,7 @@
           >
             <v-btn
               large
-              class="mr-5 text-capitalize mr-2 hidden-md-and-down"
+              class="mr-5 text-capitalize mr-2 hidden-md-and-down scale-btn"
               style="background-color: rgba(120, 47, 64, 0.5);"
               v-if="!userAuth"
               to="/signin"
@@ -55,7 +55,7 @@
             </v-btn>
             <v-btn
               large
-              class="text-capitalize hidden-md-and-down"
+              class="text-capitalize hidden-md-and-down scale-btn"
               style="background-color: rgba(120, 47, 64, 0.5);"
               v-if="!userAuth"
               to="/signup"
@@ -64,7 +64,7 @@
             </v-btn>
             <v-btn
               large
-              class="text-capitalize mr-2 hidden-md-and-down"
+              class="text-capitalize mr-2 hidden-md-and-down scale-btn"
               style="background-color: rgba(120, 47, 64, 0.5);"
               to="/"
               v-if="userAuth"
@@ -102,7 +102,7 @@
           </v-btn>
           <v-btn
             large
-            class="hidden-xs-only text-capitalize mb-lg-3 mx-1"
+            class="hidden-xs-only text-capitalize mb-lg-3 mx-1 scale-btn"
             style="background-color: rgba(120, 47, 64, 0.5);"
             v-show="this.search"
             @click="clearSearch"
@@ -178,7 +178,7 @@
                 </v-row>
                 <v-col
                   cols="12"
-                  class="title pt-0 pb-3 font-weight-light font-italic"
+                  class="title pt-0 pb-2 font-weight-light font-italic"
                   @click="setSearch(rating.user)"
                 >{{ rating.user }}</v-col>
               </v-row>

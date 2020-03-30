@@ -16,6 +16,7 @@
     <!-- navbar xs screen size -->
     <v-btn
       text
+      active-class="no-active"
       v-show="userAuth"
       @click="searchBar = !searchBar"
       class="text-capitalize hidden-sm-and-up"
@@ -25,6 +26,7 @@
     </v-btn>
     <v-btn
       text
+      active-class="no-active"
       class="hidden-sm-and-up text-capitalize"
       style="margin-right: -6px; margin-left: -6px; letter-spacing: .5px;"
       @click="onLogout"
@@ -34,6 +36,7 @@
     </v-btn>
     <v-btn
       text
+      active-class="no-active"
       class="hidden-sm-and-up text-capitalize"
       style="margin-right: 1px; margin-left: -6px; letter-spacing: .5px;"
       to="/ratings"
@@ -46,6 +49,7 @@
     <v-btn
       v-if="userAuth"
       text
+      active-class="no-active"
       class="hidden-xs-only mr-md-4 text-capitalize"
       to="/"
       style="margin-left: -6px; margin-right: -6px;"
@@ -54,6 +58,7 @@
     </v-btn>
     <v-btn
       text
+      active-class="no-active"
       class="hidden-xs-only mr-md-4 text-capitalize"
       style="margin-right: 1px; margin-left: -6px; letter-spacing: .5px;"
       to="/ratings"
@@ -65,6 +70,7 @@
     <!-- search for sm and md screen size -->
     <v-btn
       text
+      active-class="no-active"
       @click="searchBar = !searchBar"
       class="text-capitalize hidden-xs-only hidden-lg-and-up mr-md-4"
       style="margin-right: -6px; margin-left: -6px; letter-spacing: .5px;"
@@ -74,6 +80,7 @@
 
     <v-btn
       text
+      active-class="no-active"
       class="text-capitalize mr-md-4"
       v-if="!userAuth"
       to="/signin"
@@ -83,6 +90,7 @@
     </v-btn>
     <v-btn
       text
+      active-class="no-active"
       class="mr-md-4 text-capitalize"
       v-if="!userAuth"
       to="/signup"
@@ -92,6 +100,7 @@
     </v-btn>
     <v-btn
       text
+      active-class="no-active"
       class="hidden-xs-only mr-md-4 text-capitalize"
       style="margin-right: -6px; margin-left: -6px; letter-spacing: .5px;"
       @click="onLogout"
