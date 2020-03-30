@@ -209,6 +209,9 @@ export const actions = {
 };
 
 export const getters = {
+  masterRatings(state) {
+    return state.masterRatings;
+  },
   ratingsChange(state) {
     return state.ratings;
   },

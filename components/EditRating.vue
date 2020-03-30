@@ -19,11 +19,8 @@
       <v-row class="align-center justify-center">
         <v-col cols="12" class="pb-2">
           <h2
-            class="primary--text text-center font-weight-regular font-italic mt-1 pb-0 modal-title"
-          >
-            Edit
-            <span class="secondary--text">{{ this.updatedName }}</span>
-          </h2>
+            class="secondary--text text-center font-weight-regular font-italic mt-1 pb-0 modal-title"
+          >Edit {{ this.updatedName }}</h2>
         </v-col>
         <v-col cols="12" class="py-1">
           <v-combobox
@@ -46,14 +43,14 @@
           ></v-combobox>
         </v-col>
         <v-col cols="12" class="text-center">
-          <v-rating v-model="updatedRating" half-increments size="35" color="secondary" required></v-rating>
+          <v-rating v-model="updatedRating" half-increments size="40" color="secondary" required></v-rating>
         </v-col>
         <v-col cols="12" class="pt-1">
           <v-text-field type="text" name="user" label="Your Name" v-model="updatedUser" required></v-text-field>
         </v-col>
         <v-card-actions style="width: 100%;">
           <v-row>
-            <v-col cols="12" class="py-0">
+            <v-col cols="12" class="py-1">
               <v-row class="justify-space-between">
                 <v-col cols="2" class="text-left py-0">
                   <v-btn

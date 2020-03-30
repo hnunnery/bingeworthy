@@ -52,14 +52,11 @@
           ></v-combobox>
         </v-col>
         <v-col cols="12" class="text-center">
-          <v-rating v-model="rating" half-increments size="35" color="secondary" required></v-rating>
-        </v-col>
-        <v-col cols="12" class="pt-1">
-          <v-text-field type="text" name="user" label="Your Name" v-model="user" required></v-text-field>
+          <v-rating v-model="rating" half-increments size="40" color="secondary" required></v-rating>
         </v-col>
         <v-card-actions style="width: 100%;">
           <v-row class="justify-center">
-            <v-col cols="12" class="text-center py-0">
+            <v-col cols="12" class="text-center mt-2">
               <v-btn
                 large
                 rounded
@@ -95,7 +92,7 @@ export default {
       name: "",
       platform: "",
       rating: 0,
-      user: "",
+      user: this.$store.getters.user.name,
       search: "",
       dialog: false
     };
@@ -118,6 +115,9 @@ export default {
         }
       });
       return a;
+    },
+    masterRatings() {
+      return this.$store.getters.masterRatings;
     }
   },
   methods: {
@@ -141,7 +141,6 @@ export default {
             this.name = "";
             this.platform = "";
             this.rating = 0;
-            this.user = "";
             this.dialog = false;
           });
       } else {
@@ -154,6 +153,15 @@ export default {
       this.rating = 0;
       this.user = "";
       this.dialog = false;
+    }
+  },
+  watch: {
+    name() {
+      this.masterRatings.forEach(rating => {
+        if (this.name === rating.name) {
+          this.platform = rating.platform;
+        }
+      });
     }
   }
 };
