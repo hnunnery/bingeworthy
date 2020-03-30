@@ -196,7 +196,7 @@
               color="rgba(17, 17, 17, 0.7)"
               elevation="15"
               height="100%"
-              style="box-shadow: 0 0 10px 5px #782f40 !important;"
+              style="box-shadow: 0 0 5px 1px #782f40 !important;"
             >
               <v-row class="text-center justify-center align-center">
                 <v-row class="justify-center align-center" style="height: 85px;">
