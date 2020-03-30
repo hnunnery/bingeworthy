@@ -77,11 +77,21 @@ export default {
 </script>
 
 <style>
+.v-btn {
+  transition: all 0.2s ease-in-out;
+}
+.v-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 5px 1px #ceb888 !important;
+}
+.v-card {
+  border-radius: 5px !important;
+}
 form {
   font-size: 16px !important;
 }
 .modal-title {
-  font-size: 1.5em;
+  font-size: 1.6em;
 }
 .limit-width {
   max-width: 80vw;

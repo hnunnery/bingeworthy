@@ -23,32 +23,12 @@
     </template>
     <v-card class="px-6 py-2" color="rgba(17, 17, 17, 0.85)" elevation="15">
       <v-row class="align-center justify-center">
-        <v-col cols="12" class="pb-2">
+        <v-col cols="12" class="pb-0">
           <h2
-            class="secondary--text text-center font-weight-regular font-italic mt-0 pb-0 modal-title"
-          >Rate {{ name }}</h2>
+            class="display-1 secondary--text text-center font-weight-regular font-italic mt-0 pb-0"
+          >{{ name }}</h2>
         </v-col>
-        <v-col cols="12" class="py-1">
-          <v-text-field
-            name="name"
-            label="Name of Show"
-            :value="name"
-            disabled
-            required
-            type="text"
-          ></v-text-field>
-        </v-col>
-        <v-col cols="12" class="py-1">
-          <v-text-field
-            name="platform"
-            label="Platform (Netflix, Hulu, etc.)"
-            :value="platform"
-            disabled
-            required
-            type="text"
-          ></v-text-field>
-        </v-col>
-        <v-col cols="12" class="text-center">
+        <v-col cols="12" class="mb-0 text-center">
           <v-rating v-model="rating" half-increments size="40" color="secondary" required></v-rating>
         </v-col>
         <v-card-actions style="width: 100%;">

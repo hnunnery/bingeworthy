@@ -257,7 +257,7 @@
                 <v-col
                   cols="3"
                   class="pa-0 display-1 font-weight-bold font-italic text-center"
-                  style="opacity: 0.2; margin-left: -15px; position: absolute; bottom: 0; left: 0;"
+                  style="opacity: 0.2; margin-right: -15px; position: absolute; bottom: 0; right: 0;"
                 >
                   {{ rating.users.length }}
                   <p
@@ -276,10 +276,11 @@
                   fab
                   x-small
                   absolute
-                  bottom
-                  right
-                  class="primary font-weight-bold"
+                  top
+                  left
+                  class="font-weight-bold"
                   style="font-size: 1.2em; letter-spacing: .1px;"
+                  color="rgba(120, 47, 64, 0.9)"
                 >{{ rating.rank }}</v-btn>
               </v-row>
             </v-card>
