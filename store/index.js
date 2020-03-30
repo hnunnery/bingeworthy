@@ -76,6 +76,13 @@ export const mutations = {
   },
   updateUserName(state, payload) {
     state.user.name = payload;
+  },
+  passwordReset(state, payload) {
+    state.message = `Email sent to ${payload}`;
+    state.success = true;
+    setTimeout(() => {
+      state.success = false;
+    }, 2000);
   }
 };
 

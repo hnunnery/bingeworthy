@@ -35,7 +35,7 @@
               @click="onLogout"
               v-if="userAuth"
             >
-              <v-icon left>mdi-account-minus</v-icon>Sign Out
+              <v-icon left size="20">mdi-account-minus</v-icon>Sign Out
             </v-btn>
           </v-col>
           <v-col
@@ -51,8 +51,7 @@
               v-if="!userAuth"
               to="/signin"
             >
-              <v-icon>mdi-account-check</v-icon>
-              <span class>&nbsp;Sign In</span>
+              <v-icon left size="20">mdi-account-check</v-icon>Sign In
             </v-btn>
             <v-btn
               large
@@ -61,8 +60,7 @@
               v-if="!userAuth"
               to="/signup"
             >
-              <v-icon>mdi-account-plus</v-icon>
-              <span class>&nbsp;Sign Up</span>
+              <v-icon left size="20">mdi-account-plus</v-icon>Sign Up
             </v-btn>
             <v-btn
               large
@@ -71,7 +69,7 @@
               to="/"
               v-if="userAuth"
             >
-              <v-icon left>mdi-home</v-icon>All Ratings
+              <v-icon left size="20">mdi-home</v-icon>All Ratings
             </v-btn>
             <AddRating v-if="userAuth && this.$vuetify.breakpoint.lgAndUp" />
           </v-col>

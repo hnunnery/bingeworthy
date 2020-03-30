@@ -8,7 +8,7 @@
         style="background-color: rgba(120, 47, 64, 0.5);"
         v-on="on"
       >
-        <v-icon left>mdi-plus</v-icon>Add Your Rating
+        <v-icon left size="25">mdi-plus</v-icon>Add Your Rating
       </v-btn>
       <!-- button for xs - md screen size -->
       <v-btn

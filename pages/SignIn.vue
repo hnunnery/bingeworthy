@@ -52,11 +52,13 @@
                         >Sign In</v-btn>
                       </v-col>
                       <v-col cols="12" class="text-center mt-2 pb-0">
-                        <v-btn
-                          to="/signup"
-                          class="secondary--text text-capitalize"
-                          style="background-color: rgba(66, 66, 66, 1);"
-                        >New Users Sign Up Here</v-btn>
+                        <v-btn text to="/signup" class="title secondary--text text-capitalize">
+                          <v-icon left>mdi-star</v-icon>Get Account Here
+                          <v-icon right>mdi-star</v-icon>
+                        </v-btn>
+                      </v-col>
+                      <v-col cols="12" class="text-center py-0">
+                        <ForgotPassword />
                       </v-col>
                     </v-col>
                   </v-row>
@@ -72,10 +74,12 @@
 
 <script>
 import Alert from "@/components/Alert";
+import ForgotPassword from "@/components/ForgotPassword";
 
 export default {
   components: {
-    Alert
+    Alert,
+    ForgotPassword
   },
   data() {
     return {
