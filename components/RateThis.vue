@@ -2,23 +2,22 @@
   <v-dialog v-model="dialog" persistent max-width="600" overlay-color="#111" overlay-opacity=".97">
     <template v-slot:activator="{ on }">
       <v-btn
-        rounded
         large
         class="hidden-xs-only text-capitalize mt-md-2 mb-md-1 mx-3"
         v-on="on"
         style="background-color: rgba(120, 47, 64, 0.5);"
       >
-        <v-icon left>mdi-plus</v-icon>Rate This
+        <v-icon left>mdi-plus</v-icon>Rate This Show
       </v-btn>
       <!-- for xs screen size only -->
       <v-btn
-        rounded
         dense
-        class="hidden-sm-and-up text-capitalize mt-md-2 mb-md-1 mx-3"
+        small
+        class="hidden-sm-and-up text-capitalize mt-md-2 mb-md-1 mx-4"
         v-on="on"
         style="background-color: rgba(120, 47, 64, 0.5);"
       >
-        <v-icon left>mdi-plus</v-icon>Rate This
+        <v-icon left>mdi-plus</v-icon>Rate This Show
       </v-btn>
     </template>
     <v-card class="px-6 py-2" color="rgba(17, 17, 17, 0.85)" elevation="15">
@@ -36,7 +35,6 @@
             <v-col cols="12" class="text-center mt-2">
               <v-btn
                 large
-                rounded
                 outlined
                 @click="dialog = false;"
                 class="secondary--text text-capitalize mx-2 px-6"
@@ -44,7 +42,6 @@
               >Cancel</v-btn>
               <v-btn
                 large
-                rounded
                 outlined
                 @click="addRating"
                 class="success--text text-capitalize mx-2 px-4"

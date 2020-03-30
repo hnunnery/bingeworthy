@@ -3,7 +3,6 @@
     <template v-slot:activator="{ on }">
       <!-- button for lg and xl screen sizes -->
       <v-btn
-        rounded
         large
         class="hidden-md-and-down text-capitalize"
         style="background-color: rgba(120, 47, 64, 0.5);"
@@ -17,7 +16,7 @@
         small
         outlined
         class="hidden-lg-and-up secondary--text text-capitalize mt-6"
-        style="box-shadow: 0 0 3px 1px #ceb888 !important; background-color: rgba(120, 47, 64, 0.05);"
+        style="box-shadow: 0 0 3px 1px #ceb888 !important;"
         v-on="on"
       >
         <v-icon>mdi-plus</v-icon>
@@ -59,7 +58,6 @@
             <v-col cols="12" class="text-center mt-2">
               <v-btn
                 large
-                rounded
                 outlined
                 @click="resetForm"
                 class="secondary--text text-capitalize mx-2 px-6"
@@ -67,7 +65,6 @@
               >Cancel</v-btn>
               <v-btn
                 large
-                rounded
                 outlined
                 @click="addRating"
                 class="success--text text-capitalize mx-2 px-4"

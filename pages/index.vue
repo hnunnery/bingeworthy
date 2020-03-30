@@ -10,7 +10,7 @@
           "
         >
           <v-col cols="12" sm="10" md="6" class="mt-3 mx-0 mb-2 px-2 py-0">
-            <v-text-field solo rounded placeholder="Search" v-model="search" hide-details></v-text-field>
+            <v-text-field solo placeholder="Search" v-model="search" hide-details></v-text-field>
           </v-col>
         </v-row>
         <!-- DESKTOP NAV FOR LG AND XL BREAKPOINTS -->
@@ -23,14 +23,12 @@
           >
             <v-text-field
               solo
-              rounded
               placeholder="Search"
               v-model="search"
               hide-details
               class="limit-width hidden-md-and-down"
             ></v-text-field>
             <v-btn
-              rounded
               large
               class="text-capitalize ml-3 hidden-md-and-down"
               style="background-color: rgba(120, 47, 64, 0.5);"
@@ -47,7 +45,6 @@
             class="hidden-md-and-down mt-lg-3 mr-lg-4 ml-0 pa-0 text-center text-sm-right"
           >
             <v-btn
-              rounded
               large
               class="mr-5 text-capitalize mr-2 hidden-md-and-down"
               style="background-color: rgba(120, 47, 64, 0.5);"
@@ -58,7 +55,6 @@
               <span class>&nbsp;Sign In</span>
             </v-btn>
             <v-btn
-              rounded
               large
               class="text-capitalize hidden-md-and-down"
               style="background-color: rgba(120, 47, 64, 0.5);"
@@ -69,7 +65,6 @@
               <span class>&nbsp;Sign Up</span>
             </v-btn>
             <v-btn
-              rounded
               large
               class="text-capitalize mr-2 hidden-md-and-down"
               style="background-color: rgba(120, 47, 64, 0.5);"
@@ -93,22 +88,21 @@
         >BingeWorthy</h1>
         <v-row v-show="this.search" class="justify-center align-center mt-2 mb-0 pb-0">
           <v-btn
-            rounded
             large
-            class="hidden-xs-only mt-md-2 mb-md-1 mx-1 text-capitalize"
+            class="hidden-xs-only mt-md-2 mb-md-1 mx-3 text-capitalize"
             style="background-color: rgba(120, 47, 64, 0.5);"
             @click="clearSearch"
           >
             <v-icon left>mdi-arrow-left</v-icon>Back / Clear
           </v-btn>
           <v-btn
-            rounded
             dense
-            class="hidden-sm-and-up mt-md-2 mx-1 text-capitalize"
+            small
+            class="hidden-sm-and-up mt-md-2 mx-1 py-0 text-capitalize"
             style="background-color: rgba(120, 47, 64, 0.5);"
             @click="clearSearch"
           >
-            <v-icon left>mdi-arrow-left</v-icon>Back
+            <v-icon left>mdi-arrow-left</v-icon>Back / Clear
           </v-btn>
           <RateThis
             v-if="expandedName && userAuth"

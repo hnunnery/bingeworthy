@@ -47,14 +47,12 @@
                         <v-btn
                           type="submit"
                           large
-                          rounded
                           class="text-capitalize px-12"
                           style="background-color: rgba(120, 47, 64, 0.6);"
                         >Sign In</v-btn>
                       </v-col>
                       <v-col cols="12" class="text-center mt-2 pb-0">
                         <v-btn
-                          rounded
                           to="/signup"
                           class="secondary--text text-capitalize"
                           style="background-color: rgba(66, 66, 66, 1);"

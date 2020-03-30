@@ -10,7 +10,6 @@
       <v-btn
         v-show="this.$store.state.ratings"
         large
-        rounded
         absolute
         bottom
         left

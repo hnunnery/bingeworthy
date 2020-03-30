@@ -67,7 +67,6 @@
                 <v-col cols="10" class="text-right py-0">
                   <v-btn
                     large
-                    rounded
                     outlined
                     @click="dialog = false"
                     class="secondary--text text-capitalize mx-1"
@@ -75,7 +74,6 @@
                   >Cancel</v-btn>
                   <v-btn
                     large
-                    rounded
                     outlined
                     @click="updateRating"
                     class="success--text text-capitalize mx-1"

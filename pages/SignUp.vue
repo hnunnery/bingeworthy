@@ -57,7 +57,6 @@
                         <v-btn
                           type="submit"
                           large
-                          rounded
                           class="text-capitalize px-12"
                           style="background-color: rgba(120, 47, 64, 0.6);"
                         >Sign Up</v-btn>
