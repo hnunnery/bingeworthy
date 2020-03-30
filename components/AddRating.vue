@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialog" persistent max-width="600">
+  <v-dialog v-model="dialog" persistent max-width="600" overlay-color="#111" overlay-opacity=".97">
     <template v-slot:activator="{ on }">
       <!-- button for lg and xl screen sizes -->
       <v-btn
@@ -23,7 +23,7 @@
         <v-icon>mdi-plus</v-icon>
       </v-btn>
     </template>
-    <v-card class="px-6 py-2" color="#111111">
+    <v-card class="px-6 py-2" color="rgba(17, 17, 17, 0.85)" elevation="15">
       <v-row class="align-center justify-center">
         <v-col cols="12" class="pb-2">
           <h2

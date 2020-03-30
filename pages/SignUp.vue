@@ -8,7 +8,7 @@
         >BingeWorthy</h1>
       </v-col>
       <v-col cols="12" sm="8" md="6" style="max-width: 600px;">
-        <v-card class="pa-6 px-lg-10" color="#111111">
+        <v-card class="pa-6 px-lg-10" color="rgba(17, 17, 17, 0.5)" elevation="15">
           <form @submit.prevent="onSignUp">
             <v-row class="align-center justify-center">
               <v-col cols="12" class="pb-2">
@@ -47,7 +47,9 @@
                         <v-btn
                           type="submit"
                           large
-                          class="primary white--text text-capitalize px-12"
+                          rounded
+                          class="text-capitalize px-12"
+                          style="background-color: rgba(120, 47, 64, 0.6);"
                         >Sign Up</v-btn>
                       </v-col>
                     </v-col>

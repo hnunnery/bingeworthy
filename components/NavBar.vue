@@ -4,28 +4,24 @@
       class="hidden-xs-only secondary--text font-weight-bold font-italic"
       style="letter-spacing: 1px; font-size: 1.6em;"
     >
-      <nuxt-link to="/" style="text-decoration: none; color: #ceb888;"
-        >BingeWorthy</nuxt-link
-      >
+      <nuxt-link to="/" style="text-decoration: none; color: #ceb888;">BingeWorthy</nuxt-link>
     </v-toolbar-title>
     <v-toolbar-title
       class="hidden-sm-and-up secondary--text font-weight-bold font-italic"
       style="letter-spacing: 1px;"
     >
-      <nuxt-link to="/" style="text-decoration: none; color: #ceb888;"
-        >BingeWorthy</nuxt-link
-      >
+      <nuxt-link to="/" style="text-decoration: none; color: #ceb888;">BingeWorthy</nuxt-link>
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <!-- navbar xs screen size -->
     <v-btn
       text
+      v-show="userAuth"
       @click="searchBar = !searchBar"
       class="text-capitalize hidden-sm-and-up"
       style="margin-right: -6px; margin-left: -6px; letter-spacing: .5px;"
     >
       <v-icon>mdi-magnify</v-icon>
-      <span v-show="!userAuth">Search</span>
     </v-btn>
     <v-btn
       text
@@ -53,8 +49,9 @@
       class="hidden-xs-only mr-md-4 text-capitalize"
       to="/"
       style="margin-left: -6px; margin-right: -6px;"
-      ><v-icon left>mdi-home</v-icon>Home</v-btn
     >
+      <v-icon left>mdi-home</v-icon>Home
+    </v-btn>
     <v-btn
       text
       class="hidden-xs-only mr-md-4 text-capitalize"
@@ -86,7 +83,7 @@
     </v-btn>
     <v-btn
       text
-      class="hidden-xs-only mr-md-4 text-capitalize"
+      class="mr-md-4 text-capitalize"
       v-if="!userAuth"
       to="/signup"
       style="letter-spacing: .5px; margin-left: -6px;"
