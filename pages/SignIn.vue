@@ -93,13 +93,13 @@ export default {
       return this.$store.getters.error;
     }
   },
-  watch: {
-    user(value) {
-      if (value !== null && value !== undefined) {
-        this.$router.push("/");
-      }
-    }
-  },
+  // watch: {
+  //   user(value) {
+  //     if (value !== null && value !== undefined) {
+  //       this.$router.push("/");
+  //     }
+  //   }
+  // },
   methods: {
     onSignIn() {
       this.$store.dispatch("signUserIn", {

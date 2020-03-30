@@ -9,13 +9,13 @@
       </v-col>
       <v-col cols="12" sm="8" md="6" style="max-width: 600px;">
         <v-card class="pa-6 px-lg-10" color="rgba(17, 17, 17, 0.5)" elevation="15">
-          <form @submit.prevent="onSignUp">
+          <form @submit.prevent="updateDisplayName">
             <v-row class="align-center justify-center">
               <v-col cols="12" class="pb-2">
                 <h2
                   class="display-1 text-center font-italic mt-1 pb-0"
                   style="letter-spacing: 1.2px;"
-                >New User Registration</h2>
+                >Name to Display on Ratings</h2>
 
                 <v-text-field
                   class="mt-6"
@@ -24,26 +24,6 @@
                   id="displayName"
                   v-model="displayName"
                   type="text"
-                  required
-                ></v-text-field>
-
-                <v-text-field
-                  class="mt-6"
-                  name="email"
-                  label="Email"
-                  id="email"
-                  v-model="email"
-                  type="email"
-                  required
-                ></v-text-field>
-
-                <v-text-field
-                  class="mt-6"
-                  name="password"
-                  label="Password"
-                  id="password"
-                  v-model="password"
-                  type="password"
                   required
                 ></v-text-field>
 
@@ -60,7 +40,7 @@
                           rounded
                           class="text-capitalize px-12"
                           style="background-color: rgba(120, 47, 64, 0.6);"
-                        >Sign Up</v-btn>
+                        >Update</v-btn>
                       </v-col>
                     </v-col>
                   </v-row>
@@ -83,8 +63,6 @@ export default {
   },
   data() {
     return {
-      email: "",
-      password: "",
       displayName: ""
     };
   },
@@ -97,22 +75,12 @@ export default {
     }
   },
   methods: {
-    onSignUp() {
-      this.$store.dispatch("signUserUp", {
-        email: this.email,
-        password: this.password,
-        displayName: this.displayName
-      });
+    updateDisplayName() {
+      this.$store.dispatch("updateDisplayName", this.displayName);
+      this.$router.push("/");
     },
     onDismissed() {
       this.$store.dispatch("clearError");
-    }
-  },
-  watch: {
-    user(value) {
-      if (value !== null && value !== undefined) {
-        this.$router.push("/");
-      }
     }
   }
 };

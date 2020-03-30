@@ -139,9 +139,6 @@ export default {
     }
   },
   watch: {
-    search() {
-      this.$store.commit("setSearch", this.search);
-    },
     searchBar() {
       this.$store.commit("searchBarToggle");
     }

@@ -73,6 +73,9 @@ export const mutations = {
   // USER HANDLING
   setUser(state, payload) {
     state.user = payload;
+  },
+  updateUserName(state, payload) {
+    state.user.name = payload;
   }
 };
 
@@ -131,9 +134,9 @@ export const actions = {
     master.forEach(rating => {
       rating.rank = master.indexOf(rating) + 1;
       rating.roundedRating = rating.averageRating.toFixed(2);
-      console.log(
-        `${rating.rank}: ${rating.name} (${rating.averageRating.toFixed(2)})`
-      );
+      // console.log(
+      //   `${rating.rank}: ${rating.name} (${rating.averageRating.toFixed(2)})`
+      // );
     });
     // ROUNDING DOWN TO NEAREST .5 TO CONTROL VUETIFY RATING COMPONENT
     master.forEach(rating => {
@@ -149,11 +152,14 @@ export const actions = {
     auth
       .createUserWithEmailAndPassword(payload.email, payload.password)
       .then(user => {
-        const newUser = {
-          // user.uid is undefined until later
-          id: user.uid
-        };
-        commit("setUser", newUser);
+        auth.currentUser
+          .updateProfile({
+            displayName: payload.displayName
+          })
+          .then(function() {
+            console.log("Updated Display Name");
+            commit("updateUserName", payload.displayName);
+          });
       })
       .catch(error => {
         commit("setError", error);
@@ -164,23 +170,36 @@ export const actions = {
     commit("clearError");
     auth
       .signInWithEmailAndPassword(payload.email, payload.password)
-      .then(user => {
-        const newUser = {
-          id: user.uid,
-          name: ""
-        };
-        commit("setUser", newUser);
-      })
       .catch(error => {
         commit("setError", error);
         console.log(error);
       });
   },
   autoSignIn({ commit }, payload) {
+    if (!payload.displayName) {
+      this.$router.push("/updatename");
+    } else {
+      this.$router.push("/");
+    }
     commit("setUser", {
       id: payload.uid,
-      name: ""
+      name: payload.displayName
     });
+  },
+  updateDisplayName({ commit }, payload) {
+    commit("clearError");
+    auth.currentUser
+      .updateProfile({
+        displayName: payload
+      })
+      .then(function() {
+        commit("updateUserName", payload);
+        console.log("Updated Display Name");
+      })
+      .catch(error => {
+        commit("setError", error);
+        console.log(error);
+      });
   },
   logout({ commit }) {
     auth.signOut();
