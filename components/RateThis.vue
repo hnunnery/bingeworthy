@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialog" persistent max-width="600" overlay-color="#111" overlay-opacity=".97">
+  <v-dialog v-model="dialog" persistent max-width="400" overlay-color="#111" overlay-opacity=".97">
     <template v-slot:activator="{ on }">
       <v-btn
         large
@@ -47,7 +47,7 @@
                 class="success--text text-capitalize mx-2 px-4"
                 style="box-shadow: 0 0 3px 1px #43a047 !important;"
               >
-                <v-icon size="22" left>mdi-plus</v-icon>Add Show
+                <v-icon size="22" left>mdi-plus</v-icon>Add Rating
               </v-btn>
             </v-col>
           </v-row>

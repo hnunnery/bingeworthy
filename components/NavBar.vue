@@ -36,7 +36,7 @@
     </v-btn>
     <v-btn
       text
-      active-class="no-active"
+      active-class="no-active secondary--text"
       class="hidden-sm-and-up text-capitalize"
       style="margin-right: 1px; margin-left: -6px; letter-spacing: .5px;"
       to="/ratings"
@@ -49,7 +49,7 @@
     <v-btn
       v-if="userAuth"
       text
-      active-class="no-active"
+      active-class="no-active secondary--text"
       class="hidden-xs-only mr-md-4 text-capitalize"
       to="/"
       style="margin-left: -6px; margin-right: -6px;"
@@ -58,7 +58,7 @@
     </v-btn>
     <v-btn
       text
-      active-class="no-active"
+      active-class="no-active secondary--text"
       class="hidden-xs-only mr-md-4 text-capitalize"
       style="margin-right: 1px; margin-left: -6px; letter-spacing: .5px;"
       to="/ratings"
@@ -80,7 +80,7 @@
 
     <v-btn
       text
-      active-class="no-active"
+      active-class="no-active secondary--text"
       class="text-capitalize mr-md-4"
       v-if="!userAuth"
       to="/signin"
@@ -90,7 +90,7 @@
     </v-btn>
     <v-btn
       text
-      active-class="no-active"
+      active-class="no-active secondary--text"
       class="mr-md-4 text-capitalize"
       v-if="!userAuth"
       to="/signup"

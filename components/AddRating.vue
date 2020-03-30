@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialog" persistent max-width="600" overlay-color="#111" overlay-opacity=".97">
+  <v-dialog v-model="dialog" persistent max-width="500" overlay-color="#111" overlay-opacity=".97">
     <template v-slot:activator="{ on }">
       <!-- button for lg and xl screen sizes -->
       <v-btn
