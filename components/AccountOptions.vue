@@ -20,7 +20,7 @@
               <v-btn
                 large
                 to="/signup"
-                @click="this.$emit('click'); dialog=false;"
+                @click="dialog=false; this.$emit('click');"
                 active-class="no-active"
                 class="text-capitalize mx-2 my-3 px-5"
                 style="background-color: rgba(120, 47, 64, 0.5);"
@@ -30,7 +30,7 @@
               <v-btn
                 large
                 to="/signin"
-                @click="this.$emit('click'); dialog=false;"
+                @click="dialog=false; this.$emit('click');"
                 active-class="no-active"
                 class="text-capitalize mx-2 my-3 px-5"
                 style="background-color: rgba(120, 47, 64, 0.5);"
@@ -52,7 +52,7 @@
               <v-btn
                 large
                 to="/updatename"
-                @click="this.$emit('click'); dialog=false;"
+                @click="dialog=false; this.$emit('click');"
                 active-class="no-active"
                 class="text-capitalize mx-2 my-3 px-6"
                 style="background-color: rgba(120, 47, 64, 0.5);"
@@ -87,8 +87,8 @@ export default {
       if (confirm("Sign Out?")) {
         this.$store.dispatch("logout");
         this.$router.push("/");
-        this.$emit('click'); 
-        this.dialog = false;
+        this.dialog=false;
+        this.$emit('click');
       }
     }
   }
