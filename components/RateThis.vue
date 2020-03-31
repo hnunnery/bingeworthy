@@ -26,7 +26,16 @@
           >{{ name }}</h2>
         </v-col>
         <v-col cols="12" class="mb-0 text-center">
-          <v-rating v-model="rating" half-increments size="40" color="secondary" required></v-rating>
+          <span class="display-4">{{ rating }}/5</span>
+          <v-rating
+            v-model="rawRating"
+            size="25"
+            :length="10"
+            dense
+            color="secondary"
+            required
+            class="mt-4"
+          ></v-rating>
         </v-col>
         <v-card-actions style="width: 100%;">
           <v-row class="justify-center">
@@ -67,6 +76,7 @@ export default {
       rating: 0,
       user: this.$store.getters.user.name,
       search: "",
+      rawRating: 0,
       dialog: false,
       duplicate: false
     };
@@ -118,6 +128,11 @@ export default {
   computed: {
     userRatings() {
       return this.$store.getters.userRatings;
+    }
+  },
+  watch: {
+    rawRating() {
+      this.rating = this.rawRating / 2;
     }
   }
 };
