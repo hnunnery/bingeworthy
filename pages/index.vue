@@ -268,7 +268,6 @@
                   absolute
                   top
                   left
-                  class="font-weight-bold"
                   style="font-size: 1.2em; letter-spacing: .1px;"
                   color="rgba(120, 47, 64, 0.9)"
                 >{{ rating.rank }}</v-btn>

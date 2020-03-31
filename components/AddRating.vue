@@ -32,7 +32,7 @@
           <h2
             class="display-1 secondary--text text-center font-italic mt-1 pb-0"
             style="letter-spacing: 1.2px;"
-          >Add Your Show</h2>
+          >Add Your Rating</h2>
         </v-col>
         <v-col cols="12" class="py-1">
           <v-combobox
@@ -83,7 +83,7 @@
                 class="success--text text-capitalize mx-2 px-4"
                 style="box-shadow: 0 0 3px 1px #43a047 !important;"
               >
-                <v-icon size="22">mdi-plus</v-icon>&nbsp;Add Show
+                <v-icon size="22">mdi-plus</v-icon>&nbsp;Add Rating
               </v-btn>
             </v-col>
           </v-row>
