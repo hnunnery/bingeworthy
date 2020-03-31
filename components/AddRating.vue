@@ -158,7 +158,7 @@ export default {
             this.name = "";
             this.platform = "";
             this.rating = 0;
-            this.$emit('click')
+            this.$emit('click');
             this.dialog = false;
           });
       } else if (this.duplicate) {
