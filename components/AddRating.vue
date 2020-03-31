@@ -63,7 +63,7 @@
               <v-btn
                 large
                 outlined
-                @click="resetForm; $emit('click')"
+                @click="resetForm"
                 class="secondary--text text-capitalize mx-2 px-6"
                 style="box-shadow: 0 0 3px 1px #782f40 !important;"
               >Cancel</v-btn>
@@ -159,7 +159,6 @@ export default {
             this.platform = "";
             this.rating = 0;
             this.dialog = false;
-            this.$emit('click');
           });
       } else if (this.duplicate) {
         alert(
