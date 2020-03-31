@@ -22,7 +22,7 @@
         <v-icon>mdi-plus</v-icon>
       </v-btn>
       <!-- button for xs only -->
-      <v-btn fab class="hidden-sm-and-up primary" v-on="on">
+      <v-btn fab class="hidden-sm-and-up primary" v-on="on" @click="$emit('click')" >
         <v-icon size="35">mdi-plus</v-icon>
       </v-btn>
     </template>
