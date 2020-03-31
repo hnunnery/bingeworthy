@@ -21,9 +21,6 @@
     <v-btn v-show="userAuth" fab color="primary" to="/ratings" active-class="white primary--text">
       <v-icon size="35">mdi-star</v-icon>
     </v-btn>
-    <v-btn v-show="userAuth" fab color="primary" to="/" active-class="white primary--text">
-      <v-icon size="35">mdi-home</v-icon>
-    </v-btn>
     <AccountOptions @click="this.fab=false;" />
   </v-speed-dial>
 </template>
