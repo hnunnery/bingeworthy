@@ -54,7 +54,7 @@
             type="text"
           ></v-combobox>
         </v-col>
-        <v-col cols="12" class="text-center pt-0 pb-1">
+        <v-col cols="12" class="text-center pt-0 pb-3">
           <span class="display-2 secondary--text">{{ rating }}/5</span>
           <v-rating
             :length="10"
