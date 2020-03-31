@@ -70,7 +70,7 @@
               <v-btn
                 large
                 outlined
-                @click="addRating; $emit('click')"
+                @click="addRating"
                 class="success--text text-capitalize mx-2 px-4"
                 style="box-shadow: 0 0 3px 1px #43a047 !important;"
               >
@@ -158,6 +158,7 @@ export default {
             this.name = "";
             this.platform = "";
             this.rating = 0;
+            this.$emit('click')
             this.dialog = false;
           });
       } else if (this.duplicate) {
