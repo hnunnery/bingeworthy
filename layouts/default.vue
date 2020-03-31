@@ -3,7 +3,7 @@
     <v-container
       fluid
       class="svg-bg px-0 pt-0 pb-12"
-      style="min-height: 100vh; padding-bottom: 100px;"
+      style="min-height: 110vh; padding-bottom: 100px;"
     >
       <SpeedDial v-if="this.$vuetify.breakpoint.xsOnly" />
       <NavBar />

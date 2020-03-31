@@ -94,9 +94,7 @@
             <v-icon left>mdi-arrow-left</v-icon>Back / Clear
           </v-btn>
           <v-btn
-            dense
-            small
-            class="hidden-sm-and-up mt-md-2 mb-3 mx-1 py-0 text-capitalize"
+            class="hidden-sm-and-up mt-md-2 mb-3 mx-2 py-0 text-capitalize"
             style="background-color: rgba(120, 47, 64, 0.5);"
             @click="clearSearch"
           >

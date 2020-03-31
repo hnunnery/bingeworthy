@@ -22,8 +22,8 @@
         <v-icon>mdi-plus</v-icon>
       </v-btn>
       <!-- button for xs only -->
-      <v-btn fab small class="hidden-sm-and-up primary" v-on="on">
-        <v-icon>mdi-plus</v-icon>
+      <v-btn fab class="hidden-sm-and-up primary" v-on="on">
+        <v-icon size="35">mdi-plus</v-icon>
       </v-btn>
     </template>
     <v-card class="px-6 py-2" color="rgba(17, 17, 17, 0.85)" elevation="15">

@@ -15,21 +15,14 @@
       </v-btn>
     </template>
     <AddRating v-if="userAuth" />
-    <v-btn fab small color="primary" active-class="no-active" @click="searchBar = !searchBar">
-      <v-icon>mdi-magnify</v-icon>
+    <v-btn fab color="primary" active-class="no-active" @click="searchBar = !searchBar">
+      <v-icon size="35">mdi-magnify</v-icon>
     </v-btn>
-    <v-btn
-      v-show="userAuth"
-      fab
-      small
-      color="primary"
-      to="/ratings"
-      active-class="accent secondary--text"
-    >
-      <v-icon>mdi-star</v-icon>
+    <v-btn v-show="userAuth" fab color="primary" to="/ratings" active-class="white primary--text">
+      <v-icon size="35">mdi-star</v-icon>
     </v-btn>
-    <v-btn v-show="userAuth" fab small color="primary" to="/" active-class="accent secondary--text">
-      <v-icon>mdi-home</v-icon>
+    <v-btn v-show="userAuth" fab color="primary" to="/" active-class="white primary--text">
+      <v-icon size="35">mdi-home</v-icon>
     </v-btn>
     <AccountOptions @click="this.fab=false;" />
   </v-speed-dial>
