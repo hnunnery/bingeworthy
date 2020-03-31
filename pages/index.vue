@@ -96,7 +96,7 @@
           <v-btn
             dense
             small
-            class="hidden-sm-and-up mt-md-2 mx-1 py-0 text-capitalize"
+            class="hidden-sm-and-up mt-md-2 mb-3 mx-1 py-0 text-capitalize"
             style="background-color: rgba(120, 47, 64, 0.5);"
             @click="clearSearch"
           >
@@ -117,7 +117,7 @@
         </v-row>
 
         <!-- START - MOBILE - MASTER RATINGS CARDS -->
-        <v-row v-show="!loading" class="hidden-lg-and-up justify-center mt-0">
+        <v-row v-show="!loading" class="hidden-lg-and-up justify-center my-0">
           <v-col
             cols="12"
             sm="6"
