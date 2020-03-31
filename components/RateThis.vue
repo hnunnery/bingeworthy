@@ -13,7 +13,7 @@
       <v-btn
         dense
         small
-        class="hidden-sm-and-up text-capitalize mt-md-2 mb-md-1 mx-4"
+        class="hidden-sm-and-up text-capitalize mt-md-2 mb-3 mb-md-1 mx-4"
         v-on="on"
         style="background-color: rgba(120, 47, 64, 0.5);"
       >
