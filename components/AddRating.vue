@@ -22,7 +22,7 @@
         <v-icon>mdi-plus</v-icon>
       </v-btn>
       <!-- button for xs only -->
-      <v-btn fab class="hidden-sm-and-up primary" v-on="on" @click="$emit('click')" >
+      <v-btn fab class="hidden-sm-and-up primary" v-on="on" >
         <v-icon size="35">mdi-plus</v-icon>
       </v-btn>
     </template>
@@ -63,14 +63,14 @@
               <v-btn
                 large
                 outlined
-                @click="resetForm"
+                @click="resetForm; $emit('click')"
                 class="secondary--text text-capitalize mx-2 px-6"
                 style="box-shadow: 0 0 3px 1px #782f40 !important;"
               >Cancel</v-btn>
               <v-btn
                 large
                 outlined
-                @click="addRating"
+                @click="addRating; $emit('click')"
                 class="success--text text-capitalize mx-2 px-4"
                 style="box-shadow: 0 0 3px 1px #43a047 !important;"
               >
