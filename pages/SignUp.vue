@@ -2,7 +2,7 @@
   <v-container fluid class="pt-0">
     <v-row class="justify-center align-center" style="height: 65vh !important;">
       <v-col cols="12" sm="8" md="6" style="max-width: 600px;">
-        <v-card class="pa-6 px-lg-10" color="rgba(17, 17, 17, 0.5)" elevation="15">
+        <v-card class="py-6 px-6 px-lg-10" color="rgba(17, 17, 17, 0.5)" elevation="15">
           <form @submit.prevent="onSignUp">
             <v-row class="align-center justify-center">
               <v-col cols="12" class="pb-2">
