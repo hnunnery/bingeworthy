@@ -1,24 +1,18 @@
 <template>
   <v-container fluid class="pt-0">
     <v-row class="justify-center align-center" style="height: 65vh !important;">
-      <v-col cols="12" class="hidden-xs-only mt-0">
-        <h1
-          class="secondary--text text-center font-weight-bold font-italic mt-1 mb-2"
-          style="letter-spacing: 2px; font-size: 6vmax;"
-        >BingeWorthy</h1>
-      </v-col>
       <v-col cols="12" sm="8" md="6" style="max-width: 600px;">
         <v-card class="pa-6 px-lg-10" color="rgba(17, 17, 17, 0.5)" elevation="15">
           <form @submit.prevent="onSignUp">
             <v-row class="align-center justify-center">
               <v-col cols="12" class="pb-2">
                 <h2
-                  class="display-1 text-center font-italic mt-1 pb-0"
+                  class="display-1 secondary--text text-center font-italic mt-1 pb-0"
                   style="letter-spacing: 1.2px;"
-                >New User Registration</h2>
+                >Create Account</h2>
 
                 <v-text-field
-                  class="mt-6"
+                  class="mt-5"
                   name="displayName"
                   label="Full Name"
                   id="displayName"
@@ -28,7 +22,7 @@
                 ></v-text-field>
 
                 <v-text-field
-                  class="mt-6"
+                  class="mt-5"
                   name="email"
                   label="Email"
                   id="email"
@@ -38,7 +32,7 @@
                 ></v-text-field>
 
                 <v-text-field
-                  class="mt-6"
+                  class="mt-5"
                   name="password"
                   label="Password"
                   id="password"
