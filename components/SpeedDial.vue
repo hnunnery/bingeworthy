@@ -14,7 +14,7 @@
         <v-icon v-else>mdi-menu</v-icon>
       </v-btn>
     </template>
-    <AddRating v-if="userAuth" />
+    <AddRating v-if="userAuth" @click="fab=false"/>
     <v-btn fab color="primary" active-class="no-active" @click="searchBar = !searchBar">
       <v-icon size="35">mdi-magnify</v-icon>
     </v-btn>
