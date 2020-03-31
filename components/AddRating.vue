@@ -22,7 +22,7 @@
         <v-icon>mdi-plus</v-icon>
       </v-btn>
       <!-- button for xs only -->
-      <v-btn fab class="hidden-sm-and-up primary" v-on="on" >
+      <v-btn fab class="hidden-sm-and-up primary" v-on="on">
         <v-icon size="35">mdi-plus</v-icon>
       </v-btn>
     </template>
@@ -54,8 +54,17 @@
             type="text"
           ></v-combobox>
         </v-col>
-        <v-col cols="12" class="text-center">
-          <v-rating v-model="rating" half-increments size="40" color="secondary" required></v-rating>
+        <v-col cols="12" class="text-center pt-0 pb-1">
+          <span class="display-2 secondary--text">{{ rating }}/5</span>
+          <v-rating
+            :length="10"
+            class="mt-2"
+            v-model="rawRating"
+            size="28"
+            dense
+            color="secondary"
+            required
+          ></v-rating>
         </v-col>
         <v-card-actions style="width: 100%;">
           <v-row class="justify-center">
@@ -91,10 +100,11 @@ export default {
   data() {
     return {
       name: "",
-      platform: "",
       rating: 0,
+      platform: "",
       user: this.$store.getters.user.name,
       search: "",
+      rawRating: 0,
       dialog: false,
       duplicate: false
     };
@@ -167,7 +177,7 @@ export default {
       } else {
         alert("Please complete all fields.");
       }
-      this.$emit('click');
+      this.$emit("click");
     },
     resetForm() {
       this.name = "";
@@ -184,6 +194,9 @@ export default {
           this.platform = rating.platform;
         }
       });
+    },
+    rawRating() {
+      this.rating = this.rawRating / 2;
     }
   }
 };
