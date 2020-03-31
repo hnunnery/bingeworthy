@@ -158,8 +158,8 @@ export default {
             this.name = "";
             this.platform = "";
             this.rating = 0;
-            this.$emit('click');
             this.dialog = false;
+            this.$emit('click');
           });
       } else if (this.duplicate) {
         alert(
