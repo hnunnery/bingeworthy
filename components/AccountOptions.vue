@@ -22,10 +22,10 @@
                 to="/signup"
                 @click="dialog=false;"
                 active-class="no-active"
-                class="text-capitalize mx-2 my-3 px-4"
+                class="text-capitalize mx-2 my-3 px-5"
                 style="background-color: rgba(120, 47, 64, 0.5);"
               >
-                <v-icon size="25" left>mdi-account-plus</v-icon>Sign Up for Account
+                <v-icon size="25" left>mdi-account-plus</v-icon>Create an Account
               </v-btn>
               <v-btn
                 large
