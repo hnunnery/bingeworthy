@@ -51,7 +51,10 @@ export default {
   watch: {
     searchBar() {
       this.$store.commit("searchBarToggle");
+    },
+    $route (to, from){
+        this.fab = false;
     }
-  }
+} 
 };
 </script>
