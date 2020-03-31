@@ -15,12 +15,12 @@
                 <h2
                   class="display-1 text-center font-italic mt-1 pb-0"
                   style="letter-spacing: 1.2px;"
-                >Name to Display on Ratings</h2>
+                >Set Display Name</h2>
 
                 <v-text-field
                   class="mt-6"
                   name="displayName"
-                  label="Name (John Doe / John D.)"
+                  label="Full Name
                   id="displayName"
                   v-model="displayName"
                   type="text"
