@@ -5,6 +5,7 @@
       class="svg-bg px-0 pt-0 pb-12"
       style="min-height: 100vh; padding-bottom: 100px;"
     >
+      <SpeedDial v-if="this.$vuetify.breakpoint.xsOnly" />
       <NavBar />
       <Success />
       <v-btn
@@ -40,11 +41,13 @@
 <script>
 import { auth } from "@/plugins/firebase.js";
 import NavBar from "@/components/NavBar";
+import SpeedDial from "@/components/SpeedDial";
 import Success from "@/components/Success";
 
 export default {
   components: {
     NavBar,
+    SpeedDial,
     Success
   },
   data() {

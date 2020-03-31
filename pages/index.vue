@@ -9,7 +9,7 @@
             this.$store.state.searchBar && this.$vuetify.breakpoint.mdAndDown
           "
         >
-          <v-col cols="12" sm="10" md="6" class="mt-3 mx-0 mb-2 px-2 py-0">
+          <v-col cols="12" sm="10" md="6" class="mt-1 mx-0 mb-2 px-2 py-0">
             <v-text-field solo placeholder="Search" v-model="search" hide-details></v-text-field>
           </v-col>
         </v-row>
@@ -124,7 +124,7 @@
             md="4"
             v-for="(rating, index) in filteredMasterRatingsMobile"
             :key="index"
-            class="pb-0 px-1"
+            class="pt-1 pt-sm-2 pb-sm-1 px-1"
           >
             <v-card
               class="px-2 ma-1 align-center d-flex"

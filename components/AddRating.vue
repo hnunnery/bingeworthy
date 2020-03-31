@@ -10,15 +10,19 @@
       >
         <v-icon left size="25">mdi-plus</v-icon>Add Your Rating
       </v-btn>
-      <!-- button for xs - md screen size -->
+      <!-- button for sm - md screen size -->
       <v-btn
         fab
         small
         outlined
-        class="hidden-lg-and-up secondary--text text-capitalize mt-6"
+        class="hidden-xs-only hidden-lg-and-up secondary--text text-capitalize mt-6"
         style="box-shadow: 0 0 3px 1px #ceb888 !important;"
         v-on="on"
       >
+        <v-icon>mdi-plus</v-icon>
+      </v-btn>
+      <!-- button for xs only -->
+      <v-btn fab small class="hidden-sm-and-up primary" v-on="on">
         <v-icon>mdi-plus</v-icon>
       </v-btn>
     </template>

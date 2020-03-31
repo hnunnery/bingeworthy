@@ -84,7 +84,7 @@
           class="hidden-md-and-down secondary--text text-center font-weight-bold font-italic my-2"
           style="letter-spacing: 2px; font-size: 6vmax;"
         >BingeWorthy</h1>
-        <v-row class="justify-center mt-2 mb-0 pb-0">
+        <v-row class="justify-center mt-1 mb-0 pb-0">
           <v-btn
             class="hidden-sm-and-up mx-1 text-capitalize"
             style="background-color: rgba(120, 47, 64, 0.5);"
@@ -141,7 +141,7 @@
             md="4"
             v-for="rating in filteredRatings"
             :key="rating.id"
-            class="pb-0 px-1"
+            class="pt-1 pt-sm-2 pb-2 px-1"
           >
             <v-card
               class="px-2 ma-1 align-center d-flex"

@@ -1,50 +1,13 @@
 <template>
-  <v-app-bar dense dark class="hidden-lg-and-up" color="#111">
+  <v-app-bar dense dark class="hidden-lg-and-up mb-xs-1" color="#111">
+    <v-spacer class="hidden-sm-and-up"></v-spacer>
     <v-toolbar-title
-      class="hidden-xs-only secondary--text font-weight-bold font-italic"
-      style="letter-spacing: 1px; font-size: 1.6em;"
-    >
-      <nuxt-link to="/" style="text-decoration: none; color: #ceb888;">BingeWorthy</nuxt-link>
-    </v-toolbar-title>
-    <v-toolbar-title
-      class="hidden-sm-and-up secondary--text font-weight-bold font-italic"
-      style="letter-spacing: 1px;"
+      class="secondary--text font-weight-bold font-italic text-xs-center text-sm-left"
+      style="letter-spacing: 1px; font-size: 1.8em;"
     >
       <nuxt-link to="/" style="text-decoration: none; color: #ceb888;">BingeWorthy</nuxt-link>
     </v-toolbar-title>
     <v-spacer></v-spacer>
-    <!-- navbar xs screen size -->
-    <v-btn
-      text
-      active-class="no-active"
-      v-show="userAuth"
-      @click="searchBar = !searchBar"
-      class="text-capitalize hidden-sm-and-up"
-      style="margin-right: -6px; margin-left: -6px; letter-spacing: .5px;"
-    >
-      <v-icon>mdi-magnify</v-icon>
-    </v-btn>
-    <v-btn
-      text
-      active-class="no-active"
-      class="hidden-sm-and-up text-capitalize"
-      style="margin-right: -6px; margin-left: -6px; letter-spacing: .5px;"
-      @click="onLogout"
-      v-if="userAuth"
-    >
-      <v-icon>mdi-account-remove</v-icon>
-    </v-btn>
-    <v-btn
-      text
-      active-class="no-active secondary--text"
-      class="hidden-sm-and-up text-capitalize"
-      style="margin-right: 1px; margin-left: -6px; letter-spacing: .5px;"
-      to="/ratings"
-      v-if="userAuth"
-    >
-      <v-icon>mdi-star</v-icon>
-    </v-btn>
-
     <!-- navbar for sm and md screen sizes -->
     <v-btn
       v-if="userAuth"
@@ -81,7 +44,7 @@
     <v-btn
       text
       active-class="no-active secondary--text"
-      class="text-capitalize mr-md-4"
+      class="hidden-xs-only text-capitalize mr-md-4"
       v-if="!userAuth"
       to="/signin"
       style="letter-spacing: .5px;"
@@ -91,7 +54,7 @@
     <v-btn
       text
       active-class="no-active secondary--text"
-      class="mr-md-4 text-capitalize"
+      class="hidden-xs-only mr-md-4 text-capitalize"
       v-if="!userAuth"
       to="/signup"
       style="letter-spacing: .5px; margin-left: -6px;"
@@ -110,7 +73,7 @@
     </v-btn>
 
     <!-- Add Rating Component -->
-    <AddRating v-if="userAuth" />
+    <AddRating v-if="userAuth && this.$vuetify.breakpoint.smAndUp" />
   </v-app-bar>
 </template>
 
@@ -123,14 +86,10 @@ export default {
   },
   data() {
     return {
-      searchBar: false,
-      search: this.$store.state.search
+      searchBar: false
     };
   },
   methods: {
-    clearSearch() {
-      this.search = "";
-    },
     onLogout() {
       if (confirm("Sign Out?")) {
         this.$store.dispatch("logout");
