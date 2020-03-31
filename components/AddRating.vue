@@ -60,7 +60,7 @@
             :length="10"
             class="mt-2"
             v-model="rawRating"
-            size="28"
+            size="25"
             dense
             color="secondary"
             required
