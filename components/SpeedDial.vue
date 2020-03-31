@@ -31,7 +31,7 @@
     <v-btn v-show="userAuth" fab small color="primary" to="/" active-class="accent secondary--text">
       <v-icon>mdi-home</v-icon>
     </v-btn>
-    <AccountOptions @click="fab=false" />
+    <AccountOptions v-on:close-menu="fab=false" />
   </v-speed-dial>
 </template>
 
