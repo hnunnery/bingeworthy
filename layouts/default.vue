@@ -109,7 +109,7 @@ form {
 }
 @media screen and (min-width: 600px) {
   .limit-width {
-    max-width: 250px;
+    max-width: 200px;
   }
   .modal-title {
     font-size: 2em;
@@ -120,16 +120,16 @@ form {
     margin-bottom: -100px;
   }
 }
-@media screen and (min-width: 1050px) {
+/* @media screen and (min-width: 1050px) {
   .limit-width {
-    width: 290px;
+    width: 250px !important;
   }
 }
 @media screen and (min-width: 1200px) {
   .limit-width {
-    width: 330px;
+    width: 250px;
   }
-}
+} */
 .svg-bg {
   background-repeat: repeat;
   background-color: #111111ad;
