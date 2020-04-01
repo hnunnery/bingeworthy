@@ -9,7 +9,7 @@
         right
         class="text-capitalize secondary--text"
         style="z-index: 1;"
-        color="accent"
+        color="#313131"
         v-on="on"
       >
         <v-icon>mdi-cog</v-icon>

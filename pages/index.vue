@@ -174,7 +174,9 @@
                   left
                   class="font-weight-bold secondary--text"
                   style="font-size: 1.2em; letter-spacing: .1px;"
-                >{{ rating.rank }}</v-btn>
+                >
+                  <span style="margin-right: 2px;">{{ rating.rank }}</span>
+                </v-btn>
 
                 <!-- IF EXPANDED NAME -->
                 <v-col
@@ -265,7 +267,9 @@
                   left
                   class="primary"
                   style="font-size: 1.2em; letter-spacing: .1px;"
-                >{{ rating.rank }}</v-btn>
+                >
+                  <span style="margin-right: 2px;">{{ rating.rank }}</span>
+                </v-btn>
               </v-row>
             </v-card>
           </v-col>
