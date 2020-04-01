@@ -9,11 +9,7 @@
         <v-icon left>mdi-plus</v-icon>Rate This Show
       </v-btn>
       <!-- for xs screen size only -->
-      <v-btn
-        class="hidden-sm-and-up primary text-capitalize mt-md-2 mb-3 mb-md-1 mx-2"
-        v-on="on"
-        style="background-color: rgba(120, 47, 64, 0.5);"
-      >
+      <v-btn class="hidden-sm-and-up primary text-capitalize mt-md-2 mb-3 mb-md-1 mx-2" v-on="on">
         <v-icon left>mdi-plus</v-icon>Rate This Show
       </v-btn>
     </template>
