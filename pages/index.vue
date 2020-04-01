@@ -26,12 +26,12 @@
               placeholder="Search"
               v-model="search"
               hide-details
-              class="limit-width hidden-md-and-down"
+              class="hidden-md-and-down limit-width"
             ></v-text-field>
             <v-btn
               large
-              class="hidden-md-and-down text-capitalize ml-3 scale-btn"
-              style="background-color: rgba(120, 47, 64, 0.5); margin-top: 1.5px;"
+              class="hidden-md-and-down primary text-capitalize ml-3 scale-btn"
+              style="margin-top: 1.5px;"
               @click="onLogout"
               v-if="userAuth"
             >
@@ -46,8 +46,7 @@
           >
             <v-btn
               large
-              class="mr-5 text-capitalize mr-2 hidden-md-and-down scale-btn"
-              style="background-color: rgba(120, 47, 64, 0.5);"
+              class="hidden-md-and-down mr-5 text-capitalize scale-btn"
               v-if="!userAuth"
               to="/signin"
             >
@@ -55,8 +54,7 @@
             </v-btn>
             <v-btn
               large
-              class="text-capitalize hidden-md-and-down scale-btn"
-              style="background-color: rgba(120, 47, 64, 0.5);"
+              class="hidden-md-and-down primary text-capitalize mx-1 scale-btn"
               v-if="!userAuth"
               to="/signup"
             >
@@ -64,8 +62,7 @@
             </v-btn>
             <v-btn
               large
-              class="text-capitalize mr-2 hidden-md-and-down scale-btn"
-              style="background-color: rgba(120, 47, 64, 0.5);"
+              class="hidden-md-and-down primary text-capitalize mx-1 scale-btn"
               to="/ratings"
               v-if="userAuth"
             >
@@ -87,15 +84,13 @@
         <v-row v-show="this.search" class="justify-center align-center mt-2 mb-0 pb-0">
           <v-btn
             large
-            class="hidden-xs-only mt-md-2 mb-md-1 mx-3 text-capitalize scale-btn"
-            style="background-color: rgba(120, 47, 64, 0.5);"
+            class="hidden-xs-only primary text-capitalize mt-md-2 mb-md-1 mx-3 scale-btn"
             @click="clearSearch"
           >
             <v-icon left>mdi-arrow-left</v-icon>Back / Clear
           </v-btn>
           <v-btn
-            class="hidden-sm-and-up mt-md-2 mb-3 mx-2 py-0 text-capitalize"
-            style="background-color: rgba(120, 47, 64, 0.5);"
+            class="hidden-sm-and-up primary text-capitalize mt-md-2 mb-3 mx-2 py-0"
             @click="clearSearch"
           >
             <v-icon left>mdi-arrow-left</v-icon>Back / Clear

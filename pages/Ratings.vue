@@ -26,12 +26,11 @@
               placeholder="Search"
               v-model="search"
               hide-details
-              class="limit-width hidden-md-and-down"
+              class="hidden-md-and-down limit-width"
             ></v-text-field>
             <v-btn
               large
-              class="text-capitalize ml-3 hidden-md-and-down scale-btn"
-              style="background-color: rgba(120, 47, 64, 0.5);"
+              class="hidden-md-and-down primary text-capitalize ml-3 scale-btn"
               @click="onLogout"
               v-if="userAuth"
             >
@@ -46,8 +45,7 @@
           >
             <v-btn
               large
-              class="mr-5 text-capitalize mr-2 hidden-md-and-down scale-btn"
-              style="background-color: rgba(120, 47, 64, 0.5);"
+              class="mr-5 text-capitalize mr-2 hidden-md-and-down primary scale-btn"
               v-if="!userAuth"
               to="/signin"
             >
@@ -55,8 +53,7 @@
             </v-btn>
             <v-btn
               large
-              class="text-capitalize hidden-md-and-down scale-btn"
-              style="background-color: rgba(120, 47, 64, 0.5);"
+              class="text-capitalize hidden-md-and-down primary scale-btn"
               v-if="!userAuth"
               to="/signup"
             >
@@ -64,8 +61,7 @@
             </v-btn>
             <v-btn
               large
-              class="text-capitalize mr-2 hidden-md-and-down scale-btn"
-              style="background-color: rgba(120, 47, 64, 0.5);"
+              class="text-capitalize mr-2 hidden-md-and-down primary scale-btn"
               to="/"
               v-if="userAuth"
             >
@@ -85,16 +81,11 @@
           style="letter-spacing: 2px; font-size: 6vmax;"
         >BingeWorthy</h1>
         <v-row class="justify-center mt-1 mb-0 pb-0">
-          <v-btn
-            class="hidden-sm-and-up mx-1 text-capitalize"
-            style="background-color: rgba(120, 47, 64, 0.5);"
-            to="/"
-          >
+          <v-btn class="hidden-sm-and-up primary text-capitalize mx-1" to="/">
             <v-icon left>mdi-arrow-left</v-icon>All Ratings
           </v-btn>
           <v-btn
-            class="hidden-sm-and-up text-capitalize mb-lg-3 mx-1"
-            style="background-color: rgba(120, 47, 64, 0.5);"
+            class="hidden-sm-and-up primary text-capitalize mb-lg-3 mx-1"
             v-show="this.search"
             @click="clearSearch"
           >
@@ -102,8 +93,7 @@
           </v-btn>
           <v-btn
             large
-            class="hidden-xs-only text-capitalize mb-lg-3 mx-1 scale-btn"
-            style="background-color: rgba(120, 47, 64, 0.5);"
+            class="hidden-xs-only primary text-capitalize mb-lg-3 mx-1 scale-btn"
             v-show="this.search"
             @click="clearSearch"
           >

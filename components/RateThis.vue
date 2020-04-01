@@ -3,15 +3,14 @@
     <template v-slot:activator="{ on }">
       <v-btn
         large
-        class="hidden-xs-only text-capitalize mt-md-2 mb-md-1 mx-3 scale-btn"
+        class="hidden-xs-only primary text-capitalize mt-md-2 mb-md-1 mx-3 scale-btn"
         v-on="on"
-        style="background-color: rgba(120, 47, 64, 0.5);"
       >
         <v-icon left>mdi-plus</v-icon>Rate This Show
       </v-btn>
       <!-- for xs screen size only -->
       <v-btn
-        class="hidden-sm-and-up text-capitalize mt-md-2 mb-3 mb-md-1 mx-2"
+        class="hidden-sm-and-up primary text-capitalize mt-md-2 mb-3 mb-md-1 mx-2"
         v-on="on"
         style="background-color: rgba(120, 47, 64, 0.5);"
       >
