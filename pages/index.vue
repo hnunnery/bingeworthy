@@ -182,7 +182,7 @@
                 <v-col
                   cols="12"
                   v-if="expandedName===rating.name"
-                  class="headline font-weight-medium primary--text pa-0 mb-1"
+                  class="headline font-weight-medium pa-0 mb-1" style="color: #782F40;"
                 >{{rating.roundedRating}} Average</v-col>
 
                 <!-- PLATFORM -->
@@ -238,7 +238,7 @@
                 </v-col>
                 <v-col
                   cols="12"
-                  class="pt-0 pb-3 font-weight-medium primary--text"
+                  class="pt-0 pb-3 font-weight-medium" style="color: #782F40;"
                   style="font-size: 1.9em;"
                 >{{ rating.platform }}</v-col>
                 <v-col
@@ -314,7 +314,7 @@
                   </v-col>
                   <v-col
                     cols="8"
-                    class="headline py-0 font-weight-medium primary--text"
+                    class="headline py-0 font-weight-medium" style="color: #782F40;"
                     @click="setSearch(rating.platform)"
                   >{{ rating.platform }}</v-col>
                 </v-row>
@@ -358,7 +358,7 @@
                 </v-col>
                 <v-col
                   cols="12"
-                  class="py-0 font-weight-medium primary--text"
+                  class="py-0 font-weight-medium" style="color: #782F40;"
                   style="cursor: pointer; font-size: 1.9em;"
                   @click="setSearch(rating.platform)"
                 >{{ rating.platform }}</v-col>
