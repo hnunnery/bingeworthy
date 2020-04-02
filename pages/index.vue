@@ -242,7 +242,7 @@
                 <v-col
                   cols="12"
                   v-if="expandedName===rating.name"
-                  class="headline font-weight-medium pa-0 mb-1"
+                  class="headline font-weight-medium pa-0 mb-3"
                   style="color: #782F40;"
                 >{{rating.roundedRating}} Average</v-col>
 
@@ -250,7 +250,7 @@
                 <v-col
                   cols="12"
                   v-else
-                  class="pa-0 mb-1 font-weight-medium primary--text"
+                  class="pa-0 mb-2 font-weight-medium"
                   style="font-size: 1.9em; color: #782F40;"
                 >{{ rating.platform }}</v-col>
                 <v-col
