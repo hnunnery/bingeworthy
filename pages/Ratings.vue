@@ -31,6 +31,7 @@
             <v-btn
               large
               class="hidden-md-and-down primary text-capitalize ml-3 scale-btn"
+              style="margin-top: 1.5px;"
               @click="onLogout"
               v-if="userAuth"
             >
