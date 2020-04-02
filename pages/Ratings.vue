@@ -162,7 +162,7 @@
                   </v-col>
                   <v-col
                     cols="8"
-                    class="headline py-0 font-weight-medium primary--text"
+                    class="headline py-0 font-weight-medium" style="color: #782F40;"
                     @click="setSearch(rating.platform)"
                   >{{ rating.platform }}</v-col>
                 </v-row>
@@ -206,7 +206,7 @@
                 </v-col>
                 <v-col
                   cols="12"
-                  class="py-0 font-weight-medium primary--text"
+                  class="py-0 font-weight-medium" style="color: #782F40;"
                   style="cursor: pointer; font-size: 1.9em;"
                   @click="setSearch(rating.platform)"
                 >{{ rating.platform }}</v-col>
