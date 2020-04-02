@@ -21,7 +21,7 @@
           >{{ name }}</h2>
         </v-col>
         <v-col cols="12" class="mb-0 text-center">
-          <span class="display-4 font-weight-regular font-italic">{{ rating }}/5</span>
+          <span class="display-3 font-weight-regular">{{ rating }}/5</span>
           <v-rating
             v-model="rawRating"
             size="25"
