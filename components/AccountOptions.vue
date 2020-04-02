@@ -87,8 +87,8 @@ export default {
       if (confirm("Sign Out?")) {
         this.$store.dispatch("logout");
         this.$router.push("/");
-        this.dialog=false;
-        this.$emit('click');
+        this.dialog = false;
+        this.$emit("click");
       }
     }
   }
