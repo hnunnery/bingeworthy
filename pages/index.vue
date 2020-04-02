@@ -46,7 +46,7 @@
           >
             <v-btn
               large
-              class="hidden-md-and-down mr-5 text-capitalize scale-btn"
+              class="hidden-md-and-down primary mr-5 text-capitalize scale-btn"
               v-if="!userAuth"
               to="/signin"
             >

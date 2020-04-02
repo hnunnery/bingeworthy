@@ -100,7 +100,7 @@ form {
   font-size: 1.6em;
 }
 .limit-width {
-  max-width: 80vw;
+  max-width: 200px;
 }
 @media screen and (max-width: 369px) {
   .three-seventy {
@@ -108,9 +108,6 @@ form {
   }
 }
 @media screen and (min-width: 600px) {
-  .limit-width {
-    max-width: 200px;
-  }
   .modal-title {
     font-size: 2em;
   }
