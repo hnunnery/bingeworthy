@@ -87,7 +87,7 @@ export default {
   transition: all 0.2s ease-in-out;
 }
 .scale-btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
   box-shadow: 0 0 5px 1px #ceb888 !important;
 }
 .v-card {
