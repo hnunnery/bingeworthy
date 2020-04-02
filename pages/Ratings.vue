@@ -81,11 +81,11 @@
           style="letter-spacing: 2px; font-size: 6vmax;"
         >BingeWorthy</h1>
         <v-row class="justify-center mt-1 mb-0 pb-0">
-          <v-btn class="hidden-sm-and-up primary text-capitalize mx-1" to="/">
+          <v-btn class="hidden-sm-and-up primary text-capitalize mx-2" to="/">
             <v-icon left>mdi-arrow-left</v-icon>All Ratings
           </v-btn>
           <v-btn
-            class="hidden-sm-and-up primary text-capitalize mb-lg-3 mx-1"
+            class="hidden-sm-and-up primary text-capitalize mb-lg-3 mx-2"
             v-show="this.search"
             @click="clearSearch"
           >
@@ -93,7 +93,7 @@
           </v-btn>
           <v-btn
             large
-            class="hidden-xs-only primary text-capitalize mb-lg-3 mx-1 scale-btn"
+            class="hidden-xs-only primary text-capitalize mb-lg-3 mx-2 scale-btn"
             v-show="this.search"
             @click="clearSearch"
           >
