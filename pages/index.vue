@@ -182,14 +182,16 @@
                 <v-col
                   cols="12"
                   v-if="expandedName===rating.name"
-                  class="headline font-weight-medium primary--text pa-0 mb-1"
+                  class="headline font-weight-medium pa-0 mb-1"
+                  style="color: #782F40;"
                 >{{rating.roundedRating}} Average</v-col>
 
                 <!-- PLATFORM -->
                 <v-col
                   v-else
                   cols="12"
-                  class="headline font-weight-medium primary--text pa-0 mb-1"
+                  class="headline font-weight-medium pa-0 mb-1"
+                  style="color: #782F40;"
                 >{{ rating.platform }}</v-col>
               </v-row>
             </v-card>
@@ -238,8 +240,8 @@
                 </v-col>
                 <v-col
                   cols="12"
-                  class="pt-0 pb-3 font-weight-medium primary--text"
-                  style="font-size: 1.9em;"
+                  class="pt-0 pb-3 font-weight-medium"
+                  style="font-size: 1.9em; color: #782F40;"
                 >{{ rating.platform }}</v-col>
                 <v-col
                   cols="3"
@@ -314,7 +316,7 @@
                   </v-col>
                   <v-col
                     cols="8"
-                    class="headline py-0 font-weight-medium primary--text"
+                    class="headline py-0 font-weight-medium" style="color: #782F40;"
                     @click="setSearch(rating.platform)"
                   >{{ rating.platform }}</v-col>
                 </v-row>
@@ -358,8 +360,8 @@
                 </v-col>
                 <v-col
                   cols="12"
-                  class="py-0 font-weight-medium primary--text"
-                  style="cursor: pointer; font-size: 1.9em;"
+                  class="py-0 font-weight-medium"
+                  style="cursor: pointer; font-size: 1.9em; color: #782F40;"
                   @click="setSearch(rating.platform)"
                 >{{ rating.platform }}</v-col>
                 <v-col
