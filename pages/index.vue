@@ -28,15 +28,7 @@
               hide-details
               :class="{ 'hidden-md-and-down': true, 'limit-width': userAuth, 'limit-width-no-auth': !userAuth }"
             ></v-text-field>
-            <v-btn
-              large
-              class="hidden-md-and-down primary text-capitalize ml-3 scale-btn"
-              style="margin-top: 1.5px;"
-              @click="onLogout"
-              v-if="userAuth"
-            >
-              <v-icon left size="20">mdi-account-minus</v-icon>Sign Out
-            </v-btn>
+            <AccountOptions />
           </v-col>
           <v-col
             cols="12"
@@ -395,12 +387,14 @@
 import AddRating from "@/components/AddRating";
 import EditRating from "@/components/EditRating";
 import RateThis from "@/components/RateThis";
+import AccountOptions from "@/components/AccountOptions";
 
 export default {
   components: {
     AddRating,
     EditRating,
-    RateThis
+    RateThis,
+    AccountOptions
   },
   data() {
     return {

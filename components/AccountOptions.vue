@@ -4,6 +4,15 @@
       <v-btn fab class="hidden-sm-and-up primary" v-on="on" active-class="no-active">
         <v-icon size="35">mdi-account</v-icon>
       </v-btn>
+      <v-btn
+        large
+        class="hidden-md-and-down primary text-capitalize ml-3 scale-btn"
+        v-on="on"
+        style="margin-top: 1.5px;"
+        v-if="userAuth"
+      >
+        <v-icon left size="20">mdi-account</v-icon>Account
+      </v-btn>
     </template>
 
     <v-card class="px-6 py-2" color="rgba(17, 17, 17, 0.85)" elevation="15">

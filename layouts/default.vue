@@ -100,7 +100,7 @@ form {
   font-size: 1.6em;
 }
 .limit-width {
-  max-width: 200px;
+  max-width: 210px;
 }
 .limit-width-no-auth {
   max-width: 270px;
