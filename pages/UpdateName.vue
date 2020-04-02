@@ -70,7 +70,6 @@ export default {
   methods: {
     updateDisplayName() {
       this.$store.dispatch("updateDisplayName", this.displayName);
-      this.$router.push("/");
     },
     onDismissed() {
       this.$store.dispatch("clearError");

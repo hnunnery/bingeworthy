@@ -76,6 +76,11 @@ export const mutations = {
   },
   updateUserName(state, payload) {
     state.user.name = payload;
+    state.message = "Updated!";
+    state.success = true;
+    setTimeout(() => {
+      state.success = false;
+    }, 1000);
   },
   passwordReset(state, payload) {
     state.message = `Email sent to ${payload}`;
@@ -195,13 +200,14 @@ export const actions = {
   },
   updateDisplayName({ commit }, payload) {
     commit("clearError");
+    const router = this.$router;
     auth.currentUser
       .updateProfile({
         displayName: payload
       })
       .then(function() {
         commit("updateUserName", payload);
-        console.log("Updated Display Name");
+        router.push("/");
       })
       .catch(error => {
         commit("setError", error);
