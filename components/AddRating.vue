@@ -9,9 +9,7 @@
       <v-btn
         fab
         small
-        outlined
-        class="hidden-xs-only hidden-lg-and-up secondary--text text-capitalize mt-6"
-        style="box-shadow: 0 0 3px 1px #ceb888 !important;"
+        class="hidden-xs-only hidden-lg-and-up primary text-capitalize mt-4"
         v-on="on"
       >
         <v-icon>mdi-plus</v-icon>
@@ -50,7 +48,7 @@
           ></v-combobox>
         </v-col>
         <v-col cols="12" class="text-center pt-0 pb-3">
-          <span class="display-2 secondary--text">{{ rating }}/5</span>
+          <span class="display-2 font-italic secondary--text">{{ rating }}/5</span>
           <v-rating
             :length="10"
             class="mt-2"
@@ -66,19 +64,12 @@
             <v-col cols="12" class="text-center mt-2">
               <v-btn
                 large
-                outlined
                 @click="resetForm"
-                class="secondary--text text-capitalize mx-2 px-6"
-                style="box-shadow: 0 0 3px 1px #782f40 !important;"
+                color="#212121"
+                class="secondary--text text-capitalize mx-2 px-6 scale-btn"
               >Cancel</v-btn>
-              <v-btn
-                large
-                outlined
-                @click="addRating"
-                class="success--text text-capitalize mx-2 px-4"
-                style="box-shadow: 0 0 3px 1px #43a047 !important;"
-              >
-                <v-icon size="22">mdi-plus</v-icon>&nbsp;Add Rating
+              <v-btn large @click="addRating" class="primary text-capitalize mx-2 px-4 scale-btn">
+                <v-icon size="22" left>mdi-plus</v-icon>Add Rating
               </v-btn>
             </v-col>
           </v-row>

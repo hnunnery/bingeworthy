@@ -17,11 +17,11 @@
       <v-row class="align-center justify-center">
         <v-col cols="12" class="pb-0">
           <h2
-            class="display-1 secondary--text text-center font-weight-regular font-italic mt-0 pb-0"
+            class="display-1 secondary--text text-center font-weight-regular font-italic my-0 pb-0"
           >{{ name }}</h2>
         </v-col>
         <v-col cols="12" class="mb-0 text-center">
-          <span class="display-4">{{ rating }}/5</span>
+          <span class="display-4 font-weight-regular font-italic">{{ rating }}/5</span>
           <v-rating
             v-model="rawRating"
             size="25"
@@ -37,17 +37,16 @@
             <v-col cols="12" class="text-center mt-2">
               <v-btn
                 large
-                outlined
+                elevation="15"
                 @click="dialog = false;"
-                class="secondary--text text-capitalize mx-2 px-6"
-                style="box-shadow: 0 0 3px 1px #782f40 !important;"
+                color="#212121"
+                class="secondary--text text-capitalize mx-2 px-6 scale-btn"
               >Cancel</v-btn>
               <v-btn
                 large
-                outlined
+                elevation="15"
                 @click="addRating"
-                class="success--text text-capitalize mx-2 px-4"
-                style="box-shadow: 0 0 3px 1px #43a047 !important;"
+                class="primary text-capitalize mx-2 px-4 scale-btn"
               >
                 <v-icon size="22" left>mdi-plus</v-icon>Add Rating
               </v-btn>

@@ -53,32 +53,20 @@
             <v-col cols="12" class="py-1">
               <v-row class="justify-space-between">
                 <v-col cols="2" class="text-left py-0">
-                  <v-btn
-                    fab
-                    small
-                    outlined
-                    class="error--text mx-2"
-                    @click="removeRating"
-                    style="box-shadow: 0 0 3px 1px #b71c1c !important;"
-                  >
-                    <v-icon size="22">mdi-delete</v-icon>
+                  <v-btn fab small icon @click="removeRating">
+                    <v-icon class="error--text" size="38">mdi-delete</v-icon>
                   </v-btn>
                 </v-col>
                 <v-col cols="10" class="text-right py-0">
                   <v-btn
                     large
-                    outlined
                     @click="dialog = false"
-                    class="secondary--text text-capitalize mx-1"
-                    style="box-shadow: 0 0 3px 1px #782f40 !important;"
+                    color="#212121"
+                    class="secondary--text text-capitalize mx-1 scale-btn"
                   >Cancel</v-btn>
-                  <v-btn
-                    large
-                    outlined
-                    @click="updateRating"
-                    class="success--text text-capitalize mx-1"
-                    style="box-shadow: 0 0 3px 1px #43a047 !important;"
-                  >Update</v-btn>
+                  <v-btn large @click="updateRating" class="primary text-capitalize mx-1 scale-btn">
+                    <v-icon left>mdi-check</v-icon>Update
+                  </v-btn>
                 </v-col>
               </v-row>
             </v-col>

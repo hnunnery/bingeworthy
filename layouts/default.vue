@@ -102,6 +102,9 @@ form {
 .limit-width {
   max-width: 200px;
 }
+.limit-width-no-auth {
+  max-width: 270px;
+}
 @media screen and (max-width: 369px) {
   .three-seventy {
     display: none;

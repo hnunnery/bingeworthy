@@ -88,7 +88,6 @@ export default {
         this.$store.dispatch("logout");
         this.$router.push("/");
         this.dialog = false;
-        this.$emit("click");
       }
     }
   }
