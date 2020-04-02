@@ -117,7 +117,7 @@
             md="4"
             v-for="(rating, index) in filteredMasterRatingsMobile"
             :key="index"
-            class="pt-1 pt-sm-2 pb-1 px-1"
+            class="pt-2 pb-1 px-1"
           >
             <v-card
               class="px-2 ma-1 align-center d-flex"
@@ -189,7 +189,7 @@
                 <v-col
                   v-else
                   cols="12"
-                  class="headline font-weight-medium primary--text pa-0 mb-1"
+                  class="headline font-weight-medium pa-0 mb-1" style="color: #782F40;"
                 >{{ rating.platform }}</v-col>
               </v-row>
             </v-card>
