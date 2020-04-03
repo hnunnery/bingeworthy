@@ -28,7 +28,7 @@
               hide-details
               :class="{ 'hidden-md-and-down': true, 'limit-width': userAuth, 'limit-width-no-auth': !userAuth }"
             ></v-text-field>
-            <AccountOptions />
+            <AccountOptions :nav="false"/>
           </v-col>
           <v-col
             cols="12"
