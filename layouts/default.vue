@@ -120,16 +120,6 @@ form {
     margin-bottom: -100px;
   }
 }
-/* @media screen and (min-width: 1050px) {
-  .limit-width {
-    width: 250px !important;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .limit-width {
-    width: 250px;
-  }
-} */
 .svg-bg {
   background-repeat: repeat;
   background-color: #111111ad;
