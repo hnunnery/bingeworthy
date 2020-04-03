@@ -126,7 +126,7 @@
               style="box-shadow: 0 0 5px 1px #ceb888 !important; position: relative;"
             >
               <v-row class="text-center justify-center align-center">
-                <v-col cols="12" class="mt-2 py-0" style="font-size: 1.6em;">
+                <v-col cols="12" class="mt-2 py-0" style="font-size: 1.6em; line-height: 1em;">
                   {{
                   rating.name
                   }}
@@ -214,14 +214,14 @@
               style="box-shadow: 0 0 10px 3px #ceb888 !important; cursor: pointer;"
             >
               <v-row class="text-center justify-center align-center">
-                <v-row class="justify-center align-center" style="height: 85px;">
-                  <v-col cols="12" class="display-1 py-0 mt-0">
+                <v-row class="justify-center align-center" style="height: 80px;">
+                  <v-col cols="12" class="display-1 py-0 mt-0" style="line-height: 1em;">
                     {{
                     rating.name
                     }}
                   </v-col>
                 </v-row>
-                <v-col cols="12" class="pt-0 pb-1">
+                <v-col cols="12" class="py-0" style="margin-top: -10px;">
                   <v-rating
                     :value="rating.averageRating"
                     half-increments
@@ -301,7 +301,7 @@
                   cols="12"
                   class="mt-2 py-0"
                   @click="setSearch(rating.name)"
-                  style="font-size: 1.6em;"
+                  style="font-size: 1.6em; line-height: 1em;"
                 >{{ rating.name }}</v-col>
                 <v-col cols="12" class="py-0">
                   <v-rating
@@ -344,15 +344,15 @@
               style="box-shadow: 0 0 5px 1px #782f40 !important;"
             >
               <v-row class="text-center justify-center align-center">
-                <v-row class="justify-center align-center" style="height: 85px;">
+                <v-row class="justify-center align-center" style="height: 80px;">
                   <v-col
                     cols="12"
                     class="display-1 py-0 mt-2"
-                    style="cursor: pointer;"
+                    style="cursor: pointer; line-height: 1em;"
                     @click="setSearch(rating.name)"
                   >{{ rating.name }}</v-col>
                 </v-row>
-                <v-col cols="12" class="pt-0 pb-1">
+                <v-col cols="12" class="py-0" style="margin-top: -10px;">
                   <v-rating
                     :value="parseFloat(rating.rating)"
                     half-increments
