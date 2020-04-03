@@ -15,7 +15,7 @@
       </v-btn>
     </template>
     <AddRating v-if="userAuth" @click="fab=false" />
-    <AccountOptions @click="this.fab=false;" />
+    <AccountOptions @click="this.fab=false;" :nav="true" />
     <v-btn v-show="userAuth" fab color="primary" to="/ratings" active-class="white primary--text">
       <v-icon size="35">mdi-star</v-icon>
     </v-btn>
