@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-model="dialog" max-width="400" overlay-color="#111" overlay-opacity=".97">
     <template v-slot:activator="{ on }">
-      <v-btn fab class="hidden-sm-and-up primary" v-on="on" active-class="no-active">
+      <v-btn fab v-show="nav" class="hidden-sm-and-up primary" v-on="on" active-class="no-active">
         <v-icon size="35">mdi-account</v-icon>
       </v-btn>
       <v-btn
@@ -78,6 +78,7 @@
 
 <script>
 export default {
+props: ["nav"],
   data() {
     return {
       dialog: false
