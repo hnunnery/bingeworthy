@@ -136,7 +136,7 @@
               <v-row class="text-center justify-center align-center">
                 <v-col
                   cols="12"
-                  class="mt-3 py-0"
+                  class="mt-3 py-1"
                   @click="setSearch(rating.name)"
                   style="font-size: 1.6em; line-height: 1em;"
                 >{{ rating.name }}</v-col>
