@@ -14,8 +14,8 @@
         <v-icon v-else>mdi-menu</v-icon>
       </v-btn>
     </template>
-    <AddRating v-if="userAuth" @click="fab=false" />
-    <AccountOptions @click="this.fab=false;" :nav="true" />
+    <AddRating v-if="userAuth" />
+    <AccountOptions :nav="true" />
     <v-btn v-show="userAuth" fab color="primary" to="/ratings" active-class="white primary--text">
       <v-icon size="35">mdi-star</v-icon>
     </v-btn>
