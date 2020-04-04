@@ -163,7 +163,6 @@ export default {
       } else {
         alert("Please complete all fields.");
       }
-      this.$emit("click");
     },
     resetForm() {
       this.name = "";
