@@ -126,7 +126,7 @@
               style="box-shadow: 0 0 5px 1px #ceb888 !important; position: relative;"
             >
               <v-row class="text-center justify-center align-center">
-                <v-col cols="12" class="mt-2 py-0" style="font-size: 1.6em; line-height: 1em;">
+                <v-col cols="12" class="mt-2 py-1" style="font-size: 1.6em; line-height: 1em;">
                   {{
                   rating.name
                   }}
