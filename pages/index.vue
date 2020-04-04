@@ -68,7 +68,7 @@
     <!-- DESKTOP NAV END -->
 
     <v-row justify="center">
-      <v-col cols="12" lg="11" xl="10" class="mt-0 pt-0">
+      <v-col cols="12" xl="11" class="mt-0 pt-0 px-5">
         <h1
           class="hidden-md-and-down secondary--text text-center font-weight-bold font-italic my-2"
           style="letter-spacing: 2px; font-size: 6vmax;"
