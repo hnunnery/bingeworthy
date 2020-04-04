@@ -152,6 +152,7 @@
                   <v-rating
                     :value="parseFloat(rating.rating)"
                     half-increments
+                    half-icon="mdi-star-half-full"
                     size="35"
                     readonly
                     color="secondary"
@@ -201,6 +202,7 @@
                   <v-rating
                     :value="parseFloat(rating.rating)"
                     half-increments
+                    half-icon="mdi-star-half-full"
                     size="40"
                     readonly
                     color="secondary"
