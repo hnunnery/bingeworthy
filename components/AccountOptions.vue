@@ -9,7 +9,6 @@
         class="hidden-md-and-down primary text-capitalize ml-3 scale-btn"
         v-on="on"
         style="margin-top: 1.5px;"
-        v-if="userAuth"
       >
         <v-icon left size="20">mdi-account</v-icon>Account
       </v-btn>
