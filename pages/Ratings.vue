@@ -9,7 +9,7 @@
             this.$store.state.searchBar && this.$vuetify.breakpoint.mdAndDown
           "
         >
-          <v-col cols="12" sm="10" md="6" class="mt-3 mx-0 mb-2 px-2 py-0">
+          <v-col cols="12" sm="10" md="6" class="mt-1 mx-0 mb-2 px-2 py-0">
             <v-text-field solo placeholder="Search" v-model="search" hide-details></v-text-field>
           </v-col>
         </v-row>
@@ -26,17 +26,9 @@
               placeholder="Search"
               v-model="search"
               hide-details
-              class="hidden-md-and-down limit-width"
+              :class="{ 'hidden-md-and-down': true, 'limit-width': userAuth, 'limit-width-no-auth': !userAuth }"
             ></v-text-field>
-            <v-btn
-              large
-              class="hidden-md-and-down primary text-capitalize ml-3 scale-btn"
-              style="margin-top: 1.5px;"
-              @click="onLogout"
-              v-if="userAuth"
-            >
-              <v-icon left size="20">mdi-account-minus</v-icon>Sign Out
-            </v-btn>
+            <AccountOptions v-if="userAuth && this.$vuetify.breakpoint.lgAndUp" />
           </v-col>
           <v-col
             cols="12"
@@ -46,7 +38,7 @@
           >
             <v-btn
               large
-              class="mr-5 text-capitalize mr-2 hidden-md-and-down primary scale-btn"
+              class="hidden-md-and-down primary mr-5 text-capitalize scale-btn"
               v-if="!userAuth"
               to="/signin"
             >
@@ -54,7 +46,7 @@
             </v-btn>
             <v-btn
               large
-              class="text-capitalize hidden-md-and-down primary scale-btn"
+              class="hidden-md-and-down primary text-capitalize mx-1 scale-btn"
               v-if="!userAuth"
               to="/signup"
             >
@@ -62,7 +54,7 @@
             </v-btn>
             <v-btn
               large
-              class="text-capitalize mr-2 hidden-md-and-down primary scale-btn"
+              class="hidden-md-and-down primary text-capitalize mx-1 scale-btn"
               to="/"
               v-if="userAuth"
             >
@@ -233,11 +225,13 @@
 <script>
 import AddRating from "@/components/AddRating";
 import EditRating from "@/components/EditRating";
+import AccountOptions from "@/components/AccountOptions";
 
 export default {
   components: {
     AddRating,
-    EditRating
+    EditRating,
+    AccountOptions
   },
   // layout: "ratings",
   data() {
