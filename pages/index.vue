@@ -71,7 +71,7 @@
       <v-col cols="12" xl="11" class="mt-0 pt-0 px-5">
         <h1
           class="hidden-md-and-down secondary--text text-center font-weight-bold font-italic my-2"
-          style="letter-spacing: 2px; font-size: 6vmax;"
+          style="letter-spacing: -2px; font-size: 6vmax;"
         >BingeWorthy</h1>
         <v-row v-show="this.search" class="justify-center align-center mt-2 mb-0 pb-0">
           <v-btn
