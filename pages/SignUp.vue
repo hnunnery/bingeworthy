@@ -48,12 +48,7 @@
                         <Alert @dismissed="onDismissed" :text="error.message" />
                       </v-col>
                       <v-col cols="12" class="my-2 text-center">
-                        <v-btn
-                          type="submit"
-                          large
-                          class="text-capitalize px-12"
-                          style="background-color: rgba(120, 47, 64, 0.6);"
-                        >Sign Up</v-btn>
+                        <v-btn type="submit" large class="primary text-capitalize px-12">Sign Up</v-btn>
                       </v-col>
                     </v-col>
                   </v-row>

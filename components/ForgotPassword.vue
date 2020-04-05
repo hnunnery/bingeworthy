@@ -13,7 +13,7 @@
         </v-col>
         <v-col cols="12">
           <v-text-field
-            class="mt-4"
+            class="mt-2"
             name="email"
             label="Email"
             id="email"
@@ -26,15 +26,12 @@
           <v-btn
             large
             @click="dialog=false"
+            color="#212121"
             class="secondary--text text-capitalize px-8 mx-2"
-            style="background-color: rgba(42,42,42, 0.6);"
           >Cancel</v-btn>
-          <v-btn
-            large
-            @click="resetPassword"
-            class="text-capitalize px-8 mx-2"
-            style="background-color: rgba(120, 47, 64, 0.6);"
-          >Update</v-btn>
+          <v-btn large @click="resetPassword" class="primary text-capitalize px-8 mx-2">
+            <v-icon left>mdi-check</v-icon>Reset
+          </v-btn>
         </v-col>
       </v-row>
     </v-card>

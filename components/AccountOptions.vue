@@ -30,20 +30,20 @@
                 to="/signup"
                 @click="dialog=false"
                 active-class="no-active"
-                class="text-capitalize mx-2 my-3 px-5"
+                class="text-capitalize mx-2 my-3 px-6"
                 style="background-color: rgba(120, 47, 64, 0.5);"
               >
-                <v-icon size="25" left>mdi-account-plus</v-icon>Create an Account
+                <v-icon size="25" left>mdi-account-plus</v-icon>&nbsp;Create an Account
               </v-btn>
               <v-btn
                 large
                 to="/signin"
                 @click="dialog=false"
                 active-class="no-active"
-                class="text-capitalize mx-2 my-3 px-5"
+                class="text-capitalize mx-2 my-3 px-6"
                 style="background-color: rgba(120, 47, 64, 0.5);"
               >
-                <v-icon size="25" left>mdi-account-check</v-icon>Sign In to Account
+                <v-icon size="25" left>mdi-account-check</v-icon>&nbsp;Sign In to Account
               </v-btn>
             </v-col>
             <!-- DISPLAY IF USER IS AUTHENTICATED -->
@@ -52,20 +52,20 @@
                 large
                 @click="onLogout"
                 active-class="no-active"
-                class="text-capitalize mx-2 my-3 px-4"
+                class="text-capitalize mx-2 my-3 px-5"
                 style="background-color: rgba(120, 47, 64, 0.5);"
               >
-                <v-icon size="25" left>mdi-account-remove</v-icon>Sign Out of Account
+                <v-icon size="25" left>mdi-account-remove</v-icon>&nbsp;Sign Out of Account
               </v-btn>
               <v-btn
                 large
                 to="/updatename"
                 @click="dialog=false"
                 active-class="no-active"
-                class="text-capitalize mx-2 my-3 px-6"
+                class="text-capitalize mx-2 my-3 px-7"
                 style="background-color: rgba(120, 47, 64, 0.5);"
               >
-                <v-icon size="25" left>mdi-account-cog</v-icon>Update User Name
+                <v-icon size="25" left>mdi-account-cog</v-icon>&nbsp;Update User Name
               </v-btn>
             </v-col>
           </v-row>
