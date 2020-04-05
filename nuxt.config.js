@@ -14,36 +14,36 @@ export default {
       {
         hid: "description",
         name: "description",
-        content: process.env.npm_package_description || ""
+        content: process.env.npm_package_description || "",
       },
       {
         hid: "og:title",
         property: "og:title",
-        content: "BingeWorthy"
+        content: "BingeWorthy",
       },
       {
         hid: "og:description",
         property: "og:description",
-        content: "See what shows people are bingewatching these days."
+        content: "See what shows people are bingewatching these days.",
       },
       {
         hid: "og:image",
         property: "og:image",
         content:
-          "https://res.cloudinary.com/missionwebdev/image/upload/v1584492641/BingeWorthy/bingeworthy.png"
+          "https://res.cloudinary.com/missionwebdev/image/upload/v1584492641/BingeWorthy/bingeworthy.png",
       },
       {
         hid: "og:url",
         property: "og:url",
-        content: "https://bingeworthy.app"
+        content: "https://bingeworthy.app",
       },
       {
         hid: "twitter:card",
         name: "twitter:card",
-        content: "summary_large_image"
-      }
+        content: "summary_large_image",
+      },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
   /*
    ** Customize the progress-bar color
@@ -64,7 +64,7 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+  modules: ["@nuxtjs/pwa"],
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
@@ -82,10 +82,10 @@ export default {
           warning: colors.amber.base,
           error: colors.red.darken4,
           success: colors.green.darken1,
-          white: "#fafafa"
-        }
-      }
-    }
+          white: "#fafafa",
+        },
+      },
+    },
   },
   /*
    ** Build configuration
@@ -95,6 +95,6 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {},
-    vendor: ["aos"]
-  }
+    vendor: ["aos"],
+  },
 };
