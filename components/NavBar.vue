@@ -1,8 +1,8 @@
 <template>
   <v-app-bar dense dark class="hidden-lg-and-up mb-xs-1" color="#111">
-    <v-spacer class="hidden-sm-and-up"></v-spacer>
+    <!-- <v-spacer class="hidden-sm-and-up"></!-->
     <v-toolbar-title
-      class="secondary--text font-weight-bold font-italic text-xs-center text-sm-left"
+      class="hidden-xs-only secondary--text font-weight-bold font-italic text-xs-center text-sm-left"
       style="letter-spacing: 1px; font-size: 1.9em;"
     >
       <nuxt-link to="/" style="text-decoration: none; color: #ceb888;">BingeWorthy</nuxt-link>
