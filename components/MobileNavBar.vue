@@ -2,7 +2,7 @@
   <v-app-bar dense dark class="hidden-sm-and-up mb-1" color="#111">
     <v-toolbar-title
       class="secondary--text font-weight-bold font-italic text-xs-center text-sm-left"
-      style="letter-spacing: 1px; font-size: 1.9em;"
+      style="letter-spacing: 1px; font-size: 1.7em;"
     >
       <nuxt-link to="/" style="text-decoration: none; color: #ceb888;">BingeWorthy</nuxt-link>
     </v-toolbar-title>
@@ -11,7 +11,7 @@
       fab
       small
       icon
-      active-class="no-active secondary--text"
+      active-class="no-active"
       class="text-capitalize pa-0"
       style="margin-right: -4px; margin-left: -4px"
       to="/ratings"
@@ -19,7 +19,7 @@
     >
       <v-icon>mdi-star</v-icon>
     </v-btn>
-<v-spacer></v-spacer>
+    <v-spacer></v-spacer>
     <!-- search button for userAuth -->
     <v-btn
       fab
@@ -40,16 +40,16 @@
       active-class="no-active"
       v-if="!userAuth"
       @click="searchBar = !searchBar"
-      class="text-capitalize pa-0 mx-1"
+      class="text-capitalize body-1 pa-0 mx-1"
       style="letter-spacing: .5px;"
     >
       <v-icon size="15">mdi-magnify</v-icon>Search
     </v-btn>
-<v-spacer></v-spacer>
+    <v-spacer></v-spacer>
     <v-btn
       text
       active-class="no-active secondary--text"
-      class="text-capitalize pa-0 mx-1"
+      class="text-capitalize body-1 pa-0 mx-1"
       v-if="!userAuth"
       to="/signin"
       style="letter-spacing: .5px;"
@@ -59,7 +59,7 @@
 
     <!-- Account Options Component -->
     <AccountOptions v-if="userAuth" />
-<v-spacer></v-spacer>
+    <v-spacer></v-spacer>
     <!-- Add Rating Component -->
     <AddRating v-if="userAuth" />
   </v-app-bar>

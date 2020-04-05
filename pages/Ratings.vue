@@ -73,17 +73,16 @@
           class="hidden-md-and-down secondary--text text-center font-weight-bold font-italic my-2"
           style="letter-spacing: 2px; font-size: 6vmax;"
         >BingeWorthy</h1>
-        <v-row class="justify-center mt-1 mb-0 pb-0">
-          <v-btn class="hidden-sm-and-up primary text-capitalize mx-2" to="/">
-            <v-icon left>mdi-arrow-left</v-icon>All Ratings
+        <v-row class="justify-center mt-0 mb-0 pb-0">
+          <v-btn text class="hidden-sm-and-up text-capitalize px-2 mx-2" to="/">
+            <v-icon left>mdi-arrow-left</v-icon>Return to All Ratings
           </v-btn>
           <v-btn
-            class="hidden-sm-and-up primary text-capitalize mb-lg-3 mx-2"
+            text
+            class="hidden-sm-and-up text-capitalize mx-1"
             v-show="this.search"
             @click="clearSearch"
-          >
-            <v-icon left>mdi-filter-remove</v-icon>Clear Filter
-          </v-btn>
+          >Clear Search</v-btn>
           <v-btn
             large
             class="hidden-xs-only primary text-capitalize mb-lg-3 mx-2 scale-btn"

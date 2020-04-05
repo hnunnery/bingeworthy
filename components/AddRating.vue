@@ -15,7 +15,7 @@
         <v-icon>mdi-plus</v-icon>
       </v-btn>
       <!-- button for xs only -->
-      <v-btn fab small class="hidden-sm-and-up primary mt-5 ml-1" v-on="on">
+      <v-btn fab small elevation="15" class="hidden-sm-and-up primary mt-3 ml-1" v-on="on">
         <v-icon>mdi-plus</v-icon>
       </v-btn>
     </template>
