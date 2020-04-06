@@ -65,6 +65,12 @@ export default {
    ** Nuxt.js modules
    */
   modules: ["@nuxtjs/pwa"],
+  pwa: {
+    manifest: {
+      name: "BingeWorthy",
+      short_name: "BingeWorthy",
+    },
+  },
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
