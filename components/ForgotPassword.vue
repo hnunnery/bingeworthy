@@ -27,9 +27,9 @@
             large
             @click="dialog=false"
             color="#212121"
-            class="secondary--text text-capitalize px-8 mx-2"
+            class="secondary--text text-capitalize px-4 mx-2"
           >Cancel</v-btn>
-          <v-btn large @click="resetPassword" class="primary text-capitalize px-8 mx-2">
+          <v-btn large @click="resetPassword" class="primary text-capitalize px-6 mx-2">
             <v-icon left>mdi-check</v-icon>Reset
           </v-btn>
         </v-col>
