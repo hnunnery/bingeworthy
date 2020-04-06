@@ -94,26 +94,22 @@
         </v-row>
 
         <!-- USER HAS NO RATINGS -->
-        <v-row
-          v-show="loading && noUserRatings"
-          class="justify-center align-center"
-          style="height: 50vh"
-        >
+        <v-row v-show="loading" class="justify-center align-center" style="height: 50vh">
           <v-col class="text-center">
             <h2 class="display-1">Your Ratings Will Be Listed Here</h2>
           </v-col>
         </v-row>
 
         <!-- PROGRESS SPINNER -->
-        <v-row
-          v-show="loading && !noUserRatings"
+        <!-- <v-row
+          v-show="loading"
           class="justify-center align-center"
           style="height: 50vh"
         >
           <v-col class="text-center">
             <v-progress-circular :size="150" :width="12" color="primary" indeterminate></v-progress-circular>
           </v-col>
-        </v-row>
+        </v-row>-->
 
         <!-- START - MOBILE - RATINGS CARDS -->
         <v-row v-show="!loading" class="hidden-lg-and-up justify-center mt-0 mb-6">
@@ -232,7 +228,6 @@ export default {
     EditRating,
     AccountOptions
   },
-  // layout: "ratings",
   data() {
     return {
       search: ""
@@ -276,9 +271,6 @@ export default {
     // controls loading progress spinner
     loading() {
       return this.$store.getters.userRatings.length < 1;
-    },
-    noUserRatings() {
-      return true;
     },
     userAuth() {
       return (

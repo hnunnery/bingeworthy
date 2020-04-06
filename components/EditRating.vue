@@ -167,7 +167,7 @@ export default {
           .doc(this.ratingId)
           .delete()
           .then(() => {
-            this.$store.commit("deleteRating", this.ratingId);
+            this.$store.commit("deleteAlert");
             this.dialog = false;
           });
       }

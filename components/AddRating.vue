@@ -148,9 +148,7 @@ export default {
         db.collection("show")
           .add(newRating)
           .then(docRef => {
-            // getting document id from firestore
-            newRating.id = docRef.id;
-            this.$store.commit("addRating", newRating);
+            this.$store.commit("addAlert");
             this.name = "";
             this.platform = "";
             this.rating = 0;
