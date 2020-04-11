@@ -102,7 +102,51 @@
         </v-row>
 
         <!-- START - MOBILE - MASTER RATINGS CARDS -->
-        <v-row v-show="!loading" class="hidden-lg-and-up justify-center my-0">
+        <v-row v-show="!loading" class="hidden-sm-and-up justify-center my-0">
+          <v-col
+            cols="12"
+            v-for="(rating, index) in filteredMasterRatingsMobile"
+            :key="index"
+            class="pt-2 pb-0 px-0"
+            @click="
+                setSearch(rating.name);
+                expandedName = rating.name;
+                expandedPlatform = rating.platform;
+                expandedRank = rating.rank;
+                expandedRating = rating.averageRating.toFixed(2);
+              "
+          >
+            <v-row class="text-center justify-center align-center px-4">
+              <v-col cols="12" class="text-left d-inline-flex py-0 px-0">
+                <span class="title font-weight-light">{{ rating.name }}</span>
+                <v-spacer />
+                <v-rating
+                  :value="rating.averageRating"
+                  color="secondary"
+                  size="25"
+                  half-icon="mdi-star-half-full"
+                  half-increments
+                  dense
+                  readonly
+                ></v-rating>
+              </v-col>
+              <v-col cols="12" class="body-2 font-weight-bold d-inline-flex py-0 pl-0 pr-2">
+                <span style="color: #782F40;">{{ rating.rank }} - {{ rating.platform }}</span>
+                <v-spacer />
+                <span
+                  class="font-weight-regular mr-6"
+                  style="opacity: .5;"
+                >{{ rating.users.length }} Ratings</span>
+                <span>{{rating.roundedRating}}</span>
+              </v-col>
+            </v-row>
+            <v-divider class="mt-3 px-0" />
+          </v-col>
+          <v-divider class="primary" style="padding: .5px;" />
+        </v-row>
+
+        <!-- START SM - MD MASTER RATINGS CARDS -->
+        <v-row v-show="!loading" class="hidden-xs-only hidden-lg-and-up justify-center my-0">
           <v-col
             cols="12"
             sm="6"
@@ -282,7 +326,51 @@
         </v-row>
 
         <!-- START - MOBILE - RATINGS CARDS -->
-        <v-row v-if="!loading && this.search" class="hidden-lg-and-up justify-center mt-0 mb-6">
+        <v-row v-show="!loading && this.search" class="hidden-sm-and-up justify-center my-0">
+          <v-col
+            cols="12"
+            v-for="rating in filteredRatings"
+            :key="rating.id"
+            class="pt-2 pb-0 px-0"
+            style="position: relative;"
+          >
+            <v-row class="text-center justify-center align-center px-4">
+              <v-col cols="12" class="text-left d-inline-flex py-0 px-0">
+                <span
+                  class="title font-weight-light"
+                  @click="setSearch(rating.name)"
+                >{{ rating.name }}</span>
+                <v-spacer />
+                <v-rating
+                  :value="parseFloat(rating.rating)"
+                  color="secondary"
+                  size="25"
+                  half-icon="mdi-star-half-full"
+                  half-increments
+                  dense
+                  readonly
+                ></v-rating>
+              </v-col>
+              <v-col cols="12" class="body-2 d-inline-flex py-0 pl-0 pr-2">
+                <span
+                  @click="setSearch(rating.platform)"
+                  class="font-weight-bold"
+                  style="color: #782F40;"
+                >{{ rating.platform }}</span>
+                <v-spacer />
+                <span @click="setSearch(rating.user)">{{ rating.user }}</span>
+              </v-col>
+              <EditRating :rating="rating" v-if="userId === rating.userId || userIsAdmin" />
+            </v-row>
+            <v-divider class="mt-3 px-0" />
+          </v-col>
+        </v-row>
+
+        <!-- START SM - MD RATINGS CARDS -->
+        <v-row
+          v-if="!loading && this.search"
+          class="hidden-xs-only hidden-lg-and-up justify-center mt-0 mb-6"
+        >
           <v-col
             cols="12"
             sm="6"

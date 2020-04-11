@@ -94,25 +94,58 @@
         </v-row>
 
         <!-- USER HAS NO RATINGS -->
-        <v-row v-show="loading" class="justify-center align-center" style="height: 50vh">
+        <v-row v-show="noRatings" class="justify-center align-center" style="height: 50vh">
           <v-col class="text-center">
             <h2 class="display-1">Your Ratings Will Be Listed Here</h2>
           </v-col>
         </v-row>
 
-        <!-- PROGRESS SPINNER -->
-        <!-- <v-row
-          v-show="loading"
-          class="justify-center align-center"
-          style="height: 50vh"
-        >
-          <v-col class="text-center">
-            <v-progress-circular :size="150" :width="12" color="primary" indeterminate></v-progress-circular>
-          </v-col>
-        </v-row>-->
-
         <!-- START - MOBILE - RATINGS CARDS -->
-        <v-row v-show="!loading" class="hidden-lg-and-up justify-center mt-0 mb-6">
+        <v-row v-show="!noRatings && this.$vuetify.breakpoint.xsOnly" class="justify-center my-0">
+          <v-col
+            cols="12"
+            v-for="rating in filteredRatings"
+            :key="rating.id"
+            class="pt-2 pb-0 px-0"
+            style="position: relative;"
+          >
+            <v-row class="text-center justify-center align-center px-4">
+              <v-col cols="12" class="text-left d-inline-flex py-0 px-0">
+                <span
+                  class="title font-weight-light"
+                  @click="setSearch(rating.name)"
+                >{{ rating.name }}</span>
+                <v-spacer />
+                <v-rating
+                  :value="parseFloat(rating.rating)"
+                  color="secondary"
+                  size="25"
+                  half-icon="mdi-star-half-full"
+                  half-increments
+                  dense
+                  readonly
+                ></v-rating>
+              </v-col>
+              <v-col cols="12" class="body-2 d-inline-flex py-0 pl-0 pr-2">
+                <span
+                  @click="setSearch(rating.platform)"
+                  class="font-weight-bold"
+                  style="color: #782F40;"
+                >{{ rating.platform }}</span>
+                <v-spacer />
+                <span @click="setSearch(rating.user)">{{ rating.user }}</span>
+              </v-col>
+              <EditRating :rating="rating" v-if="userId === rating.userId || userIsAdmin" />
+            </v-row>
+            <v-divider class="mt-3 px-0" />
+          </v-col>
+        </v-row>
+
+        <!-- START SM-MD SCREEN SIZE RATINGS CARDS -->
+        <v-row
+          v-if="!noRatings && this.$vuetify.breakpoint.mdAndDown"
+          class="hidden-xs-only justify-center mt-0 mb-6"
+        >
           <v-col
             cols="12"
             sm="6"
@@ -167,7 +200,10 @@
         </v-row>
 
         <!-- START RATINGS CARDS -->
-        <v-row v-show="!loading" class="hidden-md-and-down justify-center mt-2 mb-6">
+        <v-row
+          v-if="!noRatings && this.$vuetify.breakpoint.lgAndUp"
+          class="justify-center mt-2 mb-6"
+        >
           <v-col cols="12" lg="4" xl="3" v-for="rating in filteredRatings" :key="rating.id">
             <v-card
               class="px-4 pt-1 ma-0 align-center d-flex"
@@ -269,7 +305,7 @@ export default {
       return this.$store.getters.ratingsChange;
     },
     // controls loading progress spinner
-    loading() {
+    noRatings() {
       return this.$store.getters.userRatings.length < 1;
     },
     userAuth() {

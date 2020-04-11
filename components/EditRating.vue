@@ -7,12 +7,16 @@
         absolute
         bottom
         right
-        class="text-capitalize secondary--text"
+        class="hidden-xs-only secondary--text"
         style="z-index: 1;"
         color="#313131"
         v-on="on"
       >
         <v-icon>mdi-cog</v-icon>
+      </v-btn>
+      <!-- FOR XS (MOBILE) SCREEN SIZE ONLY -->
+      <v-btn fab x-small absolute bottom class="hidden-sm-and-up secondary--text" v-on="on">
+        <v-icon style="margin-left: 1px;">mdi-cog</v-icon>
       </v-btn>
     </template>
     <v-card class="px-6 py-2" color="rgba(17, 17, 17, 0.85)" elevation="15">
