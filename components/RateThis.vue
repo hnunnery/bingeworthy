@@ -9,9 +9,10 @@
         <v-icon left>mdi-plus</v-icon>Rate This Show
       </v-btn>
       <!-- for xs screen size only -->
-      <v-btn class="hidden-sm-and-up primary text-capitalize mt-md-2 mb-3 mb-md-1 mx-2" v-on="on">
-        <v-icon left>mdi-plus</v-icon>Rate This Show
-      </v-btn>
+      <v-btn
+        class="hidden-sm-and-up primary text-capitalize mt-md-2 mb-3 mb-md-1 mx-2"
+        v-on="on"
+      >Rate Show</v-btn>
     </template>
     <v-card class="px-6 py-2" color="rgba(17, 17, 17, 0.85)" elevation="15">
       <v-row class="align-center justify-center">

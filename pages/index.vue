@@ -103,53 +103,89 @@
 
         <!-- START - MOBILE - MASTER RATINGS CARDS -->
         <v-row v-show="!loading" class="hidden-sm-and-up justify-center my-0">
-          <v-col
-            cols="12"
-            v-for="(rating, index) in filteredMasterRatingsMobile"
-            :key="index"
-            class="pt-2 pb-0 px-0"
-            @click="
+          <v-expansion-panels v-model="panel">
+            <v-expansion-panel
+              v-for="(rating, index) in filteredMasterRatingsMobile"
+              :key="index"
+              class="pt-2 pb-0 px-0"
+              style="background-color: #111111 !important;"
+            >
+              <v-expansion-panel-header class="pa-0 ma-0" style="position: relative;">
+                <!-- stuff goes here -->
+                <v-row class="text-center justify-center align-center px-4">
+                  <v-col cols="12" class="text-left d-inline-flex py-0 px-0">
+                    <span
+                      class="title font-weight-light"
+                      style="line-height: 1em; margin-top: 5px;"
+                    >{{ rating.name }}</span>
+                    <v-spacer />
+                    <v-rating
+                      :value="rating.averageRating"
+                      color="secondary"
+                      size="25"
+                      half-icon="mdi-star-half-full"
+                      half-increments
+                      dense
+                      readonly
+                    ></v-rating>
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    class="body-2 font-weight-bold d-inline-flex"
+                    style="padding: 0px 5px 0px 0px;"
+                  >
+                    <span style="color: #782F40; padding-left: 2px;">{{ rating.platform }}</span>
+                    <v-spacer />
+                    <span
+                      class="font-weight-regular mr-2"
+                      style="opacity: .5;"
+                    >{{ rating.users.length }} Ratings</span>
+                    <span>#{{ rating.rank }} &nbsp;</span>
+                    <span>{{rating.roundedRating}}</span>
+                  </v-col>
+                </v-row>
+                <template v-slot:actions>
+                  <v-icon style="display: none;">$expand</v-icon>
+                </template>
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <v-row class="justify-space-between align-center">
+                  <v-col cols="7" class="pa-0">
+                    <v-btn
+                      text
+                      dense
+                      class="pa-0 secondary--text text-capitalize"
+                      @click="
                 setSearch(rating.name);
                 expandedName = rating.name;
                 expandedPlatform = rating.platform;
                 expandedRank = rating.rank;
                 expandedRating = rating.averageRating.toFixed(2);
               "
-          >
-            <v-row class="text-center justify-center align-center px-4">
-              <v-col cols="12" class="text-left d-inline-flex py-0 px-0">
-                <span
-                  class="title font-weight-light"
-                  style="line-height: 1em; margin-top: 5px;"
-                >{{ rating.name }}</span>
-                <v-spacer />
-                <v-rating
-                  :value="rating.averageRating"
-                  color="secondary"
-                  size="25"
-                  half-icon="mdi-star-half-full"
-                  half-increments
-                  dense
-                  readonly
-                ></v-rating>
+                    >See Individual Ratings</v-btn>
+                  </v-col>
+                  <v-col cols="4" class="text-center pa-0">
+                    <RateThis
+                      v-if="userAuth"
+                      :rateName="expandedName"
+                      :ratePlatform="expandedPlatform"
+                    />
+                    <v-btn
+                      v-else
+                      to="/signin"
+                      class="hidden-sm-and-up primary text-capitalize mb-3 mx-2"
+                    >Rate Show</v-btn>
+                  </v-col>
+                </v-row>
+              </v-expansion-panel-content>
+              <v-col cols="12" class="text-center pa-0" style="margin: -16px 0px -19px;">
+                <v-btn fab text x-small>
+                  <v-icon color="accent">$expand</v-icon>
+                </v-btn>
               </v-col>
-              <v-col
-                cols="12"
-                class="body-2 font-weight-bold d-inline-flex"
-                style="padding: 0px 5px 0px 0px;"
-              >
-                <span style="color: #782F40; padding-left: 2px;">{{ rating.platform }}</span>
-                <v-spacer />
-                <span
-                  class="font-weight-regular mr-2"
-                  style="opacity: .5;"
-                >{{ rating.users.length }} Ratings</span>
-                <span>#{{ rating.rank }} &nbsp;</span>
-                <span>{{rating.roundedRating}}</span>
-              </v-col>
-            </v-row>
-            <v-divider class="mt-3 px-0" />
-          </v-col>
+              <v-divider class="mt-3 px-0" />
+            </v-expansion-panel>
+          </v-expansion-panels>
           <v-divider class="primary" style="padding: .5px;" />
         </v-row>
 
@@ -503,7 +539,8 @@ export default {
       expandedName: "",
       expandedPlatform: "",
       expandedRank: "",
-      expandedRating: ""
+      expandedRating: "",
+      panel: false
     };
   },
   methods: {
