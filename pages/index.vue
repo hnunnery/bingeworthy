@@ -118,7 +118,10 @@
           >
             <v-row class="text-center justify-center align-center px-4">
               <v-col cols="12" class="text-left d-inline-flex py-0 px-0">
-                <span class="title font-weight-light">{{ rating.name }}</span>
+                <span
+                  class="title font-weight-light"
+                  style="line-height: 1em; margin-top: 5px;"
+                >{{ rating.name }}</span>
                 <v-spacer />
                 <v-rating
                   :value="rating.averageRating"
@@ -130,13 +133,18 @@
                   readonly
                 ></v-rating>
               </v-col>
-              <v-col cols="12" class="body-2 font-weight-bold d-inline-flex py-0 pl-0 pr-2">
-                <span style="color: #782F40;">{{ rating.rank }} - {{ rating.platform }}</span>
+              <v-col
+                cols="12"
+                class="body-2 font-weight-bold d-inline-flex"
+                style="padding: 0px 5px 0px 0px;"
+              >
+                <span style="color: #782F40;">{{ rating.platform }}</span>
                 <v-spacer />
                 <span
-                  class="font-weight-regular mr-6"
+                  class="font-weight-regular mr-2"
                   style="opacity: .5;"
                 >{{ rating.users.length }} Ratings</span>
+                <span>#{{ rating.rank }} &nbsp;</span>
                 <span>{{rating.roundedRating}}</span>
               </v-col>
             </v-row>
