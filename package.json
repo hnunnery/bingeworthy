@@ -1,7 +1,7 @@
 {
-  "name": "show-ratings",
+  "name": "bingeworthy",
   "version": "1.0.0",
-  "description": "My glorious Nuxt.js project",
+  "description": "Find out what's worth watching",
   "author": "Hunter Nunnery",
   "private": true,
   "scripts": {
