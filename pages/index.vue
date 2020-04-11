@@ -82,13 +82,15 @@
             <v-icon left>mdi-arrow-left</v-icon>Back / Clear
           </v-btn>
           <v-btn
-            class="hidden-sm-and-up primary text-capitalize mt-md-2 mb-3 mx-2 py-0"
+            text
+            dense
+            class="hidden-sm-and-up text-capitalize mt-md-2 mb-sm-3 mx-2 py-0"
             @click="clearSearch"
           >
             <v-icon left>mdi-arrow-left</v-icon>Back / Clear
           </v-btn>
           <RateThis
-            v-if="expandedName && userAuth"
+            v-if="expandedName && userAuth && this.$vuetify.breakpoint.smAndUp"
             :rateName="expandedName"
             :ratePlatform="expandedPlatform"
           />
@@ -107,13 +109,13 @@
             <v-expansion-panel
               v-for="(rating, index) in filteredMasterRatingsMobile"
               :key="index"
-              class="pt-2 pb-0 px-0"
+              class="pt-3 pb-0 px-0"
               style="background-color: #111111 !important;"
             >
               <v-expansion-panel-header class="pa-0 ma-0" style="position: relative;">
                 <!-- stuff goes here -->
                 <v-row class="text-center justify-center align-center px-4">
-                  <v-col cols="12" class="text-left d-inline-flex py-0 px-0">
+                  <v-col cols="12" class="text-left d-inline-flex pt-0 pb-1 px-0">
                     <span
                       class="title font-weight-light"
                       style="line-height: 1em; margin-top: 5px;"
@@ -149,37 +151,36 @@
                 </template>
               </v-expansion-panel-header>
               <v-expansion-panel-content>
-                <v-row class="justify-space-between align-center">
-                  <v-col cols="7" class="pa-0">
-                    <v-btn
-                      text
-                      dense
-                      class="pa-0 secondary--text text-capitalize"
-                      @click="
+                <v-col cols="12" class="ml-0 pa-0 d-inline-flex">
+                  <v-btn
+                    text
+                    dense
+                    class="pa-0 secondary--text text-capitalize"
+                    style="margin-left: -18px !important;"
+                    @click="
                 setSearch(rating.name);
                 expandedName = rating.name;
                 expandedPlatform = rating.platform;
                 expandedRank = rating.rank;
                 expandedRating = rating.averageRating.toFixed(2);
               "
-                    >See Individual Ratings</v-btn>
-                  </v-col>
-                  <v-col cols="4" class="text-center pa-0">
-                    <RateThis
-                      v-if="userAuth"
-                      :rateName="expandedName"
-                      :ratePlatform="expandedPlatform"
-                    />
-                    <v-btn
-                      v-else
-                      to="/signin"
-                      class="hidden-sm-and-up primary text-capitalize mb-3 mx-2"
-                    >Rate Show</v-btn>
-                  </v-col>
-                </v-row>
+                  >See Individual Ratings</v-btn>
+                  <v-spacer />
+                  <RateThis
+                    v-if="userAuth"
+                    :rateName="rating.name"
+                    :ratePlatform="rating.platform"
+                  />
+                  <v-btn
+                    v-else
+                    to="/signin"
+                    class="hidden-sm-and-up primary text-capitalize mb-3 mx-2"
+                    style="margin-right: -10px !important;"
+                  >Rate Show</v-btn>
+                </v-col>
               </v-expansion-panel-content>
-              <v-col cols="12" class="text-center pa-0" style="margin: -16px 0px -19px;">
-                <v-btn fab text x-small>
+              <v-col cols="12" class="text-center pa-0" style="margin: -12px 0px -19px;">
+                <v-btn fab text x-small disabled>
                   <v-icon color="accent">$expand</v-icon>
                 </v-btn>
               </v-col>

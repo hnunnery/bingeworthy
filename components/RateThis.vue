@@ -10,7 +10,8 @@
       </v-btn>
       <!-- for xs screen size only -->
       <v-btn
-        class="hidden-sm-and-up primary text-capitalize mt-md-2 mb-3 mb-md-1 mx-2"
+        class="hidden-sm-and-up primary text-capitalize"
+        style="margin-right: -10px !important;"
         v-on="on"
       >Rate Show</v-btn>
     </template>
