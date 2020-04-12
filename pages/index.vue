@@ -113,11 +113,11 @@
             <v-expansion-panel
               v-for="(rating, index) in filteredMasterRatingsMobile"
               :key="index"
-              class="pt-3 pb-0 px-0"
+              class="pa-0"
               style="background-color: #1d1d1d !important;"
             >
               <v-expansion-panel-header class="pa-0 ma-0">
-                <v-row class="text-center justify-center align-center px-5">
+                <v-row class="text-center justify-center align-center pt-4 px-5">
                   <v-col cols="12" class="text-left d-inline-flex pt-0 pb-1 px-0">
                     <span class="title" style="line-height: 1em; margin-top: 5px;">{{ rating.name }}</span>
                     <v-spacer />
@@ -180,7 +180,7 @@
                   >Rate Show</v-btn>
                 </v-col>
               </v-expansion-panel-content>
-              <v-col cols="12" class="text-center pa-0" style="margin: -12px 0px 0px;">
+              <v-col cols="12" class="text-center pa-0" style="margin: -5px 0px -5px;">
                 <v-btn fab text x-small disabled>
                   <v-icon color="accent">$expand</v-icon>
                 </v-btn>
@@ -377,10 +377,10 @@
             cols="12"
             v-for="rating in filteredRatings"
             :key="rating.id"
-            class="pt-2 pb-0 px-0"
+            class="pa-0"
             style="position: relative;"
           >
-            <v-row class="text-center justify-center align-center px-4">
+            <v-row class="text-center justify-center align-center pa-4">
               <v-col cols="12" class="text-left d-inline-flex py-0 px-0">
                 <span
                   class="title"
@@ -409,7 +409,7 @@
                 <span @click="setSearch(rating.user)">{{ rating.user }}</span>
               </v-col>
             </v-row>
-            <v-divider class="mt-3 px-0" />
+            <v-divider class="primary px-0" />
           </v-col>
         </v-row>
 
@@ -642,7 +642,7 @@ export default {
         this.$store.getters.user !== null &&
         this.$store.getters.user !== undefined
       ) {
-        if (this.$store.getters.user.id === "FLPuGBEpiyYce5QQuO4azAK0qwk2") {
+        if (this.$store.getters.user.id === "12KI0hTtG5fHrX2TvFVpW5I3WF72") {
           return true;
         }
       }

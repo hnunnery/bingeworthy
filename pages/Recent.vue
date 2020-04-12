@@ -96,10 +96,10 @@
             cols="12"
             v-for="rating in filteredRatings"
             :key="rating.id"
-            class="pt-3 pb-0 px-0"
+            class="pa-0"
             style="position: relative;"
           >
-            <v-row class="text-center justify-center align-center px-4">
+            <v-row class="text-center justify-center align-center pa-4">
               <v-col cols="12" class="text-left d-inline-flex py-0 px-0">
                 <span
                   class="title"
@@ -128,7 +128,7 @@
                 <span @click="setSearch(rating.user)">{{ rating.user }}</span>
               </v-col>
             </v-row>
-            <v-divider class="primary mt-3 px-0" />
+            <v-divider class="primary px-0" />
           </v-col>
         </v-row>
 
