@@ -139,7 +139,7 @@
                 <span @click="setSearch(rating.user)">{{ rating.user }}</span>
               </v-col>
             </v-row>
-            <v-divider class="primary px-0" />
+            <v-divider class="px-0" />
           </v-col>
         </v-row>
 

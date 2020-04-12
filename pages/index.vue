@@ -117,7 +117,7 @@
               style="background-color: #1d1d1d !important;"
             >
               <v-expansion-panel-header class="pa-0 ma-0">
-                <v-row class="text-center justify-center align-center pt-3 px-5">
+                <v-row class="text-center justify-center align-center pt-3 pb-4 px-5">
                   <v-col
                     cols="12"
                     class="text-left d-inline-flex pt-0 px-0"
@@ -157,10 +157,11 @@
               <v-expansion-panel-content>
                 <v-col cols="12" class="ml-0 px-0 pt-4 pb-0 d-inline-flex">
                   <v-btn
+                    v-if="expandedName !== rating.name"
                     text
                     dense
                     class="pa-0 secondary--text text-capitalize"
-                    style="margin-left: -18px !important;"
+                    style="margin-left: -14px !important; font-size: 1rem;"
                     @click="
                 setSearch(rating.name);
                 expandedName = rating.name;
@@ -184,11 +185,11 @@
                   >Rate Show</v-btn>
                 </v-col>
               </v-expansion-panel-content>
-              <v-col cols="12" class="text-center pa-0" style="margin: -8px 0px -5px;">
+              <!-- <v-col cols="12" class="text-center pa-0" style="margin: -8px 0px -5px;">
                 <v-btn fab text x-small disabled>
                   <v-icon color="accent">$expand</v-icon>
                 </v-btn>
-              </v-col>
+              </v-col>-->
               <v-divider class="primary px-0" />
             </v-expansion-panel>
           </v-expansion-panels>

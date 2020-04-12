@@ -26,10 +26,10 @@
         text
         x-small
         class="hidden-sm-and-up secondary--text"
-        style="margin-top: -6px; margin-left: 5px; font-size: .9em;"
+        style="margin-top: -5px; font-size: .9em;"
         v-on="on"
       >
-        <v-icon>mdi-cog</v-icon>Edit
+        <v-icon>mdi-cog</v-icon>
       </v-btn>
     </template>
     <v-card class="px-6 py-2" color="#1d1d1d" elevation="15">
