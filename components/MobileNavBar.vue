@@ -1,13 +1,17 @@
 <template>
-  <v-app-bar dense dark class="hidden-sm-and-up mb-1" color="#111">
+  <v-app-bar dense dark class="hidden-sm-and-up mb-1" color="primary">
+    <v-spacer />
     <v-toolbar-title
       class="secondary--text font-weight-bold font-italic text-xs-center text-sm-left"
-      style="letter-spacing: -1px; font-size: 1.7em;"
+      style="letter-spacing: -1px; font-size: 1.7em; margin-left: 42px;"
     >
-      <nuxt-link to="/" style="text-decoration: none; color: #ceb888;">BingeWorthy</nuxt-link>
+      <nuxt-link to="/" class="white--text" style="text-decoration: none;">BingeWorthy</nuxt-link>
     </v-toolbar-title>
-    <v-spacer></v-spacer>
-    <v-btn
+    <v-spacer />
+    <v-btn text x-small @click="$emit('toggle-menu')">
+      <v-icon>mdi-menu</v-icon>
+    </v-btn>
+    <!-- <v-btn
       fab
       small
       icon
@@ -20,7 +24,6 @@
       <v-icon>mdi-star</v-icon>
     </v-btn>
     <v-spacer></v-spacer>
-    <!-- search button for userAuth -->
     <v-btn
       fab
       small
@@ -33,8 +36,6 @@
     >
       <v-icon>mdi-magnify</v-icon>
     </v-btn>
-
-    <!-- search button for no userAuth -->
     <v-btn
       text
       active-class="no-active"
@@ -56,12 +57,9 @@
     >
       <v-icon size="15">mdi-account-check</v-icon>Sign In
     </v-btn>
-
-    <!-- Account Options Component -->
     <AccountOptions v-if="userAuth" />
-    <v-spacer></v-spacer>
-    <!-- Add Rating Component -->
-    <AddRating v-if="userAuth" />
+
+    <AddRating v-if="userAuth" />-->
   </v-app-bar>
 </template>
 
