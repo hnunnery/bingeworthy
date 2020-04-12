@@ -150,7 +150,7 @@
           >
             <v-card
               class="px-2 ma-1 align-center d-flex"
-              color="rgba(17, 17, 17, 0.5)"
+              color="rgba(29, 29, 29, 0.5)"
               elevation="15"
               height="100%"
               style="box-shadow: 0 0 5px 1px #782f40 !important;"
@@ -198,7 +198,7 @@
           <v-col cols="12" lg="4" xl="3" v-for="rating in filteredRatings" :key="rating.id">
             <v-card
               class="px-4 pt-1 ma-0 align-center d-flex"
-              color="rgba(17, 17, 17, 0.7)"
+              color="rgba(29, 29, 29, 0.7)"
               elevation="15"
               height="100%"
               style="box-shadow: 0 0 5px 1px #782f40 !important;"

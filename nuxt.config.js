@@ -89,7 +89,8 @@ export default {
           warning: colors.amber.base,
           error: colors.red.darken4,
           success: colors.green.darken1,
-          white: "#fafafa"
+          white: "#fafafa",
+          grey: "#424242"
         }
       }
     }

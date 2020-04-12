@@ -110,7 +110,7 @@
               v-for="(rating, index) in filteredMasterRatingsMobile"
               :key="index"
               class="pt-3 pb-0 px-0"
-              style="background-color: #111 !important;"
+              style="background-color: #1d1d1d !important;"
             >
               <v-expansion-panel-header class="pa-0 ma-0" style="position: relative;">
                 <v-row class="text-center justify-center align-center px-4">
@@ -199,7 +199,7 @@
           >
             <v-card
               class="px-2 ma-1 align-center d-flex"
-              color="rgba(17, 17, 17, 0.5)"
+              color="rgba(29, 29, 29, 0.5)"
               height="100%"
               elevation="15"
               @click="
@@ -288,7 +288,7 @@
           >
             <v-card
               class="px-4 pt-1 ma-0 align-center d-flex"
-              color="rgba(17, 17, 17, 0.7)"
+              color="rgba(29, 29, 29, 0.7)"
               elevation="15"
               height="100%"
               @click="
@@ -424,7 +424,7 @@
           >
             <v-card
               class="px-2 ma-1 align-center d-flex"
-              color="rgba(17, 17, 17, 0.5)"
+              color="rgba(29, 29, 29, 0.5)"
               height="100%"
               elevation="15"
               style="box-shadow: 0 0 5px 1px #782f40 !important;"
@@ -472,7 +472,7 @@
           <v-col cols="12" lg="4" xl="3" v-for="rating in filteredRatings" :key="rating.id">
             <v-card
               class="px-4 pt-1 ma-0 align-center d-flex"
-              color="rgba(17, 17, 17, 0.7)"
+              color="rgba(29, 29, 29, 0.7)"
               elevation="15"
               height="100%"
               style="box-shadow: 0 0 5px 1px #782f40 !important;"
