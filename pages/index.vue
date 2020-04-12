@@ -117,8 +117,12 @@
               style="background-color: #1d1d1d !important;"
             >
               <v-expansion-panel-header class="pa-0 ma-0">
-                <v-row class="text-center justify-center align-center pt-4 px-5">
-                  <v-col cols="12" class="text-left d-inline-flex pt-0 pb-1 px-0">
+                <v-row class="text-center justify-center align-center pt-3 px-5">
+                  <v-col
+                    cols="12"
+                    class="text-left d-inline-flex pt-0 px-0"
+                    style="padding-bottom: 3.5px;"
+                  >
                     <span class="title" style="line-height: 1em; margin-top: 5px;">{{ rating.name }}</span>
                     <v-spacer />
                     <v-rating
@@ -134,10 +138,10 @@
                   <v-col
                     cols="12"
                     class="accent--text d-inline-flex"
-                    style="font-size: .9em; padding: 0px 5px 0px 0px;"
+                    style="font-size: 1.02rem; padding: 0px 5px 0px 0px;"
                   >
                     <span style="padding-left: 2px;">
-                      <span>#{{ rating.rank }} &nbsp;</span>
+                      <span>#{{ rating.rank }} &nbsp;-&nbsp;</span>
                       {{ rating.platform }}
                     </span>
                     <v-spacer />
@@ -151,7 +155,7 @@
                 </template>
               </v-expansion-panel-header>
               <v-expansion-panel-content>
-                <v-col cols="12" class="ml-0 px-0 pt-2 pb-0 d-inline-flex">
+                <v-col cols="12" class="ml-0 px-0 pt-4 pb-0 d-inline-flex">
                   <v-btn
                     text
                     dense
@@ -180,7 +184,7 @@
                   >Rate Show</v-btn>
                 </v-col>
               </v-expansion-panel-content>
-              <v-col cols="12" class="text-center pa-0" style="margin: -5px 0px -5px;">
+              <v-col cols="12" class="text-center pa-0" style="margin: -8px 0px -5px;">
                 <v-btn fab text x-small disabled>
                   <v-icon color="accent">$expand</v-icon>
                 </v-btn>
@@ -380,8 +384,12 @@
             class="pa-0"
             style="position: relative;"
           >
-            <v-row class="text-center justify-center align-center pa-4">
-              <v-col cols="12" class="text-left d-inline-flex py-0 px-0">
+            <v-row class="text-center justify-center align-center py-3 px-4">
+              <v-col
+                cols="12"
+                class="text-left d-inline-flex pt-0 px-0"
+                style="padding-bottom: 0px;"
+              >
                 <span
                   class="title"
                   style="line-height: 1em; margin-top: 5px;"
@@ -398,10 +406,13 @@
                   readonly
                 ></v-rating>
               </v-col>
-              <v-col cols="12" class="body-2 d-inline-flex py-0 pl-0 pr-1">
+              <v-col
+                cols="12"
+                class="accent--text d-inline-flex py-0 pl-0 pr-1"
+                style="font-size: 1.02rem;"
+              >
                 <span
                   @click="setSearch(rating.platform)"
-                  class="accent--text"
                   style="padding-left: 2px; margin-right: 15px;"
                 >{{ rating.platform }}</span>
                 <EditRating :rating="rating" v-if="userId === rating.userId || userIsAdmin" />

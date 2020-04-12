@@ -99,7 +99,7 @@
             class="pa-0"
             style="position: relative;"
           >
-            <v-row class="text-center justify-center align-center pa-4">
+            <v-row class="text-center justify-center align-center py-3 px-4">
               <v-col cols="12" class="text-left d-inline-flex py-0 px-0">
                 <span
                   class="title"
@@ -118,7 +118,11 @@
                   readonly
                 ></v-rating>
               </v-col>
-              <v-col cols="12" class="body-2 accent--text d-inline-flex py-0 pl-0 pr-1">
+              <v-col
+                cols="12"
+                class="accent--text d-inline-flex py-0 pl-0"
+                style="font-size: 1rem; padding-right: 5px;"
+              >
                 <span
                   @click="setSearch(rating.platform)"
                   style="padding-left: 2px; margin-right: 15px;"

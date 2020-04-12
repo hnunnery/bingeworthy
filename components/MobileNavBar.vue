@@ -3,12 +3,12 @@
     <v-spacer />
     <v-toolbar-title
       class="secondary--text font-weight-bold font-italic text-xs-center text-sm-left px-1"
-      style="letter-spacing: -1px; font-size: 1.7em; margin-left: 42px;"
+      style="letter-spacing: -1px; font-size: 1.7em; margin-left: 63px;"
     >
       <nuxt-link to="/" class="white--text" style="text-decoration: none;">BingeWorthy</nuxt-link>
     </v-toolbar-title>
     <v-spacer />
-    <v-btn text x-small @click="$emit('toggle-menu')">
+    <v-btn text @click="$emit('toggle-menu')">
       <v-icon>mdi-menu</v-icon>
     </v-btn>
   </v-app-bar>
