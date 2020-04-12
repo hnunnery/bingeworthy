@@ -96,7 +96,7 @@
             cols="12"
             v-for="rating in filteredRatings"
             :key="rating.id"
-            class="pt-2 pb-0 px-0"
+            class="pt-3 pb-0 px-0"
             style="position: relative;"
           >
             <v-row class="text-center justify-center align-center px-4">
@@ -106,7 +106,7 @@
                   style="line-height: 1em; margin-top: 5px;"
                   @click="setSearch(rating.name)"
                 >{{ rating.name }}</span>
-                <EditRating :rating="rating" v-if="userIsAdmin" />
+
                 <v-spacer />
                 <v-rating
                   :value="parseFloat(rating.rating)"
@@ -121,8 +121,9 @@
               <v-col cols="12" class="body-2 accent--text d-inline-flex py-0 pl-0 pr-1">
                 <span
                   @click="setSearch(rating.platform)"
-                  style="padding-left: 2px;"
+                  style="padding-left: 2px; margin-right: 15px;"
                 >{{ rating.platform }}</span>
+                <EditRating :rating="rating" v-if="userIsAdmin" />
                 <v-spacer />
                 <span @click="setSearch(rating.user)">{{ rating.user }}</span>
               </v-col>

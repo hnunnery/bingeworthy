@@ -21,8 +21,15 @@
         <v-icon>mdi-cog</v-icon>
       </v-btn>
       <!-- FOR XS (MOBILE) SCREEN SIZE ONLY -->
-      <v-btn fab text x-small class="hidden-sm-and-up secondary--text" v-on="on">
-        <v-icon>mdi-cog</v-icon>
+      <v-btn
+        fab
+        text
+        x-small
+        class="hidden-sm-and-up secondary--text"
+        style="margin-top: -7px; font-size: .8em;"
+        v-on="on"
+      >
+        <v-icon>mdi-cog</v-icon>Edit
       </v-btn>
     </template>
     <v-card class="px-6 py-2" color="#1d1d1d" elevation="15">
