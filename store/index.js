@@ -6,12 +6,13 @@ export const state = () => ({
   user: null,
   ratings: [],
   masterRatings: [],
+  recentRatings: [],
   names: [],
   platforms: [],
   error: null,
   searchBar: false,
   message: "",
-  success: false,
+  success: false
 });
 
 // MUTATIONS
@@ -20,8 +21,8 @@ export const mutations = {
   setLoadedRatings(state, payload) {
     state.ratings = payload;
     state.ratings.sort((a, b) => (a.rating < b.rating ? 1 : -1));
-    state.names = state.ratings.map((rating) => rating.name);
-    state.platforms = state.ratings.map((rating) => rating.platform);
+    state.names = state.ratings.map(rating => rating.name);
+    state.platforms = state.ratings.map(rating => rating.platform);
   },
   addAlert(state) {
     state.message = "Added!";
@@ -31,7 +32,7 @@ export const mutations = {
     }, 1000);
   },
   deleteRating(state, payload) {
-    state.ratings = state.ratings.filter((rating) => rating.id !== payload);
+    state.ratings = state.ratings.filter(rating => rating.id !== payload);
   },
   deleteAlert(state) {
     state.message = "Deleted!";
@@ -41,7 +42,7 @@ export const mutations = {
     }, 1000);
   },
   updateRating(state, payload) {
-    state.ratings.forEach((rating) => {
+    state.ratings.forEach(rating => {
       if (rating.id === payload.id) {
         rating.name = payload.name;
         rating.rating = payload.rating;
@@ -61,6 +62,9 @@ export const mutations = {
   },
   setMasterRatings(state, payload) {
     state.masterRatings = payload;
+  },
+  setRecentRatings(state, payload) {
+    state.recentRatings = payload;
   },
   setError(state, payload) {
     state.error = payload;
@@ -89,7 +93,7 @@ export const mutations = {
     setTimeout(() => {
       state.success = false;
     }, 2000);
-  },
+  }
 };
 
 // ACTIONS
@@ -99,18 +103,20 @@ export const actions = {
     let ratings = [];
     db.collection("show")
       .orderBy("rating", "desc")
-      .onSnapshot((querySnapshot) => {
+      .onSnapshot(querySnapshot => {
         let changes = querySnapshot.docChanges();
-        changes.forEach((change) => {
+        changes.forEach(change => {
           if (change.type == "added") {
             let rating = change.doc.data();
             rating.id = change.doc.id;
             ratings.push(rating);
             commit("setLoadedRatings", ratings);
             dispatch("createMasterRatings");
+            dispatch("createRecentRatings");
           } else if (change.type == "removed") {
             commit("deleteRating", change.doc.id);
             dispatch("createMasterRatings");
+            dispatch("createRecentRatings");
           }
         });
       });
@@ -118,18 +124,18 @@ export const actions = {
   createMasterRatings({ commit, state }) {
     let tempMaster = [];
     let nameList = [];
-    state.names.map((x) => {
+    state.names.map(x => {
       if (!nameList.includes(x)) {
         nameList.push(x);
       }
     });
-    nameList.forEach((name) => {
+    nameList.forEach(name => {
       let obj = {};
       obj.name = name;
       obj.platform = "";
       obj.ratings = [];
       obj.users = [];
-      state.ratings.forEach((rating) => {
+      state.ratings.forEach(rating => {
         if (rating.name === name) {
           obj.platform = rating.platform;
           obj.ratings.push(rating.rating);
@@ -138,7 +144,7 @@ export const actions = {
       });
       tempMaster.push(obj);
     });
-    tempMaster.forEach((rating) => {
+    tempMaster.forEach(rating => {
       let averageRating = parseFloat(
         rating.ratings.reduce((a, b) => a + b, 0) / rating.ratings.length
       );
@@ -146,9 +152,9 @@ export const actions = {
       let weight = rating.ratings.length * 0.01;
       rating.averageRating = averageRating + weight;
     });
-    const master = tempMaster.filter((rating) => rating.ratings.length > 1);
+    const master = tempMaster.filter(rating => rating.ratings.length > 1);
     master.sort((a, b) => (a.averageRating < b.averageRating ? 1 : -1));
-    master.forEach((rating) => {
+    master.forEach(rating => {
       rating.rank = master.indexOf(rating) + 1;
       rating.roundedRating = rating.averageRating.toFixed(2);
       // console.log(
@@ -156,29 +162,46 @@ export const actions = {
       // );
     });
     // ROUNDING DOWN TO NEAREST .5 TO CONTROL VUETIFY RATING COMPONENT
-    master.forEach((rating) => {
+    master.forEach(rating => {
       rating.averageRating = Math.floor(rating.averageRating * 2) / 2;
     });
 
     // COMMIT TO MUTATION AND STATE
     commit("setMasterRatings", master);
   },
+  createRecentRatings({ commit }) {
+    let ratings = [];
+    db.collection("show")
+      .orderBy("date", "desc")
+      .limit(30)
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          let rating = doc.data();
+          rating.id = doc.id;
+          ratings.push(rating);
+        });
+      });
+
+    // COMMIT TO MUTATION AND STATE
+    commit("setRecentRatings", ratings);
+  },
   // USER HANDLING
   signUserUp({ commit }, payload) {
     commit("clearError");
     auth
       .createUserWithEmailAndPassword(payload.email, payload.password)
-      .then((user) => {
+      .then(user => {
         auth.currentUser
           .updateProfile({
-            displayName: payload.displayName,
+            displayName: payload.displayName
           })
-          .then(function () {
+          .then(function() {
             console.log("Updated Display Name");
             commit("updateUserName", payload.displayName);
           });
       })
-      .catch((error) => {
+      .catch(error => {
         commit("setError", error);
         console.log(error);
       });
@@ -187,7 +210,7 @@ export const actions = {
     commit("clearError");
     auth
       .signInWithEmailAndPassword(payload.email, payload.password)
-      .catch((error) => {
+      .catch(error => {
         commit("setError", error);
         console.log(error);
       });
@@ -200,7 +223,7 @@ export const actions = {
     }
     commit("setUser", {
       id: payload.uid,
-      name: payload.displayName,
+      name: payload.displayName
     });
   },
   updateDisplayName({ commit }, payload) {
@@ -208,13 +231,13 @@ export const actions = {
     const router = this.$router;
     auth.currentUser
       .updateProfile({
-        displayName: payload,
+        displayName: payload
       })
-      .then(function () {
+      .then(function() {
         commit("updateUserName", payload);
         router.push("/");
       })
-      .catch((error) => {
+      .catch(error => {
         commit("setError", error);
         console.log(error);
       });
@@ -223,7 +246,7 @@ export const actions = {
     auth.signOut();
     commit("setUser", null);
     this.$router.push("/");
-  },
+  }
 };
 
 export const getters = {
@@ -235,12 +258,15 @@ export const getters = {
   },
   userRatings(state) {
     let newList = [];
-    state.ratings.forEach((rating) => {
+    state.ratings.forEach(rating => {
       if (rating.userId === state.user.id) {
         newList.push(rating);
       }
     });
     return newList;
+  },
+  recentRatings(state) {
+    return state.recentRatings;
   },
   error(state) {
     return state.error;
@@ -253,7 +279,7 @@ export const getters = {
   },
   user(state) {
     return state.user;
-  },
+  }
 };
 
 export const strict = false;

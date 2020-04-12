@@ -1,7 +1,15 @@
 <template>
   <v-dialog v-model="dialog" max-width="400" overlay-color="#111" overlay-opacity=".97">
     <template v-slot:activator="{ on }">
-      <v-btn fab small icon class="hidden-sm-and-up pa-0" v-on="on" active-class="no-active" style="margin-right: -4px; margin-left: -4px;" >
+      <v-btn
+        fab
+        small
+        icon
+        class="hidden-sm-and-up pa-0"
+        v-on="on"
+        active-class="no-active"
+        style="margin-right: -4px; margin-left: -4px;"
+      >
         <v-icon>mdi-account</v-icon>
       </v-btn>
       <v-btn
@@ -30,8 +38,7 @@
                 to="/signup"
                 @click="dialog=false"
                 active-class="no-active"
-                class="text-capitalize mx-2 my-3 px-6"
-                style="background-color: rgba(120, 47, 64, 0.5);"
+                class="primary text-capitalize mx-2 my-3 px-6"
               >
                 <v-icon size="25" left>mdi-account-plus</v-icon>&nbsp;Create an Account
               </v-btn>
@@ -40,8 +47,7 @@
                 to="/signin"
                 @click="dialog=false"
                 active-class="no-active"
-                class="text-capitalize mx-2 my-3 px-6"
-                style="background-color: rgba(120, 47, 64, 0.5);"
+                class="primary text-capitalize mx-2 my-3 px-6"
               >
                 <v-icon size="25" left>mdi-account-check</v-icon>&nbsp;Sign In to Account
               </v-btn>
@@ -52,8 +58,7 @@
                 large
                 @click="onLogout"
                 active-class="no-active"
-                class="text-capitalize mx-2 my-3 px-5"
-                style="background-color: rgba(120, 47, 64, 0.5);"
+                class="primary text-capitalize mx-2 my-3 px-5"
               >
                 <v-icon size="25" left>mdi-account-remove</v-icon>&nbsp;Sign Out of Account
               </v-btn>
@@ -62,8 +67,7 @@
                 to="/updatename"
                 @click="dialog=false"
                 active-class="no-active"
-                class="text-capitalize mx-2 my-3 px-7"
-                style="background-color: rgba(120, 47, 64, 0.5);"
+                class="primary text-capitalize mx-2 my-3 px-7"
               >
                 <v-icon size="25" left>mdi-account-cog</v-icon>&nbsp;Update User Name
               </v-btn>

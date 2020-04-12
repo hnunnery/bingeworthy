@@ -41,10 +41,11 @@
                         <v-btn type="submit" large class="primary text-capitalize px-12">Sign In</v-btn>
                       </v-col>
                       <v-col cols="12" class="text-center mt-2 pb-0">
-                        <v-btn text to="/signup" class="title secondary--text text-capitalize">
-                          <v-icon left>mdi-star</v-icon>Get Account Here
-                          <v-icon right>mdi-star</v-icon>
-                        </v-btn>
+                        <v-btn
+                          text
+                          to="/signup"
+                          class="title secondary--text text-capitalize"
+                        >Get Account Here</v-btn>
                       </v-col>
                       <v-col cols="12" class="text-center py-0">
                         <ForgotPassword />

@@ -93,15 +93,8 @@
           </v-btn>
         </v-row>
 
-        <!-- USER HAS NO RATINGS -->
-        <v-row v-show="noRatings" class="justify-center align-center" style="height: 50vh">
-          <v-col class="text-center">
-            <h2 class="display-1">Your Ratings Will Be Listed Here</h2>
-          </v-col>
-        </v-row>
-
         <!-- START - MOBILE - RATINGS CARDS -->
-        <v-row v-show="!noRatings && this.$vuetify.breakpoint.xsOnly" class="justify-center my-0">
+        <v-row v-if="this.$vuetify.breakpoint.xsOnly" class="justify-center my-0">
           <v-col
             cols="12"
             v-for="rating in filteredRatings"
@@ -136,7 +129,7 @@
                 <v-spacer />
                 <span @click="setSearch(rating.user)">{{ rating.user }}</span>
               </v-col>
-              <EditRating :rating="rating" v-if="userId === rating.userId || userIsAdmin" />
+              <EditRating :rating="rating" v-if="userIsAdmin" />
             </v-row>
             <v-divider class="mt-3 px-0" />
           </v-col>
@@ -144,7 +137,7 @@
 
         <!-- START SM-MD SCREEN SIZE RATINGS CARDS -->
         <v-row
-          v-if="!noRatings && this.$vuetify.breakpoint.mdAndDown"
+          v-if="this.$vuetify.breakpoint.mdAndDown"
           class="hidden-xs-only justify-center mt-0 mb-6"
         >
           <v-col
@@ -201,10 +194,7 @@
         </v-row>
 
         <!-- START RATINGS CARDS -->
-        <v-row
-          v-if="!noRatings && this.$vuetify.breakpoint.lgAndUp"
-          class="justify-center mt-2 mb-6"
-        >
+        <v-row v-if="this.$vuetify.breakpoint.lgAndUp" class="justify-center mt-2 mb-6">
           <v-col cols="12" lg="4" xl="3" v-for="rating in filteredRatings" :key="rating.id">
             <v-card
               class="px-4 pt-1 ma-0 align-center d-flex"
@@ -255,6 +245,7 @@
 </template>
 
 <script>
+import { db } from "@/plugins/firebase.js";
 import AddRating from "@/components/AddRating";
 import EditRating from "@/components/EditRating";
 import AccountOptions from "@/components/AccountOptions";
@@ -289,7 +280,7 @@ export default {
   },
   computed: {
     filteredRatings() {
-      return this.$store.getters.userRatings.filter(rating => {
+      return this.$store.getters.recentRatings.filter(rating => {
         return (
           rating.name
             .toLowerCase()
@@ -302,18 +293,21 @@ export default {
         );
       });
     },
-    ratingsChange() {
-      return this.$store.getters.ratingsChange;
-    },
-    // controls loading progress spinner
-    noRatings() {
-      return this.$store.getters.userRatings.length < 1;
-    },
     userAuth() {
       return (
         this.$store.getters.user !== null &&
         this.$store.getters.user !== undefined
       );
+    },
+    userIsAdmin() {
+      if (
+        this.$store.getters.user !== null &&
+        this.$store.getters.user !== undefined
+      ) {
+        if (this.$store.getters.user.id === "FLPuGBEpiyYce5QQuO4azAK0qwk2") {
+          return true;
+        }
+      }
     },
     userId() {
       if (
