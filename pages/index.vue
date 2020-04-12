@@ -110,7 +110,7 @@
               v-for="(rating, index) in filteredMasterRatingsMobile"
               :key="index"
               class="pt-3 pb-0 px-0"
-              style="background-color: #111111 !important;"
+              style="background-color: #111 !important;"
             >
               <v-expansion-panel-header class="pa-0 ma-0" style="position: relative;">
                 <!-- stuff goes here -->
@@ -380,7 +380,7 @@
             <v-row class="text-center justify-center align-center px-4">
               <v-col cols="12" class="text-left d-inline-flex py-0 px-0">
                 <span
-                  class="title font-weight-light"
+                  class="title"
                   style="line-height: 1em; margin-top: 5px;"
                   @click="setSearch(rating.name)"
                 >{{ rating.name }}</span>
