@@ -642,7 +642,7 @@ export default {
         this.$store.getters.user !== null &&
         this.$store.getters.user !== undefined
       ) {
-        if (this.$store.getters.user.id === "12KI0hTtG5fHrX2TvFVpW5I3WF72") {
+        if (this.$store.getters.user.id === this.$store.state.admin) {
           return true;
         }
       }

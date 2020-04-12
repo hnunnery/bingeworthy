@@ -12,7 +12,8 @@ export const state = () => ({
   error: null,
   searchBar: false,
   message: "",
-  success: false
+  success: false,
+  admin: "12KI0hTtG5fHrX2TvFVpW5I3WF72"
 });
 
 // MUTATIONS

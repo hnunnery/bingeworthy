@@ -123,7 +123,7 @@
                   @click="setSearch(rating.platform)"
                   style="padding-left: 2px; margin-right: 15px;"
                 >{{ rating.platform }}</span>
-                <EditRating :rating="rating" v-if="userIsAdmin" />
+                <EditRating :rating="rating" v-if="userId === rating.userId || userIsAdmin" />
                 <v-spacer />
                 <span @click="setSearch(rating.user)">{{ rating.user }}</span>
               </v-col>
@@ -296,22 +296,22 @@ export default {
         this.$store.getters.user !== undefined
       );
     },
-    userIsAdmin() {
-      if (
-        this.$store.getters.user !== null &&
-        this.$store.getters.user !== undefined
-      ) {
-        if (this.$store.getters.user.id === "FLPuGBEpiyYce5QQuO4azAK0qwk2") {
-          return true;
-        }
-      }
-    },
     userId() {
       if (
         this.$store.getters.user !== null &&
         this.$store.getters.user !== undefined
       ) {
         return this.$store.getters.user.id;
+      }
+    },
+    userIsAdmin() {
+      if (
+        this.$store.getters.user !== null &&
+        this.$store.getters.user !== undefined
+      ) {
+        if (this.$store.getters.user.id === this.$store.state.admin) {
+          return true;
+        }
       }
     }
   },
