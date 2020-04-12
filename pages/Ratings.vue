@@ -74,9 +74,6 @@
           style="letter-spacing: -2px; font-size: 6vmax;"
         >BingeWorthy</h1>
         <v-row class="justify-center mt-0 mb-0 pb-0">
-          <!-- <v-btn text class="hidden-sm-and-up text-capitalize px-2 mx-2" to="/">
-            <v-icon left>mdi-arrow-left</v-icon>Return to All Ratings
-          </v-btn>-->
           <v-btn
             text
             class="hidden-sm-and-up text-capitalize mx-1"
@@ -96,7 +93,7 @@
         <!-- USER HAS NO RATINGS -->
         <v-row v-show="noRatings" class="justify-center align-center" style="height: 50vh">
           <v-col class="text-center">
-            <h2 class="display-1">Your Ratings Will Be Listed Here</h2>
+            <h2 class="display-1 text-capitalize">The ratings that you create will be listed here</h2>
           </v-col>
         </v-row>
 

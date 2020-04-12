@@ -34,7 +34,12 @@
                           color="#212121"
                           class="secondary--text text-capitalize mx-2"
                         >Cancel</v-btn>
-                        <v-btn type="submit" large class="primary text-capitalize px-8 mx-2">Update</v-btn>
+                        <v-btn
+                          type="submit"
+                          large
+                          class="primary text-capitalize px-8 mx-2"
+                          :loading="loading"
+                        >Update</v-btn>
                       </v-col>
                     </v-col>
                   </v-row>
@@ -57,7 +62,8 @@ export default {
   },
   data() {
     return {
-      displayName: ""
+      displayName: "",
+      loading: false
     };
   },
   computed: {
@@ -70,6 +76,7 @@ export default {
   },
   methods: {
     updateDisplayName() {
+      this.loading = true;
       this.$store.dispatch("updateDisplayName", this.displayName);
     },
     onDismissed() {

@@ -48,7 +48,12 @@
                         <Alert @dismissed="onDismissed" :text="error.message" />
                       </v-col>
                       <v-col cols="12" class="my-2 text-center">
-                        <v-btn type="submit" large class="primary text-capitalize px-12">Sign Up</v-btn>
+                        <v-btn
+                          type="submit"
+                          large
+                          class="primary text-capitalize px-12"
+                          :loading="loading"
+                        >Sign Up</v-btn>
                       </v-col>
                     </v-col>
                   </v-row>
@@ -73,7 +78,8 @@ export default {
     return {
       email: "",
       password: "",
-      displayName: ""
+      displayName: "",
+      loading: false
     };
   },
   computed: {
@@ -86,6 +92,7 @@ export default {
   },
   methods: {
     onSignUp() {
+      this.loading = true;
       this.$store.dispatch("signUserUp", {
         email: this.email,
         password: this.password,
