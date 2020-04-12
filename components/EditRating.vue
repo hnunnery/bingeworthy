@@ -21,11 +21,11 @@
         <v-icon>mdi-cog</v-icon>
       </v-btn>
       <!-- FOR XS (MOBILE) SCREEN SIZE ONLY -->
-      <v-btn fab x-small absolute bottom class="hidden-sm-and-up secondary--text" v-on="on">
-        <v-icon style="margin-left: 1px;">mdi-cog</v-icon>
+      <v-btn fab text x-small class="hidden-sm-and-up secondary--text" v-on="on">
+        <v-icon>mdi-cog</v-icon>
       </v-btn>
     </template>
-    <v-card class="px-6 py-2" color="rgba(17, 17, 17, 0.85)" elevation="15">
+    <v-card class="px-6 py-2" color="#1d1d1d" elevation="15">
       <v-row class="align-center justify-center">
         <v-col cols="12" class="pb-2">
           <h2

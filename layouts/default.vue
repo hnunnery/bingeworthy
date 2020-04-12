@@ -29,7 +29,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-divider></v-divider>
+        <v-divider class="primary" />
 
         <v-list class="ml-5">
           <!-- ALL RATINGS -->
@@ -37,37 +37,36 @@
             <v-list-item-icon>
               <v-icon>mdi-home</v-icon>
             </v-list-item-icon>
-
             <v-list-item-content>
               <v-list-item-title>All Ratings</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+
           <!-- MY RATINGS -->
           <v-list-item to="/ratings" v-if="userAuth" active-class="hidden">
             <v-list-item-icon>
               <v-icon>mdi-star</v-icon>
             </v-list-item-icon>
-
             <v-list-item-content>
               <v-list-item-title>My Ratings</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+
           <!-- RECENT RATINGS -->
           <v-list-item to="/recent" active-class="hidden">
             <v-list-item-icon>
               <v-icon>mdi-timelapse</v-icon>
             </v-list-item-icon>
-
             <v-list-item-content>
               <v-list-item-title>Recent Ratings</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+
           <!-- ADD A RATING -->
           <v-list-item to="/addrating" v-if="userAuth" active-class="hidden">
             <v-list-item-icon>
               <v-icon>mdi-plus</v-icon>
             </v-list-item-icon>
-
             <v-list-item-content>
               <v-list-item-title>Add A Rating</v-list-item-title>
             </v-list-item-content>
@@ -76,47 +75,46 @@
             <v-list-item-icon>
               <v-icon>mdi-plus</v-icon>
             </v-list-item-icon>
-
             <v-list-item-content>
               <v-list-item-title>Add A Rating</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+
           <!-- SEARCH -->
           <v-list-item @click="searchBar = !searchBar; drawer=false">
             <v-list-item-icon>
               <v-icon>mdi-magnify</v-icon>
             </v-list-item-icon>
-
             <v-list-item-content>
               <v-list-item-title>Search</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+
           <!-- SIGN IN -->
           <v-list-item to="/signin" v-if="!userAuth" active-class="hidden">
             <v-list-item-icon>
               <v-icon>mdi-account-check</v-icon>
             </v-list-item-icon>
-
             <v-list-item-content>
               <v-list-item-title>Sign In</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+
           <!-- SIGN UP -->
           <v-list-item to="/signup" v-if="!userAuth" active-class="hidden">
             <v-list-item-icon>
               <v-icon>mdi-account-plus</v-icon>
             </v-list-item-icon>
-
             <v-list-item-content>
               <v-list-item-title>Sign Up</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+
           <!-- SIGN OUT -->
           <v-list-item @click="onLogout" v-if="userAuth">
             <v-list-item-icon>
               <v-icon>mdi-account-remove</v-icon>
             </v-list-item-icon>
-
             <v-list-item-content>
               <v-list-item-title>Sign Out</v-list-item-title>
             </v-list-item-content>

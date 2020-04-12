@@ -116,6 +116,7 @@
                   style="line-height: 1em; margin-top: 5px;"
                   @click="setSearch(rating.name)"
                 >{{ rating.name }}</span>
+                <EditRating :rating="rating" v-if="userId === rating.userId || userIsAdmin" />
                 <v-spacer />
                 <v-rating
                   :value="parseFloat(rating.rating)"
@@ -127,18 +128,16 @@
                   readonly
                 ></v-rating>
               </v-col>
-              <v-col cols="12" class="body-2 d-inline-flex py-0 pl-0 pr-1">
+              <v-col cols="12" class="body-2 accent--text d-inline-flex py-0 pl-0 pr-1">
                 <span
                   @click="setSearch(rating.platform)"
-                  class="font-weight-bold"
-                  style="color: #782F40; padding-left: 2px;"
+                  style="padding-left: 2px;"
                 >{{ rating.platform }}</span>
                 <v-spacer />
                 <span @click="setSearch(rating.user)">{{ rating.user }}</span>
               </v-col>
-              <EditRating :rating="rating" v-if="userId === rating.userId || userIsAdmin" />
             </v-row>
-            <v-divider class="mt-3 px-0" />
+            <v-divider class="primary mt-3 px-0" />
           </v-col>
         </v-row>
 

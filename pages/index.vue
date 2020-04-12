@@ -104,16 +104,20 @@
         </v-row>
 
         <!-- START - MOBILE - MASTER RATINGS CARDS -->
-        <v-row v-show="!loading" class="hidden-sm-and-up justify-center my-0">
-          <v-expansion-panels v-model="panel">
+        <v-row
+          v-show="!loading"
+          class="hidden-sm-and-up justify-center"
+          style=" margin: 0px -19px !important;"
+        >
+          <v-expansion-panels v-model="panel" flat>
             <v-expansion-panel
               v-for="(rating, index) in filteredMasterRatingsMobile"
               :key="index"
               class="pt-3 pb-0 px-0"
               style="background-color: #1d1d1d !important;"
             >
-              <v-expansion-panel-header class="pa-0 ma-0" style="position: relative;">
-                <v-row class="text-center justify-center align-center px-4">
+              <v-expansion-panel-header class="pa-0 ma-0">
+                <v-row class="text-center justify-center align-center px-5">
                   <v-col cols="12" class="text-left d-inline-flex pt-0 pb-1 px-0">
                     <span class="title" style="line-height: 1em; margin-top: 5px;">{{ rating.name }}</span>
                     <v-spacer />
@@ -129,17 +133,17 @@
                   </v-col>
                   <v-col
                     cols="12"
-                    class="body-2 font-weight-bold d-inline-flex"
-                    style="padding: 0px 5px 0px 0px;"
+                    class="accent--text d-inline-flex"
+                    style="font-size: .9em; padding: 0px 5px 0px 0px;"
                   >
-                    <span style="color: #782F40; padding-left: 2px;">{{ rating.platform }}</span>
+                    <span style="padding-left: 2px;">
+                      <span>#{{ rating.rank }} &nbsp;</span>
+                      {{ rating.platform }}
+                    </span>
                     <v-spacer />
-                    <span
-                      class="font-weight-regular mr-2"
-                      style="opacity: .5;"
-                    >{{ rating.users.length }} Ratings</span>
-                    <span>#{{ rating.rank }} &nbsp;</span>
-                    <span>{{rating.roundedRating}}</span>
+                    <span class="mr-2">{{ rating.users.length }} Ratings &nbsp;-</span>
+
+                    <span class="font-weight-bold">{{rating.roundedRating}}</span>
                   </v-col>
                 </v-row>
                 <template v-slot:actions>
@@ -147,7 +151,7 @@
                 </template>
               </v-expansion-panel-header>
               <v-expansion-panel-content>
-                <v-col cols="12" class="ml-0 pa-0 d-inline-flex">
+                <v-col cols="12" class="ml-0 px-0 pt-2 pb-0 d-inline-flex">
                   <v-btn
                     text
                     dense
@@ -176,12 +180,12 @@
                   >Rate Show</v-btn>
                 </v-col>
               </v-expansion-panel-content>
-              <v-col cols="12" class="text-center pa-0" style="margin: -12px 0px -19px;">
+              <v-col cols="12" class="text-center pa-0" style="margin: -12px 0px 0px;">
                 <v-btn fab text x-small disabled>
                   <v-icon color="accent">$expand</v-icon>
                 </v-btn>
               </v-col>
-              <v-divider class="mt-3 px-0" />
+              <v-divider class="primary px-0" />
             </v-expansion-panel>
           </v-expansion-panels>
           <v-divider class="primary" style="padding: .5px;" />
@@ -383,6 +387,7 @@
                   style="line-height: 1em; margin-top: 5px;"
                   @click="setSearch(rating.name)"
                 >{{ rating.name }}</span>
+                <EditRating :rating="rating" v-if="userId === rating.userId || userIsAdmin" />
                 <v-spacer />
                 <v-rating
                   :value="parseFloat(rating.rating)"
@@ -397,13 +402,12 @@
               <v-col cols="12" class="body-2 d-inline-flex py-0 pl-0 pr-1">
                 <span
                   @click="setSearch(rating.platform)"
-                  class="font-weight-bold"
-                  style="color: #782F40; padding-left: 2px;"
+                  class="accent--text"
+                  style="padding-left: 2px;"
                 >{{ rating.platform }}</span>
                 <v-spacer />
                 <span @click="setSearch(rating.user)">{{ rating.user }}</span>
               </v-col>
-              <EditRating :rating="rating" v-if="userId === rating.userId || userIsAdmin" />
             </v-row>
             <v-divider class="mt-3 px-0" />
           </v-col>
