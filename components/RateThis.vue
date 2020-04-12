@@ -109,6 +109,7 @@ export default {
             this.platform = "";
             this.rating = 0;
             this.dialog = false;
+            this.$emit("close-panel");
           });
       } else if (this.duplicate) {
         alert(

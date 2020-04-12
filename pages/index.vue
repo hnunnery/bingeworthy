@@ -116,10 +116,7 @@
                 <!-- stuff goes here -->
                 <v-row class="text-center justify-center align-center px-4">
                   <v-col cols="12" class="text-left d-inline-flex pt-0 pb-1 px-0">
-                    <span
-                      class="title font-weight-light"
-                      style="line-height: 1em; margin-top: 5px;"
-                    >{{ rating.name }}</span>
+                    <span class="title" style="line-height: 1em; margin-top: 5px;">{{ rating.name }}</span>
                     <v-spacer />
                     <v-rating
                       :value="rating.averageRating"
@@ -168,6 +165,7 @@
                   <v-spacer />
                   <RateThis
                     v-if="userAuth"
+                    v-on:close-panel="panel=false"
                     :rateName="rating.name"
                     :ratePlatform="rating.platform"
                   />
