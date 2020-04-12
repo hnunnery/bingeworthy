@@ -555,7 +555,6 @@ export default {
       if (confirm("Sign Out?")) {
         this.$store.dispatch("logout");
         this.search = "";
-        this.$store.dispatch("loadRatings");
       }
     }
   },

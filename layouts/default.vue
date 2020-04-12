@@ -194,7 +194,6 @@ export default {
     onLogout() {
       if (confirm("Sign Out?")) {
         this.$store.dispatch("logout");
-        this.$store.dispatch("loadRatings");
       }
     }
   },
