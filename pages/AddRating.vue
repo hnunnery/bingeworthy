@@ -51,7 +51,7 @@
                       @click="resetForm"
                       color="#212121"
                       class="secondary--text text-capitalize mx-2 px-6 scale-btn"
-                    >Cancel</v-btn>
+                    >Reset</v-btn>
                     <v-btn type="submit" large class="primary text-capitalize mx-2 px-4 scale-btn">
                       <v-icon size="22" left>mdi-plus</v-icon>Add Rating
                     </v-btn>
