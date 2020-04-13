@@ -23,7 +23,8 @@
           class="mx-auto mt-5"
           style="width: 110px; height: 110px;"
         ></v-img>
-        <v-list-item v-if="this.$store.state.user" class="text-center mb-1">
+
+        <v-list-item v-if="this.$store.state.user" class="text-center mb-1" @click="updateName">
           <v-list-item-content>
             <v-list-item-title>{{ this.$store.state.user.name }}</v-list-item-title>
           </v-list-item-content>
@@ -192,6 +193,11 @@ export default {
     onLogout() {
       if (confirm("Sign Out?")) {
         this.$store.dispatch("logout");
+      }
+    },
+    updateName() {
+      if (confirm("Change Display Name?")) {
+        this.$router.push("/updatename");
       }
     }
   },

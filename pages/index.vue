@@ -97,7 +97,7 @@
         </v-row>
 
         <!-- PROGRESS SPINNER -->
-        <v-row v-show="loading" class="justify-center align-center" style="height: 50vh;">
+        <v-row v-show="loading" class="justify-center align-center" style="height: 80vh;">
           <v-col class="text-center">
             <v-progress-circular :size="150" :width="12" color="primary" indeterminate></v-progress-circular>
           </v-col>
