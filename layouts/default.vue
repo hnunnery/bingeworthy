@@ -15,7 +15,7 @@
         right
         color="#1d1d1d"
         class="title"
-        width="250px"
+        width="237px"
       >
         <v-img
           src="https://res.cloudinary.com/missionwebdev/image/upload/c_scale,f_auto,w_110/v1586282035/BingeWorthy/garnet-gold.png"
@@ -36,7 +36,7 @@
           <!-- ALL RATINGS -->
           <v-list-item to="/" active-class="hidden">
             <v-list-item-icon>
-              <v-icon>mdi-home</v-icon>
+              <v-icon>mdi-home-outline</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title>All Ratings</v-list-item-title>
@@ -46,7 +46,7 @@
           <!-- MY RATINGS -->
           <v-list-item to="/ratings" v-if="userAuth" active-class="hidden">
             <v-list-item-icon>
-              <v-icon>mdi-star</v-icon>
+              <v-icon>mdi-star-outline</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title>My Ratings</v-list-item-title>
@@ -56,7 +56,7 @@
           <!-- RECENT RATINGS -->
           <v-list-item to="/recent" active-class="hidden">
             <v-list-item-icon>
-              <v-icon>mdi-timelapse</v-icon>
+              <v-icon>mdi-clock-outline</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title>Recent Ratings</v-list-item-title>
@@ -66,7 +66,7 @@
           <!-- ADD A RATING -->
           <v-list-item to="/addrating" v-if="userAuth" active-class="hidden">
             <v-list-item-icon>
-              <v-icon>mdi-plus</v-icon>
+              <v-icon>mdi-plus-circle-outline</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title>Add A Rating</v-list-item-title>
@@ -74,7 +74,7 @@
           </v-list-item>
           <v-list-item to="/signin" v-else>
             <v-list-item-icon>
-              <v-icon>mdi-plus</v-icon>
+              <v-icon>mdi-plus-circle-outline</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title>Add A Rating</v-list-item-title>
@@ -94,7 +94,7 @@
           <!-- SIGN IN -->
           <v-list-item to="/signin" v-if="!userAuth" active-class="hidden">
             <v-list-item-icon>
-              <v-icon>mdi-account-check</v-icon>
+              <v-icon>mdi-account-check-outline</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title>Sign In</v-list-item-title>
@@ -104,7 +104,7 @@
           <!-- SIGN UP -->
           <v-list-item to="/signup" v-if="!userAuth" active-class="hidden">
             <v-list-item-icon>
-              <v-icon>mdi-account-plus</v-icon>
+              <v-icon>mdi-account-plus-outline</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title>Sign Up</v-list-item-title>
@@ -114,7 +114,7 @@
           <!-- SIGN OUT -->
           <v-list-item @click="onLogout" v-if="userAuth">
             <v-list-item-icon>
-              <v-icon>mdi-account-remove</v-icon>
+              <v-icon>mdi-account-cancel-outline</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title>Sign Out</v-list-item-title>

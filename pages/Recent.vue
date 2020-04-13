@@ -99,7 +99,7 @@
             class="pa-0"
             style="position: relative;"
           >
-            <v-row class="text-center justify-center align-center py-3 px-4">
+            <v-row class="text-center justify-center align-center pt-3 pb-4 px-4">
               <v-col cols="12" class="text-left d-inline-flex py-0 px-0">
                 <span
                   class="title"
@@ -121,13 +121,13 @@
               <v-col
                 cols="12"
                 class="accent--text d-inline-flex py-0 pl-0"
-                style="font-size: 1rem; padding-right: 5px;"
+                style="font-size: 1rem; padding-right: 5px; margin-bottom: -2px;"
               >
+                <EditRating :rating="rating" v-if="userId === rating.userId || userIsAdmin" />
                 <span
                   @click="setSearch(rating.platform)"
-                  style="padding-left: 2px; margin-right: 15px;"
+                  style="padding-left: 2px;"
                 >{{ rating.platform }}</span>
-                <EditRating :rating="rating" v-if="userId === rating.userId || userIsAdmin" />
                 <v-spacer />
                 <span @click="setSearch(rating.user)">{{ rating.user }}</span>
               </v-col>

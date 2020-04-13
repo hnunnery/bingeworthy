@@ -26,7 +26,7 @@
         text
         x-small
         class="hidden-sm-and-up secondary--text"
-        style="margin-top: -5px; font-size: .9em;"
+        style="margin: -4px 0px -4px -6px; font-size: 1em;"
         v-on="on"
       >
         <v-icon>mdi-cog</v-icon>
