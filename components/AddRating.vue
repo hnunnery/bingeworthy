@@ -9,7 +9,7 @@
     <template v-slot:activator="{ on }">
       <!-- button for lg and xl screen sizes -->
       <v-btn large class="hidden-md-and-down primary text-capitalize mx-1 scale-btn" v-on="on">
-        <v-icon left size="25">mdi-plus</v-icon>Add Your Rating
+        <v-icon left size="20">mdi-plus-circle-outline</v-icon>Rating
       </v-btn>
       <!-- button for sm - md screen size -->
       <v-btn

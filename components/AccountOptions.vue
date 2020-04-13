@@ -10,7 +10,7 @@
         active-class="no-active"
         style="margin-right: -4px; margin-left: -4px;"
       >
-        <v-icon>mdi-account</v-icon>
+        <v-icon>mdi-account-outline</v-icon>
       </v-btn>
       <v-btn
         large
@@ -18,7 +18,7 @@
         v-on="on"
         style="margin-top: 1.5px;"
       >
-        <v-icon left size="20">mdi-account</v-icon>Account
+        <v-icon left size="20">mdi-account-outline</v-icon>Account
       </v-btn>
     </template>
 
@@ -40,7 +40,7 @@
                 active-class="no-active"
                 class="primary text-capitalize mx-2 my-3 px-6"
               >
-                <v-icon size="25" left>mdi-account-plus</v-icon>&nbsp;Create an Account
+                <v-icon size="25" left>mdi-account-plus-outline</v-icon>&nbsp;Create an Account
               </v-btn>
               <v-btn
                 large
@@ -49,7 +49,7 @@
                 active-class="no-active"
                 class="primary text-capitalize mx-2 my-3 px-6"
               >
-                <v-icon size="25" left>mdi-account-check</v-icon>&nbsp;Sign In to Account
+                <v-icon size="25" left>mdi-account-check-outline</v-icon>&nbsp;Sign In to Account
               </v-btn>
             </v-col>
             <!-- DISPLAY IF USER IS AUTHENTICATED -->
@@ -60,7 +60,7 @@
                 active-class="no-active"
                 class="primary text-capitalize mx-2 my-3 px-5"
               >
-                <v-icon size="25" left>mdi-account-remove</v-icon>&nbsp;Sign Out of Account
+                <v-icon size="25" left>mdi-account-remove-outline</v-icon>&nbsp;Sign Out of Account
               </v-btn>
               <v-btn
                 large
@@ -69,7 +69,7 @@
                 active-class="no-active"
                 class="primary text-capitalize mx-2 my-3 px-7"
               >
-                <v-icon size="25" left>mdi-account-cog</v-icon>&nbsp;Update User Name
+                <v-icon size="25" left>mdi-account-cog-outline</v-icon>&nbsp;Update User Name
               </v-btn>
             </v-col>
           </v-row>

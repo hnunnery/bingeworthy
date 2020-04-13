@@ -26,8 +26,17 @@
               placeholder="Search"
               v-model="search"
               hide-details
-              :class="{ 'hidden-md-and-down': true, 'limit-width': userAuth, 'limit-width-no-auth': !userAuth }"
+              class="hidden-md-and-down limit-width"
             ></v-text-field>
+            <v-btn
+              large
+              class="hidden-md-and-down primary text-capitalize mr-1 scale-btn"
+              to="/"
+              style="margin-top: 2.2px; margin-left: 10px;"
+              v-if="!userAuth"
+            >
+              <v-icon left size="20">mdi-home-outline</v-icon>Home
+            </v-btn>
             <AccountOptions v-if="userAuth && this.$vuetify.breakpoint.lgAndUp" />
           </v-col>
           <v-col
@@ -38,11 +47,11 @@
           >
             <v-btn
               large
-              class="hidden-md-and-down primary mr-5 text-capitalize scale-btn"
+              class="hidden-md-and-down primary mx-1 text-capitalize scale-btn"
               v-if="!userAuth"
               to="/signin"
             >
-              <v-icon left size="20">mdi-account-check</v-icon>Sign In
+              <v-icon left size="20">mdi-account-check-outline</v-icon>Sign In
             </v-btn>
             <v-btn
               large
@@ -50,7 +59,7 @@
               v-if="!userAuth"
               to="/signup"
             >
-              <v-icon left size="20">mdi-account-plus</v-icon>Sign Up
+              <v-icon left size="20">mdi-account-plus-outline</v-icon>Sign Up
             </v-btn>
             <v-btn
               large
@@ -58,8 +67,16 @@
               to="/"
               v-if="userAuth"
             >
-              <v-icon left size="20">mdi-home</v-icon>All Ratings
+              <v-icon left size="20">mdi-home-outline</v-icon>Home
             </v-btn>
+            <v-btn
+              large
+              class="hidden-md-and-down primary text-capitalize mx-1 scale-btn"
+              to="/recent"
+            >
+              <v-icon left size="20">mdi-clock-outline</v-icon>Recent
+            </v-btn>
+
             <AddRating v-if="userAuth && this.$vuetify.breakpoint.lgAndUp" />
           </v-col>
         </v-row>
@@ -158,7 +175,7 @@
           >
             <v-card
               class="px-2 ma-1 align-center d-flex"
-              color="rgba(29, 29, 29, 0.5)"
+              color="rgba(17, 17, 17, 0.5)"
               elevation="15"
               height="100%"
               style="box-shadow: 0 0 5px 1px #782f40 !important;"
@@ -194,7 +211,6 @@
                 <v-col
                   cols="12"
                   class="title pt-0 pb-2 font-weight-light font-italic"
-                  @click="setSearch(rating.user)"
                 >{{ rating.user }}</v-col>
               </v-row>
             </v-card>
@@ -209,7 +225,7 @@
           <v-col cols="12" lg="4" xl="3" v-for="rating in filteredRatings" :key="rating.id">
             <v-card
               class="px-4 pt-1 ma-0 align-center d-flex"
-              color="rgba(29, 29, 29, 0.7)"
+              color="rgba(17, 17, 17, 0.7)"
               elevation="15"
               height="100%"
               style="box-shadow: 0 0 5px 1px #782f40 !important;"
@@ -243,7 +259,6 @@
                   cols="12"
                   class="headline font-weight-light font-italic pt-1"
                   style="cursor: pointer;"
-                  @click="setSearch(rating.user)"
                 >{{ rating.user }}</v-col>
                 <EditRating :rating="rating" v-if="userId === rating.userId" />
               </v-row>
