@@ -158,7 +158,7 @@
                 </template>
               </v-expansion-panel-header>
               <v-expansion-panel-content>
-                <v-col cols="12" class="ml-0 px-0 pt-4 pb-0 d-inline-flex">
+                <v-col cols="12" class="ml-0 px-0 pt-2 pb-0 d-inline-flex">
                   <v-btn
                     v-if="expandedName !== rating.name"
                     text
