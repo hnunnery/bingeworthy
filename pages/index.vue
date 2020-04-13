@@ -117,7 +117,10 @@
               style="background-color: #1d1d1d !important;"
             >
               <v-expansion-panel-header class="pa-0 ma-0">
-                <v-row class="text-center justify-center align-center pt-3 pb-4 px-5">
+                <v-row
+                  class="text-center justify-center align-center pt-3 px-5"
+                  style="padding-bottom: 20px;"
+                >
                   <v-col
                     cols="12"
                     class="text-left d-inline-flex pt-0 px-0"
