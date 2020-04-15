@@ -209,6 +209,7 @@ export default {
   created() {
     // fetching events from firebase
     this.$store.dispatch("loadRatings");
+    this.$store.dispatch("createRecentRatings");
     // log returning users in automatically
     auth.onAuthStateChanged(user => {
       if (user) {

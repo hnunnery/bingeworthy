@@ -145,6 +145,7 @@
                   @click="setSearch(rating.platform)"
                   style="padding-left: 2px;"
                 >{{ rating.platform }}</span>
+                <span class="secondary--text" style="margin-left: 10px;">{{ rating.date }}</span>
                 <v-spacer />
                 <span @click="setSearch(rating.user)">{{ rating.user }}</span>
               </v-col>

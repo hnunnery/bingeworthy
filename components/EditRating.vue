@@ -170,6 +170,7 @@ export default {
           })
           .then(() => {
             this.$store.commit("updateRating", updatedObject);
+            this.$store.dispatch("createRecentRatings");
             this.dialog = false;
           });
       } else if (this.duplicate) {
@@ -184,6 +185,7 @@ export default {
           .doc(this.ratingId)
           .delete()
           .then(() => {
+            this.$store.dispatch("createRecentRatings");
             this.$store.commit("deleteAlert");
             this.dialog = false;
           });

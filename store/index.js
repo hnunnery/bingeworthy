@@ -113,11 +113,9 @@ export const actions = {
             ratings.push(rating);
             commit("setLoadedRatings", ratings);
             dispatch("createMasterRatings");
-            dispatch("createRecentRatings");
           } else if (change.type == "removed") {
             commit("deleteRating", change.doc.id);
             dispatch("createMasterRatings");
-            dispatch("createRecentRatings");
           }
         });
       });
@@ -180,6 +178,13 @@ export const actions = {
         querySnapshot.forEach(doc => {
           let rating = doc.data();
           rating.id = doc.id;
+          rating.date = doc
+            .data()
+            .date.toDate()
+            .toDateString()
+            .split(" ")
+            .slice(1)
+            .join(" ");
           ratings.push(rating);
         });
       });

@@ -135,6 +135,7 @@ export default {
         db.collection("show")
           .add(newRating)
           .then(docRef => {
+            this.$store.dispatch("createRecentRatings");
             this.$store.commit("addAlert");
             this.name = "";
             this.platform = "";
