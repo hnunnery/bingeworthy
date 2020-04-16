@@ -183,7 +183,7 @@ export const actions = {
             .date.toDate()
             .toDateString()
             .split(" ")
-            .slice(1)
+            .slice(1, 3)
             .join(" ");
           ratings.push(rating);
         });

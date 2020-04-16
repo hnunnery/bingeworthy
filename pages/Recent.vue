@@ -201,6 +201,11 @@
                     style="color: #782F40;"
                     @click="setSearch(rating.platform)"
                   >{{ rating.platform }}</v-col>
+                  <v-col
+                    cols="3"
+                    class="title secondary--text font-weight-bold font-italic text-center pa-0"
+                    style="position: absolute; bottom: 0; right: 0;"
+                  >{{ rating.date }}</v-col>
                 </v-row>
                 <v-col
                   cols="12"
@@ -247,6 +252,11 @@
                   style="cursor: pointer; font-size: 1.9em; color: #782F40;"
                   @click="setSearch(rating.platform)"
                 >{{ rating.platform }}</v-col>
+                <v-col
+                  cols="3"
+                  class="headline secondary--text font-weight-bold font-italic text-center pa-0"
+                  style="margin-right: -5px; position: absolute; bottom: 0; right: 0;"
+                >{{ rating.date }}</v-col>
                 <v-col
                   cols="12"
                   class="headline font-weight-light font-italic pt-1"
