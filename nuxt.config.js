@@ -24,7 +24,7 @@ export default {
       {
         hid: "og:description",
         property: "og:description",
-        content: "See what shows people are bingewatching these days."
+        content: "Find out what's worth watching."
       },
       {
         hid: "og:image",

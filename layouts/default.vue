@@ -5,8 +5,7 @@
       class="svg-bg px-0 pt-0 pb-12"
       style="min-height: 110vh; padding-bottom: 100px;"
     >
-      <MobileNavBar v-if="this.$vuetify.breakpoint.xsOnly" v-on:toggle-menu="drawer=!drawer" />
-      <NavBar v-if="this.$vuetify.breakpoint.smAndUp" />
+      <MobileNavBar v-if="this.$vuetify.breakpoint.mdAndDown" v-on:toggle-menu="drawer=!drawer" />
       <Success />
       <v-navigation-drawer
         v-model="drawer"
@@ -154,16 +153,12 @@
 
 <script>
 import { auth } from "@/plugins/firebase.js";
-import NavBar from "@/components/NavBar";
 import MobileNavBar from "@/components/MobileNavBar";
-import SpeedDial from "@/components/SpeedDial";
 import Success from "@/components/Success";
 
 export default {
   components: {
-    NavBar,
     MobileNavBar,
-    SpeedDial,
     Success
   },
   data() {

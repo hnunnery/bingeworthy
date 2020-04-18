@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar dense dark class="hidden-sm-and-up mb-1" color="primary">
+  <v-app-bar dense dark class="hidden-lg-and-up mb-1" color="primary">
     <v-spacer />
     <v-toolbar-title
       class="secondary--text font-weight-bold font-italic text-xs-center text-sm-left px-1"
