@@ -13,76 +13,8 @@
             <v-text-field solo placeholder="Search" v-model="search" hide-details></v-text-field>
           </v-col>
         </v-row>
-        <!-- DESKTOP NAV FOR LG AND XL BREAKPOINTS -->
-        <v-row class="align-center justify-center justify-lg-space-between">
-          <v-col
-            cols="12"
-            sm="4"
-            lg="6"
-            class="hidden-md-and-down d-inline-flex mt-lg-3 ml-lg-4 mr-0 mb-0 pa-0"
-          >
-            <v-text-field
-              solo
-              placeholder="Search"
-              v-model="search"
-              hide-details
-              class="hidden-md-and-down limit-width"
-            ></v-text-field>
-            <v-btn
-              large
-              class="hidden-md-and-down primary text-capitalize mr-1 scale-btn"
-              to="/recent"
-              style="margin-top: 2.2px; margin-left: 10px;"
-              v-if="!userAuth"
-            >
-              <v-icon left size="20">mdi-clock-outline</v-icon>Recent
-            </v-btn>
-            <AccountOptions v-if="userAuth && this.$vuetify.breakpoint.lgAndUp" />
-          </v-col>
-          <v-col
-            cols="12"
-            sm="7"
-            lg="5"
-            class="hidden-md-and-down mt-lg-3 mr-lg-4 ml-0 pa-0 text-center text-sm-right"
-          >
-            <v-btn
-              large
-              class="hidden-md-and-down primary mx-1 text-capitalize scale-btn"
-              v-if="!userAuth"
-              to="/signin"
-            >
-              <v-icon left size="20">mdi-account-check-outline</v-icon>Sign In
-            </v-btn>
-            <v-btn
-              large
-              class="hidden-md-and-down primary text-capitalize mx-1 scale-btn"
-              v-if="!userAuth"
-              to="/signup"
-            >
-              <v-icon left size="20">mdi-account-plus-outline</v-icon>Sign Up
-            </v-btn>
-            <v-btn
-              large
-              class="hidden-md-and-down primary text-capitalize mx-1 scale-btn"
-              to="/recent"
-              v-if="userAuth"
-            >
-              <v-icon left size="20">mdi-clock-outline</v-icon>Recent
-            </v-btn>
-            <v-btn
-              large
-              class="hidden-md-and-down primary text-capitalize mx-1 scale-btn"
-              to="/ratings"
-              v-if="userAuth"
-            >
-              <v-icon left size="20">mdi-star-outline</v-icon>Ratings
-            </v-btn>
-            <AddRating v-if="userAuth && this.$vuetify.breakpoint.lgAndUp" />
-          </v-col>
-        </v-row>
       </v-col>
     </v-row>
-    <!-- DESKTOP NAV END -->
 
     <v-row justify="center">
       <v-col cols="12" xl="11" class="mt-0 pt-0 px-5">
@@ -112,6 +44,7 @@
             :ratePlatform="expandedPlatform"
           />
         </v-row>
+        <div class="hidden-md-and-down my-5"></div>
 
         <!-- PROGRESS SPINNER -->
         <v-row v-show="loading" class="justify-center align-center" style="height: 80vh;">

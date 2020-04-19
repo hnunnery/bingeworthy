@@ -3,7 +3,7 @@
     <v-container fluid class="px-0 pt-0 pb-12" style="min-height: 110vh; padding-bottom: 100px;">
       <MobileNavBar v-if="this.$vuetify.breakpoint.mdAndDown" v-on:toggle-menu="drawer=!drawer" />
       <Success />
-      <v-navigation-drawer v-model="drawer" absolute temporary right class="title" width="237px">
+      <v-navigation-drawer v-model="drawer" app class="title" width="237px">
         <v-img
           src="https://res.cloudinary.com/missionwebdev/image/upload/c_scale,f_auto,w_110/v1586282035/BingeWorthy/garnet-gold.png"
           alt="logo"
@@ -11,9 +11,13 @@
           style="width: 110px; height: 110px;"
         ></v-img>
 
-        <v-list-item v-if="this.$store.state.user" class="text-center mb-1" @click="updateName">
+        <v-list-item style="height: 43px;" class="no-active text-center mb-1" @click="updateName">
           <v-list-item-content>
-            <v-list-item-title>{{ this.$store.state.user.name }}</v-list-item-title>
+            <v-list-item-title
+              v-if="this.$store.state.user"
+              class="secondary--text"
+            >{{ this.$store.state.user.name }}</v-list-item-title>
+            <v-list-item-title v-else class="secondary--text">See what's worth watching</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
@@ -69,7 +73,10 @@
           </v-list-item>
 
           <!-- SEARCH -->
-          <v-list-item @click="searchBar = !searchBar; drawer=false">
+          <v-list-item
+            v-if="this.$vuetify.breakpoint.mdAndDown"
+            @click="searchBar = !searchBar; drawer=false"
+          >
             <v-list-item-icon>
               <v-icon>mdi-magnify</v-icon>
             </v-list-item-icon>
@@ -157,7 +164,7 @@ export default {
     return {
       dark: true,
       fab: false,
-      drawer: false,
+      drawer: null,
       searchBar: false
     };
   },
@@ -170,6 +177,9 @@ export default {
         this.$store.getters.user !== null &&
         this.$store.getters.user !== undefined
       );
+    },
+    lgAndUp() {
+      return this.$vuetify.breakpoint.lgAndUp;
     }
   },
   methods: {
@@ -187,8 +197,12 @@ export default {
       }
     },
     updateName() {
-      if (confirm("Change Display Name?")) {
-        this.$router.push("/updatename");
+      if (this.userAuth) {
+        if (confirm("Change Display Name?")) {
+          this.$router.push("/updatename");
+        }
+      } else {
+        this.$router.push("/signin");
       }
     }
   },
@@ -205,6 +219,13 @@ export default {
     },
     userDark() {
       this.dark = this.userDark;
+    },
+    lgAndUp() {
+      if (this.$vuetify.breakpoint.lgAndUp) {
+        this.drawer = true;
+      } else {
+        this.drawer = false;
+      }
     }
   },
   created() {

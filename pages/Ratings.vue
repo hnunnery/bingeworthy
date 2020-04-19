@@ -13,7 +13,7 @@
             <v-text-field solo placeholder="Search" v-model="search" hide-details></v-text-field>
           </v-col>
         </v-row>
-        <!-- DESKTOP NAV FOR LG AND XL BREAKPOINTS -->
+        <!-- DESKTOP NAV FOR LG AND XL BREAKPOINTS
         <v-row class="align-center justify-center justify-lg-space-between">
           <v-col
             cols="12"
@@ -79,7 +79,7 @@
 
             <AddRating v-if="userAuth && this.$vuetify.breakpoint.lgAndUp" />
           </v-col>
-        </v-row>
+        </v-row>-->
       </v-col>
     </v-row>
     <!-- DESKTOP NAV END -->
