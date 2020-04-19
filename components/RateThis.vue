@@ -1,11 +1,5 @@
 <template>
-  <v-dialog
-    v-model="dialog"
-    persistent
-    max-width="400"
-    overlay-color="#1d1d1d"
-    overlay-opacity=".97"
-  >
+  <v-dialog v-model="dialog" persistent max-width="400" overlay-opacity=".97">
     <template v-slot:activator="{ on }">
       <v-btn
         large
@@ -21,7 +15,7 @@
         v-on="on"
       >Rate Show</v-btn>
     </template>
-    <v-card class="px-6 py-2" color="#1d1d1d" elevation="15">
+    <v-card class="px-6 py-2" elevation="15">
       <v-row class="align-center justify-center">
         <v-col cols="12" class="pb-0">
           <h2
@@ -35,7 +29,7 @@
             size="25"
             :length="10"
             dense
-            color="secondary"
+            color="gold"
             required
             class="mt-4"
           ></v-rating>
@@ -47,7 +41,6 @@
                 large
                 elevation="15"
                 @click="dialog = false;"
-                color="#212121"
                 class="secondary--text text-capitalize mx-2 px-6 scale-btn"
               >Cancel</v-btn>
               <v-btn

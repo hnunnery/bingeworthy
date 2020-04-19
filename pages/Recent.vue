@@ -127,7 +127,7 @@
                 <v-spacer />
                 <v-rating
                   :value="parseFloat(rating.rating)"
-                  color="secondary"
+                  color="gold"
                   size="25"
                   half-icon="mdi-star-half-full"
                   half-increments
@@ -169,7 +169,6 @@
           >
             <v-card
               class="px-2 ma-1 align-center d-flex"
-              color="rgba(17, 17, 17, 0.5)"
               elevation="15"
               height="100%"
               style="box-shadow: 0 0 5px 1px #782f40 !important;"
@@ -188,7 +187,7 @@
                     half-icon="mdi-star-half-full"
                     size="35"
                     readonly
-                    color="secondary"
+                    color="gold"
                   ></v-rating>
                 </v-col>
                 <v-row class="justify-left">
@@ -222,7 +221,6 @@
           <v-col cols="12" lg="4" xl="3" v-for="rating in filteredRatings" :key="rating.id">
             <v-card
               class="px-4 pt-1 ma-0 align-center d-flex"
-              color="rgba(17, 17, 17, 0.7)"
               elevation="15"
               height="100%"
               style="box-shadow: 0 0 5px 1px #782f40 !important;"
@@ -243,7 +241,7 @@
                     half-icon="mdi-star-half-full"
                     size="40"
                     readonly
-                    color="secondary"
+                    color="gold"
                   ></v-rating>
                 </v-col>
                 <v-col

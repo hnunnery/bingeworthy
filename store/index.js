@@ -3,6 +3,7 @@ import { db, auth } from "@/plugins/firebase.js";
 // STORE
 
 export const state = () => ({
+  userDark: true,
   user: null,
   ratings: [],
   masterRatings: [],
@@ -79,6 +80,9 @@ export const mutations = {
   // USER HANDLING
   setUser(state, payload) {
     state.user = payload;
+  },
+  setUserDark(state, payload) {
+    state.userDark = payload;
   },
   updateUserName(state, payload) {
     state.user.name = payload;
@@ -227,6 +231,12 @@ export const actions = {
     } else {
       this.$router.push("/");
     }
+    db.collection("users")
+      .doc(payload.uid)
+      .get()
+      .then(querySnapshot => {
+        commit("setUserDark", querySnapshot.data().dark);
+      });
     commit("setUser", {
       id: payload.uid,
       name: payload.displayName
@@ -246,6 +256,17 @@ export const actions = {
       .catch(error => {
         commit("setError", error);
         console.log(error);
+      });
+  },
+  saveUserDark({ state }, payload) {
+    let userId = state.user.id;
+    db.collection("users")
+      .doc(userId)
+      .set({
+        dark: payload
+      })
+      .then(docRef => {
+        console.log(`Dark Mode set to ${payload}`);
       });
   },
   logout({ commit }) {
@@ -285,6 +306,9 @@ export const getters = {
   },
   user(state) {
     return state.user;
+  },
+  userDark(state) {
+    return state.userDark;
   }
 };
 

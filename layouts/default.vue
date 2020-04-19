@@ -1,21 +1,9 @@
 <template>
-  <v-app style="background-color: #1d1d1d; overflow: hidden;">
-    <v-container
-      fluid
-      class="svg-bg px-0 pt-0 pb-12"
-      style="min-height: 110vh; padding-bottom: 100px;"
-    >
+  <v-app style="overflow: hidden;">
+    <v-container fluid class="px-0 pt-0 pb-12" style="min-height: 110vh; padding-bottom: 100px;">
       <MobileNavBar v-if="this.$vuetify.breakpoint.mdAndDown" v-on:toggle-menu="drawer=!drawer" />
       <Success />
-      <v-navigation-drawer
-        v-model="drawer"
-        absolute
-        temporary
-        right
-        color="#1d1d1d"
-        class="title"
-        width="237px"
-      >
+      <v-navigation-drawer v-model="drawer" absolute temporary right class="title" width="237px">
         <v-img
           src="https://res.cloudinary.com/missionwebdev/image/upload/c_scale,f_auto,w_110/v1586282035/BingeWorthy/garnet-gold.png"
           alt="logo"
@@ -120,6 +108,10 @@
             </v-list-item-content>
           </v-list-item>
         </v-list>
+
+        <div class="mt-12 ml-12">
+          <v-switch v-model="dark" color="secondary" label="Dark Mode"></v-switch>
+        </div>
       </v-navigation-drawer>
       <v-btn
         v-show="this.$store.state.ratings"
@@ -163,12 +155,16 @@ export default {
   },
   data() {
     return {
+      dark: true,
       fab: false,
       drawer: false,
       searchBar: false
     };
   },
   computed: {
+    userDark() {
+      return this.$store.getters.userDark;
+    },
     userAuth() {
       return (
         this.$store.getters.user !== null &&
@@ -199,9 +195,20 @@ export default {
   watch: {
     searchBar() {
       this.$store.commit("searchBarToggle");
+    },
+    dark() {
+      this.$vuetify.theme.dark = this.dark;
+      if (this.userAuth) {
+        this.$store.dispatch("saveUserDark", this.dark);
+        this.$store.commit("setUserDark", this.dark);
+      }
+    },
+    userDark() {
+      this.dark = this.userDark;
     }
   },
   created() {
+    this.$vuetify.theme.dark = true;
     // fetching events from firebase
     this.$store.dispatch("loadRatings");
     this.$store.dispatch("createRecentRatings");
@@ -216,6 +223,11 @@ export default {
 </script>
 
 <style>
+.theme--dark.v-navigation-drawer,
+.theme--dark.v-card,
+.theme--dark.v-expansion-panels {
+  background-color: #111;
+}
 /* stops route highlighting of nav buttons */
 .v-btn--active.no-active::before {
   opacity: 0 !important;

@@ -85,11 +85,26 @@ export default {
           primary: "#4f1f2a",
           accent: "#757575",
           secondary: "#ceb888",
+          gold: "#ceb888",
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.red.darken4,
           success: colors.green.darken1,
           white: "#fafafa",
+          black: "#111",
+          grey: "#424242"
+        },
+        light: {
+          primary: "#4f1f2a",
+          accent: "#757575",
+          secondary: "#4f1f2a",
+          gold: "#ceb888",
+          info: colors.teal.lighten1,
+          warning: colors.amber.base,
+          error: colors.red.darken4,
+          success: colors.green.darken1,
+          white: "#fafafa",
+          black: "#111",
           grey: "#424242"
         }
       }
