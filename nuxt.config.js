@@ -91,7 +91,7 @@ export default {
           error: colors.red.darken4,
           success: colors.green.darken1,
           white: "#fafafa",
-          black: "#111",
+          black: "#121212",
           grey: "#424242"
         },
         light: {
@@ -104,7 +104,7 @@ export default {
           error: colors.red.darken4,
           success: colors.green.darken1,
           white: "#fafafa",
-          black: "#111",
+          black: "#121212",
           grey: "#424242"
         }
       }

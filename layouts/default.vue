@@ -226,7 +226,7 @@ export default {
 .theme--dark.v-navigation-drawer,
 .theme--dark.v-card,
 .theme--dark.v-expansion-panels {
-  background-color: #111;
+  background-color: #121212 !important;
 }
 /* stops route highlighting of nav buttons */
 .v-btn--active.no-active::before {
