@@ -198,9 +198,9 @@ export default {
     },
     dark() {
       this.$vuetify.theme.dark = this.dark;
+      this.$store.commit("setUserDark", this.dark);
       if (this.userAuth) {
         this.$store.dispatch("saveUserDark", this.dark);
-        this.$store.commit("setUserDark", this.dark);
       }
     },
     userDark() {
