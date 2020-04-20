@@ -6,7 +6,7 @@
         <v-row
           class="align-center justify-center"
           v-show="
-            this.$store.state.searchBar && this.$vuetify.breakpoint.mdAndDown
+            this.$store.state.searchBar && this.$vuetify.breakpoint.xsOnly
           "
         >
           <v-col cols="12" sm="10" md="6" class="mt-1 mx-0 mb-2 px-2 py-0">
@@ -90,6 +90,16 @@
           class="hidden-xs-only secondary--text text-center font-weight-bold font-italic my-2"
           style="letter-spacing: -2px; font-size: 6vmax;"
         >BingeWorthy</h1>
+        <v-row
+          class="align-center justify-center"
+          v-show="
+            this.$store.state.searchBar && this.$vuetify.breakpoint.smAndUp
+          "
+        >
+          <v-col cols="12" md="6" lg="4" class="mt-1 mx-0 mb-2 px-2 py-0">
+            <v-text-field solo placeholder="Search" v-model="search" hide-details></v-text-field>
+          </v-col>
+        </v-row>
         <v-row class="justify-center mt-0 mb-0 pb-0">
           <v-btn
             text
