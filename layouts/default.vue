@@ -80,10 +80,7 @@
           </v-list-item>
 
           <!-- SEARCH -->
-          <v-list-item
-            v-if="this.$vuetify.breakpoint.mdAndDown"
-            @click="searchBar = !searchBar; drawer=false"
-          >
+          <v-list-item @click="searchBar = !searchBar; drawer=false">
             <v-list-item-icon>
               <v-icon>mdi-magnify</v-icon>
             </v-list-item-icon>
