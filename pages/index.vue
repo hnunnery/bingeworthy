@@ -169,7 +169,8 @@
                 expandedRank = rating.rank;
                 expandedRating = rating.averageRating.toFixed(2);
               "
-              style="box-shadow: 0 0 5px 1px #ceb888 !important; position: relative;"
+              :style="{ boxShadow: shadow}"
+              style="position: relative;"
             >
               <v-row class="text-center justify-center align-center">
                 <v-col cols="12" class="mt-2 py-1" style="font-size: 1.6em; line-height: 1em;">
@@ -257,7 +258,8 @@
                 expandedRank = rating.rank;
                 expandedRating = rating.averageRating.toFixed(2);
               "
-              style="box-shadow: 0 0 10px 3px #ceb888 !important; cursor: pointer;"
+              :style="{ boxShadow: shadow}"
+              style="cursor: pointer;"
             >
               <v-row class="text-center justify-center align-center">
                 <v-row class="justify-center align-center" style="height: 80px;">
@@ -580,6 +582,15 @@ export default {
     },
     dark() {
       return this.$store.state.userDark;
+    },
+    shadow() {
+      if (this.dark && this.$vuetify.breakpoint.mdOnly) {
+        return "0 0 5px 1px #ceb888 !important";
+      } else if (this.dark && this.$vuetify.breakpoint.lgAndUp) {
+        return "0 0 10px 3px #ceb888 !important";
+      } else {
+        return "0 0 5px 1px #782f40 !important";
+      }
     },
     // controls loading progress spinner
     loading() {

@@ -267,9 +267,9 @@ export default {
 form {
   font-size: 16px !important;
 }
-.hidden {
-  display: none;
-}
+/* .hidden {
+  display: none !important;
+} */
 .modal-title {
   font-size: 1.6em;
 }
