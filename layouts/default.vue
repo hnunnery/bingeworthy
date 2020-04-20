@@ -30,9 +30,9 @@
 
         <v-divider />
 
-        <v-list class="ml-5">
+        <v-list>
           <!-- ALL RATINGS -->
-          <v-list-item to="/" active-class="hidden">
+          <v-list-item to="/" class="pl-5" active-class="hidden">
             <v-list-item-icon>
               <v-icon>mdi-home-outline</v-icon>
             </v-list-item-icon>
@@ -42,7 +42,7 @@
           </v-list-item>
 
           <!-- MY RATINGS -->
-          <v-list-item to="/ratings" v-if="userAuth" active-class="hidden">
+          <v-list-item to="/ratings" v-if="userAuth" class="pl-5" active-class="hidden">
             <v-list-item-icon>
               <v-icon>mdi-star-outline</v-icon>
             </v-list-item-icon>
@@ -52,7 +52,7 @@
           </v-list-item>
 
           <!-- RECENT RATINGS -->
-          <v-list-item to="/recent" active-class="hidden">
+          <v-list-item to="/recent" class="pl-5" active-class="hidden">
             <v-list-item-icon>
               <v-icon>mdi-clock-outline</v-icon>
             </v-list-item-icon>
@@ -62,7 +62,7 @@
           </v-list-item>
 
           <!-- ADD A RATING -->
-          <v-list-item to="/addrating" v-if="userAuth" active-class="hidden">
+          <v-list-item to="/addrating" v-if="userAuth" class="pl-5" active-class="hidden">
             <v-list-item-icon>
               <v-icon>mdi-plus-circle-outline</v-icon>
             </v-list-item-icon>
@@ -70,7 +70,7 @@
               <v-list-item-title>Add A Rating</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item to="/signin" v-else>
+          <v-list-item to="/signin" v-else class="pl-5">
             <v-list-item-icon>
               <v-icon>mdi-plus-circle-outline</v-icon>
             </v-list-item-icon>
@@ -80,7 +80,7 @@
           </v-list-item>
 
           <!-- SEARCH -->
-          <v-list-item @click="searchBar = !searchBar; drawer=false">
+          <v-list-item @click="searchBar = !searchBar; drawer=false" class="pl-5">
             <v-list-item-icon>
               <v-icon>mdi-magnify</v-icon>
             </v-list-item-icon>
@@ -90,7 +90,7 @@
           </v-list-item>
 
           <!-- SIGN IN -->
-          <v-list-item to="/signin" v-if="!userAuth" active-class="hidden">
+          <v-list-item to="/signin" v-if="!userAuth" active-class="hidden" class="pl-5">
             <v-list-item-icon>
               <v-icon>mdi-account-check-outline</v-icon>
             </v-list-item-icon>
@@ -100,7 +100,7 @@
           </v-list-item>
 
           <!-- SIGN UP -->
-          <v-list-item to="/signup" v-if="!userAuth" active-class="hidden">
+          <v-list-item to="/signup" v-if="!userAuth" class="pl-5" active-class="hidden">
             <v-list-item-icon>
               <v-icon>mdi-account-plus-outline</v-icon>
             </v-list-item-icon>
@@ -110,7 +110,7 @@
           </v-list-item>
 
           <!-- SIGN OUT -->
-          <v-list-item @click="onLogout" v-if="userAuth">
+          <v-list-item @click="onLogout" v-if="userAuth" class="pl-5">
             <v-list-item-icon>
               <v-icon>mdi-account-cancel-outline</v-icon>
             </v-list-item-icon>
