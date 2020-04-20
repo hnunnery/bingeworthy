@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialog" max-width="400" overlay-color="#1d1d1d" overlay-opacity=".97">
+  <v-dialog v-model="dialog" max-width="400" overlay-color="black" overlay-opacity=".97">
     <template v-slot:activator="{ on }">
       <v-btn
         fab
@@ -22,7 +22,7 @@
       </v-btn>
     </template>
 
-    <v-card class="px-6 py-2" color="#1d1d1d" elevation="15">
+    <v-card class="px-6 py-2" elevation="15">
       <v-row class="align-center justify-center">
         <v-col cols="12" class="pb-0">
           <h2

@@ -13,87 +13,19 @@
             <v-text-field solo placeholder="Search" v-model="search" hide-details></v-text-field>
           </v-col>
         </v-row>
-        <!-- DESKTOP NAV FOR LG AND XL BREAKPOINTS -->
-        <v-row class="align-center justify-center justify-lg-space-between">
-          <v-col
-            cols="12"
-            sm="4"
-            lg="6"
-            class="hidden-md-and-down d-inline-flex mt-lg-3 ml-lg-4 mr-0 mb-0 pa-0"
-          >
-            <v-text-field
-              solo
-              placeholder="Search"
-              v-model="search"
-              hide-details
-              class="hidden-md-and-down limit-width"
-            ></v-text-field>
-            <v-btn
-              large
-              class="hidden-md-and-down primary text-capitalize mr-1 scale-btn"
-              to="/recent"
-              style="margin-top: 2.2px; margin-left: 10px;"
-              v-if="!userAuth"
-            >
-              <v-icon left size="20">mdi-clock-outline</v-icon>Recent
-            </v-btn>
-            <AccountOptions v-if="userAuth && this.$vuetify.breakpoint.lgAndUp" />
-          </v-col>
-          <v-col
-            cols="12"
-            sm="7"
-            lg="5"
-            class="hidden-md-and-down mt-lg-3 mr-lg-4 ml-0 pa-0 text-center text-sm-right"
-          >
-            <v-btn
-              large
-              class="hidden-md-and-down primary mx-1 text-capitalize scale-btn"
-              v-if="!userAuth"
-              to="/signin"
-            >
-              <v-icon left size="20">mdi-account-check-outline</v-icon>Sign In
-            </v-btn>
-            <v-btn
-              large
-              class="hidden-md-and-down primary text-capitalize mx-1 scale-btn"
-              v-if="!userAuth"
-              to="/signup"
-            >
-              <v-icon left size="20">mdi-account-plus-outline</v-icon>Sign Up
-            </v-btn>
-            <v-btn
-              large
-              class="hidden-md-and-down primary text-capitalize mx-1 scale-btn"
-              to="/recent"
-              v-if="userAuth"
-            >
-              <v-icon left size="20">mdi-clock-outline</v-icon>Recent
-            </v-btn>
-            <v-btn
-              large
-              class="hidden-md-and-down primary text-capitalize mx-1 scale-btn"
-              to="/ratings"
-              v-if="userAuth"
-            >
-              <v-icon left size="20">mdi-star-outline</v-icon>Ratings
-            </v-btn>
-            <AddRating v-if="userAuth && this.$vuetify.breakpoint.lgAndUp" />
-          </v-col>
-        </v-row>
       </v-col>
     </v-row>
-    <!-- DESKTOP NAV END -->
 
     <v-row justify="center">
       <v-col cols="12" xl="11" class="mt-0 pt-0 px-5">
         <h1
-          class="hidden-md-and-down secondary--text text-center font-weight-bold font-italic my-2"
+          class="hidden-xs-only secondary--text text-center font-weight-bold font-italic my-2"
           style="letter-spacing: -2px; font-size: 6vmax;"
         >BingeWorthy</h1>
         <v-row v-show="this.search" class="justify-center align-center mt-2 mb-0 pb-0">
           <v-btn
             large
-            class="hidden-xs-only primary text-capitalize mt-md-2 mb-md-1 mx-3 scale-btn"
+            class="hidden-sm-and-down primary text-capitalize mt-md-2 mb-md-1 mx-3 scale-btn"
             @click="clearSearch"
           >
             <v-icon left>mdi-arrow-left</v-icon>Back / Clear
@@ -101,17 +33,18 @@
           <v-btn
             text
             dense
-            class="hidden-sm-and-up text-capitalize mt-md-2 mb-sm-3 mx-2 py-0"
+            class="hidden-md-and-up text-capitalize mt-md-2 mb-sm-3 mx-2 py-0"
             @click="clearSearch"
           >
             <v-icon left>mdi-arrow-left</v-icon>Back / Clear
           </v-btn>
           <RateThis
-            v-if="expandedName && userAuth && this.$vuetify.breakpoint.smAndUp"
+            v-if="expandedName && userAuth && this.$vuetify.breakpoint.mdAndUp"
             :rateName="expandedName"
             :ratePlatform="expandedPlatform"
           />
         </v-row>
+        <div class="hidden-md-and-down my-5"></div>
 
         <!-- PROGRESS SPINNER -->
         <v-row v-show="loading" class="justify-center align-center" style="height: 80vh;">
@@ -123,7 +56,7 @@
         <!-- START - MOBILE - MASTER RATINGS CARDS -->
         <v-row
           v-show="!loading"
-          class="hidden-sm-and-up justify-center"
+          class="hidden-md-and-up justify-center"
           style=" margin: 0px -19px !important;"
         >
           <v-expansion-panels v-model="panel" flat>
@@ -131,11 +64,11 @@
               v-for="(rating, index) in filteredMasterRatingsMobile"
               :key="index"
               class="pa-0"
-              style="background-color: #1d1d1d !important;"
+              :class="{ 'black': dark }"
             >
               <v-expansion-panel-header class="pa-0 ma-0">
                 <v-row
-                  class="text-center justify-center align-center pt-3 px-5"
+                  class="text-center justify-center align-center pt-3 px-5 px-sm-8"
                   style="padding-bottom: 20px;"
                 >
                   <v-col
@@ -147,7 +80,7 @@
                     <v-spacer />
                     <v-rating
                       :value="rating.averageRating"
-                      color="secondary"
+                      color="gold"
                       size="25"
                       half-icon="mdi-star-half-full"
                       half-increments
@@ -216,19 +149,17 @@
           <v-divider class="primary" style="padding: .5px;" />
         </v-row>
 
-        <!-- START SM - MD MASTER RATINGS CARDS -->
-        <v-row v-show="!loading" class="hidden-xs-only hidden-lg-and-up justify-center my-0">
+        <!-- START MD MASTER RATINGS CARDS -->
+        <v-row v-show="!loading && this.$vuetify.breakpoint.mdOnly" class="justify-center my-0">
           <v-col
             cols="12"
             sm="6"
-            md="4"
             v-for="(rating, index) in filteredMasterRatingsMobile"
             :key="index"
             class="pt-1 pt-sm-2 pb-2 px-1"
           >
             <v-card
               class="px-2 ma-1 align-center d-flex"
-              color="rgba(17, 17, 17, 0.5)"
               height="100%"
               elevation="15"
               @click="
@@ -238,7 +169,8 @@
                 expandedRank = rating.rank;
                 expandedRating = rating.averageRating.toFixed(2);
               "
-              style="box-shadow: 0 0 5px 1px #ceb888 !important; position: relative;"
+              :style="{ boxShadow: shadow}"
+              style="position: relative;"
             >
               <v-row class="text-center justify-center align-center">
                 <v-col cols="12" class="mt-2 py-1" style="font-size: 1.6em; line-height: 1em;">
@@ -253,7 +185,7 @@
                     half-icon="mdi-star-half-full"
                     size="35"
                     readonly
-                    color="secondary"
+                    color="gold"
                   ></v-rating>
                 </v-col>
                 <v-col
@@ -317,7 +249,6 @@
           >
             <v-card
               class="px-4 pt-1 ma-0 align-center d-flex"
-              color="rgba(17, 17, 17, 0.7)"
               elevation="15"
               height="100%"
               @click="
@@ -327,7 +258,8 @@
                 expandedRank = rating.rank;
                 expandedRating = rating.averageRating.toFixed(2);
               "
-              style="box-shadow: 0 0 10px 3px #ceb888 !important; cursor: pointer;"
+              :style="{ boxShadow: shadow}"
+              style="cursor: pointer;"
             >
               <v-row class="text-center justify-center align-center">
                 <v-row class="justify-center align-center" style="height: 80px;">
@@ -344,7 +276,7 @@
                     half-icon="mdi-star-half-full"
                     size="40"
                     readonly
-                    color="secondary"
+                    color="gold"
                   ></v-rating>
                 </v-col>
                 <!-- IF EXPANDED NAME -->
@@ -365,7 +297,7 @@
                 <v-col
                   cols="3"
                   class="pa-0 display-1 font-weight-bold font-italic text-center"
-                  style="opacity: 0.2; margin-right: -15px; position: absolute; bottom: 0; right: 0;"
+                  style="opacity: 0.2; margin-right: -10px; position: absolute; bottom: 0; right: 0;"
                 >
                   {{ rating.users.length }}
                   <p
@@ -397,7 +329,7 @@
         </v-row>
 
         <!-- START - MOBILE - RATINGS CARDS -->
-        <v-row v-show="!loading && this.search" class="hidden-sm-and-up justify-center my-0">
+        <v-row v-show="!loading && this.search" class="hidden-md-and-up justify-center my-0">
           <v-col
             cols="12"
             v-for="rating in filteredRatings"
@@ -405,7 +337,7 @@
             class="pa-0"
             style="position: relative;"
           >
-            <v-row class="text-center justify-center align-center pt-3 pb-4 px-4">
+            <v-row class="text-center justify-center align-center pt-3 pb-4 px-4 px-sm-7">
               <v-col
                 cols="12"
                 class="text-left d-inline-flex pt-0 px-0"
@@ -419,7 +351,7 @@
                 <v-spacer />
                 <v-rating
                   :value="parseFloat(rating.rating)"
-                  color="secondary"
+                  color="gold"
                   size="25"
                   half-icon="mdi-star-half-full"
                   half-increments
@@ -445,22 +377,20 @@
           </v-col>
         </v-row>
 
-        <!-- START SM - MD RATINGS CARDS -->
+        <!-- START MD RATINGS CARDS -->
         <v-row
           v-if="!loading && this.search"
-          class="hidden-xs-only hidden-lg-and-up justify-center mt-0 mb-6"
+          class="hidden-sm-and-down hidden-lg-and-up justify-center mt-0 mb-6"
         >
           <v-col
             cols="12"
             sm="6"
-            md="4"
             v-for="rating in filteredRatings"
             :key="rating.id"
             class="pb-0 px-1"
           >
             <v-card
               class="px-2 ma-1 align-center d-flex"
-              color="rgba(17, 17, 17, 0.5)"
               height="100%"
               elevation="15"
               style="box-shadow: 0 0 5px 1px #782f40 !important;"
@@ -479,7 +409,7 @@
                     half-icon="mdi-star-half-full"
                     size="35"
                     readonly
-                    color="secondary"
+                    color="gold"
                   ></v-rating>
                 </v-col>
                 <v-row class="justify-left">
@@ -508,7 +438,6 @@
           <v-col cols="12" lg="4" xl="3" v-for="rating in filteredRatings" :key="rating.id">
             <v-card
               class="px-4 pt-1 ma-0 align-center d-flex"
-              color="rgba(17, 17, 17, 0.7)"
               elevation="15"
               height="100%"
               style="box-shadow: 0 0 5px 1px #782f40 !important;"
@@ -529,7 +458,7 @@
                     half-icon="mdi-star-half-full"
                     size="40"
                     readonly
-                    color="secondary"
+                    color="gold"
                   ></v-rating>
                 </v-col>
                 <v-col
@@ -650,6 +579,18 @@ export default {
           return rating.name === this.expandedName;
         }
       });
+    },
+    dark() {
+      return this.$store.state.userDark;
+    },
+    shadow() {
+      if (this.dark && this.$vuetify.breakpoint.mdOnly) {
+        return "0 0 5px 1px #ceb888 !important";
+      } else if (this.dark && this.$vuetify.breakpoint.lgAndUp) {
+        return "0 0 10px 3px #ceb888 !important";
+      } else {
+        return "0 0 5px 1px #782f40 !important";
+      }
     },
     // controls loading progress spinner
     loading() {

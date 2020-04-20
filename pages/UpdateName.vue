@@ -2,7 +2,7 @@
   <v-container fluid class="pt-0">
     <v-row class="justify-center align-center" style="min-height: 80vh !important;">
       <v-col cols="12" sm="8" md="6" style="max-width: 500px;">
-        <v-card class="pa-6 px-lg-10" color="rgba(29, 29, 29, 0.5)" elevation="15">
+        <v-card class="pa-6 px-lg-10" elevation="15">
           <form @submit.prevent="updateDisplayName">
             <v-row class="align-center justify-center">
               <v-col cols="12" class="pb-2">
@@ -30,8 +30,8 @@
                       <v-col cols="12" class="my-2 text-center">
                         <v-btn
                           large
+                          outlined
                           to="/"
-                          color="#212121"
                           class="secondary--text text-capitalize mx-2"
                         >Cancel</v-btn>
                         <v-btn

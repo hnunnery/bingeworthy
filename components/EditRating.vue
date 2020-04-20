@@ -1,11 +1,5 @@
 <template>
-  <v-dialog
-    v-model="dialog"
-    persistent
-    max-width="500"
-    overlay-color="#1d1d1d"
-    overlay-opacity=".97"
-  >
+  <v-dialog v-model="dialog" persistent max-width="500" overlay-color="black" overlay-opacity=".97">
     <template v-slot:activator="{ on }">
       <v-btn
         fab
@@ -13,7 +7,7 @@
         absolute
         bottom
         right
-        class="hidden-xs-only secondary--text"
+        class="hidden-sm-and-down gold--text"
         style="z-index: 1;"
         color="#313131"
         v-on="on"
@@ -25,14 +19,14 @@
         fab
         text
         x-small
-        class="hidden-sm-and-up secondary--text"
+        class="hidden-md-and-up secondary--text"
         style="margin: -4px 0px -4px -6px; font-size: 1em;"
         v-on="on"
       >
         <v-icon>mdi-cog</v-icon>
       </v-btn>
     </template>
-    <v-card class="px-6 py-2" color="#1d1d1d" elevation="15">
+    <v-card class="px-6 py-2" elevation="15">
       <v-row class="align-center justify-center">
         <v-col cols="12" class="pb-2">
           <h2
@@ -60,7 +54,7 @@
           ></v-combobox>
         </v-col>
         <v-col cols="12" class="text-center">
-          <v-rating v-model="updatedRating" half-increments size="40" color="secondary" required></v-rating>
+          <v-rating v-model="updatedRating" half-increments size="40" color="gold" required></v-rating>
         </v-col>
         <v-col cols="12" class="pt-1">
           <v-text-field type="text" name="user" label="Your Name" v-model="updatedUser" required></v-text-field>
@@ -77,8 +71,8 @@
                 <v-col cols="10" class="text-right py-0">
                   <v-btn
                     large
+                    outlined
                     @click="dialog = false"
-                    color="#212121"
                     class="secondary--text text-capitalize mx-1 scale-btn"
                   >Cancel</v-btn>
                   <v-btn large @click="updateRating" class="primary text-capitalize mx-1 scale-btn">

@@ -1,18 +1,13 @@
 <template>
-  <v-app style="background-color: #1d1d1d; overflow: hidden;">
-    <v-container
-      fluid
-      class="svg-bg px-0 pt-0 pb-12"
-      style="min-height: 110vh; padding-bottom: 100px;"
-    >
+  <v-app style="overflow: hidden;">
+    <v-container fluid class="px-0 pt-0 pb-12" style="min-height: 110vh; padding-bottom: 100px;">
       <MobileNavBar v-if="this.$vuetify.breakpoint.mdAndDown" v-on:toggle-menu="drawer=!drawer" />
       <Success />
       <v-navigation-drawer
         v-model="drawer"
-        absolute
-        temporary
-        right
-        color="#1d1d1d"
+        app
+        :temporary="!smAndUp"
+        :permanent="smAndUp"
         class="title"
         width="237px"
       >
@@ -23,13 +18,17 @@
           style="width: 110px; height: 110px;"
         ></v-img>
 
-        <v-list-item v-if="this.$store.state.user" class="text-center mb-1" @click="updateName">
+        <v-list-item style="height: 43px;" class="no-active text-center mb-1" @click="updateName">
           <v-list-item-content>
-            <v-list-item-title>{{ this.$store.state.user.name }}</v-list-item-title>
+            <v-list-item-title
+              v-if="this.$store.state.user"
+              class="secondary--text"
+            >{{ this.$store.state.user.name }}</v-list-item-title>
+            <v-list-item-title v-else class="secondary--text">See what's worth watching</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
-        <v-divider class="primary" />
+        <v-divider />
 
         <v-list class="ml-5">
           <!-- ALL RATINGS -->
@@ -81,7 +80,10 @@
           </v-list-item>
 
           <!-- SEARCH -->
-          <v-list-item @click="searchBar = !searchBar; drawer=false">
+          <v-list-item
+            v-if="this.$vuetify.breakpoint.mdAndDown"
+            @click="searchBar = !searchBar; drawer=false"
+          >
             <v-list-item-icon>
               <v-icon>mdi-magnify</v-icon>
             </v-list-item-icon>
@@ -120,6 +122,10 @@
             </v-list-item-content>
           </v-list-item>
         </v-list>
+
+        <div class="mt-6 ml-12">
+          <v-switch v-model="dark" color="secondary" label="Dark Mode"></v-switch>
+        </div>
       </v-navigation-drawer>
       <v-btn
         v-show="this.$store.state.ratings"
@@ -144,7 +150,7 @@
       >
         <v-icon size="40">mdi-chevron-up</v-icon>
       </v-btn>
-      <v-content>
+      <v-content :class="dark ? 'svg-bg' : 'svg-bg-light'" style="min-height: 100vh;">
         <nuxt />
       </v-content>
     </v-container>
@@ -163,17 +169,24 @@ export default {
   },
   data() {
     return {
+      dark: true,
       fab: false,
-      drawer: false,
+      drawer: null,
       searchBar: false
     };
   },
   computed: {
+    userDark() {
+      return this.$store.getters.userDark;
+    },
     userAuth() {
       return (
         this.$store.getters.user !== null &&
         this.$store.getters.user !== undefined
       );
+    },
+    smAndUp() {
+      return this.$vuetify.breakpoint.smAndUp;
     }
   },
   methods: {
@@ -191,17 +204,32 @@ export default {
       }
     },
     updateName() {
-      if (confirm("Change Display Name?")) {
-        this.$router.push("/updatename");
+      if (this.userAuth) {
+        if (confirm("Change Display Name?")) {
+          this.$router.push("/updatename");
+        }
+      } else {
+        this.$router.push("/signin");
       }
     }
   },
   watch: {
     searchBar() {
       this.$store.commit("searchBarToggle");
+    },
+    dark() {
+      this.$vuetify.theme.dark = this.dark;
+      this.$store.commit("setUserDark", this.dark);
+      if (this.userAuth) {
+        this.$store.dispatch("saveUserDark", this.dark);
+      }
+    },
+    userDark() {
+      this.dark = this.userDark;
     }
   },
   created() {
+    this.$vuetify.theme.dark = true;
     // fetching events from firebase
     this.$store.dispatch("loadRatings");
     this.$store.dispatch("createRecentRatings");
@@ -216,6 +244,12 @@ export default {
 </script>
 
 <style>
+.theme--dark.v-navigation-drawer,
+.theme--dark.v-card,
+.theme--dark.v-expansion-panels {
+  background-color: #121212 !important;
+}
+
 /* stops route highlighting of nav buttons */
 .v-btn--active.no-active::before {
   opacity: 0 !important;
@@ -233,9 +267,9 @@ export default {
 form {
   font-size: 16px !important;
 }
-.hidden {
-  display: none;
-}
+/* .hidden {
+  display: none !important;
+} */
 .modal-title {
   font-size: 1.6em;
 }
@@ -257,10 +291,15 @@ form {
     margin-bottom: -100px;
   }
 }
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 960px) {
   .svg-bg {
     background-repeat: repeat;
-    background-color: #111111ad;
+    background-color: #111;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='152' height='152' viewBox='0 0 152 152'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='temple' fill='%23782f40' fill-opacity='0.1'%3E%3Cpath d='M152 150v2H0v-2h28v-8H8v-20H0v-2h8V80h42v20h20v42H30v8h90v-8H80v-42h20V80h42v40h8V30h-8v40h-42V50H80V8h40V0h2v8h20v20h8V0h2v150zm-2 0v-28h-8v20h-20v8h28zM82 30v18h18V30H82zm20 18h20v20h18V30h-20V10H82v18h20v20zm0 2v18h18V50h-18zm20-22h18V10h-18v18zm-54 92v-18H50v18h18zm-20-18H28V82H10v38h20v20h38v-18H48v-20zm0-2V82H30v18h18zm-20 22H10v18h18v-18zm54 0v18h38v-20h20V82h-18v20h-20v20H82zm18-20H82v18h18v-18zm2-2h18V82h-18v18zm20 40v-18h18v18h-18zM30 0h-2v8H8v20H0v2h8v40h42V50h20V8H30V0zm20 48h18V30H50v18zm18-20H48v20H28v20H10V30h20V10h38v18zM30 50h18v18H30V50zm-2-40H10v18h18V10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .svg-bg-light {
+    background-repeat: repeat;
+    background-color: #fafafa;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='152' height='152' viewBox='0 0 152 152'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='temple' fill='%23782f40' fill-opacity='0.1'%3E%3Cpath d='M152 150v2H0v-2h28v-8H8v-20H0v-2h8V80h42v20h20v42H30v8h90v-8H80v-42h20V80h42v40h8V30h-8v40h-42V50H80V8h40V0h2v8h20v20h8V0h2v150zm-2 0v-28h-8v20h-20v8h28zM82 30v18h18V30H82zm20 18h20v20h18V30h-20V10H82v18h20v20zm0 2v18h18V50h-18zm20-22h18V10h-18v18zm-54 92v-18H50v18h18zm-20-18H28V82H10v38h20v20h38v-18H48v-20zm0-2V82H30v18h18zm-20 22H10v18h18v-18zm54 0v18h38v-20h20V82h-18v20h-20v20H82zm18-20H82v18h18v-18zm2-2h18V82h-18v18zm20 40v-18h18v18h-18zM30 0h-2v8H8v20H0v2h8v40h42V50h20V8H30V0zm20 48h18V30H50v18zm18-20H48v20H28v20H10V30h20V10h38v18zM30 50h18v18H30V50zm-2-40H10v18h18V10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
 }

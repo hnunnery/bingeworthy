@@ -1,15 +1,9 @@
 <template>
-  <v-dialog
-    v-model="dialog"
-    persistent
-    max-width="400"
-    overlay-color="#1d1d1d"
-    overlay-opacity=".97"
-  >
+  <v-dialog v-model="dialog" persistent max-width="400" overlay-color="black" overlay-opacity=".97">
     <template v-slot:activator="{ on }">
       <v-btn text v-on="on" class="title secondary--text text-capitalize">Reset Password</v-btn>
     </template>
-    <v-card class="px-6 py-2" color="#1d1d1d" elevation="15">
+    <v-card class="px-6 py-2" elevation="15">
       <v-row class="align-center justify-center">
         <v-col cols="12" class="pb-2">
           <h2
@@ -31,8 +25,8 @@
         <v-col cols="12" class="my-2 text-center">
           <v-btn
             large
+            outlined
             @click="dialog=false"
-            color="#212121"
             class="secondary--text text-capitalize px-4 mx-2"
           >Cancel</v-btn>
           <v-btn large @click="resetPassword" class="primary text-capitalize px-6 mx-2">
