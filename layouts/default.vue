@@ -3,7 +3,14 @@
     <v-container fluid class="px-0 pt-0 pb-12" style="min-height: 110vh; padding-bottom: 100px;">
       <MobileNavBar v-if="this.$vuetify.breakpoint.mdAndDown" v-on:toggle-menu="drawer=!drawer" />
       <Success />
-      <v-navigation-drawer v-model="drawer" app class="title" width="237px">
+      <v-navigation-drawer
+        v-model="drawer"
+        app
+        :temporary="!lgAndUp"
+        :permanent="lgAndUp"
+        class="title"
+        width="237px"
+      >
         <v-img
           src="https://res.cloudinary.com/missionwebdev/image/upload/c_scale,f_auto,w_110/v1586282035/BingeWorthy/garnet-gold.png"
           alt="logo"
@@ -219,13 +226,6 @@ export default {
     },
     userDark() {
       this.dark = this.userDark;
-    },
-    lgAndUp() {
-      if (this.$vuetify.breakpoint.lgAndUp) {
-        this.drawer = true;
-      } else {
-        this.drawer = false;
-      }
     }
   },
   created() {
