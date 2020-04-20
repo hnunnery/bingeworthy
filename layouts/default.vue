@@ -123,7 +123,7 @@
           </v-list-item>
         </v-list>
 
-        <div class="mt-12 ml-12">
+        <div class="mt-6 ml-12">
           <v-switch v-model="dark" color="secondary" label="Dark Mode"></v-switch>
         </div>
       </v-navigation-drawer>
