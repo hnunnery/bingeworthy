@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar dense dark class="hidden-lg-and-up mb-1" color="primary">
+  <v-app-bar dense dark class="hidden-sm-and-up mb-1" color="primary">
     <v-btn text @click="$emit('toggle-menu')" style="margin-left: -16px;">
       <v-icon>mdi-menu</v-icon>
     </v-btn>

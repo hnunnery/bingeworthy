@@ -6,8 +6,8 @@
       <v-navigation-drawer
         v-model="drawer"
         app
-        :temporary="!lgAndUp"
-        :permanent="lgAndUp"
+        :temporary="!smAndUp"
+        :permanent="smAndUp"
         class="title"
         width="237px"
       >
@@ -185,8 +185,8 @@ export default {
         this.$store.getters.user !== undefined
       );
     },
-    lgAndUp() {
-      return this.$vuetify.breakpoint.lgAndUp;
+    smAndUp() {
+      return this.$vuetify.breakpoint.smAndUp;
     }
   },
   methods: {
@@ -291,7 +291,7 @@ form {
     margin-bottom: -100px;
   }
 }
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 960px) {
   .svg-bg {
     background-repeat: repeat;
     background-color: #111;

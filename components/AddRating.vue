@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialog" persistent max-width="500" overlay-opacity=".97">
+  <v-dialog v-model="dialog" persistent max-width="500" overlay-color="black" overlay-opacity=".97">
     <template v-slot:activator="{ on }">
       <!-- button for lg and xl screen sizes -->
       <v-btn large class="hidden-md-and-down primary text-capitalize mx-1 scale-btn" v-on="on">
@@ -64,6 +64,7 @@
             <v-col cols="12" class="text-center mt-2">
               <v-btn
                 large
+                outlined
                 @click="resetForm"
                 class="secondary--text text-capitalize mx-2 px-6 scale-btn"
               >Cancel</v-btn>

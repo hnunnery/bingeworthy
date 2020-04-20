@@ -28,7 +28,12 @@
                         <Alert @dismissed="onDismissed" :text="error.message" />
                       </v-col>
                       <v-col cols="12" class="my-2 text-center">
-                        <v-btn large to="/" class="secondary--text text-capitalize mx-2">Cancel</v-btn>
+                        <v-btn
+                          large
+                          outlined
+                          to="/"
+                          class="secondary--text text-capitalize mx-2"
+                        >Cancel</v-btn>
                         <v-btn
                           type="submit"
                           large

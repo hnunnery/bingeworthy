@@ -1,16 +1,16 @@
 <template>
-  <v-dialog v-model="dialog" persistent max-width="400" overlay-opacity=".97">
+  <v-dialog v-model="dialog" persistent max-width="400" overlay-color="black" overlay-opacity=".97">
     <template v-slot:activator="{ on }">
       <v-btn
         large
-        class="hidden-xs-only primary text-capitalize mt-md-2 mb-md-1 mx-3 scale-btn"
+        class="hidden-sm-and-down primary text-capitalize mt-md-2 mb-md-1 mx-3 scale-btn"
         v-on="on"
       >
         <v-icon left>mdi-plus</v-icon>Rate This Show
       </v-btn>
       <!-- for xs screen size only -->
       <v-btn
-        class="hidden-sm-and-up primary text-capitalize"
+        class="hidden-md-and-up primary text-capitalize"
         style="margin-right: -10px !important;"
         v-on="on"
       >Rate Show</v-btn>
@@ -39,6 +39,7 @@
             <v-col cols="12" class="text-center mt-2">
               <v-btn
                 large
+                outlined
                 elevation="15"
                 @click="dialog = false;"
                 class="secondary--text text-capitalize mx-2 px-6 scale-btn"

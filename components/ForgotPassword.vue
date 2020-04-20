@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialog" persistent max-width="400" overlay-opacity=".97">
+  <v-dialog v-model="dialog" persistent max-width="400" overlay-color="black" overlay-opacity=".97">
     <template v-slot:activator="{ on }">
       <v-btn text v-on="on" class="title secondary--text text-capitalize">Reset Password</v-btn>
     </template>
@@ -25,6 +25,7 @@
         <v-col cols="12" class="my-2 text-center">
           <v-btn
             large
+            outlined
             @click="dialog=false"
             class="secondary--text text-capitalize px-4 mx-2"
           >Cancel</v-btn>

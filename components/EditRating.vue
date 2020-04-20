@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialog" persistent max-width="500" overlay-opacity=".97">
+  <v-dialog v-model="dialog" persistent max-width="500" overlay-color="black" overlay-opacity=".97">
     <template v-slot:activator="{ on }">
       <v-btn
         fab
@@ -7,7 +7,7 @@
         absolute
         bottom
         right
-        class="hidden-xs-only gold--text"
+        class="hidden-sm-and-down gold--text"
         style="z-index: 1;"
         color="#313131"
         v-on="on"
@@ -19,7 +19,7 @@
         fab
         text
         x-small
-        class="hidden-sm-and-up secondary--text"
+        class="hidden-md-and-up secondary--text"
         style="margin: -4px 0px -4px -6px; font-size: 1em;"
         v-on="on"
       >
@@ -71,6 +71,7 @@
                 <v-col cols="10" class="text-right py-0">
                   <v-btn
                     large
+                    outlined
                     @click="dialog = false"
                     class="secondary--text text-capitalize mx-1 scale-btn"
                   >Cancel</v-btn>

@@ -48,6 +48,7 @@
                   <v-col cols="12" class="text-center mt-2">
                     <v-btn
                       large
+                      outlined
                       @click="resetForm"
                       class="secondary--text text-capitalize mx-2 px-6 scale-btn"
                     >Reset</v-btn>

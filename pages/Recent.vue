@@ -19,19 +19,19 @@
     <v-row justify="center">
       <v-col cols="12" xl="11" class="mt-0 pt-0 px-5">
         <h1
-          class="hidden-md-and-down secondary--text text-center font-weight-bold font-italic my-2"
+          class="hidden-xs-only secondary--text text-center font-weight-bold font-italic my-2"
           style="letter-spacing: -2px; font-size: 6vmax;"
         >BingeWorthy</h1>
         <v-row class="justify-center mt-0 mb-0 pb-0">
           <v-btn
             text
-            class="hidden-sm-and-up text-capitalize mx-1"
+            class="hidden-md-and-up text-capitalize mx-1"
             v-show="this.search"
             @click="clearSearch"
           >Clear Search</v-btn>
           <v-btn
             large
-            class="hidden-xs-only primary text-capitalize mb-lg-3 mx-2 scale-btn"
+            class="hidden-sm-and-down primary text-capitalize mb-lg-3 mx-2 scale-btn"
             v-show="this.search"
             @click="clearSearch"
           >
@@ -40,7 +40,7 @@
         </v-row>
 
         <!-- START - MOBILE - RATINGS CARDS -->
-        <v-row v-if="this.$vuetify.breakpoint.xsOnly" class="justify-center my-0">
+        <v-row v-if="this.$vuetify.breakpoint.smAndDown" class="justify-center my-0">
           <v-col
             cols="12"
             v-for="rating in filteredRatings"
@@ -48,7 +48,7 @@
             class="pa-0"
             style="position: relative;"
           >
-            <v-row class="text-center justify-center align-center pt-3 pb-4 px-4">
+            <v-row class="text-center justify-center align-center pt-3 pb-4 px-4 px-sm-8">
               <v-col cols="12" class="text-left d-inline-flex py-0 px-0">
                 <span
                   class="title"
@@ -86,15 +86,11 @@
           </v-col>
         </v-row>
 
-        <!-- START SM-MD SCREEN SIZE RATINGS CARDS -->
-        <v-row
-          v-if="this.$vuetify.breakpoint.mdAndDown"
-          class="hidden-xs-only justify-center mt-0 mb-6"
-        >
+        <!-- START MD SCREEN SIZE RATINGS CARDS -->
+        <v-row v-if="this.$vuetify.breakpoint.mdOnly" class="justify-center mt-0 mb-6">
           <v-col
             cols="12"
             sm="6"
-            md="4"
             v-for="rating in filteredRatings"
             :key="rating.id"
             class="pt-1 pt-sm-2 pb-2 px-1"
