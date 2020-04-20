@@ -7,7 +7,7 @@
         absolute
         bottom
         right
-        class="hidden-xs-only secondary--text"
+        class="hidden-xs-only gold--text"
         style="z-index: 1;"
         color="#313131"
         v-on="on"
