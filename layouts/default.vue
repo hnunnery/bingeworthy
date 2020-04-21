@@ -1,6 +1,6 @@
 <template>
   <v-app style="overflow: hidden;">
-    <v-container fluid class="px-0 pt-0 pb-12" style="min-height: 110vh; padding-bottom: 100px;">
+    <v-container fluid class="px-0 py-0">
       <MobileNavBar v-if="this.$vuetify.breakpoint.mdAndDown" v-on:toggle-menu="drawer=!drawer" />
       <Success />
       <v-navigation-drawer
@@ -124,16 +124,6 @@
           <v-switch v-model="dark" color="secondary" label="Dark Mode"></v-switch>
         </div>
       </v-navigation-drawer>
-      <v-btn
-        v-show="this.$store.state.ratings"
-        large
-        absolute
-        bottom
-        left
-        class="secondary primary--text font-weight-bold"
-        href="https://github.com/hnunnery/bingeworthy"
-        target="_blank"
-      >GitHub</v-btn>
       <v-btn
         v-scroll="onScroll"
         v-show="fab"
