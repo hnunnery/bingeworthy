@@ -65,7 +65,7 @@
 
         <!-- START - MOBILE - MASTER RATINGS CARDS -->
         <v-row
-          v-show="!loading"
+          v-if="!loading && this.$vuetify.breakpoint.smAndDown"
           class="hidden-md-and-up justify-center"
           style=" margin: 0px -19px !important;"
         >
@@ -158,100 +158,12 @@
           </v-expansion-panels>
           <v-divider class="primary" style="padding: .5px;" />
         </v-row>
-
-        <!-- START MD MASTER RATINGS CARDS -->
-        <v-row v-show="!loading && this.$vuetify.breakpoint.mdOnly" class="justify-center my-0">
-          <v-col
-            cols="12"
-            sm="6"
-            v-for="(rating, index) in filteredMasterRatingsMobile"
-            :key="index"
-            class="pt-1 pt-sm-2 pb-2 px-1"
-          >
-            <v-card
-              class="px-2 ma-1 align-center d-flex"
-              height="100%"
-              elevation="15"
-              @click="
-                setSearch(rating.name);
-                expandedName = rating.name;
-                expandedPlatform = rating.platform;
-                expandedRank = rating.rank;
-                expandedRating = rating.averageRating.toFixed(2);
-              "
-              :style="{ boxShadow: shadow}"
-              style="position: relative;"
-            >
-              <v-row class="text-center justify-center align-center">
-                <v-col cols="12" class="mt-2 py-1" style="font-size: 1.6em; line-height: 1em;">
-                  {{
-                  rating.name
-                  }}
-                </v-col>
-                <v-col cols="12" class="py-0">
-                  <v-rating
-                    :value="rating.averageRating"
-                    half-increments
-                    half-icon="mdi-star-half-full"
-                    size="35"
-                    readonly
-                    color="gold"
-                  ></v-rating>
-                </v-col>
-                <v-col
-                  cols="3"
-                  class="pa-0 display-1 font-weight-bold font-italic text-center"
-                  style="opacity: 0.2; margin-right: -10px; position: absolute; bottom: 0; right: 0;"
-                >
-                  {{ rating.users.length }}
-                  <p
-                    v-if="rating.users.length > 1"
-                    class="pa-0"
-                    style="font-size: 12px; margin: -20px 0px -10px 0px;"
-                  >ratings</p>
-                  <p
-                    v-else
-                    class="pa-0"
-                    style="font-size: 12px; margin: -20px 0px -10px 0px;"
-                  >rating</p>
-                </v-col>
-                <!-- RANKING SECTION -->
-                <v-btn
-                  fab
-                  x-small
-                  absolute
-                  top
-                  left
-                  class="font-weight-bold secondary--text"
-                  style="font-size: 1.2em; letter-spacing: .1px;"
-                >
-                  <span style="margin-right: 2px;">{{ rating.rank }}</span>
-                </v-btn>
-
-                <!-- IF EXPANDED NAME -->
-                <v-col
-                  cols="12"
-                  v-if="expandedName===rating.name"
-                  class="headline font-weight-medium pa-0 mb-1"
-                  style="color: #782F40;"
-                >{{rating.roundedRating}} Average</v-col>
-
-                <!-- PLATFORM -->
-                <v-col
-                  v-else
-                  cols="12"
-                  class="headline font-weight-medium pa-0 mb-1"
-                  style="color: #782F40;"
-                >{{ rating.platform }}</v-col>
-              </v-row>
-            </v-card>
-          </v-col>
-        </v-row>
-
+        
         <!-- START MASTER RATINGS CARDS -->
-        <v-row v-show="!loading" class="hidden-md-and-down justify-center mt-2 mb-1">
+        <v-row v-if="!loading && this.$vuetify.breakpoint.mdAndUp" class="justify-center mt-2 mb-1">
           <v-col
             cols="12"
+            md="6"
             lg="4"
             xl="3"
             v-for="(rating, index) in filteredMasterRatingsDesktop"
@@ -339,7 +251,7 @@
         </v-row>
 
         <!-- START - MOBILE - RATINGS CARDS -->
-        <v-row v-show="!loading && this.search" class="hidden-md-and-up justify-center my-0">
+        <v-row v-show="!loading && this.search && this.$vuetify.breakpoint.smAndDown" class="justify-center my-0">
           <v-col
             cols="12"
             v-for="rating in filteredRatings"
@@ -387,65 +299,9 @@
           </v-col>
         </v-row>
 
-        <!-- START MD RATINGS CARDS -->
-        <v-row
-          v-if="!loading && this.search"
-          class="hidden-sm-and-down hidden-lg-and-up justify-center mt-0 mb-6"
-        >
-          <v-col
-            cols="12"
-            sm="6"
-            v-for="rating in filteredRatings"
-            :key="rating.id"
-            class="pb-0 px-1"
-          >
-            <v-card
-              class="px-2 ma-1 align-center d-flex"
-              height="100%"
-              elevation="15"
-              style="box-shadow: 0 0 5px 1px #782f40 !important;"
-            >
-              <v-row class="text-center justify-center align-center">
-                <v-col
-                  cols="12"
-                  class="mt-2 py-1"
-                  @click="setSearch(rating.name)"
-                  style="font-size: 1.6em; line-height: 1em;"
-                >{{ rating.name }}</v-col>
-                <v-col cols="12" class="py-0">
-                  <v-rating
-                    :value="parseFloat(rating.rating)"
-                    half-increments
-                    half-icon="mdi-star-half-full"
-                    size="35"
-                    readonly
-                    color="gold"
-                  ></v-rating>
-                </v-col>
-                <v-row class="justify-left">
-                  <v-col cols="2" class="pl-6 py-0">
-                    <EditRating :rating="rating" v-if="userId === rating.userId || userIsAdmin" />
-                  </v-col>
-                  <v-col
-                    cols="8"
-                    class="headline py-0 font-weight-medium"
-                    style="color: #782F40;"
-                    @click="setSearch(rating.platform)"
-                  >{{ rating.platform }}</v-col>
-                </v-row>
-                <v-col
-                  cols="12"
-                  class="title py-0 mb-2 font-weight-light font-italic"
-                  @click="setSearch(rating.user)"
-                >{{ rating.user }}</v-col>
-              </v-row>
-            </v-card>
-          </v-col>
-        </v-row>
-
         <!-- START RATINGS CARDS -->
-        <v-row v-if="!loading && this.search" class="hidden-md-and-down justify-center mt-2 mb-6">
-          <v-col cols="12" lg="4" xl="3" v-for="rating in filteredRatings" :key="rating.id">
+        <v-row v-if="!loading && this.search && this.$vuetify.breakpoint.mdAndUp" class="justify-center mt-2 mb-6">
+          <v-col cols="12" md="6" lg="4" xl="3" v-for="rating in filteredRatings" :key="rating.id">
             <v-card
               class="px-4 pt-1 ma-0 align-center d-flex"
               elevation="15"

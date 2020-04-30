@@ -96,67 +96,9 @@
           </v-col>
         </v-row>
 
-        <!-- START MD SCREEN SIZE RATINGS CARDS -->
-        <v-row v-if="this.$vuetify.breakpoint.mdOnly" class="justify-center mt-0 mb-6">
-          <v-col
-            cols="12"
-            sm="6"
-            v-for="rating in filteredRatings"
-            :key="rating.id"
-            class="pt-1 pt-sm-2 pb-2 px-1"
-          >
-            <v-card
-              class="px-2 ma-1 align-center d-flex"
-              elevation="15"
-              height="100%"
-              style="box-shadow: 0 0 5px 1px #782f40 !important;"
-            >
-              <v-row class="text-center justify-center align-center">
-                <v-col
-                  cols="12"
-                  class="mt-3 py-1"
-                  @click="setSearch(rating.name)"
-                  style="font-size: 1.6em; line-height: 1em;"
-                >{{ rating.name }}</v-col>
-                <v-col cols="12" class="py-0">
-                  <v-rating
-                    :value="parseFloat(rating.rating)"
-                    half-increments
-                    half-icon="mdi-star-half-full"
-                    size="35"
-                    readonly
-                    color="gold"
-                  ></v-rating>
-                </v-col>
-                <v-row class="justify-left">
-                  <v-col cols="2" class="pl-7 py-0">
-                    <EditRating :rating="rating" v-if="userId === rating.userId || userIsAdmin" />
-                  </v-col>
-                  <v-col
-                    cols="8"
-                    class="headline py-0 font-weight-medium"
-                    style="color: #782F40;"
-                    @click="setSearch(rating.platform)"
-                  >{{ rating.platform }}</v-col>
-                  <v-col
-                    cols="3"
-                    class="title secondary--text font-weight-bold font-italic text-center pa-0"
-                    style="position: absolute; bottom: 0; right: 0;"
-                  >{{ rating.date }}</v-col>
-                </v-row>
-                <v-col
-                  cols="12"
-                  class="title pt-0 pb-2 font-weight-light font-italic"
-                  @click="setSearch(rating.user)"
-                >{{ rating.user }}</v-col>
-              </v-row>
-            </v-card>
-          </v-col>
-        </v-row>
-
         <!-- START RATINGS CARDS -->
-        <v-row v-if="this.$vuetify.breakpoint.lgAndUp" class="justify-center mt-2 mb-6">
-          <v-col cols="12" lg="4" xl="3" v-for="rating in filteredRatings" :key="rating.id">
+        <v-row v-if="this.$vuetify.breakpoint.mdAndUp" class="justify-center mt-2 mb-6">
+          <v-col cols="12" md="6" lg="4" xl="3" v-for="rating in filteredRatings" :key="rating.id">
             <v-card
               class="px-4 pt-1 ma-0 align-center d-flex"
               elevation="15"

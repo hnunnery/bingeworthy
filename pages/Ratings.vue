@@ -13,73 +13,6 @@
             <v-text-field solo placeholder="Search" v-model="search" hide-details></v-text-field>
           </v-col>
         </v-row>
-        <!-- DESKTOP NAV FOR LG AND XL BREAKPOINTS
-        <v-row class="align-center justify-center justify-lg-space-between">
-          <v-col
-            cols="12"
-            sm="4"
-            lg="6"
-            class="hidden-md-and-down d-inline-flex mt-lg-3 ml-lg-4 mr-0 mb-0 pa-0"
-          >
-            <v-text-field
-              solo
-              placeholder="Search"
-              v-model="search"
-              hide-details
-              class="hidden-md-and-down limit-width"
-            ></v-text-field>
-            <v-btn
-              large
-              class="hidden-md-and-down primary text-capitalize mr-1 scale-btn"
-              to="/"
-              style="margin-top: 2.2px; margin-left: 10px;"
-              v-if="!userAuth"
-            >
-              <v-icon left size="20">mdi-home-outline</v-icon>Home
-            </v-btn>
-            <AccountOptions v-if="userAuth && this.$vuetify.breakpoint.lgAndUp" />
-          </v-col>
-          <v-col
-            cols="12"
-            sm="7"
-            lg="5"
-            class="hidden-md-and-down mt-lg-3 mr-lg-4 ml-0 pa-0 text-center text-sm-right"
-          >
-            <v-btn
-              large
-              class="hidden-md-and-down primary mx-1 text-capitalize scale-btn"
-              v-if="!userAuth"
-              to="/signin"
-            >
-              <v-icon left size="20">mdi-account-check-outline</v-icon>Sign In
-            </v-btn>
-            <v-btn
-              large
-              class="hidden-md-and-down primary text-capitalize mx-1 scale-btn"
-              v-if="!userAuth"
-              to="/signup"
-            >
-              <v-icon left size="20">mdi-account-plus-outline</v-icon>Sign Up
-            </v-btn>
-            <v-btn
-              large
-              class="hidden-md-and-down primary text-capitalize mx-1 scale-btn"
-              to="/"
-              v-if="userAuth"
-            >
-              <v-icon left size="20">mdi-home-outline</v-icon>Home
-            </v-btn>
-            <v-btn
-              large
-              class="hidden-md-and-down primary text-capitalize mx-1 scale-btn"
-              to="/recent"
-            >
-              <v-icon left size="20">mdi-clock-outline</v-icon>Recent
-            </v-btn>
-
-            <AddRating v-if="userAuth && this.$vuetify.breakpoint.lgAndUp" />
-          </v-col>
-        </v-row>-->
       </v-col>
     </v-row>
     <!-- DESKTOP NAV END -->
@@ -173,67 +106,12 @@
           </v-col>
         </v-row>
 
-        <!-- START MD SCREEN SIZE RATINGS CARDS -->
-        <v-row
-          v-if="!noRatings && this.$vuetify.breakpoint.mdOnly"
-          class="hidden-sm-and-down justify-center mt-0 mb-6"
-        >
-          <v-col
-            cols="12"
-            sm="6"
-            v-for="rating in filteredRatings"
-            :key="rating.id"
-            class="pt-1 pt-sm-2 pb-2 px-1"
-          >
-            <v-card
-              class="px-2 ma-1 align-center d-flex"
-              elevation="15"
-              height="100%"
-              style="box-shadow: 0 0 5px 1px #782f40 !important;"
-            >
-              <v-row class="text-center justify-center align-center">
-                <v-col
-                  cols="12"
-                  class="mt-3 py-1"
-                  @click="setSearch(rating.name)"
-                  style="font-size: 1.6em; line-height: 1em;"
-                >{{ rating.name }}</v-col>
-                <v-col cols="12" class="py-0">
-                  <v-rating
-                    :value="parseFloat(rating.rating)"
-                    half-increments
-                    half-icon="mdi-star-half-full"
-                    size="35"
-                    readonly
-                    color="gold"
-                  ></v-rating>
-                </v-col>
-                <v-row class="justify-left">
-                  <v-col cols="2" class="pl-7 py-0">
-                    <EditRating :rating="rating" v-if="userId === rating.userId || userIsAdmin" />
-                  </v-col>
-                  <v-col
-                    cols="8"
-                    class="headline py-0 font-weight-medium"
-                    style="color: #782F40;"
-                    @click="setSearch(rating.platform)"
-                  >{{ rating.platform }}</v-col>
-                </v-row>
-                <v-col
-                  cols="12"
-                  class="title pt-0 pb-2 font-weight-light font-italic"
-                >{{ rating.user }}</v-col>
-              </v-row>
-            </v-card>
-          </v-col>
-        </v-row>
-
         <!-- START RATINGS CARDS -->
         <v-row
-          v-if="!noRatings && this.$vuetify.breakpoint.lgAndUp"
+          v-if="!noRatings && this.$vuetify.breakpoint.mdAndUp"
           class="justify-center mt-2 mb-6"
         >
-          <v-col cols="12" lg="4" xl="3" v-for="rating in filteredRatings" :key="rating.id">
+          <v-col cols="12" md="6" lg="4" xl="3" v-for="rating in filteredRatings" :key="rating.id">
             <v-card
               class="px-4 pt-1 ma-0 align-center d-flex"
               elevation="15"
