@@ -1,82 +1,94 @@
 <template>
-  <v-dialog v-model="dialog" persistent max-width="500" overlay-color="black" overlay-opacity=".97">
-    <template v-slot:activator="{ on }">
-      <!-- button for lg and xl screen sizes -->
-      <v-btn large class="hidden-md-and-down primary text-capitalize mx-1 scale-btn" v-on="on">
-        <v-icon left size="20">mdi-plus-circle-outline</v-icon>Rating
-      </v-btn>
-      <!-- button for sm - md screen size -->
-      <v-btn
-        fab
-        small
-        class="hidden-xs-only hidden-lg-and-up primary text-capitalize mt-4"
-        v-on="on"
-      >
-        <v-icon>mdi-plus</v-icon>
-      </v-btn>
-      <!-- button for xs only -->
-      <v-btn fab small elevation="15" class="hidden-sm-and-up primary mt-3 ml-1" v-on="on">
-        <v-icon>mdi-plus</v-icon>
-      </v-btn>
-    </template>
-    <v-card class="px-6 py-2" elevation="15">
-      <v-row class="align-center justify-center">
-        <v-col cols="12" class="pb-2">
-          <h2
-            class="display-1 secondary--text text-center font-italic mt-1 pb-0"
-            style="letter-spacing: 1.2px;"
-          >Add Your Rating</h2>
-        </v-col>
-        <v-col cols="12" class="py-1">
-          <v-combobox
-            name="name"
-            label="Name of Show"
-            v-model="name"
-            :items="this.uniqueNames"
-            required
-            type="text"
-          ></v-combobox>
-        </v-col>
-        <v-col cols="12" class="py-1">
-          <v-combobox
-            name="platform"
-            label="Platform (Netflix, Hulu, etc.)"
-            v-model="platform"
-            :items="this.uniquePlatforms"
-            required
-            type="text"
-          ></v-combobox>
-        </v-col>
-        <v-col cols="12" class="text-center pt-0 pb-3">
-          <span class="display-2 secondary--text">{{ rating }}/5</span>
-          <v-rating
-            :length="10"
-            class="mt-2"
-            v-model="rawRating"
-            size="25"
-            dense
-            color="gold"
-            required
-          ></v-rating>
-        </v-col>
-        <v-card-actions style="width: 100%;">
-          <v-row class="justify-center">
-            <v-col cols="12" class="text-center mt-2">
-              <v-btn
-                large
-                outlined
-                @click="resetForm"
-                class="secondary--text text-capitalize mx-2 px-6 scale-btn"
-              >Cancel</v-btn>
-              <v-btn large @click="addRating" class="primary text-capitalize mx-2 px-4 scale-btn">
-                <v-icon size="22" left>mdi-plus</v-icon>Add Rating
-              </v-btn>
-            </v-col>
-          </v-row>
-        </v-card-actions>
-      </v-row>
-    </v-card>
-  </v-dialog>
+  <div>
+    <!-- Modal Overlay -->
+    <div v-if="dialog" class="fixed inset-0 bg-black bg-opacity-97 flex items-center justify-center z-50" @click="dialog = false">
+      <div class="card max-w-md w-full mx-4 px-6 py-2" @click.stop>
+        <div class="flex flex-col items-center justify-center">
+          <div class="w-full pb-2">
+            <h2
+              class="text-4xl text-secondary text-center font-italic mt-1 pb-0"
+              style="letter-spacing: 1.2px;"
+            >Add Your Rating</h2>
+          </div>
+          <div class="w-full py-1">
+            <label class="block text-sm font-medium text-gray-300 mb-2">Name of Show</label>
+            <input
+              name="name"
+              v-model="name"
+              :list="'show-names'"
+              required
+              type="text"
+              class="input-field"
+              placeholder="Enter show name"
+            />
+            <datalist id="show-names">
+              <option v-for="showName in uniqueNames" :key="showName" :value="showName" />
+            </datalist>
+          </div>
+          <div class="w-full py-1">
+            <label class="block text-sm font-medium text-gray-300 mb-2">Platform (Netflix, Hulu, etc.)</label>
+            <input
+              name="platform"
+              v-model="platform"
+              :list="'platforms'"
+              required
+              type="text"
+              class="input-field"
+              placeholder="Enter platform"
+            />
+            <datalist id="platforms">
+              <option v-for="platformName in uniquePlatforms" :key="platformName" :value="platformName" />
+            </datalist>
+          </div>
+          <div class="w-full text-center pt-0 pb-3">
+            <span class="text-5xl text-secondary">{{ rating }}/5</span>
+            <div class="flex justify-center items-center mt-2">
+              <i 
+                v-for="star in 10" 
+                :key="star"
+                :class="[
+                  'fas cursor-pointer mx-1',
+                  star <= rawRating ? 'text-yellow-400 fa-star' : 'text-gray-600 far fa-star'
+                ]"
+                style="font-size: 25px;"
+                @click="rawRating = star"
+              ></i>
+            </div>
+          </div>
+          <div class="w-full">
+            <div class="flex justify-center">
+              <div class="w-full text-center mt-2">
+                <button
+                  @click="resetForm"
+                  class="btn-secondary mx-2 px-6"
+                >Cancel</button>
+                <button @click="addRating" class="btn-primary mx-2 px-4">
+                  <i class="fas fa-plus mr-2"></i>Add Rating
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trigger Buttons -->
+    <!-- button for lg and xl screen sizes -->
+    <button @click="dialog = true" class="hidden md:block btn-primary mx-1 hover:scale-105 transition-transform">
+      <i class="fas fa-plus-circle mr-2"></i>Rating
+    </button>
+    <!-- button for sm - md screen size -->
+    <button
+      @click="dialog = true"
+      class="hidden sm:block md:hidden w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center mt-4 hover:scale-105 transition-transform"
+    >
+      <i class="fas fa-plus"></i>
+    </button>
+    <!-- button for xs only -->
+    <button @click="dialog = true" class="block sm:hidden w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center mt-3 ml-1 shadow-lg hover:scale-105 transition-transform">
+      <i class="fas fa-plus"></i>
+    </button>
+  </div>
 </template>
 
 <script>
