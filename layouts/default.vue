@@ -1,147 +1,122 @@
 <template>
-  <v-app style="overflow: hidden;">
-    <v-container fluid class="px-0 py-0">
-      <MobileNavBar v-if="this.$vuetify.breakpoint.mdAndDown" v-on:toggle-menu="drawer=!drawer" />
+  <div class="min-h-screen bg-background text-white overflow-hidden">
+    <div class="flex">
+      <MobileNavBar v-if="!smAndUp" v-on:toggle-menu="drawer=!drawer" />
       <Success />
-      <v-navigation-drawer
-        v-model="drawer"
-        app
-        :temporary="!smAndUp"
-        :permanent="smAndUp"
-        class="title"
-        width="237px"
+      <!-- Navigation Drawer -->
+      <div 
+        :class="[
+          'fixed inset-y-0 left-0 z-50 w-60 bg-surface border-r border-primary/30 transform transition-transform duration-300 ease-in-out',
+          smAndUp ? 'translate-x-0' : (drawer ? 'translate-x-0' : '-translate-x-full')
+        ]"
       >
-        <v-img
+        <img
           src="https://res.cloudinary.com/missionwebdev/image/upload/c_scale,f_auto,w_110/v1586282035/BingeWorthy/garnet-gold.png"
           alt="logo"
-          class="mx-auto mt-5"
-          style="width: 110px; height: 110px;"
-        ></v-img>
+          class="mx-auto mt-5 w-28 h-28"
+        />
 
-        <v-list-item style="height: 43px;" class="no-active text-center mb-1" @click="updateName">
-          <v-list-item-content>
-            <v-list-item-title
-              v-if="this.$store.state.user"
-              class="secondary--text"
-            >{{ this.$store.state.user.name }}</v-list-item-title>
-            <v-list-item-title v-else class="secondary--text">See what's worth watching</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+        <div class="h-11 text-center mb-1 cursor-pointer py-2" @click="updateName">
+          <div class="text-secondary font-medium">
+            <div v-if="this.$store.state.user">{{ this.$store.state.user.name }}</div>
+            <div v-else>See what's worth watching</div>
+          </div>
+        </div>
 
-        <v-divider />
+        <div class="border-t border-gray-600 my-2"></div>
 
-        <v-list>
+        <nav class="px-2">
           <!-- ALL RATINGS -->
-          <v-list-item to="/" class="pl-5" active-class="hidden">
-            <v-list-item-icon>
-              <v-icon>mdi-home-outline</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title>All Ratings</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+          <nuxt-link to="/" class="flex items-center px-3 py-3 text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
+            <i class="fas fa-home w-6 text-center mr-3 text-secondary"></i>
+            <span>All Ratings</span>
+          </nuxt-link>
 
           <!-- MY RATINGS -->
-          <v-list-item to="/ratings" v-if="userAuth" class="pl-5" active-class="hidden">
-            <v-list-item-icon>
-              <v-icon>mdi-star-outline</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title>My Ratings</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+          <nuxt-link v-if="userAuth" to="/ratings" class="flex items-center px-3 py-3 text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
+            <i class="fas fa-star w-6 text-center mr-3 text-secondary"></i>
+            <span>My Ratings</span>
+          </nuxt-link>
 
           <!-- RECENT RATINGS -->
-          <v-list-item to="/recent" class="pl-5" active-class="hidden">
-            <v-list-item-icon>
-              <v-icon>mdi-clock-outline</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title>Recent Ratings</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+          <nuxt-link to="/recent" class="flex items-center px-3 py-3 text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
+            <i class="fas fa-clock w-6 text-center mr-3 text-secondary"></i>
+            <span>Recent Ratings</span>
+          </nuxt-link>
 
           <!-- ADD A RATING -->
-          <v-list-item to="/addrating" v-if="userAuth" class="pl-5" active-class="hidden">
-            <v-list-item-icon>
-              <v-icon>mdi-plus-circle-outline</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title>Add A Rating</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item to="/signin" v-else class="pl-5">
-            <v-list-item-icon>
-              <v-icon>mdi-plus-circle-outline</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title>Add A Rating</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+          <nuxt-link v-if="userAuth" to="/addrating" class="flex items-center px-3 py-3 text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
+            <i class="fas fa-plus-circle w-6 text-center mr-3 text-secondary"></i>
+            <span>Add A Rating</span>
+          </nuxt-link>
+          <nuxt-link v-else to="/signin" class="flex items-center px-3 py-3 text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
+            <i class="fas fa-plus-circle w-6 text-center mr-3 text-secondary"></i>
+            <span>Add A Rating</span>
+          </nuxt-link>
 
           <!-- SEARCH -->
-          <v-list-item @click="searchBar = !searchBar; drawer=false" class="pl-5">
-            <v-list-item-icon>
-              <v-icon>mdi-magnify</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title>Search</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+          <button @click="searchBar = !searchBar; drawer=false" class="w-full flex items-center px-3 py-3 text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
+            <i class="fas fa-search w-6 text-center mr-3 text-secondary"></i>
+            <span>Search</span>
+          </button>
 
           <!-- SIGN IN -->
-          <v-list-item to="/signin" v-if="!userAuth" active-class="hidden" class="pl-5">
-            <v-list-item-icon>
-              <v-icon>mdi-account-check-outline</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title>Sign In</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+          <nuxt-link v-if="!userAuth" to="/signin" class="flex items-center px-3 py-3 text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
+            <i class="fas fa-sign-in-alt w-6 text-center mr-3 text-secondary"></i>
+            <span>Sign In</span>
+          </nuxt-link>
 
           <!-- SIGN UP -->
-          <v-list-item to="/signup" v-if="!userAuth" class="pl-5" active-class="hidden">
-            <v-list-item-icon>
-              <v-icon>mdi-account-plus-outline</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title>Sign Up</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+          <nuxt-link v-if="!userAuth" to="/signup" class="flex items-center px-3 py-3 text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
+            <i class="fas fa-user-plus w-6 text-center mr-3 text-secondary"></i>
+            <span>Sign Up</span>
+          </nuxt-link>
 
           <!-- SIGN OUT -->
-          <v-list-item @click="onLogout" v-if="userAuth" class="pl-5">
-            <v-list-item-icon>
-              <v-icon>mdi-account-cancel-outline</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title>Sign Out</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
+          <button v-if="userAuth" @click="onLogout" class="w-full flex items-center px-3 py-3 text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
+            <i class="fas fa-sign-out-alt w-6 text-center mr-3 text-secondary"></i>
+            <span>Sign Out</span>
+          </button>
+        </nav>
 
-        <div class="mt-6 ml-12">
-          <v-switch v-model="dark" color="secondary" label="Dark Mode"></v-switch>
+        <div class="mt-6 px-4">
+          <label class="flex items-center cursor-pointer">
+            <input 
+              type="checkbox" 
+              v-model="dark" 
+              class="sr-only"
+            />
+            <div class="relative">
+              <div class="block bg-gray-600 w-14 h-8 rounded-full"></div>
+              <div :class="[
+                'absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition transform',
+                dark ? 'translate-x-6 bg-secondary' : ''
+              ]"></div>
+            </div>
+            <span class="ml-3 text-white">Dark Mode</span>
+          </label>
         </div>
-      </v-navigation-drawer>
-      <v-btn
-        v-scroll="onScroll"
+      </div>
+      
+      <!-- Floating Action Button -->
+      <button
         v-show="fab"
-        fab
-        dark
-        fixed
-        bottom
-        right
-        color="primary"
         @click="toTop"
+        class="fixed bottom-6 right-6 w-14 h-14 bg-primary hover:bg-primary/90 text-white rounded-full shadow-lg transition-all duration-300 z-40 flex items-center justify-center"
       >
-        <v-icon size="40">mdi-chevron-up</v-icon>
-      </v-btn>
-      <v-content :class="dark ? 'svg-bg' : 'svg-bg-light'" style="min-height: 100vh;">
+        <i class="fas fa-chevron-up text-2xl"></i>
+      </button>
+      
+      <!-- Main Content -->
+      <main :class="[
+        'transition-all duration-300 min-h-screen',
+        smAndUp ? 'ml-60' : 'ml-0',
+        dark ? 'svg-bg' : 'svg-bg-light'
+      ]">
         <nuxt />
-      </v-content>
-    </v-container>
-  </v-app>
+      </main>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -173,7 +148,8 @@ export default {
       );
     },
     smAndUp() {
-      return this.$vuetify.breakpoint.smAndUp;
+      if (typeof window === 'undefined') return false;
+      return window.innerWidth >= 768;
     }
   },
   methods: {
@@ -183,7 +159,9 @@ export default {
       this.fab = top > 20;
     },
     toTop() {
-      this.$vuetify.goTo(0);
+      if (typeof window !== 'undefined') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     },
     onLogout() {
       if (confirm("Sign Out?")) {
@@ -205,7 +183,13 @@ export default {
       this.$store.commit("searchBarToggle");
     },
     dark() {
-      this.$vuetify.theme.dark = this.dark;
+      if (typeof document !== 'undefined') {
+        if (this.dark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      }
       this.$store.commit("setUserDark", this.dark);
       if (this.userAuth) {
         this.$store.dispatch("saveUserDark", this.dark);
@@ -216,7 +200,9 @@ export default {
     }
   },
   created() {
-    this.$vuetify.theme.dark = true;
+    if (typeof document !== 'undefined') {
+      document.documentElement.classList.add('dark');
+    }
     // fetching events from firebase
     this.$store.dispatch("loadRatings");
     this.$store.dispatch("createRecentRatings");
@@ -226,7 +212,23 @@ export default {
         this.$store.dispatch("autoSignIn", user);
       }
     });
-  }
+  },
+  mounted() {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', this.handleResize);
+      window.addEventListener('scroll', this.onScroll);
+    }
+  },
+  beforeDestroy() {
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('resize', this.handleResize);
+      window.removeEventListener('scroll', this.onScroll);
+    }
+  },
+  methods: {
+    handleResize() {
+      this.$forceUpdate();
+    },
 };
 </script>
 
