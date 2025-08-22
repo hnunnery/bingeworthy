@@ -84,11 +84,9 @@ export default {
     extend(config, ctx) {},
     vendor: ["aos"],
     postcss: {
-      postcssOptions: {
-        plugins: {
-          '@tailwindcss/postcss': {},
-          autoprefixer: {},
-        },
+      plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
       },
     },
   }
