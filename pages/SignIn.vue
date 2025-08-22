@@ -50,7 +50,7 @@
                           text
                           to="/signup"
                           class="title secondary--text text-capitalize"
-                        >Get Account Here</v-btn>
+                        >Register for Account</v-btn>
                       </v-col>
                       <v-col cols="12" class="text-center py-0">
                         <ForgotPassword />
