@@ -109,7 +109,7 @@
       
       <!-- Main Content -->
       <main :class="[
-        'transition-all duration-300 min-h-screen',
+        'flex-1 w-full transition-all duration-300 min-h-screen',
         smAndUp ? 'ml-60' : 'ml-0',
         dark ? 'svg-bg' : 'svg-bg-light'
       ]">
