@@ -1,70 +1,74 @@
 <template>
-  <v-container fluid class="pt-0">
-    <v-row class="mt-lg-12 justify-center align-center" style="min-height: 70vh !important;">
-      <v-col cols="12" sm="8" md="6" style="max-width: 600px;">
-        <v-card class="pa-6 px-lg-10" elevation="15">
+  <div class="container mx-auto px-4 pt-0">
+    <div class="flex justify-center items-center mt-12 lg:mt-24" style="min-height: 70vh !important;">
+      <div class="w-full sm:w-2/3 md:w-1/2" style="max-width: 600px;">
+        <div class="card p-6 lg:px-10 shadow-2xl">
           <form @submit.prevent="onSignIn">
-            <v-row class="align-center justify-center">
-              <v-col cols="12" class="pb-2">
+            <div class="flex flex-col items-center justify-center">
+              <div class="w-full pb-2">
                 <h2
-                  class="display-1 secondary--text text-center font-italic mt-1 pb-0"
+                  class="text-4xl text-secondary text-center font-italic mt-1 pb-0"
                   style="letter-spacing: 1.2px;"
                 >Sign In Here</h2>
 
-                <v-text-field
-                  class="mt-6"
-                  name="email"
-                  label="Email"
-                  id="email"
-                  v-model="email"
-                  type="email"
-                  required
-                ></v-text-field>
+                <div class="mt-6">
+                  <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                  <input
+                    class="input-field"
+                    name="email"
+                    id="email"
+                    v-model="email"
+                    type="email"
+                    required
+                    placeholder="Enter your email"
+                  />
+                </div>
 
-                <v-text-field
-                  class="mt-6"
-                  name="password"
-                  label="Password"
-                  id="password"
-                  v-model="password"
-                  type="password"
-                  required
-                ></v-text-field>
+                <div class="mt-6">
+                  <label for="password" class="block text-sm font-medium text-gray-300 mb-2">Password</label>
+                  <input
+                    class="input-field"
+                    name="password"
+                    id="password"
+                    v-model="password"
+                    type="password"
+                    required
+                    placeholder="Enter your password"
+                  />
+                </div>
 
-                <v-card-actions style="width: 100%;">
-                  <v-row class="justify-center">
-                    <v-col cols="12" class="text-center py-0">
-                      <v-col cols="12" lg="8" class="text-xs-center" v-if="error">
+                <div class="w-full">
+                  <div class="flex justify-center">
+                    <div class="w-full text-center py-0">
+                      <div class="w-full lg:w-2/3 mx-auto text-center" v-if="error">
                         <Alert @dismissed="onDismissed" :text="error.message" />
-                      </v-col>
-                      <v-col cols="12" class="my-2 text-center">
-                        <v-btn
+                      </div>
+                      <div class="w-full my-2 text-center">
+                        <button
                           type="submit"
-                          large
-                          class="primary text-capitalize px-12"
-                          :loading="loading"
-                        >Sign In</v-btn>
-                      </v-col>
-                      <v-col cols="12" class="text-center mt-2 pb-0">
-                        <v-btn
-                          text
+                          class="btn-primary px-12"
+                          :disabled="loading"
+                        >{{ loading ? 'Signing In...' : 'Sign In' }}</button>
+                      </div>
+                      <div class="w-full text-center mt-2 pb-0">
+                        <nuxt-link
                           to="/signup"
-                          class="title secondary--text text-capitalize"
-                        >Get Account Here</v-btn>
-                      </v-col>
-                      <v-col cols="12" class="text-center py-0">
+                          class="text-xl text-secondary hover:text-secondary/80 font-normal"
+                        >Register for Account</nuxt-link>
+                      </div>
+                      <div class="w-full text-center py-0">
                         <ForgotPassword />
-                      </v-col>
-                    </v-col>
-                  </v-row>
-                </v-card-actions>
-              </v-col>
-            </v-row>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </form>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
