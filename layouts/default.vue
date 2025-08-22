@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-background text-white overflow-hidden">
+  <div class="min-h-screen bg-gray-900 text-white overflow-hidden">
     <div class="flex">
       <MobileNavBar v-if="!smAndUp" v-on:toggle-menu="drawer=!drawer" />
       <Success />
@@ -152,32 +152,6 @@ export default {
       return window.innerWidth >= 768;
     }
   },
-  methods: {
-    onScroll(e) {
-      if (typeof window === "undefined") return;
-      const top = window.pageYOffset || e.target.scrollTop || 0;
-      this.fab = top > 20;
-    },
-    toTop() {
-      if (typeof window !== 'undefined') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    },
-    onLogout() {
-      if (confirm("Sign Out?")) {
-        this.$store.dispatch("logout");
-      }
-    },
-    updateName() {
-      if (this.userAuth) {
-        if (confirm("Change Display Name?")) {
-          this.$router.push("/updatename");
-        }
-      } else {
-        this.$router.push("/signin");
-      }
-    }
-  },
   watch: {
     searchBar() {
       this.$store.commit("searchBarToggle");
@@ -226,9 +200,34 @@ export default {
     }
   },
   methods: {
+    onScroll(e) {
+      if (typeof window === "undefined") return;
+      const top = window.pageYOffset || e.target.scrollTop || 0;
+      this.fab = top > 20;
+    },
+    toTop() {
+      if (typeof window !== 'undefined') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    },
+    onLogout() {
+      if (confirm("Sign Out?")) {
+        this.$store.dispatch("logout");
+      }
+    },
+    updateName() {
+      if (this.userAuth) {
+        if (confirm("Change Display Name?")) {
+          this.$router.push("/updatename");
+        }
+      } else {
+        this.$router.push("/signin");
+      }
+    },
     handleResize() {
       this.$forceUpdate();
-    },
+    }
+  }
 };
 </script>
 
