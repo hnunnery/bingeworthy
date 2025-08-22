@@ -1,6 +1,7 @@
 
 export default {
-  mode: "spa",
+  ssr: false,
+  target: 'static',
   /*
    ** Headers of the page
    */
@@ -82,11 +83,12 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {},
-    vendor: ["aos"],
     postcss: {
-      plugins: {
-        tailwindcss: {},
-        autoprefixer: {},
+      postcssOptions: {
+        plugins: {
+          tailwindcss: {},
+          autoprefixer: {},
+        },
       },
     },
   }
