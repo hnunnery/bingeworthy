@@ -1,4 +1,3 @@
-import colors from "vuetify/es5/util/colors";
 
 export default {
   mode: "spa",
@@ -52,7 +51,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ["~/assets/css/tailwind.css"],
   /*
    ** Plugins to load before mounting the App
    */
@@ -60,7 +59,7 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ["@nuxtjs/vuetify"],
+  buildModules: [],
   /*
    ** Nuxt.js modules
    */
@@ -73,43 +72,8 @@ export default {
     }
   },
   /*
-   ** vuetify module configuration
-   ** https://github.com/nuxt-community/vuetify-module
+   ** Tailwind CSS configuration
    */
-  vuetify: {
-    customVariables: ["~/assets/variables.scss"],
-    theme: {
-      dark: true,
-      themes: {
-        dark: {
-          primary: "#4f1f2a",
-          accent: "#757575",
-          secondary: "#ceb888",
-          gold: "#ceb888",
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.red.darken4,
-          success: colors.green.darken1,
-          white: "#fafafa",
-          black: "#121212",
-          grey: "#424242"
-        },
-        light: {
-          primary: "#4f1f2a",
-          accent: "#757575",
-          secondary: "#4f1f2a",
-          gold: "#ceb888",
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.red.darken4,
-          success: colors.green.darken1,
-          white: "#fafafa",
-          black: "#121212",
-          grey: "#424242"
-        }
-      }
-    }
-  },
   /*
    ** Build configuration
    */
@@ -118,6 +82,12 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {},
-    vendor: ["aos"]
+    vendor: ["aos"],
+    postcss: {
+      plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+      },
+    },
   }
 };
