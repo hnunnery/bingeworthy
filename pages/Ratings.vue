@@ -6,7 +6,7 @@
         <div
           class="flex items-center justify-center"
           v-show="
-            this.$store.state.searchBar && window.innerWidth < 600
+            this.$store.state.searchBar && windowWidth < 600
           "
         >
           <div class="w-full sm:w-5/6 md:w-1/2 mt-1 mx-0 mb-2 px-2 py-0">
@@ -26,7 +26,7 @@
         <div
           class="flex items-center justify-center"
           v-show="
-            this.$store.state.searchBar && window.innerWidth >= 600
+            this.$store.state.searchBar && windowWidth >= 600
           "
         >
           <div class="w-full md:w-1/2 lg:w-1/3 mt-1 mx-0 mb-2 px-2 py-0">
@@ -57,7 +57,7 @@
 
         <!-- START - MOBILE - RATINGS CARDS -->
         <div
-          v-show="!noRatings && window.innerWidth <= 768"
+          v-show="!noRatings && windowWidth <= 768"
           class="flex flex-col justify-center my-0"
         >
           <div
@@ -107,7 +107,7 @@
 
         <!-- START RATINGS CARDS -->
         <div
-          v-if="!noRatings && window.innerWidth > 768"
+          v-if="!noRatings && windowWidth > 768"
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-center mt-2 mb-6"
         >
           <div v-for="rating in filteredRatings" :key="rating.id" class="w-full">
@@ -168,8 +168,15 @@ export default {
   },
   data() {
     return {
-      search: ""
+      search: "",
+      windowWidth: 0
     };
+  },
+  mounted() {
+    this.windowWidth = window.innerWidth;
+    window.addEventListener('resize', () => {
+      this.windowWidth = window.innerWidth;
+    });
   },
   methods: {
     setSearch(prop) {

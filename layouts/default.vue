@@ -134,7 +134,8 @@ export default {
       dark: true,
       fab: false,
       drawer: null,
-      searchBar: false
+      searchBar: false,
+      windowWidth: 0
     };
   },
   computed: {
@@ -148,8 +149,7 @@ export default {
       );
     },
     smAndUp() {
-      if (typeof window === 'undefined') return false;
-      return window.innerWidth >= 768;
+      return this.windowWidth >= 768;
     }
   },
   watch: {
@@ -189,6 +189,7 @@ export default {
   },
   mounted() {
     if (typeof window !== 'undefined') {
+      this.windowWidth = window.innerWidth;
       window.addEventListener('resize', this.handleResize);
       window.addEventListener('scroll', this.onScroll);
     }
@@ -225,6 +226,9 @@ export default {
       }
     },
     handleResize() {
+      if (typeof window !== 'undefined') {
+        this.windowWidth = window.innerWidth;
+      }
       this.$forceUpdate();
     }
   }

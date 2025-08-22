@@ -6,7 +6,7 @@
         <div
           class="flex items-center justify-center"
           v-show="
-            this.$store.state.searchBar && window.innerWidth < 600
+            this.$store.state.searchBar && windowWidth < 600
           "
         >
           <div class="w-full sm:w-5/6 md:w-1/2 mt-1 mx-0 mb-2 px-2 py-0">
@@ -30,7 +30,7 @@
         <div
           class="flex items-center justify-center"
           v-show="
-            this.$store.state.searchBar && window.innerWidth >= 600
+            this.$store.state.searchBar && windowWidth >= 600
           "
         >
           <div class="w-full md:w-1/2 lg:w-1/3 mt-1 mx-0 mb-2 px-2 py-0">
@@ -56,7 +56,7 @@
             <i class="fas fa-arrow-left mr-2"></i>Back / Clear
           </button>
           <RateThis
-            v-if="expandedName && userAuth && window.innerWidth >= 768"
+            v-if="expandedName && userAuth && windowWidth >= 768"
             :rateName="expandedName"
             :ratePlatform="expandedPlatform"
           />
@@ -72,7 +72,7 @@
 
         <!-- START - MOBILE - MASTER RATINGS CARDS -->
         <div
-          v-if="!loading && window.innerWidth <= 768"
+          v-if="!loading && windowWidth <= 768"
           class="block md:hidden flex justify-center"
           style="margin: 0px -19px !important;"
         >
