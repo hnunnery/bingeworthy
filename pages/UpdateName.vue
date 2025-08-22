@@ -1,56 +1,56 @@
 <template>
-  <v-container fluid class="pt-0">
-    <v-row class="justify-center align-center" style="min-height: 80vh !important;">
-      <v-col cols="12" sm="8" md="6" style="max-width: 500px;">
-        <v-card class="pa-6 px-lg-10" elevation="15">
+  <div class="container mx-auto px-4 pt-0">
+    <div class="flex justify-center items-center" style="min-height: 80vh !important;">
+      <div class="w-full sm:w-2/3 md:w-1/2" style="max-width: 500px;">
+        <div class="card p-6 lg:px-10">
           <form @submit.prevent="updateDisplayName">
-            <v-row class="align-center justify-center">
-              <v-col cols="12" class="pb-2">
+            <div class="flex flex-col items-center justify-center">
+              <div class="w-full pb-2">
                 <h2
-                  class="display-1 text-center font-italic mt-1 pb-0"
+                  class="text-4xl text-center font-italic mt-1 pb-0"
                   style="letter-spacing: 1.2px;"
                 >Set Display Name</h2>
 
-                <v-text-field
-                  class="mt-6"
-                  name="displayName"
-                  label="Full Name"
-                  id="displayName"
-                  v-model="displayName"
-                  type="text"
-                  required
-                ></v-text-field>
+                <div class="mt-6">
+                  <label for="displayName" class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
+                  <input
+                    class="input-field"
+                    name="displayName"
+                    id="displayName"
+                    v-model="displayName"
+                    type="text"
+                    required
+                    placeholder="Enter your full name"
+                  />
+                </div>
 
-                <v-card-actions style="width: 100%;">
-                  <v-row class="justify-center">
-                    <v-col cols="12" class="text-center py-0">
-                      <v-col cols="12" lg="8" class="text-xs-center" v-if="error">
+                <div class="w-full">
+                  <div class="flex justify-center">
+                    <div class="w-full text-center py-0">
+                      <div class="w-full lg:w-2/3 mx-auto text-center" v-if="error">
                         <Alert @dismissed="onDismissed" :text="error.message" />
-                      </v-col>
-                      <v-col cols="12" class="my-2 text-center">
-                        <v-btn
-                          large
-                          outlined
+                      </div>
+                      <div class="w-full my-2 text-center">
+                        <nuxt-link
                           to="/"
-                          class="secondary--text text-capitalize mx-2"
-                        >Cancel</v-btn>
-                        <v-btn
+                          class="btn-secondary mx-2"
+                        >Cancel</nuxt-link>
+                        <button
                           type="submit"
-                          large
-                          class="primary text-capitalize px-8 mx-2"
-                          :loading="loading"
-                        >Update</v-btn>
-                      </v-col>
-                    </v-col>
-                  </v-row>
-                </v-card-actions>
-              </v-col>
-            </v-row>
+                          class="btn-primary px-8 mx-2"
+                          :disabled="loading"
+                        >{{ loading ? 'Updating...' : 'Update' }}</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </form>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
