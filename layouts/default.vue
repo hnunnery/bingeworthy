@@ -1,12 +1,12 @@
 <template>
-  <div class="min-h-screen bg-gray-900 text-white overflow-hidden">
+  <div class="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white overflow-hidden">
     <div class="flex">
       <MobileNavBar v-if="!smAndUp" v-on:toggle-menu="drawer=!drawer" />
       <Success />
       <!-- Navigation Drawer -->
       <div 
         :class="[
-          'fixed inset-y-0 left-0 z-50 w-60 bg-surface border-r border-primary/30 transform transition-transform duration-300 ease-in-out',
+          'fixed inset-y-0 left-0 z-50 w-60 bg-white dark:bg-surface border-r border-primary/30 transform transition-transform duration-300 ease-in-out',
           smAndUp ? 'translate-x-0' : (drawer ? 'translate-x-0' : '-translate-x-full')
         ]"
       >
@@ -27,53 +27,53 @@
 
         <nav class="px-2">
           <!-- ALL RATINGS -->
-          <nuxt-link to="/" class="flex items-center px-3 py-3 text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
+          <nuxt-link to="/" class="flex items-center px-3 py-3 text-gray-900 dark:text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
             <i class="fas fa-home w-6 text-center mr-3 text-secondary"></i>
             <span>All Ratings</span>
           </nuxt-link>
 
           <!-- MY RATINGS -->
-          <nuxt-link v-if="userAuth" to="/ratings" class="flex items-center px-3 py-3 text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
+          <nuxt-link v-if="userAuth" to="/ratings" class="flex items-center px-3 py-3 text-gray-900 dark:text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
             <i class="fas fa-star w-6 text-center mr-3 text-secondary"></i>
             <span>My Ratings</span>
           </nuxt-link>
 
           <!-- RECENT RATINGS -->
-          <nuxt-link to="/recent" class="flex items-center px-3 py-3 text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
+          <nuxt-link to="/recent" class="flex items-center px-3 py-3 text-gray-900 dark:text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
             <i class="fas fa-clock w-6 text-center mr-3 text-secondary"></i>
             <span>Recent Ratings</span>
           </nuxt-link>
 
           <!-- ADD A RATING -->
-          <nuxt-link v-if="userAuth" to="/addrating" class="flex items-center px-3 py-3 text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
+          <nuxt-link v-if="userAuth" to="/addrating" class="flex items-center px-3 py-3 text-gray-900 dark:text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
             <i class="fas fa-plus-circle w-6 text-center mr-3 text-secondary"></i>
             <span>Add A Rating</span>
           </nuxt-link>
-          <nuxt-link v-else to="/signin" class="flex items-center px-3 py-3 text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
+          <nuxt-link v-else to="/signin" class="flex items-center px-3 py-3 text-gray-900 dark:text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
             <i class="fas fa-plus-circle w-6 text-center mr-3 text-secondary"></i>
             <span>Add A Rating</span>
           </nuxt-link>
 
           <!-- SEARCH -->
-          <button @click="searchBar = !searchBar; drawer=false" class="w-full flex items-center px-3 py-3 text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
+          <button @click="searchBar = !searchBar; drawer=false" class="w-full flex items-center px-3 py-3 text-gray-900 dark:text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
             <i class="fas fa-search w-6 text-center mr-3 text-secondary"></i>
             <span>Search</span>
           </button>
 
           <!-- SIGN IN -->
-          <nuxt-link v-if="!userAuth" to="/signin" class="flex items-center px-3 py-3 text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
+          <nuxt-link v-if="!userAuth" to="/signin" class="flex items-center px-3 py-3 text-gray-900 dark:text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
             <i class="fas fa-sign-in-alt w-6 text-center mr-3 text-secondary"></i>
             <span>Sign In</span>
           </nuxt-link>
 
           <!-- SIGN UP -->
-          <nuxt-link v-if="!userAuth" to="/signup" class="flex items-center px-3 py-3 text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
+          <nuxt-link v-if="!userAuth" to="/signup" class="flex items-center px-3 py-3 text-gray-900 dark:text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
             <i class="fas fa-user-plus w-6 text-center mr-3 text-secondary"></i>
             <span>Sign Up</span>
           </nuxt-link>
 
           <!-- SIGN OUT -->
-          <button v-if="userAuth" @click="onLogout" class="w-full flex items-center px-3 py-3 text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
+          <button v-if="userAuth" @click="onLogout" class="w-full flex items-center px-3 py-3 text-gray-900 dark:text-white hover:bg-primary/20 rounded-lg transition-colors duration-200 mb-1">
             <i class="fas fa-sign-out-alt w-6 text-center mr-3 text-secondary"></i>
             <span>Sign Out</span>
           </button>
@@ -93,7 +93,7 @@
                 dark ? 'translate-x-6 bg-secondary' : ''
               ]"></div>
             </div>
-            <span class="ml-3 text-white">Dark Mode</span>
+            <span class="ml-3 text-gray-900 dark:text-white">Dark Mode</span>
           </label>
         </div>
       </div>
