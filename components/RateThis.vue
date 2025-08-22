@@ -1,63 +1,63 @@
 <template>
-  <v-dialog v-model="dialog" persistent max-width="400" overlay-color="black" overlay-opacity=".97">
-    <template v-slot:activator="{ on }">
-      <v-btn
-        large
-        class="hidden-sm-and-down primary text-capitalize mt-md-2 mb-md-1 mx-3 scale-btn"
-        v-on="on"
-      >
-        <v-icon left>mdi-plus</v-icon>Rate This Show
-      </v-btn>
-      <!-- for xs screen size only -->
-      <v-btn
-        class="hidden-md-and-up primary text-capitalize"
-        style="margin-right: -10px !important;"
-        v-on="on"
-      >Rate Show</v-btn>
-    </template>
-    <v-card class="px-6 py-2" elevation="15">
-      <v-row class="align-center justify-center">
-        <v-col cols="12" class="pb-0">
-          <h2
-            class="display-1 secondary--text text-center font-weight-regular font-italic my-0 pb-0"
-          >{{ name }}</h2>
-        </v-col>
-        <v-col cols="12" class="mb-0 text-center">
-          <span class="display-3 font-weight-regular">{{ rating }}/5</span>
-          <v-rating
-            v-model="rawRating"
-            size="25"
-            :length="10"
-            dense
-            color="gold"
-            required
-            class="mt-4"
-          ></v-rating>
-        </v-col>
-        <v-card-actions style="width: 100%;">
-          <v-row class="justify-center">
-            <v-col cols="12" class="text-center mt-2">
-              <v-btn
-                large
-                outlined
-                elevation="15"
-                @click="dialog = false;"
-                class="secondary--text text-capitalize mx-2 px-6 scale-btn"
-              >Cancel</v-btn>
-              <v-btn
-                large
-                elevation="15"
-                @click="addRating"
-                class="primary text-capitalize mx-2 px-4 scale-btn"
-              >
-                <v-icon size="22" left>mdi-plus</v-icon>Add Rating
-              </v-btn>
-            </v-col>
-          </v-row>
-        </v-card-actions>
-      </v-row>
-    </v-card>
-  </v-dialog>
+  <div>
+    <!-- Modal Overlay -->
+    <div v-if="dialog" class="fixed inset-0 bg-black bg-opacity-97 flex items-center justify-center z-50" @click="dialog = false">
+      <div class="card max-w-sm w-full mx-4 px-6 py-2" @click.stop>
+        <div class="flex flex-col items-center justify-center">
+          <div class="w-full pb-0">
+            <h2
+              class="text-4xl text-secondary text-center font-normal font-italic my-0 pb-0"
+            >{{ name }}</h2>
+          </div>
+          <div class="w-full mb-0 text-center">
+            <span class="text-6xl font-normal">{{ rating }}/5</span>
+            <div class="flex justify-center items-center mt-4">
+              <i 
+                v-for="star in 10" 
+                :key="star"
+                :class="[
+                  'fas cursor-pointer mx-1',
+                  star <= rawRating ? 'text-yellow-400 fa-star' : 'text-gray-600 far fa-star'
+                ]"
+                style="font-size: 25px;"
+                @click="rawRating = star"
+              ></i>
+            </div>
+          </div>
+          <div class="w-full">
+            <div class="flex justify-center">
+              <div class="w-full text-center mt-2">
+                <button
+                  @click="dialog = false;"
+                  class="btn-secondary mx-2 px-6 shadow-lg"
+                >Cancel</button>
+                <button
+                  @click="addRating"
+                  class="btn-primary mx-2 px-4 shadow-lg"
+                >
+                  <i class="fas fa-plus mr-2"></i>Add Rating
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trigger Buttons -->
+    <button
+      @click="dialog = true"
+      class="hidden md:block btn-primary mt-2 mb-1 mx-3 hover:scale-105 transition-transform"
+    >
+      <i class="fas fa-plus mr-2"></i>Rate This Show
+    </button>
+    <!-- for xs screen size only -->
+    <button
+      @click="dialog = true"
+      class="block md:hidden btn-primary"
+      style="margin-right: -10px !important;"
+    >Rate Show</button>
+  </div>
 </template>
 
 <script>

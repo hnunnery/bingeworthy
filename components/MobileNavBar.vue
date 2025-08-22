@@ -1,15 +1,15 @@
 <template>
-  <v-app-bar dense dark class="hidden-sm-and-up mb-1" color="primary">
-    <v-btn text @click="$emit('toggle-menu')" style="margin-left: -16px;">
-      <v-icon>mdi-menu</v-icon>
-    </v-btn>
-    <v-spacer />
-    <v-toolbar-title
-      class="secondary--text font-weight-bold font-italic text-xs-center text-sm-left px-1"
+  <div class="block sm:hidden bg-primary text-white px-4 py-2 mb-1 flex items-center">
+    <button @click="$emit('toggle-menu')" class="text-white bg-transparent border-none p-2" style="margin-left: -16px;">
+      <i class="fas fa-bars text-xl"></i>
+    </button>
+    <div class="flex-grow"></div>
+    <div
+      class="text-secondary font-bold font-italic text-center px-1"
       style="letter-spacing: -1px; font-size: 1.7em; margin-right: 47px;"
     >
-      <nuxt-link to="/" class="white--text" style="text-decoration: none;">BingeWorthy</nuxt-link>
-    </v-toolbar-title>
-    <v-spacer />
-  </v-app-bar>
+      <nuxt-link to="/" class="text-white no-underline">BingeWorthy</nuxt-link>
+    </div>
+    <div class="flex-grow"></div>
+  </div>
 </template>

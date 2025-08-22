@@ -1,41 +1,45 @@
 <template>
-  <v-dialog v-model="dialog" persistent max-width="400" overlay-color="black" overlay-opacity=".97">
-    <template v-slot:activator="{ on }">
-      <v-btn text v-on="on" class="title secondary--text text-capitalize">Reset Password</v-btn>
-    </template>
-    <v-card class="px-6 py-2" elevation="15">
-      <v-row class="align-center justify-center">
-        <v-col cols="12" class="pb-2">
-          <h2
-            class="display-1 secondary--text text-center font-italic mt-1 pb-0"
-            style="letter-spacing: 1.2px;"
-          >Reset Password</h2>
-        </v-col>
-        <v-col cols="12">
-          <v-text-field
-            class="mt-2"
-            name="email"
-            label="Email"
-            id="email"
-            v-model="email"
-            type="email"
-            required
-          ></v-text-field>
-        </v-col>
-        <v-col cols="12" class="my-2 text-center">
-          <v-btn
-            large
-            outlined
-            @click="dialog=false"
-            class="secondary--text text-capitalize px-4 mx-2"
-          >Cancel</v-btn>
-          <v-btn large @click="resetPassword" class="primary text-capitalize px-6 mx-2">
-            <v-icon left>mdi-check</v-icon>Reset
-          </v-btn>
-        </v-col>
-      </v-row>
-    </v-card>
-  </v-dialog>
+  <div>
+    <!-- Modal Overlay -->
+    <div v-if="dialog" class="fixed inset-0 bg-black bg-opacity-97 flex items-center justify-center z-50" @click="dialog = false">
+      <div class="card max-w-sm w-full mx-4 px-6 py-2" @click.stop>
+        <div class="flex flex-col items-center justify-center">
+          <div class="w-full pb-2">
+            <h2
+              class="text-4xl text-secondary text-center font-italic mt-1 pb-0"
+              style="letter-spacing: 1.2px;"
+            >Reset Password</h2>
+          </div>
+          <div class="w-full">
+            <div class="mt-2">
+              <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+              <input
+                class="input-field"
+                name="email"
+                id="email"
+                v-model="email"
+                type="email"
+                required
+                placeholder="Enter your email"
+              />
+            </div>
+          </div>
+          <div class="w-full my-2 text-center">
+            <button
+              @click="dialog=false"
+              class="btn-secondary px-4 mx-2"
+            >Cancel</button>
+            <button @click="resetPassword" class="btn-primary px-6 mx-2">
+              <i class="fas fa-check mr-2"></i>Reset
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trigger Button -->
+    <button @click="dialog = true" class="text-xl text-secondary hover:text-secondary/80 font-normal">Reset Password</button>
+  </div>
 </template>
 
 <script>

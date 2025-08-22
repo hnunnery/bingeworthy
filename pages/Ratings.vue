@@ -1,161 +1,158 @@
 <template>
-  <v-container fluid class="pt-0 pb-12">
-    <v-row class="justify-space-between ma-0 pa-0" no-gutters>
-      <v-col cols="12" class="desktop">
+  <div class="container mx-auto px-4 pt-0 pb-12">
+    <div class="flex justify-between ma-0 pa-0">
+      <div class="w-full desktop">
         <!-- DROP DOWN SEARCH BAR FOR XS-MD BREAKPOINTS; LEAVE ON PAGES -->
-        <v-row
-          class="align-center justify-center"
+        <div
+          class="flex items-center justify-center"
           v-show="
-            this.$store.state.searchBar && this.$vuetify.breakpoint.xsOnly
+            this.$store.state.searchBar && windowWidth < 600
           "
         >
-          <v-col cols="12" sm="10" md="6" class="mt-1 mx-0 mb-2 px-2 py-0">
-            <v-text-field solo placeholder="Search" v-model="search" hide-details></v-text-field>
-          </v-col>
-        </v-row>
-      </v-col>
-    </v-row>
+          <div class="w-full sm:w-5/6 md:w-1/2 mt-1 mx-0 mb-2 px-2 py-0">
+            <input class="input-field" placeholder="Search" v-model="search" />
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- DESKTOP NAV END -->
 
-    <v-row justify="center">
-      <v-col cols="12" xl="11" class="mt-0 pt-0 px-5">
+    <div class="flex justify-center">
+      <div class="w-full xl:w-11/12 mt-0 pt-0 px-5">
         <h1
-          class="hidden-xs-only secondary--text text-center font-weight-bold font-italic my-2"
+          class="hidden sm:block text-secondary text-center font-bold font-italic my-2"
           style="letter-spacing: -2px; font-size: 6vmax;"
         >BingeWorthy</h1>
-        <v-row
-          class="align-center justify-center"
+        <div
+          class="flex items-center justify-center"
           v-show="
-            this.$store.state.searchBar && this.$vuetify.breakpoint.smAndUp
+            this.$store.state.searchBar && windowWidth >= 600
           "
         >
-          <v-col cols="12" md="6" lg="4" class="mt-1 mx-0 mb-2 px-2 py-0">
-            <v-text-field solo placeholder="Search" v-model="search" hide-details></v-text-field>
-          </v-col>
-        </v-row>
-        <v-row class="justify-center mt-0 mb-0 pb-0">
-          <v-btn
-            text
-            class="hidden-md-and-up text-capitalize mx-1"
+          <div class="w-full md:w-1/2 lg:w-1/3 mt-1 mx-0 mb-2 px-2 py-0">
+            <input class="input-field" placeholder="Search" v-model="search" />
+          </div>
+        </div>
+        <div class="flex justify-center mt-0 mb-0 pb-0">
+          <button
+            class="block md:hidden btn-secondary mx-1"
             v-show="this.search"
             @click="clearSearch"
-          >Clear Search</v-btn>
-          <v-btn
-            large
-            class="hidden-sm-and-down primary text-capitalize mb-lg-3 mx-2 scale-btn"
+          >Clear Search</button>
+          <button
+            class="hidden sm:block btn-primary mb-3 lg:mb-6 mx-2 hover:scale-105 transition-transform"
             v-show="this.search"
             @click="clearSearch"
           >
-            <v-icon left>mdi-arrow-left</v-icon>Back / Clear
-          </v-btn>
-        </v-row>
+            <i class="fas fa-arrow-left mr-2"></i>Back / Clear
+          </button>
+        </div>
 
         <!-- USER HAS NO RATINGS -->
-        <v-row v-show="noRatings" class="justify-center align-center" style="height: 50vh">
-          <v-col class="text-center">
-            <h2 class="display-1 text-capitalize">The ratings that you create will be listed here</h2>
-          </v-col>
-        </v-row>
+        <div v-show="noRatings" class="flex justify-center items-center" style="height: 50vh">
+          <div class="text-center">
+            <h2 class="text-4xl capitalize">The ratings that you create will be listed here</h2>
+          </div>
+        </div>
 
         <!-- START - MOBILE - RATINGS CARDS -->
-        <v-row
-          v-show="!noRatings && this.$vuetify.breakpoint.smAndDown"
-          class="justify-center my-0"
+        <div
+          v-show="!noRatings && windowWidth <= 768"
+          class="flex flex-col justify-center my-0"
         >
-          <v-col
-            cols="12"
+          <div
             v-for="rating in filteredRatings"
             :key="rating.id"
-            class="pa-0"
-            style="position: relative;"
+            class="w-full pa-0 relative"
           >
-            <v-row class="text-center justify-center align-center pt-3 pb-4 px-4 px-sm-8">
-              <v-col cols="12" class="text-left d-inline-flex py-0 px-0">
+            <div class="text-center flex flex-col justify-center items-center pt-3 pb-4 px-4 sm:px-8">
+              <div class="w-full text-left flex items-start py-0 px-0">
                 <span
-                  class="title"
+                  class="text-xl cursor-pointer"
                   style="line-height: 1em; margin-top: 5px;"
                   @click="setSearch(rating.name)"
                 >{{ rating.name }}</span>
 
-                <v-spacer />
-                <v-rating
-                  :value="parseFloat(rating.rating)"
-                  color="gold"
-                  size="25"
-                  half-icon="mdi-star-half-full"
-                  half-increments
-                  dense
-                  readonly
-                ></v-rating>
-              </v-col>
-              <v-col
-                cols="12"
-                class="accent--text d-inline-flex py-0 pl-0 pr-1"
+                <div class="flex-grow"></div>
+                <div class="flex items-center">
+                  <i 
+                    v-for="star in 10" 
+                    :key="star"
+                    :class="[
+                      'fas mx-0.5',
+                      star <= rating.rating * 2 ? 'text-yellow-400 fa-star' : 
+                      star === Math.ceil(rating.rating * 2) && (rating.rating * 2) % 1 >= 0.5 ? 'text-yellow-400 fa-star-half-alt' : 'text-gray-600 far fa-star'
+                    ]"
+                    style="font-size: 25px;"
+                  ></i>
+                </div>
+              </div>
+              <div
+                class="w-full text-accent flex items-center py-0 pl-0 pr-1"
                 style="font-size: 1rem; margin-bottom: -2px;"
               >
                 <EditRating :rating="rating" v-if="userId === rating.userId || userIsAdmin" />
                 <span
                   @click="setSearch(rating.platform)"
+                  class="cursor-pointer"
                   style="padding-left: 2px;"
                 >{{ rating.platform }}</span>
-                <v-spacer />
+                <div class="flex-grow"></div>
                 <span>{{ rating.user }}</span>
-              </v-col>
-            </v-row>
-            <v-divider class="px-0" />
-          </v-col>
-        </v-row>
+              </div>
+            </div>
+            <hr class="border-gray-600 px-0" />
+          </div>
+        </div>
 
         <!-- START RATINGS CARDS -->
-        <v-row
-          v-if="!noRatings && this.$vuetify.breakpoint.mdAndUp"
-          class="justify-center mt-2 mb-6"
+        <div
+          v-if="!noRatings && windowWidth > 768"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-center mt-2 mb-6"
         >
-          <v-col cols="12" md="6" lg="4" xl="3" v-for="rating in filteredRatings" :key="rating.id">
-            <v-card
-              class="px-4 pt-1 ma-0 align-center d-flex"
-              elevation="15"
-              height="100%"
+          <div v-for="rating in filteredRatings" :key="rating.id" class="w-full">
+            <div
+              class="card px-4 pt-1 ma-0 flex items-center h-full"
               style="box-shadow: 0 0 5px 1px #782f40 !important;"
             >
-              <v-row class="text-center justify-center align-center">
-                <v-row class="justify-center align-center" style="height: 80px;">
-                  <v-col
-                    cols="12"
-                    class="display-1 py-0 mt-0"
-                    style="cursor: pointer; line-height: 1em;"
+              <div class="text-center flex flex-col justify-center items-center w-full">
+                <div class="flex justify-center items-center" style="height: 80px;">
+                  <div
+                    class="text-4xl py-0 mt-0 cursor-pointer"
+                    style="line-height: 1em;"
                     @click="setSearch(rating.name)"
-                  >{{ rating.name }}</v-col>
-                </v-row>
-                <v-col cols="12" class="py-0" style="margin-top: -10px;">
-                  <v-rating
-                    :value="parseFloat(rating.rating)"
-                    half-increments
-                    half-icon="mdi-star-half-full"
-                    size="40"
-                    readonly
-                    color="gold"
-                  ></v-rating>
-                </v-col>
-                <v-col
-                  cols="12"
-                  class="py-0 font-weight-medium"
-                  style="cursor: pointer; font-size: 1.9em; color: #782F40;"
+                  >{{ rating.name }}</div>
+                </div>
+                <div class="w-full py-0" style="margin-top: -10px;">
+                  <div class="flex justify-center items-center">
+                    <i 
+                      v-for="star in 10" 
+                      :key="star"
+                      :class="[
+                        'fas mx-1',
+                        star <= rating.rating * 2 ? 'text-yellow-400 fa-star' : 
+                        star === Math.ceil(rating.rating * 2) && (rating.rating * 2) % 1 >= 0.5 ? 'text-yellow-400 fa-star-half-alt' : 'text-gray-600 far fa-star'
+                      ]"
+                      style="font-size: 40px;"
+                    ></i>
+                  </div>
+                </div>
+                <div
+                  class="w-full py-0 font-medium cursor-pointer text-3xl"
+                  style="color: #782F40;"
                   @click="setSearch(rating.platform)"
-                >{{ rating.platform }}</v-col>
-                <v-col
-                  cols="12"
-                  class="headline font-weight-light font-italic pt-1"
-                  style="cursor: pointer;"
-                >{{ rating.user }}</v-col>
+                >{{ rating.platform }}</div>
+                <div
+                  class="w-full text-2xl font-light font-italic pt-1 cursor-pointer"
+                >{{ rating.user }}</div>
                 <EditRating :rating="rating" v-if="userId === rating.userId" />
-              </v-row>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-col>
-    </v-row>
-  </v-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -171,14 +168,21 @@ export default {
   },
   data() {
     return {
-      search: ""
+      search: "",
+      windowWidth: 0
     };
+  },
+  mounted() {
+    this.windowWidth = window.innerWidth;
+    window.addEventListener('resize', () => {
+      this.windowWidth = window.innerWidth;
+    });
   },
   methods: {
     setSearch(prop) {
       this.search = prop;
       setTimeout(() => {
-        this.$vuetify.goTo(0);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }, 50);
     },
     clearSearch() {
