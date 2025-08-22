@@ -160,7 +160,7 @@
         </div>
         
         <!-- START MASTER RATINGS CARDS -->
-        <div v-if="!loading && window.innerWidth >= 768" class="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 justify-center mt-2 mb-1">
+        <div v-if="!loading && windowWidth >= 768" class="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 justify-center mt-2 mb-1">
           <div
             v-for="(rating, index) in filteredMasterRatingsDesktop"
             :key="index"
@@ -238,7 +238,7 @@
         </div>
 
         <!-- START - MOBILE - RATINGS CARDS -->
-        <div v-show="!loading && this.search && window.innerWidth <= 768" class="block md:hidden flex justify-center my-0">
+        <div v-show="!loading && this.search && windowWidth <= 768" class="block md:hidden flex justify-center my-0">
           <div class="w-full">
             <div
               v-for="rating in filteredRatings"
@@ -289,7 +289,7 @@
         </div>
 
         <!-- START RATINGS CARDS -->
-        <div v-if="!loading && this.search && window.innerWidth >= 768" class="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 justify-center mt-2 mb-6">
+        <div v-if="!loading && this.search && windowWidth >= 768" class="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 justify-center mt-2 mb-6">
           <div v-for="rating in filteredRatings" :key="rating.id">
             <div
               class="card px-4 pt-1 m-0 flex items-center h-full"
@@ -356,8 +356,15 @@ export default {
       expandedPlatform: "",
       expandedRank: "",
       expandedRating: "",
-      panel: false
+      panel: false,
+      windowWidth: 0
     };
+  },
+  mounted() {
+    this.windowWidth = window.innerWidth;
+    window.addEventListener('resize', () => {
+      this.windowWidth = window.innerWidth;
+    });
   },
   methods: {
     setSearch(prop) {
@@ -437,9 +444,9 @@ export default {
       return this.$store.state.userDark;
     },
     shadow() {
-      if (this.dark && window.innerWidth >= 960 && window.innerWidth < 1264) {
+      if (this.dark && this.windowWidth >= 960 && this.windowWidth < 1264) {
         return "0 0 5px 1px #ceb888 !important";
-      } else if (this.dark && window.innerWidth >= 1264) {
+      } else if (this.dark && this.windowWidth >= 1264) {
         return "0 0 10px 3px #ceb888 !important";
       } else {
         return "0 0 5px 1px #782f40 !important";
