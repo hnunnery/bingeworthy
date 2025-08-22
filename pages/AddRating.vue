@@ -1,69 +1,81 @@
 <template>
-  <v-container fluid class="pt-0">
-    <v-row class="mt-lg-12 justify-center align-center" style="min-height: 70vh !important;">
-      <v-col cols="12" sm="8" md="6" style="max-width: 600px;">
-        <v-card class="py-6 px-6 px-lg-10" elevation="15">
+  <div class="container mx-auto px-4 pt-0">
+    <div class="flex justify-center items-center mt-12 lg:mt-24" style="min-height: 70vh !important;">
+      <div class="w-full sm:w-2/3 md:w-1/2" style="max-width: 600px;">
+        <div class="card py-6 px-6 lg:px-10 shadow-2xl">
           <form @submit.prevent="addRating">
-            <v-row class="align-center justify-center">
-              <v-col cols="12" class="pb-2">
+            <div class="flex flex-col items-center justify-center">
+              <div class="w-full pb-2">
                 <h2
-                  class="display-1 secondary--text text-center font-italic mt-1 pb-0"
+                  class="text-4xl text-secondary text-center font-italic mt-1 pb-0"
                   style="letter-spacing: 1.2px;"
                 >Add Your Rating</h2>
-              </v-col>
-              <v-col cols="12" class="py-1">
-                <v-combobox
+              </div>
+              <div class="w-full py-1">
+                <label class="block text-sm font-medium text-gray-300 mb-2">Name of Show</label>
+                <input
                   name="name"
-                  label="Name of Show"
                   v-model="name"
-                  :items="this.uniqueNames"
+                  :list="'show-names'"
                   required
                   type="text"
-                ></v-combobox>
-              </v-col>
-              <v-col cols="12" class="py-1">
-                <v-combobox
+                  class="input-field"
+                  placeholder="Enter show name"
+                />
+                <datalist id="show-names">
+                  <option v-for="showName in uniqueNames" :key="showName" :value="showName" />
+                </datalist>
+              </div>
+              <div class="w-full py-1">
+                <label class="block text-sm font-medium text-gray-300 mb-2">Platform (Netflix, Hulu, etc.)</label>
+                <input
                   name="platform"
-                  label="Platform (Netflix, Hulu, etc.)"
                   v-model="platform"
-                  :items="this.uniquePlatforms"
+                  :list="'platforms'"
                   required
                   type="text"
-                ></v-combobox>
-              </v-col>
-              <v-col cols="12" class="text-center pt-0 pb-3">
-                <span class="display-2 secondary--text">{{ rating }}/5</span>
-                <v-rating
-                  :length="10"
-                  class="mt-2"
-                  v-model="rawRating"
-                  size="25"
-                  dense
-                  color="gold"
-                  required
-                ></v-rating>
-              </v-col>
-              <v-card-actions style="width: 100%;">
-                <v-row class="justify-center">
-                  <v-col cols="12" class="text-center mt-2">
-                    <v-btn
-                      large
-                      outlined
+                  class="input-field"
+                  placeholder="Enter platform"
+                />
+                <datalist id="platforms">
+                  <option v-for="platformName in uniquePlatforms" :key="platformName" :value="platformName" />
+                </datalist>
+              </div>
+              <div class="w-full text-center pt-0 pb-3">
+                <span class="text-5xl text-secondary">{{ rating }}/5</span>
+                <div class="flex justify-center items-center mt-2">
+                  <i 
+                    v-for="star in 10" 
+                    :key="star"
+                    :class="[
+                      'fas cursor-pointer mx-1',
+                      star <= rawRating ? 'text-yellow-400 fa-star' : 'text-gray-600 far fa-star'
+                    ]"
+                    style="font-size: 25px;"
+                    @click="rawRating = star"
+                  ></i>
+                </div>
+              </div>
+              <div class="w-full">
+                <div class="flex justify-center">
+                  <div class="w-full text-center mt-2">
+                    <button
+                      type="button"
                       @click="resetForm"
-                      class="secondary--text text-capitalize mx-2 px-6 scale-btn"
-                    >Reset</v-btn>
-                    <v-btn type="submit" large class="primary text-capitalize mx-2 px-4 scale-btn">
-                      <v-icon size="22" left>mdi-plus</v-icon>Add Rating
-                    </v-btn>
-                  </v-col>
-                </v-row>
-              </v-card-actions>
-            </v-row>
+                      class="btn-secondary mx-2 px-6"
+                    >Reset</button>
+                    <button type="submit" class="btn-primary mx-2 px-4">
+                      <i class="fas fa-plus mr-2"></i>Add Rating
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </form>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
