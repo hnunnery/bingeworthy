@@ -1,82 +1,71 @@
 <template>
-  <v-dialog v-model="dialog" max-width="400" overlay-color="black" overlay-opacity=".97">
-    <template v-slot:activator="{ on }">
-      <v-btn
-        fab
-        small
-        icon
-        class="hidden-sm-and-up pa-0"
-        v-on="on"
-        active-class="no-active"
-        style="margin-right: -4px; margin-left: -4px;"
-      >
-        <v-icon>mdi-account-outline</v-icon>
-      </v-btn>
-      <v-btn
-        large
-        class="hidden-md-and-down primary text-capitalize ml-3 scale-btn"
-        v-on="on"
-        style="margin-top: 1.5px;"
-      >
-        <v-icon left size="20">mdi-account-outline</v-icon>Account
-      </v-btn>
-    </template>
+  <div>
+    <!-- Modal Overlay -->
+    <div v-if="dialog" class="fixed inset-0 bg-black bg-opacity-97 flex items-center justify-center z-50" @click="dialog = false">
+      <div class="card max-w-sm w-full mx-4 px-6 py-2" @click.stop>
+        <div class="flex flex-col items-center justify-center">
+          <div class="w-full pb-0">
+            <h2
+              class="text-4xl text-secondary text-center font-normal font-italic mt-0 pb-0"
+            >Account Options</h2>
+          </div>
+          <div class="w-full">
+            <div class="flex justify-center">
+              <!-- DISPLAY IF USER IS NOT AUTHENTICATED -->
+              <div class="w-full text-center" v-if="!userAuth">
+                <nuxt-link
+                  to="/signup"
+                  @click="dialog=false"
+                  class="btn-primary mx-2 my-3 px-6 inline-flex items-center"
+                >
+                  <i class="fas fa-user-plus text-xl mr-2"></i>&nbsp;Create an Account
+                </nuxt-link>
+                <nuxt-link
+                  to="/signin"
+                  @click="dialog=false"
+                  class="btn-primary mx-2 my-3 px-6 inline-flex items-center"
+                >
+                  <i class="fas fa-user-check text-xl mr-2"></i>&nbsp;Sign In to Account
+                </nuxt-link>
+              </div>
+              <!-- DISPLAY IF USER IS AUTHENTICATED -->
+              <div class="w-full text-center" v-else>
+                <button
+                  @click="onLogout"
+                  class="btn-primary mx-2 my-3 px-5 inline-flex items-center"
+                >
+                  <i class="fas fa-user-minus text-xl mr-2"></i>&nbsp;Sign Out of Account
+                </button>
+                <nuxt-link
+                  to="/updatename"
+                  @click="dialog=false"
+                  class="btn-primary mx-2 my-3 px-7 inline-flex items-center"
+                >
+                  <i class="fas fa-user-cog text-xl mr-2"></i>&nbsp;Update User Name
+                </nuxt-link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <v-card class="px-6 py-2" elevation="15">
-      <v-row class="align-center justify-center">
-        <v-col cols="12" class="pb-0">
-          <h2
-            class="display-1 secondary--text text-center font-weight-regular font-italic mt-0 pb-0"
-          >Account Options</h2>
-        </v-col>
-        <v-card-actions style="width: 100%;">
-          <v-row class="justify-center">
-            <!-- DISPLAY IF USER IS NOT AUTHENTICATED -->
-            <v-col cols="12" class="text-center" v-if="!userAuth">
-              <v-btn
-                large
-                to="/signup"
-                @click="dialog=false"
-                active-class="no-active"
-                class="primary text-capitalize mx-2 my-3 px-6"
-              >
-                <v-icon size="25" left>mdi-account-plus-outline</v-icon>&nbsp;Create an Account
-              </v-btn>
-              <v-btn
-                large
-                to="/signin"
-                @click="dialog=false"
-                active-class="no-active"
-                class="primary text-capitalize mx-2 my-3 px-6"
-              >
-                <v-icon size="25" left>mdi-account-check-outline</v-icon>&nbsp;Sign In to Account
-              </v-btn>
-            </v-col>
-            <!-- DISPLAY IF USER IS AUTHENTICATED -->
-            <v-col cols="12" class="text-center" v-else>
-              <v-btn
-                large
-                @click="onLogout"
-                active-class="no-active"
-                class="primary text-capitalize mx-2 my-3 px-5"
-              >
-                <v-icon size="25" left>mdi-account-remove-outline</v-icon>&nbsp;Sign Out of Account
-              </v-btn>
-              <v-btn
-                large
-                to="/updatename"
-                @click="dialog=false"
-                active-class="no-active"
-                class="primary text-capitalize mx-2 my-3 px-7"
-              >
-                <v-icon size="25" left>mdi-account-cog-outline</v-icon>&nbsp;Update User Name
-              </v-btn>
-            </v-col>
-          </v-row>
-        </v-card-actions>
-      </v-row>
-    </v-card>
-  </v-dialog>
+    <!-- Trigger Buttons -->
+    <button
+      @click="dialog = true"
+      class="block sm:hidden p-2 bg-transparent border-none text-white"
+      style="margin-right: -4px; margin-left: -4px;"
+    >
+      <i class="fas fa-user text-lg"></i>
+    </button>
+    <button
+      @click="dialog = true"
+      class="hidden md:block btn-primary ml-3 hover:scale-105 transition-transform"
+      style="margin-top: 1.5px;"
+    >
+      <i class="fas fa-user text-lg mr-2"></i>Account
+    </button>
+  </div>
 </template>
 
 <script>
